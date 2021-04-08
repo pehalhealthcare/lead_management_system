@@ -54,7 +54,7 @@ class Products extends CI_Controller {
           }
           else
           {
-               $config['upload_path']          = './uploads/';
+                $config['upload_path']          = './uploads/';
                 $config['allowed_types']        = 'gif|jpg|png|jpeg';
                //  $config['max_size']             = 100;
                //  $config['max_width']            = 1024;
@@ -92,9 +92,7 @@ class Products extends CI_Controller {
           
      }
 
-     /*
-     This method is used for edit products
-     */
+     /*+
     public function editproducts($id="")
     {
 

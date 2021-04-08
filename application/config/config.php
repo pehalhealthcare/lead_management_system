@@ -31,7 +31,7 @@ else
 {
      $config['base_url'] = $_SERVER["REQUEST_SCHEME"]."://".$_SERVER["SERVER_NAME"];
 }
-die($config["base_url"]);
+// die($config["base_url"]);
 
 /*
 |--------------------------------------------------------------------------
