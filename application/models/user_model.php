@@ -11,7 +11,7 @@ class User_model extends CI_Model
      public function userlogin($useremail="",$password="",$role="")
      {    
           $this->db->where("email",$useremail);
-          $this->db->where("role",$role);
+          // $this->db->where("role",$role);
           $this->db->where("password",hash("sha256",$password));
           $user = $this->db->get("mk_registration_table");
 
@@ -23,6 +23,38 @@ class User_model extends CI_Model
           {
               return false;
           }
+
+     }
+
+     public function userdata($userID)
+     {
+          $this->db->where("id",$userID);
+
+          $userdata = $this->db->get("mk_registration_table");
+
+          if($userdata->result())
+          {
+               return $userdata->result();
+          }
+          else
+          {
+               return array();
+          }
+     }
+
+     public function user_list()
+     {
+          $res = $this->db->get("mk_registration_table");
+
+          if($res->result())
+          {
+               return $res->result_array();
+          }
+          else
+          {
+               return array();
+          }
+
 
      }
 
@@ -70,4 +102,6 @@ class User_model extends CI_Model
                return array();
           }
      }
+
+    
 }

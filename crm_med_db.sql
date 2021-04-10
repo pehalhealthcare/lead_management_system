@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 08, 2021 at 01:30 PM
+-- Generation Time: Apr 10, 2021 at 08:05 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -92,6 +92,29 @@ INSERT INTO `mk_group_login_table` (`id`, `firstname`, `lastname`, `department`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mk_lead_assign`
+--
+
+CREATE TABLE `mk_lead_assign` (
+  `id` int(11) NOT NULL,
+  `application_number` varchar(100) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `teamleader_id` int(11) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_lead_assign`
+--
+
+INSERT INTO `mk_lead_assign` (`id`, `application_number`, `agent_id`, `teamleader_id`, `created_at`) VALUES
+(1, '1617958550', 3, 1, '2021-04-09 10:01:04'),
+(2, '1617958550', 2, 1, '2021-04-09 12:37:47'),
+(3, '1617958550', 4, 1, '2021-04-09 12:38:52');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mk_lead_data`
 --
 
@@ -112,14 +135,41 @@ CREATE TABLE `mk_lead_data` (
 --
 
 INSERT INTO `mk_lead_data` (`id`, `application_number`, `fullname`, `email`, `mobile`, `lead_call`, `reasons`, `lead_image`, `created_at`) VALUES
-(1, '1617864013', 'testing', 'testing@gmail.com', '9791256456', 'qualified', 'testing the reason', 'download3.jpeg', '2021-04-08 06:40:43'),
-(2, '1617864061', 'testing', 'testing@gmail.com', '9791256456', 'qualified', 'testing the reason', 'download4.jpeg', '2021-04-08 06:41:03'),
-(3, '1617864066', 'testing', 'testing@gmail.com', '9791256456', 'qualified', 'testing the reason', 'download5.jpeg', '2021-04-08 06:41:15'),
-(4, '1617864253', 'testing', 'testing@gmail.com', '9791256456', 'qualified', 'testing the reason', 'download6.jpeg', '2021-04-08 06:44:17'),
-(5, '1617864278', 'testing', 'testing@gmail.com', '9791256456', 'qualified', 'testing the reason', 'download7.jpeg', '2021-04-08 06:44:39'),
-(6, '1617864790', 'testing', 'testing@gmail.com', '9789456', 'qualified', 'awearwaer', 'download.jpeg', '2021-04-08 06:53:32'),
-(7, '1617864922', 'testing', 'testing@gmail.com', '9789456', 'qualified', 'awearwaer', 'download1.jpeg', '2021-04-08 06:55:24'),
-(8, '1617879448', 'Testing', 'testing@gmail.com', '989875654', 'qualified', 'testing', 'logo_(1).jpg', '2021-04-08 11:04:13');
+(1, '1617958550', 'Testing', 'testing@gmail.com', '9791287056', 'qualified', 'Testing the data', 'unnamed.jpg', '2021-04-09 08:56:25');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_lead_quotation`
+--
+
+CREATE TABLE `mk_lead_quotation` (
+  `id` int(11) NOT NULL,
+  `application_number` varchar(100) NOT NULL,
+  `agent_id` int(11) NOT NULL,
+  `teamleader_id` int(11) NOT NULL,
+  `item_name` varchar(100) NOT NULL,
+  `quantity` varchar(100) NOT NULL,
+  `item_price` varchar(100) NOT NULL,
+  `item_tax` varchar(100) NOT NULL,
+  `item_tax_amount` varchar(100) NOT NULL,
+  `item_total_price` varchar(100) NOT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_lead_quotation`
+--
+
+INSERT INTO `mk_lead_quotation` (`id`, `application_number`, `agent_id`, `teamleader_id`, `item_name`, `quantity`, `item_price`, `item_tax`, `item_tax_amount`, `item_total_price`, `created_at`) VALUES
+(1, '1617958550', 0, 0, 'test', '1', '1111', '11', '122.21', '1233.21', '2021-04-09 11:40:40'),
+(2, '1617958550', 0, 0, 'test', '1', '1111', '11', '122.21', '1233.21', '2021-04-09 11:41:02'),
+(3, '1617958550', 3, 1, 'testing', '10', '1000', '18', '180', '1180', '2021-04-09 11:54:05'),
+(4, '1617958550', 3, 1, 'testing', '10', '1000', '18', '180', '1180', '2021-04-09 11:54:33'),
+(5, '1617958550', 3, 1, 'testing', '10', '1000', '18', '180', '1180', '2021-04-09 11:54:58'),
+(6, '1617958550', 3, 1, 'testing', '10', '1000', '18', '180', '1180', '2021-04-09 11:55:05'),
+(7, '1617958550', 3, 1, 'testing', '10', '1000', '18', '180', '1180', '2021-04-09 11:58:32'),
+(8, '1617958550', 3, 1, 'testing', '10', '100', '10', '10', '110', '2021-04-09 11:59:00');
 
 -- --------------------------------------------------------
 
@@ -148,10 +198,13 @@ CREATE TABLE `mk_registration_table` (
 --
 
 INSERT INTO `mk_registration_table` (`id`, `parent_id`, `firstname`, `lastname`, `department`, `email`, `mobile`, `password`, `profile`, `role`, `category`, `status`, `created_at`) VALUES
-(1, 0, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '1', 'CA', 0, '2021-04-08 09:36:09'),
-(2, 1, 'karthik', 'velou', 'IT', 'karthikvelou@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-08 09:57:07'),
-(3, 1, 'karthik', 'velou', 'IT', 'karthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-08 09:57:11'),
-(4, 1, 'rithik', 'karthik', 'IT', 'rithikkarthik@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OA', 0, '2021-04-08 10:19:58');
+(1, 0, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '2', 'BTL', 0, '2021-04-09 09:45:56'),
+(2, 1, 'arumugam', 'velou', 'IT', 'karthikvelou@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 10:37:28'),
+(3, 1, 'velou', 'karthik', 'IT', 'karthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 10:37:23'),
+(4, 1, 'rithik', 'karthik', 'IT', 'rithikkarthik@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20'),
+(5, 1, 'arun', 'kumar', 'IT', 'arunkumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20'),
+(6, 1, 'kumar', 'arun', 'IT', 'kumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20'),
+(7, 1, 'saravanan', 'kuppusamy', 'IT', 'saravanan@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20');
 
 -- --------------------------------------------------------
 
@@ -216,9 +269,21 @@ ALTER TABLE `mk_group_login_table`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mk_lead_assign`
+--
+ALTER TABLE `mk_lead_assign`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mk_lead_data`
 --
 ALTER TABLE `mk_lead_data`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mk_lead_quotation`
+--
+ALTER TABLE `mk_lead_quotation`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -262,16 +327,28 @@ ALTER TABLE `mk_group_login_table`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
+-- AUTO_INCREMENT for table `mk_lead_assign`
+--
+ALTER TABLE `mk_lead_assign`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `mk_lead_data`
 --
 ALTER TABLE `mk_lead_data`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT for table `mk_lead_quotation`
+--
+ALTER TABLE `mk_lead_quotation`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT for table `mk_registration_table`
 --
 ALTER TABLE `mk_registration_table`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mk_reset_password_table`

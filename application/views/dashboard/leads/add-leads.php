@@ -17,7 +17,7 @@
 
           <div class="form-group">
                <label for="">Lead Image</label>
-               <input type="file" name="userfile" class="form-control" id="">
+               <input type="file" name="userfile" accept="image/*" class="form-control" id="">
           </div>
 
           <div class="form-group">

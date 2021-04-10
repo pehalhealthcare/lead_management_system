@@ -38,7 +38,7 @@ class User extends CI_Controller {
                 }
                 else
                 {
-                    $user = $this->user_model->userlogin($username,$password,$role);
+                    $user = $this->user_model->userlogin($username,$password);
                     if($user!="")
                     {
                          $this->session->email = $user[0]->email;

@@ -47,11 +47,27 @@ class Common_model extends CI_Model
 
           $run = $this->db->get($table);
 
-          $data = $run->row();
+          $data = $run->result_array();
+
+          // echo $this->db->last_query();
 
           return $data;
 
           
+     }
+
+     public function total_price($column=array(),$table,$field)
+     {
+          $this->db->where($column);
+          
+          $this->db->select_sum($field);
+          
+          $query = $this->db->get($table);
+
+          // echo $this->db->last_query();
+
+
+          return $query->result();
      }
 
      public function updatedata($table="",$data="",$cond=array())
@@ -78,5 +94,12 @@ class Common_model extends CI_Model
           {
                return false;
           }
+     }
+
+     public function lastinsert_id($table="",$field="")
+     {    
+          $query = $this->db->query("SELECT * FROM $table ORDER BY $field Desc LIMIT 0,1");
+
+          return $query->result();
      }
 }

@@ -21,14 +21,14 @@
                <input type="password" name="password" class="form-control" value="<?php echo set_value('password'); ?>" size="50" />
           </div>
 
-          <div class="form-group">
+          <!-- <div class="form-group">
                <label for="">Select Role</label>
                <Select class="role form-control" name="role">
                     <option value="">Select your role</option>
                     <option value="1">Admin</option>
                     <option value="2">Group</option>
                </Select>
-          </div>
+          </div> -->
 
           
      </div>

@@ -59,7 +59,7 @@
 <a data-toggle="collapse" href="#collapsefour"><span class="fa fa-briefcase mr-3"></span> Lead</a>
 </li>
 <li>
-<div id="collapsefour" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/leads" || $this->uri->uri_string()=="dashboard/assign/leads") ? "show" : ""  ?>" data-parent="#accordion">
+<div id="collapsefour" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/leads" || $this->uri->uri_string()=="dashboard/assign/leads" || $this->uri->uri_string()=="dashboard/leads") ? "show" : ""  ?>" data-parent="#accordion">
 <ul class="list-unstyled components pl-3">
       <li><a href="<?=base_url()?>dashboard/add/leads"><span class="fa fa-plus mr-3"> Add Lead</span></a></li>
       <li><a href="<?=base_url()?>dashboard/leads"><span class="fa fa-eye mr-3"> View Leads</span></a></li>

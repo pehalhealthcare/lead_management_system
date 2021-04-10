@@ -11,29 +11,31 @@ $route["password-reset"] = 'user/password_reset';
 
 
 
-$route["dashboard"]                                    = "dashboard/index";
+$route["dashboard"]                                         = "dashboard/index";
 
-$route["dashboard/add/user"]                           = 'user/add_user';
-$route["dashboard/user"]                               = 'user/view_user';
-$route["dashboard/edit/user/(:any)"]                   = 'user/edit/$1';
+$route["dashboard/add/user"]                                = 'user/add_user';
+$route["dashboard/user"]                                    = 'user/view_user';
+$route["dashboard/edit/user/(:any)"]                        = 'user/edit/$1';
 
-$route["dashboard/add/leads"]                          =  "leads/add"; 
-$route["dashboard/leads"]                              =  "leads/viewdata"; 
-$route["dashboard/leads/agent/(:any)"]                 =  "leads/assign_agent/$1"; 
-$route["dashboard/assign/leads/(:any)"]                =  "leads/assign";
-$route["dashboard/edit/leads/(:any)"]                  =  "leads/edit/$1";
-$route["dashboard/delete/leads/(:any)"]                =  "leads/destroy/$1"; 
+$route["dashboard/add/leads"]                               =  "leads/add"; 
+$route["dashboard/leads"]                                   =  "leads/viewdata"; 
+$route["dashboard/leads/agent/(:any)"]                      =  "leads/assign_agent/$1"; 
+$route["dashboard/leads/quotation/(:any)/(:any)/(:any)"]    =   "leads/lead_quotation/$1/$2/$3";
+$route["dashboard/assign/leads/(:any)"]                     =  "leads/assign";
+$route["dashboard/edit/leads/(:any)"]                       =  "leads/edit/$1";
+$route["dashboard/delete/leads/(:any)"]                     =  "leads/destroy/$1"; 
+$route["dashboard/lead/generate_pdf/(:any)"]                =  "leads/generate_pdf/$1";
 
-$route["dashboard/add/category"]                       =  "category/add";
-$route["dashboard/category"]                           =  "category/viewdata";
-$route["dashboard/edit/category/(:any)"]               =  "category/edit/$1";
-$route["dashboard/delete/category/(:any)"]             =  "category/destroy/$1";
+$route["dashboard/add/category"]                            =  "category/add";
+$route["dashboard/category"]                                =  "category/viewdata";
+$route["dashboard/edit/category/(:any)"]                    =  "category/edit/$1";
+$route["dashboard/delete/category/(:any)"]                  =  "category/destroy/$1";
 
 
-$route["dashboard/add/department"]                     =  "deparment/add";
-$route["dashboard/department"]                         =  "department/viewdata";
-$route["dashboard/edit/department/(:any)"]             =  "department/edit/$1";
-$route["dashboard/delete/department/(:any)"]           =  "department/destroy/$1";
+$route["dashboard/add/department"]                          =  "deparment/add";
+$route["dashboard/department"]                              =  "department/viewdata";
+$route["dashboard/edit/department/(:any)"]                  =  "department/edit/$1";
+$route["dashboard/delete/department/(:any)"]                =  "department/destroy/$1";
 
 // This routes are used for products crud operation
 

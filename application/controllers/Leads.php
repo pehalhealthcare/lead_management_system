@@ -54,7 +54,7 @@ class Leads extends CI_Controller {
 
                          $insertdata["lead_image"] = $imagedata["upload_data"]["file_name"];
 
-                         // print_r($inserdata);
+
 
                          if($this->common_model->adddata("mk_lead_data",$insertdata))
                          {
@@ -100,11 +100,121 @@ class Leads extends CI_Controller {
 
      public function assign_agent($application="")
      {
-          $data["title"] = "Dashboard | Leads";
-          $data["application"] = $application;
-          $this->load->view("inc/header",$data);
-          $this->load->view("dashboard/leads/assign_agent",$data);
-          $this->load->view("inc/footer");
+          $insertdata = array(
+               "application_number" => $this->input->post("application"),
+               "agent_id" =>  $this->input->post("agentID"),
+               "teamleader_id" =>  $this->input->post("parentID"),
+         );
+
+          $this->form_validation->set_rules("application","Application","required");
+
+          if($this->form_validation->run() == FALSE)
+          {
+               $data["title"] = "Dashboard | Assign Leads";
+               $data["application"] = $application;
+               $data["agents"] = $this->user_model->user_list();
+               $this->load->view("inc/header",$data);
+               $this->load->view("dashboard/leads/assign_agent",$data);
+               $this->load->view("inc/footer");
+          }
+          else
+          {
+               
+               if($this->common_model->adddata("mk_lead_assign",$insertdata))
+               {
+                    return redirect("dashboard/leads/quotation/".$insertdata["application_number"]."/".$insertdata["agent_id"]."/".$insertdata["teamleader_id"]);
+               }
+               else
+               {
+                    print_r($insertdata);
+               }
+          }
+     }
+
+     public function lead_quotation($application="",$agent_id="",$teamlead_id="")
+     {
+
+          $insertdata = array(
+               "application_number" => $this->input->post("application_number"),
+               "agent_id" => $this->input->post("agent_id"),
+               "teamleader_id" => $this->input->post("teamleader_id"),
+               "item_name" => $this->input->post("item_name"),
+               "quantity" => $this->input->post("item_quantity"),
+               "item_price" => $this->input->post("item_price"),
+               "item_tax" => $this->input->post("item_tax"),
+               "item_tax_amount" => $this->input->post("item_tax_amount"),
+               "item_total_price" => $this->input->post("item_total"),
+          );
+
+          $this->form_validation->set_rules("item_name","Item Name","required");
+          $this->form_validation->set_rules("item_quantity","Item Quantity","required");
+          $this->form_validation->set_rules("item_price","Item Price","required");
+
+          if($this->form_validation->run() == FALSE)
+          {
+               // echo "testing";
+               $data["title"] = "Lead Quotation";
+               $data["application"] = $application;
+               $data["agent"] = $this->user_model->userdata($agent_id);
+              
+               $data["teamleader"] = $this->user_model->userdata($teamlead_id);
+               // print_r($data["teamleader"]);
+               $this->load->view("inc/header",$data);
+               $this->load->view("dashboard/leads/lead_quotation",$data);
+               $this->load->view("inc/footer");
+          }
+          else
+          {
+              if($this->common_model->adddata("mk_lead_quotation",$insertdata))
+              {
+                    $id=($this->common_model->lastinsert_id("mk_lead_quotation","id"));
+                    return redirect("dashboard/lead/generate_pdf/".$id[0]->id);
+              }
+          }
+          
+     }
+
+     public function generate_pdf($id="")
+     {
+          //     load library
+          $dompdf = new Dompdf\Dompdf();
+
+         $data["testing"] = "Karthik";
+
+        
+          
+          $data["pdf_data"] = $this->common_model->viewwheredata(array("id"=>$id),"mk_lead_quotation");
+
+          $data["total"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_total_price");
+
+          $data["taxtotal"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_tax");
+
+          // print_r($data["total"]);
+
+          // $this->load->view('dashboard/leads/pdf_quotation',$data);
+
+     //     return false;
+ 
+          $html = $this->load->view('dashboard/leads/pdf_quotation',$data,true);
+          
+          $dompdf->loadHtml($html);
+          
+          // (Optional) Setup the paper size and orientation
+          $dompdf->setPaper('A4', 'landscape');
+          
+          // Render the HTML as PDF
+          $dompdf->render();
+          
+          // Get the generated PDF file contents
+          $pdf = $dompdf->output();
+          
+          // Output the generated PDF to Browser
+          $dompdf->stream();
+
+
+  	    
+  	     
+
      }
 
 
