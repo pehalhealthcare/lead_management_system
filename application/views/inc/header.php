@@ -59,14 +59,28 @@
 <a data-toggle="collapse" href="#collapsefour"><span class="fa fa-briefcase mr-3"></span> Lead</a>
 </li>
 <li>
-<div id="collapsefour" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/leads" || $this->uri->uri_string()=="dashboard/assign/leads" || $this->uri->uri_string()=="dashboard/leads") ? "show" : ""  ?>" data-parent="#accordion">
+<div id="collapsefour" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/leads" || $this->uri->uri_string()=="dashboard/leads") ? "show" : ""  ?>" data-parent="#accordion">
 <ul class="list-unstyled components pl-3">
       <li><a href="<?=base_url()?>dashboard/add/leads"><span class="fa fa-plus mr-3"> Add Lead</span></a></li>
       <li><a href="<?=base_url()?>dashboard/leads"><span class="fa fa-eye mr-3"> View Leads</span></a></li>
-      <li><a href="<?=base_url()?>dashboard/assign/leads"><span class="fa fa-eye mr-3"> Assign Leads</span></a></li>
+      <!-- <li><a href="<?=base_url()?>dashboard/assign/leads"><span class="fa fa-eye mr-3"> Assign Leads</span></a></li> -->
 </ul>
 </div>
 </li>
+
+<li>
+<a data-toggle="collapse" href="#collapsefive"><span class="fa fa-briefcase mr-3"></span> Lead Customer</a>
+</li>
+<li>
+<div id="collapsefive" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/leads" || $this->uri->uri_string()=="dashboard/leadcustomer/add" || $this->uri->uri_string()=="dashboard/leadcustomer") ? "show" : ""  ?>" data-parent="#accordion">
+<ul class="list-unstyled components pl-3">
+      <li><a href="<?=base_url()?>dashboard/leadcustomer/add"><span class="fa fa-plus mr-3"> Add Customer</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/leadcustomer"><span class="fa fa-eye mr-3"> View Customer</span></a></li>
+      <!-- <li><a href="<?=base_url()?>dashboard/assign/leads"><span class="fa fa-eye mr-3"> Assign Leads</span></a></li> -->
+</ul>
+</div>
+</li>
+
 <li>
 <a data-toggle="collapse" href="#collapsethree"><span class="fa fa-sticky-note mr-3"></span> User Manage</a>
 </li>

@@ -1,3 +1,4 @@
+
 <div class="col-md-9 col-sm-12 mt-5 mx-auto">
 <?php if($this->session->flashdata('message_name')): 
 ?>
@@ -9,35 +10,32 @@
   </button>
 </div>
  <?php endif; ?>
-
  <div class="row">
     <div class="col-sm-12 mb-2 text-right">
-        <a href="<?= base_url()?>dashboard/add/leads" class="btn btn-success">ADD DATA</a>
+        <a href="<?= base_url()?>dashboard/leadcustomer/add" class="btn btn-success">ADD DATA</a>
     </div>
  </div>
-
  <table class="table table-bordered">
   <tr>
     <th>SI NO</th>
-    <th>ORDER TYPE</th>
-    <th>ASSIGNEE</th>
-    <th>LEAD IMAGE</th>
-    <th>STATUS</th>
-    <th>REASONS</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Mobile</th>
+    <th>Alternate Mobile</th>
+    <th>Status</th>
     <th>ACTIONS</th>
   </tr>
-  <?php $i=0; foreach($leads as $lead): $i++?>
+  <?php $i=0; foreach($leadcustomers as $leadcustomer): $i++?>
     <tr>
       <td><?= $i;?></td>
-      <td><?= ($lead->order_type==1) ? "PRODUCT" : ""; ($lead->order_type==2) ? "SERVICES" : ""; ($lead->order_type==2) ? "PRODUCT AND SERVICE" : "";
-      ?></td>
-      <td><?php echo $this->user_model->username($lead->assigned_to);//?></td>
-      <td><img src="<?= base_url();?>uploads/lead_image/<?= $lead->lead_image ?>" style="width:50px" /></td>
-      <td><?= $lead->status ?></td>
-      <td><?= $lead->reasons ?></td>
+      <td><?= $leadcustomer->name?></td>
+      <td><?= $leadcustomer->email;?></td>
+      <td><?= $leadcustomer->mobile ?></td>
+      <td><?= $leadcustomer->alternate_mobile ?></td>
+      <td><?= ($leadcustomer->is_active==1) ? "Active" : "Inactive" ?></td>
       <td>
-      <a href="<?= base_url()?>dashboard/edit/leads/<?= $lead->id ?>" class="btn btn-info">EDIT</a>
-      <button type="button" class="btn btn-danger delete-data" data-id="<?= $lead->id ?>"" data-toggle="modal" data-target="#confirm-modal">DELETE</button>
+      <a href="<?= base_url()?>dashboard/leadcustomer/edit/<?= $leadcustomer->customer_id ?>" class="btn btn-info">EDIT</a>
+      <button type="button" class="btn btn-danger delete-data" data-id="<?= $leadcustomer->customer_id ?>"" data-toggle="modal" data-target="#confirm-modal">DELETE</button>
       </td>
     </tr>
   <?php endforeach;?>
@@ -81,7 +79,7 @@ $(document).ready(function(){
     $(document).on("click",".confirm-delete",function(){
       var id = $(this).data("id");
 
-      window.location.href = "<?= base_url();?>dashboard/delete/leads/"+id;
+      window.location.href = "<?= base_url();?>dashboard/leadcustomer/delete/"+id;
     });
 });
 </script>

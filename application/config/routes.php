@@ -22,9 +22,16 @@ $route["dashboard/leads"]                                   =  "leads/viewdata";
 $route["dashboard/leads/agent/(:any)"]                      =  "leads/assign_agent/$1"; 
 $route["dashboard/leads/quotation/(:any)/(:any)/(:any)"]    =   "leads/lead_quotation/$1/$2/$3";
 $route["dashboard/assign/leads/(:any)"]                     =  "leads/assign";
-$route["dashboard/edit/leads/(:any)"]                       =  "leads/edit/$1";
+$route["dashboard/edit/leads/(:any)"]                       =  "leads/lead_edit/$1";
 $route["dashboard/delete/leads/(:any)"]                     =  "leads/destroy/$1"; 
 $route["dashboard/lead/generate_pdf/(:any)"]                =  "leads/generate_pdf/$1";
+
+$route["dashboard/leadcustomer"]                            = "leadcustomer/viewdata";
+$route["dashboard/leadcustomer/add"]                        = "leadcustomer/add";
+$route["dashboard/leadcustomer/create"]                        = "leadcustomer/createcustomer";
+$route["dashboard/leadcustomer/edit/(:any)"]                = "leadcustomer/editdata/$1";
+$route["dashboard/leadcustomer/update/(:any)"]              = "leadcustomer/updatedata/$1";
+$route["dashboard/leadcustomer/delete/(:any)"]              = "leadcustomer/deletedata/$1";
 
 $route["dashboard/add/category"]                            =  "category/add";
 $route["dashboard/category"]                                =  "category/viewdata";

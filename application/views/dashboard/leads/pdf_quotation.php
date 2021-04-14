@@ -134,7 +134,7 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 					
 					<tr>
 						<th colspan="5">Grand Total</th>
-						<th><?= $taxtotal[0]->item_tax; ?></th>
+						<th><?= $taxtotal[0]->item_tax_amount; ?></th>
 						<th><?= $total[0]->item_total_price;?></th>
 					</tr>
 					</table>

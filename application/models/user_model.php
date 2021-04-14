@@ -103,5 +103,22 @@ class User_model extends CI_Model
           }
      }
 
+     public function username($id)
+     {
+          $this->db->where("id",$id);
+          $user = $this->db->get("mk_registration_table");
+
+          if($user->result())
+          {
+               $username = $user->result();
+               // print_r($username);
+               return $username[0]->firstname;
+          }
+          else
+          {
+               return array();
+          }
+     }
+
     
 }

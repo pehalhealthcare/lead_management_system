@@ -31,11 +31,11 @@
 $(document).ready(function(){
   $(".close").click(function(){
     $("#myModal").hide();
-    window.location.href="<?= base_url() ?>";
+    // window.location.href="<?= base_url() ?>";
   });
   $("#close").click(function(){
     $("#myModal").hide();
-    window.location.href="<?= base_url() ?>";
+    // window.location.href="<?= base_url() ?>";
   });
 })
 </script>

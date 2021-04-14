@@ -10,10 +10,10 @@
      </div>
      <div class="card-body">
 
-          <div class="form-group">
+          <!-- <div class="form-group">
                <label for="">Application Number</label>
                <input type="text" name="application" class="form-control" value="<?php echo set_value('application') ? set_value('application') : time(); ?>"  />
-          </div>
+          </div> -->
 
           <div class="form-group">
                <label for="">Lead Image</label>
@@ -21,23 +21,52 @@
           </div>
 
           <div class="form-group">
-               <label for="">Full Name</label>
-               <input type="text" name="full_name" class="form-control" value="<?php echo set_value('full_name'); ?>"  />
+               <label for="">Order Type</label>
+               <select name="order_type" id="" class="form-control">
+                    <option value="">Select Order Type</option>
+                    <option value="1">Services</option>
+                    <option value="2">Product</option>
+                    <option value="3">Both Product & Service</option>
+               </select>
           </div>
 
           <div class="form-group">
-               <label for="">Email ID</label>
-               <input type="text" name="email" class="form-control" value="<?php echo set_value('email'); ?>"  />
+               <label for="">Assigned To</label>
+               <select name="assigned_to" id="" class="form-control">
+                    <option value="">Select Assigned to</option>
+                    <?php foreach($agents as $agent): if($agent["role"]=="2" && $agent["category"]=="BA"):?>
+                    <option value="<?= $agent["id"] ?> "><?php echo $agent["firstname"]; ?></option>
+                    <?php endif; endforeach;?>
+               </select>
           </div>
 
-          <div class="form-group">
-               <label for="">Mobile</label>
-               <input type="text" name="mobile" class="form-control" value="<?php echo set_value('mobile'); ?>"  />
-          </div>
+          <input type="hidden" name="assigned_by" value="<?= $this->session->userID;?>">
 
           <div class="form-group">
-               <label for="">Lead Call</label>
-               <select name="lead_call" id="" class="form-control">
+               <input type="radio" class="customer" name="customer" value="new" id="">New Customer
+               <input type="radio" class="customer" name="customer" value="old" id="">Existing Customer
+          </div>
+          
+          <div class="form-group d-none exist-customers">
+               <label for="">Select Customer</label>
+               <select name="customer" id="" class="form-control select-customer">
+                    <option value="">Select Customers</option>
+                    <?php foreach($customers as $customer):?>
+                         <option value="<?= $customer->customer_id?>"><?= $customer->name?></option>
+                    <?php endforeach;?>
+               </select>
+          </div>
+
+          <div class="form-group d-none new-customer">
+               <label for="">New Customer</label>
+               <input type="text" name="customer" class="form-control input-customer" id="">
+               <input type="hidden" name="customer_id" class="customer_id">
+          </div>
+
+
+          <div class="form-group">
+               <label for="">Status</label>
+               <select name="status" id="" class="form-control">
                     <option value="">Select Lead Call</option>
                     <option value="qualified">Qualified</option>
                     <option value="disqualified">DisQualified</option>
@@ -60,4 +89,100 @@
 </form>
 </div>
 
+<div class="modal" id="customer-data">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Create Customer</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <form action="" method="post" class="add-customer" enctype="multipart/form-data">
+               <div class="modal-body">
+      
+                    <div class="form-group ">
+                         <label for="">Surname</label>
+                         <select class="form-control border-bottom border-primary" name="surname">
+                              <option value="Mr">Mr</option>
+                              <option value="Miss">Miss</option>
+                              <option value="Mrs">Mrs</option>
+                         </select>
+                    </div>
+                    <div class="form-group ">
+                         <label for="">Name</label>
+                         <input type="text" name="name" id=""  class="form-control border-bottom border-primary" placeholder="Enter Your Name">
+                    </div>
+                    <div class="form-group bordered">
+                         <label for="">Email</label>
+                         <input type="text" name="email" id=""  class="form-control border-bottom border-primary" placeholder="Enter Your Email">
+                    </div>
+                    <div class="form-group ">
+                         <label for="">Mobile</label>
+                         <input type="text" name="mobile" id="" placeholder="Enter Your Mobile" class="form-control border-bottom border-primary">
+                    </div>
+                    <div class="form-group ">
+                         <label for="">Alternate Mobile</label>
+                         <input type="text" name="alternate_mobile" placeholder="Enter Your Alternate Mobile" id="" class="form-control border-bottom border-primary">
+                    </div>
+                    <div class="form-group ">
+                         <label for="">Status</label>
+                         <select name="status" id="" class="form-control border-bottom border-primary">
+                         <option value="1">Active</option>
+                         <option value="0">Inactive</option>
+                         </select>
+                    </div>      
+               </div>    
+          
+      
+               <!-- Modal footer -->
+               <div class="modal-footer">
+                    <input type="submit" value="ADD" class="btn btn-success">
+               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+               </div>
+      </form> 
+    </div>
+  </div>
+</div>
+
+
+<script>
+$(document).ready(function(){
+
+     $(".customer").change(function(){
+          if($(".customer:checked").val()=="new")
+          {
+               $(".exist-customers").addClass("d-none")
+               $("#customer-data").modal("show");
+          }
+          else
+          {
+               $(".exist-customers").removeClass("d-none")
+          }
+     });
+
+     $(".add-customer").on("submit",function(e){
+          e.preventDefault();
+          var formdata = $(".add-customer").serialize();
+
+          // console.log(formdata);
+          $.ajax({
+               url:"<?= base_url()?>ajax/addcustomerdata",
+               method:"post",
+               data:formdata,
+               success:function(status)
+               {
+                    console.log(status);
+                    console.log(JSON.parse(status));
+                    status = JSON.parse(status);
+                    $(".new-customer").removeClass("d-none");
+                    $(".input-customer").val(status[0]["name"]);
+                    $(".customer_id").val(status[0]["customer_id"]);
+                    $("#customer-data").modal("hide");
+               }
+          })
+     });
+})
+</script>

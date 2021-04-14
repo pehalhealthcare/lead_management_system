@@ -17,14 +17,21 @@ class Leads extends CI_Controller {
      public function add()
      {
           $data["title"] = "Dashboard | Create Leads";
+          
           $insertdata = array(
-          "application_number" => $this->input->post("application"),
-          "fullname" => $this->input->post("full_name"),
-          "email" => $this->input->post("email"),
-          "mobile" => $this->input->post("mobile"),
-          "lead_call" => $this->input->post("lead_call"),
+          "order_type" => $this->input->post("order_type"),
+          "assigned_to" => $this->input->post("assigned_to"),
+          "status" => $this->input->post("status"),
           "reasons" => $this->input->post("reasons"),
+          "assigned_by"=>$this->input->post("assigned_by"),
+          "created_by"=>$this->input->post("assigned_by"),
+          "created_at" => date("Y-m-d l:i:s")
           );
+
+          
+          
+
+          $data["agents"] = $this->user_model->user_list();
 
           $config['upload_path']          = './uploads/lead_image/';
           $config['allowed_types']        = 'gif|jpg|png|jpeg';
@@ -34,10 +41,13 @@ class Leads extends CI_Controller {
 
           $this->load->library('upload', $config);
           
+          $data["customers"] = $this->common_model->viewdata("mk_customer","multiple");
+
+          // print_r($data["customers"]); die();
                
          
-         $this->form_validation->set_rules('email', 'Email', 'required');
-         $this->form_validation->set_rules('mobile', 'Mobile', 'required');
+         $this->form_validation->set_rules('status', 'Status', 'required');
+         $this->form_validation->set_rules('assigned_to', 'Assignee', 'required');
                 
 
                 if ($this->form_validation->run() == FALSE)
@@ -48,6 +58,7 @@ class Leads extends CI_Controller {
                 }
                 else
                 {
+                    // print_r($_POST); die();
                     if($this->upload->do_upload())
                     {
                          $imagedata = array('upload_data' => $this->upload->data());
@@ -56,12 +67,38 @@ class Leads extends CI_Controller {
 
 
 
-                         if($this->common_model->adddata("mk_lead_data",$insertdata))
+                         if($this->common_model->adddata("mk_lead",$insertdata))
                          {
+                              $customer_id =($this->common_model->lastinsert_id("mk_customer","customer_id"));
+
+                              $lead_id = ($this->common_model->lastinsert_id("mk_lead","id"));
+
+                              $insert = array(
+                                   "lead_id" => $lead_id[0]->id,
+                                   "customer_id" => $customer_id[0]->customer_id,
+                                   "created_at" => date("Y-m-d h:i:s")
+                              );
+
+                              // print_r($insert);
+
+                              if($this->common_model->adddata("mk_lead_customer",$insert))
+                              {
+                                   $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
                               
-                              $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
+                                   return redirect("dashboard/leads");
+                              }
+
+                              else
+
+                              {
+                                   $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
                               
-                              return redirect("dashboard/leads/agent/".$insertdata["application_number"]);
+                                   return redirect("dashboard/leads");
+                              }
+
+
+                              
+                              
                               
                          }
                          else
@@ -69,7 +106,7 @@ class Leads extends CI_Controller {
                               // Set flash data 
                               $this->session->set_flashdata('message_name', 'Lead Data Not Inserted');
                               // After that you need to used redirect function instead of load view such as 
-                              return redirect("dashboard/leads/agent/".$insertdata["application_number"]);
+                              return redirect("dashboard/leads");
 
                               // Get Flash data on view 
                               
@@ -81,7 +118,7 @@ class Leads extends CI_Controller {
                          
                          $this->session->set_flashdata('message_name', 'Lead Data Not Inserted');
                          // After that you need to used redirect function instead of load view such as 
-                         return redirect("dashboard/leads/agent/".$insertdata["application_number"]);
+                         return redirect("dashboard/leads");
                          
                     }
                 }
@@ -93,9 +130,109 @@ class Leads extends CI_Controller {
      {
           $data["title"] = "Dashboard | Leads";
           $this->load->view("inc/header",$data);
+          $data["leads"] = $this->common_model->viewdata("mk_lead","multiple");
+          // print_r($data["leads"]);
           $this->load->view("dashboard/leads/view-leads",$data);
           $this->load->view("inc/footer");
      //   print_r($this->session->flashdata('message_name'));
+     }
+
+
+     public function lead_edit($id="")
+     {
+          $data["title"] = "Dashboard | Edit Leads";
+
+          $insertdata = array(
+          "order_type" => $this->input->post("order_type"),
+          "assigned_to" => $this->input->post("assigned_to"),
+          "status" => $this->input->post("status"),
+          "reasons" => $this->input->post("reasons"),
+          "assigned_by"=>$this->input->post("assigned_by"),
+          "created_by"=>$this->input->post("assigned_by"),
+          "created_at" => date("Y-m-d l:i:s")
+          );
+          // 
+
+          $data["agents"] = $this->user_model->user_list();
+
+          $data["customers"] = $this->common_model->viewdata("mk_customer","multiple");
+
+          $data["customerID"] = $this->common_model->viewwheredata(array("lead_id"=>$id),"mk_lead_customer");
+
+          // print_r($data["customerID"]); die();
+
+          $config['upload_path']          = './uploads/lead_image/';
+          $config['allowed_types']        = 'gif|jpg|png|jpeg';
+          //  $config['max_size']             = 100;
+          //  $config['max_width']            = 1024;
+          //  $config['max_height']           = 768;
+
+          $this->load->library('upload', $config);
+
+          $data["leads"] = $this->common_model->viewwheredata(array("id"=>$id),"mk_lead");
+          
+               
+         
+         $this->form_validation->set_rules('status', 'Status', 'required');
+         $this->form_validation->set_rules('assigned_to', 'Assignee', 'required');
+                
+
+                if ($this->form_validation->run() == FALSE)
+                {        
+                        $this->load->view("inc/header",$data);
+                        $this->load->view('dashboard/leads/edit-leads',$data);
+                        $this->load->view("inc/footer");
+                }
+                else
+                {
+                         $this->upload->do_upload();
+                         $id = $this->input->post("lead_id");
+                         $imagedata = array('upload_data' => $this->upload->data());
+
+                         if($imagedata["upload_data"]["file_name"])
+                         {
+                              $insertdata["lead_image"] = $imagedata["upload_data"]["file_name"];
+                         }
+                         
+
+
+
+                         if($this->common_model->updatedata("mk_lead",$insertdata,array("id"=>$id)))
+                         {
+                              
+                              $this->session->set_flashdata('message_name', 'Lead Data Updated Succesfully');
+                              
+                              return redirect("dashboard/leads");
+                              
+                         }
+                         else
+                         {
+                              // Set flash data 
+                              $this->session->set_flashdata('message_name', 'Lead Data Not Updated');
+                              // After that you need to used redirect function instead of load view such as 
+                              return redirect("dashboard/leads");
+
+                              // Get Flash data on view 
+                              
+                                                            
+                         }
+                    
+                    
+                }
+     }
+
+     public function destroy($id)
+     {
+          if($this->common_model->deletedata("mk_lead",array("id"=>$id)))
+          {
+               $this->session->set_flashdata('message_name', 'Lead Data Deleted');
+               return redirect("dashboard/leads");
+          }
+          else
+          {
+               $this->session->set_flashdata('message_name', 'Lead Data Not Deleted');
+               return redirect("dashboard/leads");
+          }
      }
 
      public function assign_agent($application="")
@@ -187,7 +324,7 @@ class Leads extends CI_Controller {
 
           $data["total"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_total_price");
 
-          $data["taxtotal"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_tax");
+          $data["taxtotal"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_tax_amount");
 
           // print_r($data["total"]);
 

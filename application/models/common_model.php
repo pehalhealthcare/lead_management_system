@@ -20,10 +20,11 @@ class Common_model extends CI_Model
           }
      }
 
-     public function viewdata($action="",$table="")
+     public function viewdata($table="",$action="")
      {    
           if($action=="multiple")
           {
+               $this->db->where("is_active","1");
                $run = $this->db->get($table);
 
                $data = $run->result();
@@ -86,9 +87,9 @@ class Common_model extends CI_Model
      public function deletedata($table,$data=array())
      {
           $this->db->where($data);
-          if($this->db->delete($table))
+          if($this->db->update($table,array("is_active"=>"0")))
           {
-               return true;
+                 return true;
           }
           else
           {
