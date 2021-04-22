@@ -14,7 +14,7 @@ class User extends CI_Controller {
      {
           if($this->session->name)
           {
-               return redirect("dashboard");
+               return redirect("dashboard/leads");
           }
           // $user = "testing";
           // $this->session->name = $user;
@@ -47,7 +47,7 @@ class User extends CI_Controller {
 
                          // print_r($user);
                          
-                         return redirect("/dashboard");
+                         return redirect("dashboard/leads");
                         
                     }
                     else

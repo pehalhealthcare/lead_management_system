@@ -23,11 +23,11 @@
 
           <div class="form-group">
                <label for="">Order Type</label>
-               <select name="order_type" id="" class="form-control">
+               <select name="lead_source" id="" class="form-control">
                     <option value="">Select Order Type</option>
-                    <option <?= ($leads[0]["order_type"]=="1") ? "selected" : "" ?> value="1">Services</option>
-                    <option <?= ($leads[0]["order_type"]=="2") ? "selected" : "" ?> value="2">Product</option>
-                    <option <?= ($leads[0]["order_type"]=="3") ? "selected" : "" ?> value="3">Both Product & Service</option>
+                    <option <?= ($leads[0]["lead_source"]=="1") ? "selected" : "" ?> value="1">Services</option>
+                    <option <?= ($leads[0]["lead_source"]=="2") ? "selected" : "" ?> value="2">Product</option>
+                    <option <?= ($leads[0]["lead_source"]=="3") ? "selected" : "" ?> value="3">Both Product & Service</option>
                </select>
           </div>
 
@@ -43,12 +43,25 @@
 
           <input type="hidden" name="assigned_by" value="<?= $this->session->userID;?>">
 
-          <div class="form-group">
+          <div class="form-group ">
+                    <label for="">Name</label>
+                    <input type="text" name="name" id="" class="form-control" placeholder="Enter Your Name" value="<?= ($leads[0]["name"]) ? $leads[0]["name"] : set_value('name'); ?>"  />
+               </div>
+               <div class="form-group bordered">
+                    <label for="">Email</label>
+                    <input type="text" name="email" id="" class="form-control" placeholder="Enter Your Email" value="<?= ($leads[0]["email"]) ? $leads[0]["email"] : set_value('email'); ?>"  />
+               </div>
+               <div class="form-group ">
+                    <label for="">Mobile</label>
+                    <input type="text" name="mobile" id="" placeholder="Enter Your Mobile" class="form-control" value="<?= ($leads[0]["mobile"]) ? $leads[0]["mobile"] : set_value('mobile'); ?>"  />
+               </div>
+
+          <!-- <div class="form-group">
                <input type="radio" class="customer" name="customer" value="new" id="">New Customer
                <input type="radio" class="customer" name="customer" checked value="old" id="">Existing Customer
-          </div>
+          </div> -->
           
-          <div class="form-group exist-customers">
+          <!-- <div class="form-group exist-customers">
                <label for="">Select Customer</label>
                <select name="customer" id="" class="form-control select-customer">
                     <option value="">Select Customers</option>
@@ -56,28 +69,28 @@
                          <option <?= ($customer->customer_id==$customerID[0]["customer_id"]) ? "selected" : "" ?> value="<?= $customer->customer_id?>"><?= $customer->name?></option>
                     <?php endforeach;?>
                </select>
-          </div>
+          </div> -->
 
-          <div class="form-group d-none new-customer">
+          <!-- <div class="form-group d-none new-customer">
                <label for="">New Customer</label>
                <input type="text" name="customer" class="form-control input-customer" id="">
                <input type="hidden" name="customer_id" class="customer_id">
-          </div>
+          </div> -->
 
 
-          <div class="form-group">
+          <!-- <div class="form-group">
                <label for="">Status</label>
                <select name="status" id="" class="form-control">
                     <option value="">Select Lead Call</option>
                     <option <?= ($leads[0]["status"]=="qualified") ? "selected" : "" ?> value="qualified">Qualified</option>
                     <option <?= ($leads[0]["status"]=="disqualified") ? "selected" : "" ?> value="disqualified">DisQualified</option>
                </select>
-          </div>
+          </div> -->
 
-          <div class="form-group">
+          <!-- <div class="form-group">
                <label for="">Reason with Queries</label>
                <input type="text" name="reasons" class="form-control" value="<?= ($leads[0]["reasons"]) ? $leads[0]["reasons"] : set_value('reasons'); ?>"  />
-          </div>
+          </div> -->
 
 
      </div>
@@ -129,12 +142,24 @@
                          <input type="text" name="alternate_mobile" placeholder="Enter Your Alternate Mobile" id="" class="form-control border-bottom border-primary">
                     </div>
                     <div class="form-group ">
+                         <label for="">Address 1</label>
+                         <input type="text" name="address_1" placeholder="Enter Your Address" id="" class="form-control border-bottom border-primary">
+                    </div>
+                    <div class="form-group ">
+                         <label for="">Address 2</label>
+                         <input type="text" name="address_2" placeholder="Enter Your Address" id="" class="form-control border-bottom border-primary">
+                    </div>
+                    <div class="form-group ">
+                         <label for="">Address 3</label>
+                         <input type="text" name="address_3" placeholder="Enter Your Address" id="" class="form-control border-bottom border-primary">
+                    </div>
+                    <!-- <div class="form-group ">
                          <label for="">Status</label>
                          <select name="status" id="" class="form-control border-bottom border-primary">
                          <option value="1">Active</option>
                          <option value="0">Inactive</option>
                          </select>
-                    </div>      
+                    </div>       -->
                </div>    
           
       

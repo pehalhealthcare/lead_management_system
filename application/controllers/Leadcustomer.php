@@ -22,10 +22,20 @@ class Leadcustomer extends CI_Controller
           "name" => $this->input->post("name"),
           "email"=> $this->input->post("email"),
           "mobile"=>$this->input->post("mobile"),
-          "is_active"=>$this->input->post("status"),
           "alternate_mobile"=>$this->input->post("alternate_mobile"),
           "created_at" => date("Y-m-d l:s:i"),
           "created_by" => $this->session->userID
+     );
+
+     $insertaddress = array(
+          "address_1"=>$this->input->post("address_1"),
+          "address_2"=>$this->input->post("address_2"),
+          "address_3"=>$this->input->post("address_3"),
+          "city"=>$this->input->post("city"),
+          "state"=>$this->input->post("state"),
+          "zip"=>$this->input->post("zip"),
+          "created_at"=>date("Y-m-d h:i:s"),
+          "created_by"=>$this->session->userID
      );
 
      $config['upload_path']          = './uploads/lead_image/';
@@ -48,8 +58,14 @@ class Leadcustomer extends CI_Controller
      {
           if($this->common_model->adddata($this->table,$insertdata))
           {
-               $this->session->set_flashdata('message_name', 'Customer Data Inserted');
-               return redirect("dashboard/leadcustomer");
+               $id=($this->common_model->lastinsert_id("mk_customer","customer_id"));
+               $insertaddress["customer_id"] = $id[0]->customer_id;
+               if($this->common_model->adddata("mk_customer_address",$insertaddress))
+               {
+                    $this->session->set_flashdata('message_name', 'Customer Data Inserted');
+                    return redirect("dashboard/leadcustomer");
+               }
+               
           }
           else
           {
@@ -81,15 +97,28 @@ class Leadcustomer extends CI_Controller
 
      $data["leadcustomer"] = $this->common_model->viewwheredata(array("customer_id"=>$id),$this->table);
 
+     $data["customeraddress"] = $this->common_model->viewwheredata(array("customer_id"=>$id,"is_primary"=>1),"mk_customer_address");
+
      $insertdata = array(
           "prefix"=>$this->input->post("surname"),
           "name" => $this->input->post("name"),
           "email"=> $this->input->post("email"),
           "mobile"=>$this->input->post("mobile"),
-          "is_active"=>$this->input->post("status"),
           "alternate_mobile"=>$this->input->post("alternate_mobile"),
           "modified_at" => date("Y-m-d l:s:i"),
-          "modified_by" => $this->session->userID
+          "modified_by" => $this->session->userID,
+
+     );
+
+     $insertaddress = array(
+          "address_1"=>$this->input->post("address_1"),
+          "address_2"=>$this->input->post("address_2"),
+          "address_3"=>$this->input->post("address_3"),
+          "city"=>$this->input->post("city"),
+          "state"=>$this->input->post("state"),
+          "zip"=>$this->input->post("zip"),
+          "modified_at"=>date("Y-m-d h:i:s"),
+          "modified_by"=>$this->session->userID
      );
 
      $config['upload_path']          = './uploads/lead_image/';
@@ -108,10 +137,16 @@ class Leadcustomer extends CI_Controller
      }
      else
      {
-          if($this->common_model->updatedata($this->table,$insertdata,array("customer_id",$id)))
+          if($this->common_model->updatedata($this->table,$insertdata,array("customer_id"=>$id)))
           {
-               $this->session->set_flashdata('message_name', 'Customer Data Updated');
-               return redirect("dashboard/leadcustomer");
+               if($this->common_model->updatedata("mk_customer_address",$insertaddress,array("customer_id"=>$id)))
+               {
+                    $this->session->set_flashdata('message_name', 'Customer Data Updated');
+                    // print_r(($insertdata));
+                    // print_r($insertaddress);
+                    return redirect("dashboard/leadcustomer");
+               }
+              
           }
           else
           {

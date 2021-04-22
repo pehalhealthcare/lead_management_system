@@ -17,7 +17,7 @@
 
 <div class="container-fluid p-0 m-0" >
 
-<div class="wrapper d-flex align-items-stretch" style="height: 100vh;">
+<div class="wrapper d-flex align-items-stretch" style="height: 120vh;">
 
 <nav id="sidebar">
 <div class="custom-menu">
@@ -72,7 +72,7 @@
 <a data-toggle="collapse" href="#collapsefive"><span class="fa fa-briefcase mr-3"></span> Lead Customer</a>
 </li>
 <li>
-<div id="collapsefive" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/leads" || $this->uri->uri_string()=="dashboard/leadcustomer/add" || $this->uri->uri_string()=="dashboard/leadcustomer") ? "show" : ""  ?>" data-parent="#accordion">
+<div id="collapsefive" class="collapse <?= ($this->uri->uri_string()=="dashboard/leadcustomer/add" || $this->uri->uri_string()=="dashboard/leadcustomer") ? "show" : ""  ?>" data-parent="#accordion">
 <ul class="list-unstyled components pl-3">
       <li><a href="<?=base_url()?>dashboard/leadcustomer/add"><span class="fa fa-plus mr-3"> Add Customer</span></a></li>
       <li><a href="<?=base_url()?>dashboard/leadcustomer"><span class="fa fa-eye mr-3"> View Customer</span></a></li>
@@ -80,6 +80,19 @@
 </ul>
 </div>
 </li>
+
+<!-- <li>
+<a data-toggle="collapse" href="#collapsesix"><span class="fa fa-briefcase mr-3"></span>Purchase Order</a>
+</li>
+<li>
+<div id="collapsesix" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/purchase-order" || $this->uri->uri_string()=="dashboard/purchase-order") ? "show" : ""  ?>" data-parent="#accordion">
+<ul class="list-unstyled components pl-3">
+      <li><a href="<?=base_url()?>dashboard/add/purchase-order"><span class="fa fa-plus mr-3"> Add Purchase Order</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/purchase-order"><span class="fa fa-eye mr-3"> View Purchase Order</span></a></li>
+      
+</ul>
+</div>
+</li> -->
 
 <li>
 <a data-toggle="collapse" href="#collapsethree"><span class="fa fa-sticky-note mr-3"></span> User Manage</a>

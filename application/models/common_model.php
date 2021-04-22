@@ -76,7 +76,8 @@ class Common_model extends CI_Model
           $this->db->where($cond);
           if($this->db->update($table, $data))
           {
-               return true;
+               // echo $this->db->last_query();
+              return true;
           }
           else
           {
@@ -103,4 +104,6 @@ class Common_model extends CI_Model
 
           return $query->result();
      }
+
+
 }

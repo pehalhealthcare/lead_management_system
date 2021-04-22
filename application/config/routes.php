@@ -20,6 +20,7 @@ $route["dashboard/edit/user/(:any)"]                        = 'user/edit/$1';
 $route["dashboard/add/leads"]                               =  "leads/add"; 
 $route["dashboard/leads"]                                   =  "leads/viewdata"; 
 $route["dashboard/leads/agent/(:any)"]                      =  "leads/assign_agent/$1"; 
+$route["dashboard/leads/assign/customer/(:any)"]            =  "leads/assign_customer/$1"; 
 $route["dashboard/leads/quotation/(:any)/(:any)/(:any)"]    =   "leads/lead_quotation/$1/$2/$3";
 $route["dashboard/assign/leads/(:any)"]                     =  "leads/assign";
 $route["dashboard/edit/leads/(:any)"]                       =  "leads/lead_edit/$1";
@@ -32,6 +33,17 @@ $route["dashboard/leadcustomer/create"]                        = "leadcustomer/c
 $route["dashboard/leadcustomer/edit/(:any)"]                = "leadcustomer/editdata/$1";
 $route["dashboard/leadcustomer/update/(:any)"]              = "leadcustomer/updatedata/$1";
 $route["dashboard/leadcustomer/delete/(:any)"]              = "leadcustomer/deletedata/$1";
+
+
+$route["dashboard/purchase-order"]                          = "purchaseorder/viewdata";
+$route["dashboard/add/purchase-order/(:any)"]               = "purchaseorder/adddata/$1";
+$route["dashboard/edit/purchase-order/(:any)"]              = "purchaseorder/editdata/$1";
+$route["dashboard/delete/purchase-order/(:any)"]            = "purchaseorder/deletedata/$1";
+
+$route["dashboard/customer-item"]                           = "customer_item/viewdata";
+$route["dashboard/add/customer-item/(:any)/(:any)"]         = "customer_item/adddata/$1/$2";
+$route["dashboard/edit/customer-item/(:any)"]               = "customer_item/editdata/$1";
+$route["dashboard/delete/customer-item/(:any)"]             = "customer_item/deletedata";
 
 $route["dashboard/add/category"]                            =  "category/add";
 $route["dashboard/category"]                                =  "category/viewdata";

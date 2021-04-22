@@ -19,23 +19,25 @@
  <table class="table table-bordered">
   <tr>
     <th>SI NO</th>
-    <th>ORDER TYPE</th>
+    <th>LEAD SOURCE</th>
     <th>ASSIGNEE</th>
     <th>LEAD IMAGE</th>
-    <th>STATUS</th>
-    <th>REASONS</th>
+    <!-- <th>STATUS</th>
+    <th>REASONS</th> -->
     <th>ACTIONS</th>
   </tr>
   <?php $i=0; foreach($leads as $lead): $i++?>
     <tr>
       <td><?= $i;?></td>
-      <td><?= ($lead->order_type==1) ? "PRODUCT" : ""; ($lead->order_type==2) ? "SERVICES" : ""; ($lead->order_type==2) ? "PRODUCT AND SERVICE" : "";
+      <td><?= ($lead->lead_source==2) ? "PRODUCT" : ""; ?><?= ($lead->lead_source==1) ? "SERVICES" : "";?> <?=($lead->lead_source==3) ? "PRODUCT AND SERVICE" : "";
       ?></td>
       <td><?php echo $this->user_model->username($lead->assigned_to);//?></td>
       <td><img src="<?= base_url();?>uploads/lead_image/<?= $lead->lead_image ?>" style="width:50px" /></td>
-      <td><?= $lead->status ?></td>
-      <td><?= $lead->reasons ?></td>
+      <!-- <td><?= $lead->status ?></td>
+      <td><?= $lead->reasons ?></td> -->
       <td>
+      <a href="<?= base_url()?>dashboard/leads/assign/customer/<?= $lead->id?>" class="btn btn-primary">ASSIGN</a>
+      <!-- <a href="<?= base_url()?>dashboard/add/purchase-order/<?= $lead->id?>" class="btn btn-primary">Create Purchase</a> -->
       <a href="<?= base_url()?>dashboard/edit/leads/<?= $lead->id ?>" class="btn btn-info">EDIT</a>
       <button type="button" class="btn btn-danger delete-data" data-id="<?= $lead->id ?>"" data-toggle="modal" data-target="#confirm-modal">DELETE</button>
       </td>

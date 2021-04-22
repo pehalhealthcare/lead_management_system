@@ -8326,7 +8326,7 @@
      border: transparent; }
      .form-control:focus, .form-control:active {
        border-color: #000; }
-     .form-control::-webkit-input-placeholder {
+     /* .form-control::-webkit-input-placeholder {
        /* Chrome/Opera/Safari */
        color: rgba(255, 255, 255, 0.5); }
      .form-control::-moz-placeholder {
@@ -8337,7 +8337,7 @@
        color: rgba(255, 255, 255, 0.5); }
      .form-control:-moz-placeholder {
        /* Firefox 18- */
-       color: rgba(255, 255, 255, 0.5); }
+       color: rgba(255, 255, 255, 0.5); } */
    
    .subscribe-form .form-control {
      background: #3b4ec6; }

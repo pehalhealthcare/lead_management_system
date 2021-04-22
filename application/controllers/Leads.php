@@ -19,13 +19,16 @@ class Leads extends CI_Controller {
           $data["title"] = "Dashboard | Create Leads";
           
           $insertdata = array(
-          "order_type" => $this->input->post("order_type"),
+          "lead_source" => $this->input->post("lead_source"),
           "assigned_to" => $this->input->post("assigned_to"),
-          "status" => $this->input->post("status"),
-          "reasons" => $this->input->post("reasons"),
-          "assigned_by"=>$this->input->post("assigned_by"),
-          "created_by"=>$this->input->post("assigned_by"),
-          "created_at" => date("Y-m-d l:i:s")
+          "name"=>$this->input->post("name"),
+          "email"=>$this->input->post("email"),
+          "mobile"=>$this->input->post("mobile"),
+          // "status" => $this->input->post("status"),
+          // "reasons" => $this->input->post("reasons"),
+          // "assigned_by"=>$this->input->post("assigned_by"),
+          "created_by"=>$this->session->userID,
+          "created_at" => date("Y-m-d l:i:s")         
           );
 
           
@@ -46,7 +49,7 @@ class Leads extends CI_Controller {
           // print_r($data["customers"]); die();
                
          
-         $this->form_validation->set_rules('status', 'Status', 'required');
+     //     $this->form_validation->set_rules('status', 'Status', 'required');
          $this->form_validation->set_rules('assigned_to', 'Assignee', 'required');
                 
 
@@ -73,28 +76,32 @@ class Leads extends CI_Controller {
 
                               $lead_id = ($this->common_model->lastinsert_id("mk_lead","id"));
 
-                              $insert = array(
-                                   "lead_id" => $lead_id[0]->id,
-                                   "customer_id" => $customer_id[0]->customer_id,
-                                   "created_at" => date("Y-m-d h:i:s")
-                              );
-
-                              // print_r($insert);
-
-                              if($this->common_model->adddata("mk_lead_customer",$insert))
-                              {
-                                   $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
+                              $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
                               
-                                   return redirect("dashboard/leads");
-                              }
+                              return redirect("dashboard/leads");
 
-                              else
+                              // $insert = array(
+                              //      "lead_id" => $lead_id[0]->id,
+                              //      "customer_id" => $customer_id[0]->customer_id,
+                              //      "created_at" => date("Y-m-d h:i:s")
+                              // );
 
-                              {
-                                   $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
+                              // print_r($insertdata);
+
+                              // if($this->common_model->adddata("mk_lead_customer",$insert))
+                              // {
+                              //      $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
                               
-                                   return redirect("dashboard/leads");
-                              }
+                              //      return redirect("dashboard/leads");
+                              // }
+
+                              // else
+
+                              // {
+                              //      $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
+                              
+                              //      return redirect("dashboard/leads");
+                              // }
 
 
                               
@@ -143,14 +150,18 @@ class Leads extends CI_Controller {
           $data["title"] = "Dashboard | Edit Leads";
 
           $insertdata = array(
-          "order_type" => $this->input->post("order_type"),
+          "lead_source" => $this->input->post("lead_source"),
           "assigned_to" => $this->input->post("assigned_to"),
-          "status" => $this->input->post("status"),
-          "reasons" => $this->input->post("reasons"),
-          "assigned_by"=>$this->input->post("assigned_by"),
+          "name"=>$this->input->post("name"),
+          "email"=>$this->input->post("email"),
+          "mobile"=>$this->input->post("mobile"),
+          // "status" => $this->input->post("status"),
+          // "reasons" => $this->input->post("reasons"),
+          // "assigned_by"=>$this->input->post("assigned_by"),
           "created_by"=>$this->input->post("assigned_by"),
           "created_at" => date("Y-m-d l:i:s")
           );
+          
           // 
 
           $data["agents"] = $this->user_model->user_list();
@@ -173,7 +184,7 @@ class Leads extends CI_Controller {
           
                
          
-         $this->form_validation->set_rules('status', 'Status', 'required');
+     //     $this->form_validation->set_rules('status', 'Status', 'required');
          $this->form_validation->set_rules('assigned_to', 'Assignee', 'required');
                 
 
@@ -266,6 +277,21 @@ class Leads extends CI_Controller {
                     print_r($insertdata);
                }
           }
+     }
+
+     public function assign_customer($lead_id = ""){
+          $data["title"] = "Dashboard | Assign Leads";
+          $data["lead_id"] = $lead_id;
+          $data["lead_customer"] = $this->common_model->viewwheredata(array("lead_id"=>$lead_id),"mk_lead_customer");
+         
+          $data["customers"] = $this->common_model->viewdata("mk_customer","multiple");
+          $data["products"]= $this->common_model->viewdata("mk_master_product","multiple");
+          
+          $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/leads/assign_customer",$data);
+          $this->load->view("inc/footer");
+          // return redirect("dashboard/leads/assign_customer", $lead_id);
+          // echo "Echo id".$lead_id;
      }
 
      public function lead_quotation($application="",$agent_id="",$teamlead_id="")
