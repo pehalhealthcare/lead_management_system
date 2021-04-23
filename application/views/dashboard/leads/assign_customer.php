@@ -4,13 +4,13 @@
          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
               
-                   <a class="nav-link active nav-tabs" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Customer</a>
+                   <a class="nav-link active nav-tabs pills-home-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Customer</a>
               </li>
               <li class="nav-item">
-                   <a class="nav-link nav-tabs <?=  (count($lead_customer)==0) ? "disabled" : "" ?>" id="pills-profile-tab "  data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Product</a>
+                   <a class="nav-link nav-tabs pills-profile-tab <?=  (count($lead_customer)==0) ? "disabled" : "" ?>" id="pills-profile-tab"  data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Product</a>
               </li>
               <li class="nav-item">
-                   <a class="nav-link nav-tabs <?=  (count($lead_customer)==0) ? "disabled" : "" ?>" id="pills-contact-tab " data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Activity</a>
+                   <a class="nav-link nav-tabs pills-home-tab <?=  (count($lead_customer)==0) ? "disabled" : "" ?>" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Activity</a>
               </li>
          </ul>
          <div class="tab-content bg-white p-3" style="height: 100vh;" id="pills-tabContent">
@@ -30,7 +30,7 @@
                                    <input type="search" class="form-control" placeholder="Enter Customer Name" /></li>
                                    <ul class="list-group">
                                    <?php foreach($customers as $customer): ?>
-                                        <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                        <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"]==$customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
                                    <?php endforeach;?>
                                    </ul>
                               </ul>
@@ -137,7 +137,7 @@
                                        <caption>Product Details</caption>
                                       <table class="table table-bordered">
                                            <thead>
-                                                <th><input type="checkbox" name="" id=""></th>
+                                                <th><input type="checkbox" name="" id="all-data"></th>
                                                 <th>Item Name</th>
                                                 <th>Quantity</th>
                                                 <th>Unit Price</th>
@@ -175,9 +175,7 @@
                if (localStorage.getItem("tabs")) {
                    var tabs = localStorage.getItem("tabs");
 
-                   console.log((tabs+"-tab"));
-
-                   console.log($(tabs+"-tab").attr("href"));
+               
 
                    if (tabs == $(tabs+"-tab").attr("href")) {
 
@@ -195,7 +193,7 @@
              
                        
 
-          //     getcustomer();
+         
 
 
               $(".nav-tabs").click(function() {
@@ -218,7 +216,7 @@
                         success:function(status){
                              
                              var res = JSON.parse(status); 
-                             console.log(res["customer"]);
+                             
                              $("#surname").val(res["customer"][0]["prefix"]);
                              $("#customer-name").val(res["customer"][0]["name"]);
                              $("#email").val(res["customer"][0]["email"]);
@@ -236,7 +234,7 @@
               });
 
 
-              $(".add-customer").on("submit", function(e) {
+              $(document).on("submit",".add-customer", function(e) {
                    e.preventDefault();
                    var formdata = $(".add-customer").serialize();
 
@@ -246,18 +244,29 @@
                         method: "post",
                         data: formdata,
                         success: function(status) {
+                            
+                              $(".customers").removeClass("active");
+                              $(".nav-tabs").removeClass("active");
+                              $(".nav-tabs").removeClass("show");
+                              $(".nav-tabs#pills-profile-tab").removeClass("disabled")
+                              $(".nav-tabs#pills-profile-tab").addClass("active");
+                              $(".nav-tabs#pills-profile-tab").addClass(" show");
+                              $("#pills-home").removeClass("show");
+                              $("#pills-home").removeClass("active");
+                              $("#pills-profile").addClass("show");
+                              $("#pills-profile").addClass("active");
+                              status = JSON.parse(status);
+                              $(".new-customer").removeClass("d-none");
+                            
+                              // $(".customer_id").val(status[0]["customer_id"]);
+                              // $("#customer-data").modal("hide");
+                              // $(".existSubmit").removeClass("d-none");
+                              
+                             
+                             
+                         //    
+                             
                              $(".add-customer").trigger("reset");
-
-                             status = JSON.parse(status);
-                             $(".new-customer").removeClass("d-none");
-                             $(".input-customer").val(status[0]["name"]);
-                             $(".customer_id").val(status[0]["customer_id"]);
-                             $("#customer-data").modal("hide");
-                             $(".existSubmit").removeClass("d-none");
-                             $("#pills-profile-tab").removeClass("disabled")
-                             $(".nav-items").removeClass("active");
-                             $(".nav-items").removeClass("show");
-                             $("#pills-profile tab").addClass("active show");
                              //     getcusotmer();
                         }
                    })
@@ -291,43 +300,43 @@
                         },
                         success: function(status) {
                               $("table tbody").html('');
+                             
+                              // return false;
                              var status = JSON.parse(status);
-                             $.each(status, function(k, v) {
-                                   
-                                  if(v["item_name"])
-                                  {
-                                   console.log("condition");
-                                 var html =  '<tr><td><input type="checkbox" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
-                                  html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity"  class="quantity form-control quantity_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + v["unit_price"] + '" name="unit_price[]"  class="unit_price form-control unit_price_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]"  class="tax_amount form-control tax_amount_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]"  class="total_price form-control total_price_' + v["item_id"] + '">';
-                                  html += '<input type="hidden" name="item_id[]" value="' + v["item_id"] + '"/>';
-                                  html += '<input type="hidden" name="product_id" value="'+product_id+'"></td></tr>';
-                              //  html += '<td><input type="button" class="btn btn-primary add" data-id="' + v["item_id"] + '" value="ADD"></td>';
-                                    $("table tbody").append(html);
-                                  }
-                                  else
-                                  {
-                                   var html = '<tr><td><input type="checkbox" value="' + v["item_id"] + '"  /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_id"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
-                                  html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + v["quantity"] + '" class="quantity form-control quantity_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + v["unit_price"] + '" name="unit_price[]"  class="unit_price form-control unit_price_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + v["tax_amount"] + '"  class="tax_amount form-control tax_amount_' + v["item_id"] + '"></td>';
-                                  html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + v["total_price"] + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
-                                  html += '<input type="hidden" name="item_id[]" value="' + v["item_id"] + '"/>';
-                                  html += '<input type="hidden" name="product_id" value="'+product_id+'"></td></tr>';
-                              //     html += '<br><br>  <input type="button" class="btn btn-primary add" data-id="' + v["item_id"] + '" value="UPDATE"></td>';
-                                   //     console.log("no condition")
-                                   
-                                 
-                                   // var item_name = "";
-                                   $("table tbody").append(html);
-                                  }
-                                  
-                                  
-                             })
+                             $.each(status["item_new"], function(k, v) {
+                              
+                              var checked= "";
+                              var tax_amount="";
+                              var total_price = "";
+                              var quantity = "";
+                                   $.each(status["customer_item"],function(k1,v1){
+                                             // return false;
+                                        if(status["customer_item"] && v["item_name"] && v["item_id"]==v1["item_id"] )
+                                        {
+                                         checked = (v["item_id"]==v1["item_id"]) ? "checked" : "";
+                                         total_price = (v1["total_price"]) ? v1["total_price"] : "";
+                                         tax_amount = (v1["tax_amount"]) ? v1["tax_amount"] : "";
+                                         quantity =  (v1["quantity"]) ? v1["quantity"] : "";
+                                         console.log(v1);
+                                        }
+                                        
+                                   });
+                                   if(v["item_name"] && status["customer_item"])
+                                   {
+                                       
+                                        var html =  '<tr><td><input type="checkbox" '+checked+' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
+                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="'+quantity+'" class="quantity form-control quantity_'+v["item_id"]+'"></td>';
+                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + v["unit_price"] + '" name="unit_price[]"  class="unit_price form-control unit_price_'+v["item_id"] + '"></td>';
+                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_'+v["item_id"]+'"></td>';
+                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="'+tax_amount+'" class="tax_amount form-control tax_amount_'+v["item_id"]+'"></td>';
+                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="'+total_price+'"  class="total_price form-control total_price_'+v["item_id"] + '">';
+                                        html += '<input type="hidden" name="item_id[]" class="item_id_'+v["item_id"]+ '" value="' + v["item_id"] + '"/>';
+                                        html += '<input type="hidden" name="product_id" class="product_id" value="'+product_id+'"></td></tr>';
+                                        $("table tbody").append(html);
+                                   }
+
+                             });
+
                         }
                    });
 
@@ -345,13 +354,13 @@
 
                    total_tax = tax_rate * $(this).val();
 
-                   console.log(total_tax);
+                   
 
                    $(".tax_amount_" + id).val(total_tax);
 
                    var total_price = ($(".unit_price_" + id).val() * $(this).val()) + total_tax;
 
-                   console.log(total_price);
+                  
 
                    $(".total_price_" + id).val(total_price);
 
@@ -371,13 +380,66 @@
                    });
               });
 
-              $(document).on("change",".add",function(){
+              $(document).on("change","#all-data",function(){
                var formdata = $(".assign-product").serializeArray();
                // console.log(formdata);
                // return false;
                $.ajax({
                method:"post",
                url:"<?= base_url()?>ajax/submitProductItem",
+               data:formdata,
+               success:function(status)
+               {
+                    console.log(status);
+               }
+               })
+              });
+
+              $(document).on("change",".add",function(){
+
+               console.log($(this).prop("checked"));
+
+               var id = $(this).data("id");
+
+               var formdata;
+
+               if($(this).prop("checked")==false)
+               {
+                    formdata = {
+                    item_id:$(".item_id_"+id).val(),
+                    quantity:$(".quantity_"+id).val(),
+                    tax_rate:$(".tax_rate_"+id).val(),
+                    tax_amount:$(".tax_amount_"+id).val(),
+                    unit_price:$(".unit_price_"+id).val(),
+                    total_price:$(".total_price_"+id).val(),
+                    product_id:$(".product_id").val(),
+                    pcustomer_id:$(".pcustomer_id").val(),
+                    lead_id:$(".lead_id").val(),
+                    is_active:"0"
+                    };
+               }
+               else
+               {
+                    formdata = 
+                    {
+                    item_id:$(".item_id_"+id).val(),
+                    quantity:$(".quantity_"+id).val(),
+                    tax_rate:$(".tax_rate_"+id).val(),
+                    tax_amount:$(".tax_amount_"+id).val(),
+                    unit_price:$(".unit_price_"+id).val(),
+                    total_price:$(".total_price_"+id).val(),
+                    product_id:$(".product_id").val(),
+                    pcustomer_id:$(".pcustomer_id").val(),
+                    lead_id:$(".lead_id").val(),
+                    is_active:"1"
+               };
+               }
+
+               // console.log(formdata); return false;
+              
+               $.ajax({
+               method:"post",
+               url:"<?= base_url()?>ajax/singleproductsubmit",
                data:formdata,
                success:function(status)
                {

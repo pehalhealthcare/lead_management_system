@@ -69,9 +69,7 @@ class Ajax extends CI_Controller
                          if (empty($datacheck)) {
                               if ($this->common_model->adddata("mk_lead_customer", $insertleaddata)) {
                                    echo json_encode(array("message" => "data Inserted"));
-                              } else {
-                                   echo json_encode(array("message" => "No data Inserted"));
-                              }
+                              } 
                          }
                          // echo json_encode($id);
                     }
@@ -98,10 +96,28 @@ class Ajax extends CI_Controller
               {
                     if($this->common_model->updatedata("mk_customer_address",$insertaddress,$wherecon))
                     {
-                         if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
+                         $whereData = array(
+                              "lead_id" => $this->input->post("lead_id"),
+                              // "customer_id" => $customercheck[0]["customer_id"]
+                         );
+
+                         $datacheck = $this->common_model->viewwheredata($whereData, "mk_lead_customer");
+
+                         if(empty($datacheck))
                          {
-                              echo json_encode(array("message" => "Data Updated Successfully"));
+                                  if($this->common_model->adddata("mk_lead_customer",$insertleaddata))
+                                  {
+                                    echo json_encode(array("message" => "Data Updated Successfully"));
+                                  }
                          }
+                         else
+                         {
+                              if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
+                              {
+                                   echo json_encode(array("message" => "Data Updated Successfully"));
+                              }
+                         }
+                         
                     }
                     else
                     {
@@ -145,20 +161,26 @@ class Ajax extends CI_Controller
      {
           $product_id = $this->input->post("product_id");
 
-          $itemcheck = $this->common_model->viewwheredata(array("product_id" => $product_id), "mk_customer_item");
+          $data["customer_item"] = $this->common_model->viewwheredata(array("product_id" => $product_id,"is_active"=>1), "mk_customer_item");
 
-          $item = $this->common_model->viewwheredata(array("product_id" => $product_id), "mk_master_product_item");
+          $data["item_new"] = $this->common_model->viewwheredata(array("product_id" => $product_id,"is_active"=>1), "mk_master_product_item");
 
-          // echo count($itemcheck); die();
+          // $this->db->select('*');
+          // $this->db->from('mk_customer_item');
+          // $this->db->join('mk_master_product_item', 'mk_customer_item.item_id = mk_master_product_item.item_id');
+          // $this->db->where("mk_customer_item.product_id",$product_id);
+          // $data = $this->db->get();
 
-          if(count($itemcheck)>0)
-          {
-               echo json_encode($itemcheck);
-          }
-          else
-          {
-               echo json_encode($item);
-          }
+          echo json_encode($data);
+
+          // if(count($itemcheck)>0)
+          // {
+          //      echo json_encode($itemcheck);
+          // }
+          // else
+          // {
+          //      echo json_encode($item);
+          // }
 
          
      }
@@ -178,20 +200,20 @@ class Ajax extends CI_Controller
      {
           $count = ($this->input->post("quantity")) ? count($this->input->post("quantity")) : "0";
 
-          // echo $count; die();
+          // print_r($_POST); die();
           if ($count > 0) {
                $insertdata = array();
                for ($i = 0; $i < $count; $i++) {
                     $insertdata = array(
                          "customer_id" => $this->input->post("pcustomer_id"),
-                         "purchase_order_id" => $this->input->post("application"),
+                         // "purchase_order_id" => $this->input->post("application"),
                          "item_id" => $this->input->post("item_id")[$i],
                          "quantity" => $this->input->post("quantity")[$i],
                          "unit_price" => $this->input->post("unit_price")[$i],
                          "tax_rate" => $this->input->post("tax_rate")[$i],
                          "tax_amount" => $this->input->post("tax_amount")[$i],
                          "total_price" => $this->input->post("total_price")[$i],
-                         "total_amount" => $this->input->post("total_amount"),
+                         // "total_amount" => $this->input->post("total_amount"),
                          "created_at" => date("Y-m-d h:i:s"),
                          "created_by" => $this->session->userID,
                          "lead_id"=>$this->input->post("lead_id"),
@@ -231,20 +253,59 @@ class Ajax extends CI_Controller
                     }
                }
           } 
-          // else {
-          //      $condition = array(
-          //           "purchase_order_id" => $this->input->post("application"),
-          //           "customer_id" => $this->input->post("customer_id"),
-          //           "item_id" => $this->input->post("item_id")
-          //      );
-          //      $updatedata = array("is_active" => 0);
-          //      // print_r($updatedata);
-          //      if ($this->common_model->updatedata("mk_customer_item", $updatedata, $condition)) {
-          //           echo json_encode(array("message" => "Data updated Successfully"));
-          //      } else {
-          //           echo json_encode(array("message" => "Data Not updated Successfully"));
-          //      }
-          // }
+         
+     }
+
+     public function singleproductsubmit()
+     {
+          $insertdata = array(
+               "customer_id" => $this->input->post("pcustomer_id"),
+               // "purchase_order_id" => $this->input->post("application"),
+               "item_id" => $this->input->post("item_id"),
+               "quantity" => $this->input->post("quantity"),
+               "unit_price" => $this->input->post("unit_price"),
+               "tax_rate" => $this->input->post("tax_rate"),
+               "tax_amount" => $this->input->post("tax_amount"),
+               "total_price" => $this->input->post("total_price"),
+               // "total_amount" => $this->input->post("total_amount"),
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID,
+               "lead_id"=>$this->input->post("lead_id"),
+               "product_id"=>$this->input->post("product_id")
+          );
+
+          $cols = array(
+               // "purchase_order_id" => $this->input->post("application"),
+               "customer_id" => $this->input->post("pcustomer_id"),
+               "item_id" => $this->input->post("item_id"),
+               "lead_id"=>$this->input->post("lead_id")
+          );
+
+          $datacheck = $this->common_model->viewwheredata($cols, "mk_customer_item");
+
+          if(empty($datacheck))
+          {
+               $insertdata["is_active"] = $this->input->post("is_active");
+               if ($this->common_model->adddata("mk_customer_item", $insertdata)) {
+                    echo json_encode(array("message" => "Data added Successfully"));
+               } else {
+                    echo json_encode(array("message" => "Data Not added Successfully"));
+               }
+          }
+          else
+          {
+               $insertdata["is_active"] = $this->input->post("is_active");
+               $condition = array(
+                    "customer_id" => $this->input->post("pcustomer_id"),
+                    "item_id" => $this->input->post("item_id"),
+                    "lead_id"=>$this->input->post("lead_id")
+               );
+               if ($this->common_model->updatedata("mk_customer_item", $insertdata, $condition)) {
+                    echo json_encode(array("message" => "Data updated Successfully"));
+               }
+          }
+
+         
      }
 
      public function getcustomerdata()
