@@ -17,39 +17,13 @@ class Leads extends CI_Controller {
      public function add()
      {
           $data["title"] = "Dashboard | Create Leads";
-          
-          $insertdata = array(
-          "lead_source" => $this->input->post("lead_source"),
-          "assigned_to" => $this->input->post("assigned_to"),
-          "name"=>$this->input->post("name"),
-          "email"=>$this->input->post("email"),
-          "mobile"=>$this->input->post("mobile"),
-          // "status" => $this->input->post("status"),
-          // "reasons" => $this->input->post("reasons"),
-          // "assigned_by"=>$this->input->post("assigned_by"),
-          "created_by"=>$this->session->userID,
-          "created_at" => date("Y-m-d l:i:s")         
-          );
 
-          
-          
-
-          $data["agents"] = $this->user_model->user_list();
-
-          $config['upload_path']          = './uploads/lead_image/';
-          $config['allowed_types']        = 'gif|jpg|png|jpeg';
-          //  $config['max_size']             = 100;
-          //  $config['max_width']            = 1024;
-          //  $config['max_height']           = 768;
-
-          $this->load->library('upload', $config);
+          $data["agents"] = $this->user_model->user_list();         
           
           $data["customers"] = $this->common_model->viewdata("mk_customer","multiple");
-
-          // print_r($data["customers"]); die();
                
-         
-     //     $this->form_validation->set_rules('status', 'Status', 'required');
+         $insertdata = array();
+
          $this->form_validation->set_rules('assigned_to', 'Assignee', 'required');
                 
 
@@ -61,73 +35,87 @@ class Leads extends CI_Controller {
                 }
                 else
                 {
-                    // print_r($_POST); die();
-                    if($this->upload->do_upload())
-                    {
-                         $imagedata = array('upload_data' => $this->upload->data());
+                    $config['upload_path']          = './uploads/lead_image/';
+                    $config['allowed_types']        = 'gif|jpg|png|jpeg';
+                    //  $config['max_size']             = 100;
+                    //  $config['max_width']            = 1024;
+                    //  $config['max_height']           = 768;
+                    
+                    $this->load->library('upload');
+                    $image = array();
+                    $count = count($_FILES['image_name']['name']);
 
-                         $insertdata["lead_image"] = $imagedata["upload_data"]["file_name"];
+                    $j=0;
+                          for($i = 0; $i < $count; $i++){
+                               $j++;
+                              $_FILES['file']['name']       = $_FILES['image_name']['name'][$i];
+                              $_FILES['file']['type']       = $_FILES['image_name']['type'][$i];
+                              $_FILES['file']['tmp_name']   = $_FILES['image_name']['tmp_name'][$i];
+                              $_FILES['file']['error']      = $_FILES['image_name']['error'][$i];
+                              $_FILES['file']['size']       = $_FILES['image_name']['size'][$i];
 
+                              $insertdata = array(
+                                   "lead_source" => $this->input->post("lead_source"),
+                                   "assigned_to" => $this->input->post("assigned_to"),
+                                   "name"=>$this->input->post("name"),
+                                   "email"=>$this->input->post("email"),
+                                   "mobile"=>$this->input->post("mobile"),
+                                   // "status" => $this->input->post("status"),
+                                   // "reasons" => $this->input->post("reasons"),
+                                   // "assigned_by"=>$this->input->post("assigned_by"),
+                                   "created_by"=>$this->session->userID,
+                                   "created_at" => date("Y-m-d l:i:s")         
+                                   );
+                  
+                              // File upload configuration
+                              $uploadPath = './uploads/lead_image/';
+                              $config['upload_path'] = $uploadPath;
+                              $config['allowed_types'] = 'jpg|jpeg|png|gif';
+                  
+                              // Load and initialize upload library
+                              $this->load->library('upload', $config);
+                              $this->upload->initialize($config);
+                  
+                              // Upload file to server
+                              if($this->upload->do_upload('file')){
+                                  // Uploaded file data
+                                  $imageData = $this->upload->data();
+                                   $uploadImgData[$i]['image_name'] = $imageData['file_name'];
+                                   $insertdata["lead_image"] = $uploadImgData[$i]["image_name"];    
+                                   if($this->common_model->adddata("mk_lead",$insertdata))
+                                   {
 
-
-                         if($this->common_model->adddata("mk_lead",$insertdata))
-                         {
-                              $customer_id =($this->common_model->lastinsert_id("mk_customer","customer_id"));
-
-                              $lead_id = ($this->common_model->lastinsert_id("mk_lead","id"));
-
-                              $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
+                                        if($j==$count)
+                                        {
+                                             $this->session->set_flashdata('message_name', 'Lead Data Inserted');
+                                             return redirect("dashboard/leads");
+                                        }
+                                        
+                                        // echo 'Data Inserted';
+                                        // $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
+                                        // $data["leads"] = $this->common_model->viewdata("mk_lead","multiple");
+                                        // $data["title"] = "Dashboard | Leads";
+                                        // $this->load->view("inc/header",$data);
+                                        // $data["leads"] = $this->common_model->viewdata("mk_lead","multiple");
+                                        // // print_r($data["leads"]);
+                                        // $this->load->view("dashboard/leads/view-leads",$data);
+                                        // $this->load->view("inc/footer");
+                                   }
+                                   else
+                                   {
+                                        // echo 'No data';
+                                        $this->session->set_flashdata('message_name', 'Lead Data Not Inserted');
+                                        // return redirect("dashboard/leads");
+                                   }
+                              }
                               
-                              return redirect("dashboard/leads");
-
-                              // $insert = array(
-                              //      "lead_id" => $lead_id[0]->id,
-                              //      "customer_id" => $customer_id[0]->customer_id,
-                              //      "created_at" => date("Y-m-d h:i:s")
-                              // );
-
-                              // print_r($insertdata);
-
-                              // if($this->common_model->adddata("mk_lead_customer",$insert))
-                              // {
-                              //      $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
                               
-                              //      return redirect("dashboard/leads");
-                              // }
+                          }
 
-                              // else
-
-                              // {
-                              //      $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
-                              
-                              //      return redirect("dashboard/leads");
-                              // }
-
-
-                              
-                              
-                              
-                         }
-                         else
-                         {
-                              // Set flash data 
-                              $this->session->set_flashdata('message_name', 'Lead Data Not Inserted');
-                              // After that you need to used redirect function instead of load view such as 
-                              return redirect("dashboard/leads");
-
-                              // Get Flash data on view 
-                              
-                                                            
-                         }
-                    }
-                    else
-                    {
                          
-                         $this->session->set_flashdata('message_name', 'Lead Data Not Inserted');
-                         // After that you need to used redirect function instead of load view such as 
-                         return redirect("dashboard/leads");
+
                          
-                    }
+                    
                 }
      }
 

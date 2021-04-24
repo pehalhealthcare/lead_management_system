@@ -161,26 +161,16 @@ class Ajax extends CI_Controller
      {
           $product_id = $this->input->post("product_id");
 
-          $data["customer_item"] = $this->common_model->viewwheredata(array("product_id" => $product_id,"is_active"=>1), "mk_customer_item");
+          $cond = array("product_id" => $product_id,"is_active"=>1,"lead_id"=>$this->input->post("lead_id"));
+
+          $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
 
           $data["item_new"] = $this->common_model->viewwheredata(array("product_id" => $product_id,"is_active"=>1), "mk_master_product_item");
 
-          // $this->db->select('*');
-          // $this->db->from('mk_customer_item');
-          // $this->db->join('mk_master_product_item', 'mk_customer_item.item_id = mk_master_product_item.item_id');
-          // $this->db->where("mk_customer_item.product_id",$product_id);
-          // $data = $this->db->get();
-
+         
           echo json_encode($data);
 
-          // if(count($itemcheck)>0)
-          // {
-          //      echo json_encode($itemcheck);
-          // }
-          // else
-          // {
-          //      echo json_encode($item);
-          // }
+          
 
          
      }
@@ -194,6 +184,67 @@ class Ajax extends CI_Controller
           $data["address"] = $this->common_model->viewwheredata(array("customer_id"=>$id),"mk_customer_address");
 
           echo json_encode($data);
+     }
+
+     public function getTerms()
+     {
+          $id = $this->input->post("customer_id");
+
+          $data["master_term"] = $this->common_model->viewdata("mk_master_term","multiple");
+
+          $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id"=>$id,"is_active"=>"1"),"mk_customer_term");
+
+          echo json_encode($data);
+     }
+
+     public function submitCustomerTerm()
+     {
+         $cond = array("customer_id"=>$this->input->post("customer_id"),
+         "term_id"=>$this->input->post("term_id"));
+
+          $data["customer_term"] = $this->common_model->viewwheredata($cond,"mk_customer_term");
+
+
+          // print_r($data); die();
+
+          if(empty($data["customer_term"]))
+          {
+               $insertdata = array(
+                    "customer_id"=>$this->input->post("customer_id"),
+                    "term_id"=>$this->input->post("term_id"),
+                    "is_active"=>$this->input->post("is_active"),
+                    "created_at"=>date("Y-m-d h:i:s"),
+                    "created_by"=>$this->session->userID
+               );
+
+               if($this->common_model->adddata("mk_customer_term",$insertdata))
+               {
+                    echo json_encode(array("message"=>"Data Inserted Successfully"));
+               }
+               else
+               {
+                    echo json_encode(array("message"=>"Data Not Inserted Successfully"));
+               }
+          }
+          else
+          {
+               $insertdata = array(
+                    "customer_id"=>$this->input->post("customer_id"),
+                    "term_id"=>$this->input->post("term_id"),
+                    "is_active"=>$this->input->post("is_active"),
+                    "modified_at"=>date("Y-m-d h:i:s"),
+                    "modified_by"=>$this->session->userID
+               );
+               $condition = array(
+                    "customer_id"=>$this->input->post("customer_id"),
+                    "term_id"=>$this->input->post("term_id")
+               );
+               if($this->common_model->updatedata("mk_customer_term",$insertdata,$condition))
+               {
+                    echo json_encode(array("message"=>"Data Updated Successfully"));
+               }
+          }
+
      }
 
      public function submitProductItem()
