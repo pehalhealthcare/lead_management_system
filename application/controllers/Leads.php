@@ -91,15 +91,7 @@ class Leads extends CI_Controller {
                                              return redirect("dashboard/leads");
                                         }
                                         
-                                        // echo 'Data Inserted';
-                                        // $this->session->set_flashdata('message_name', 'Lead Data Inserted Succesfully');
-                                        // $data["leads"] = $this->common_model->viewdata("mk_lead","multiple");
-                                        // $data["title"] = "Dashboard | Leads";
-                                        // $this->load->view("inc/header",$data);
-                                        // $data["leads"] = $this->common_model->viewdata("mk_lead","multiple");
-                                        // // print_r($data["leads"]);
-                                        // $this->load->view("dashboard/leads/view-leads",$data);
-                                        // $this->load->view("inc/footer");
+                                       
                                    }
                                    else
                                    {

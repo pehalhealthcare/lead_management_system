@@ -10,7 +10,10 @@
                    <a class="nav-link nav-tabs pills-profile-tab <?= (count($lead_customer) == 0) ? "disabled" : "" ?>" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Product</a>
               </li>
               <li class="nav-item">
-                   <a class="nav-link nav-tabs pills-home-tab <?= (count($lead_customer) == 0) ? "disabled" : "" ?>" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Activity</a>
+                   <a class="nav-link nav-tabs pills-activity-tab <?= (count($lead_customer) == 0) ? "disabled" : "" ?>" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Activity</a>
+              </li>
+              <li class="nav-item">
+                   <a class="nav-link nav-tabs pills-history-tab <?= (count($lead_customer) == 0) ? "disabled" : "" ?>" id="pills-history-tab" data-toggle="pill" href="#pills-history" role="tab" aria-controls="pills-history" aria-selected="false">History</a>
               </li>
          </ul>
          <div class="tab-content bg-white p-3" style="height: 100vh;" id="pills-tabContent">
@@ -25,18 +28,23 @@
 
                    <div class="row">
                         <div class="col-sm-3">
+                             
                              <ul class="list-group">
+                                   <li class="list-group-item text-right"><button title="Add New Customer" type="reset" class="btn btn-success create">+</button></li>
                                   <li class="list-group-item">
                                        <input type="search" class="form-control" placeholder="Enter Customer Name" />
                                   </li>
                                   <ul class="list-group">
                                        <?php $active = "";
                                         foreach ($customers as $customer) : ?>
-                                            <?php if ($lead_customer) : if ($lead_customer[0]["customer_id"] == $customer->customer_id) : $active = "active"; ?>
+                                            <?php if ($lead_customer) : ?>
 
-                                            <?php endif;
-                                             endif; ?>
-                                            <li class="list-group-item customers <?= $active ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                            <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"]==$customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                           <?php else:?>
+                                             <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                           <?php  endif; ?>
+                                           
+                                            
                                        <?php endforeach; ?>
                                   </ul>
                              </ul>
@@ -47,9 +55,7 @@
                                   <div class="row">
                                        <input type="hidden" name="lead_id" value="<?= $lead_id ?>" class="lead_id">
                                        <input type="hidden" name="customer_id" id="customer_id">
-                                       <div class="col-sm-12">
-                                            <button type="reset" class="btn btn-success create">CREATE CUSTOMER</button>
-                                       </div>
+                                       
                                        <div class="form-group col-sm-6">
                                             <label for="">Surname</label>
                                             <input type="text" name="surname" id="surname" placeholder="for example 'Mr or Miss or Mrs'" class="form-control  border">
@@ -248,7 +254,7 @@
 
               $(".create").on("click", function() {
                    $(".add-customer").trigger("reset");
-                   $(".button").val("ADD CUSTOMERS")
+                   $(".button").val("SAVE")
                    $(".customers").removeClass("active");
               });
 
@@ -266,7 +272,7 @@
 
                              var res = JSON.parse(status);
 
-                             $(".button").val("UPDATE CUSTOMERS")
+                             $(".button").val("UPDATE")
 
                              $("#surname").val(res["customer"][0]["prefix"]);
                              $("#customer-name").val(res["customer"][0]["name"]);
