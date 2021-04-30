@@ -60,7 +60,7 @@ class Ajax extends CI_Controller
                          );
                
                          $whereData = array(
-                              "lead_id" => $this->input->post("lead_id"),
+                              // "lead_id" => $this->input->post("lead_id"),
                               "customer_id" => $insertaddress["customer_id"]
                          );
                
@@ -97,8 +97,8 @@ class Ajax extends CI_Controller
                     if($this->common_model->updatedata("mk_customer_address",$insertaddress,$wherecon))
                     {
                          $whereData = array(
-                              "lead_id" => $this->input->post("lead_id"),
-                              // "customer_id" => $customercheck[0]["customer_id"]
+                              // "lead_id" => $this->input->post("lead_id"),
+                              "customer_id" => $customercheck[0]["customer_id"]
                          );
 
                          $datacheck = $this->common_model->viewwheredata($whereData, "mk_lead_customer");
@@ -112,10 +112,10 @@ class Ajax extends CI_Controller
                          }
                          else
                          {
-                              if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
-                              {
-                                   echo json_encode(array("message" => "Data Updated Successfully"));
-                              }
+                              // if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
+                              // {
+                              //      echo json_encode(array("message" => "Data Updated Successfully"));
+                              // }
                          }
                          
                     }
@@ -173,6 +173,20 @@ class Ajax extends CI_Controller
           
 
          
+     }
+
+     public function getCustomerItem()
+     {
+          $lead_id = $this->input->post("lead_id");
+
+          $cond = array("is_active"=>1,"lead_id"=>$this->input->post("lead_id"));
+
+          $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+
+          $data["item_new"] = $this->common_model->viewwheredata(array("is_active"=>1), "mk_master_product_item");
+
+         
+          echo json_encode($data);
      }
 
      public function getcustomer()

@@ -317,24 +317,29 @@ class Leads extends CI_Controller {
           
      }
 
-     public function generate_pdf($id="")
+     public function generate_pdf($lead_id="",$customer_id="")
      {
           //     load library
           $dompdf = new Dompdf\Dompdf();
 
          $data["testing"] = "Karthik";
 
-        
+        $data["customer"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id),"mk_customer");
+
+        $data["custAddress"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id),"mk_customer_address");
+
+        $data["product_item"] = $this->common_model->viewdata("mk_master_product_item","multiple");
+
+        $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id,"lead_id"=>$lead_id),"mk_customer_item");
+
+        $data["master_term"] = $this->common_model->viewdata("mk_master_term","multiple");
+
+        $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id),"mk_customer_term");
           
-          $data["pdf_data"] = $this->common_model->viewwheredata(array("id"=>$id),"mk_lead_quotation");
 
-          $data["total"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_total_price");
+          
 
-          $data["taxtotal"] = $this->common_model->total_price(array("id"=>$id),"mk_lead_quotation","item_tax_amount");
-
-          // print_r($data["total"]);
-
-          // $this->load->view('dashboard/leads/pdf_quotation',$data);
+     //      $this->load->view('dashboard/leads/pdf_quotation',$data);
 
      //     return false;
  
@@ -343,7 +348,7 @@ class Leads extends CI_Controller {
           $dompdf->loadHtml($html);
           
           // (Optional) Setup the paper size and orientation
-          $dompdf->setPaper('A4', 'landscape');
+          $dompdf->setPaper('A4', 'portrait');
           
           // Render the HTML as PDF
           $dompdf->render();

@@ -24,38 +24,38 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th><?= date("d-m-Y") ?></th>
 					</tr>
 					<tr>
-						<th>Mr</th>
-						<th>Sachin Saju</th>
+						<th><?= $customer[0]["prefix"]?></th>
+						<th><?= $customer[0]["name"]?></th>
 						<th>Terms</th>
 						<th>100% Advance Payment</th>
 					</tr>
 					<tr>
 						<th>Address</th>
-						<th>Ernakulam</th>
+						<th><?= $custAddress[0]["address_1"]?></th>
 						<th>Ref No</th>
 						<th>&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 2</th>
-						<th>Kerala 682002</th>
+						<th><?= $custAddress[0]["address_2"]?> <?= $custAddress[0]["zip"]?></th>
 						<th>Ref 1</th>
 						<th>&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 3</th>
-						<th>&nbsp;</th>
+						<th><?= $custAddress[0]["address_3"]?></th>
 						<th>Ref 2</th>
 						<th>&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Email ID</th>
-						<th>sachin@gmail.com</th>
+						<th><?= $customer[0]["email"]?></th>
 						<th>Ref 3</th>
 						<th>&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Mobile </th>
-						<th>6594596652</th>
+						<th><?= $customer[0]["mobile"]?></th>
 						<th>Ref 4</th>
 						<th>&nbsp;</th>
 					</tr>
@@ -109,15 +109,24 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th>ITEM TAX AMOUNT</th>
 						<th>ITEM PRICE(WITH TAX)</th>
 					</tr>
-					<?php $i=0; foreach($pdf_data as $pdfdata): $i++; ?>
+					<?php $i=0; $item_name=""; $taxtotal=0; $totalamount=0; foreach($customer_item as $pdfdata): $i++; ?>
+
+					<?php foreach($product_item as $product): 
+					
+					if($product->item_id==$pdfdata["item_id"]):
+						$item_name = $product->item_name;
+					endif;
+					
+					endforeach;?>
 					<tr>
 						<td><?= $i?></td>
-						<td><?= $pdfdata["item_name"] ?></td>
+						<td><?= $item_name ?></td>
 						<td><?= $pdfdata["quantity"] ?></td>
-						<td><?= $pdfdata["item_price"] ?></td>
-						<td><?= $pdfdata["item_tax"] ?></td>
-						<td><?= $pdfdata["item_tax_amount"] ?></td>
-						<td><?= $pdfdata["item_total_price"] ?></td>
+						<td><?= $pdfdata["unit_price"] ?></td>
+						<td><?= $pdfdata["tax_rate"] ?></td>
+						<td><?= $pdfdata["tax_amount"] ?></td>
+						<td><?= $pdfdata["total_price"] ?></td>
+						<?php $taxtotal = $taxtotal+$pdfdata["tax_amount"]; $totalamount= $totalamount+$pdfdata["total_price"]; ?>
 					</tr>
 						
 					<?php endforeach;?>
@@ -134,8 +143,8 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 					
 					<tr>
 						<th colspan="5">Grand Total</th>
-						<th><?= $taxtotal[0]->item_tax_amount; ?></th>
-						<th><?= $total[0]->item_total_price;?></th>
+						<th><?= $taxtotal ?></th>
+						<th><?= $totalamount ?></th>
 					</tr>
 					</table>
 					<table border="1" style="width:100%;border-collapse: collapse;">
@@ -160,27 +169,20 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<tr align="left">
 							<th colspan="2">Terms</th>
 						</tr>
-						<tr align="left">
-							<th colspan="2">1: Paying 100% Advance</th>
-						</tr>
-						<tr align="left">
-							<th colspan="2">2 Freight Included</th>
-						</tr>
-						<tr align="left">
-							<th colspan="2">3</th>
-						</tr>
-						<tr align="left">
-							<th colspan="2">4</th>
-						</tr>
-						<tr align="left">
-							<th colspan="2">5</th>
-						</tr>
-						<tr align="left">
-							<th colspan="2">6</th>
-						</tr>
-						<tr align="left">
-							<th colspan="2">7</th>
-						</tr>
+						<?php $i=0; $term_name=""; foreach($customer_term as $customer): $i++; ?>
+						<?php 
+						foreach($master_term as $master):
+							if($master->term_id==$customer["term_id"]):
+								$term_name = $master->term_name;
+							endif;
+						endforeach;
+						?>
+							<tr align="left">
+							  <th colspan="2"><?= $i?> : <?= $term_name ?></th>
+							</tr>
+						<?php endforeach;?>
+						
+						
 					</table>
 			</div>
 		</div>

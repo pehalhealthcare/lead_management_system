@@ -28,23 +28,23 @@
 
                    <div class="row">
                         <div class="col-sm-3">
-                             
+
                              <ul class="list-group">
-                                   <li class="list-group-item text-right"><button title="Add New Customer" type="reset" class="btn btn-success create">+</button></li>
+                                  <li class="list-group-item text-right"><button title="Add New Customer" type="reset" class="btn btn-success create">+</button></li>
                                   <li class="list-group-item">
-                                       <input type="search" class="form-control" placeholder="Enter Customer Name" />
+                                       <input type="search" id="customer-search" class="form-control" placeholder="Enter Customer Name" />
                                   </li>
-                                  <ul class="list-group">
+                                  <ul class="list-group  customer-list">
                                        <?php $active = "";
                                         foreach ($customers as $customer) : ?>
                                             <?php if ($lead_customer) : ?>
 
-                                            <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"]==$customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
-                                           <?php else:?>
-                                             <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
-                                           <?php  endif; ?>
-                                           
-                                            
+                                                 <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                            <?php else : ?>
+                                                 <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                            <?php endif; ?>
+
+
                                        <?php endforeach; ?>
                                   </ul>
                              </ul>
@@ -55,7 +55,7 @@
                                   <div class="row">
                                        <input type="hidden" name="lead_id" value="<?= $lead_id ?>" class="lead_id">
                                        <input type="hidden" name="customer_id" id="customer_id">
-                                       
+
                                        <div class="form-group col-sm-6">
                                             <label for="">Surname</label>
                                             <input type="text" name="surname" id="surname" placeholder="for example 'Mr or Miss or Mrs'" class="form-control  border">
@@ -132,7 +132,7 @@
                              <a class="nav-link sub-nav-tabs pills-terms-tab" id="pills-terms-tab" data-toggle="pill" href="#pills-terms" role="tab" aria-controls="pills-terms" aria-selected="true">Terms</a>
                         </li>
                    </ul>
-                   <div class="tab-content bg-white p-3" style="height: 100vh;" id="pills-tabContent">
+                   <div class="tab-content bg-white p-3" id="pills-tabContent">
                         <!-- tab 1111111111111111111111111111111111111111111111111111 -->
                         <div class="tab-pane fade active show" id="pills-item" role="tabpanel" aria-labelledby="pills-item-tab">
                              <form action="" method="post" class="assign-product" enctype="multipart/form-data">
@@ -157,9 +157,9 @@
                                             <div class="col-sm-3">
                                                  <ul class="list-group">
                                                       <li class="list-group-item">
-                                                           <input type="search" class="form-control" placeholder="Enter Customer Name" />
+                                                           <input type="search" id="product-search" class="form-control" placeholder="Enter Product Name" />
                                                       </li>
-                                                      <ul class="list-group">
+                                                      <ul class="list-group product-list">
                                                            <?php foreach ($products as $product) : ?>
                                                                 <li class="list-group-item select-product" style="cursor: pointer;" data-product="<?= $product->product_id ?>"><?= $product->product_name ?></li>
                                                            <?php endforeach; ?>
@@ -193,20 +193,27 @@
 
                         </div>
                         <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
-                              review tab
+                             <div class="row customer-items">
+
+                             </div>
+                             <div class="row total-items border border-success p-3">
+
+                             </div>
+
                         </div>
                         <div class="tab-pane fade" id="pills-terms" role="tabpanel" aria-labelledby="pills-terms-tab">
-                            <h4>Terms and conditions</h4>  
-                            <div class="col-sm-12 terms row">
-                            
-                            </div>
+                             <h4>Terms and conditions</h4>
+                             <div class="col-sm-12 terms row">
+
+                             </div>
+
                         </div>
                    </div>
 
               </div>
               <!-- tab 3333333333333333333333333333333333333333333333333333333333333 -->
               <div class="tab-pane fade bg-white p-3" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                   Activity page
+                  <?= print_r($_SESSION) ?>
               </div>
          </div>
 
@@ -303,15 +310,17 @@
                         success: function(status) {
 
                              $(".customers").removeClass("active");
-                             $(".nav-tabs").removeClass("active");
-                             $(".nav-tabs").removeClass("show");
+
+
                              $(".nav-tabs#pills-profile-tab").removeClass("disabled")
-                             $(".nav-tabs#pills-profile-tab").addClass("active");
-                             $(".nav-tabs#pills-profile-tab").addClass(" show");
-                             $("#pills-home").removeClass("show");
-                             $("#pills-home").removeClass("active");
-                             $("#pills-profile").addClass("show");
-                             $("#pills-profile").addClass("active");
+                             //     $(".nav-tabs").removeClass("active");
+                             //     $(".nav-tabs").removeClass("show");
+                             //     $(".nav-tabs#pills-profile-tab").addClass("active");
+                             //     $(".nav-tabs#pills-profile-tab").addClass(" show");
+                             //     $("#pills-home").removeClass("show");
+                             //     $("#pills-home").removeClass("active");
+                             //     $("#pills-profile").addClass("show");
+                             //     $("#pills-profile").addClass("active");
                              status = JSON.parse(status);
                              $(".new-customer").removeClass("d-none");
                              $(".pcustomer").val(status[0]["name"]);
@@ -341,6 +350,75 @@
                    })
               });
 
+              $(document).on("click", "#pills-review-tab", function(e) {
+
+                    var leadID = $(".lead_id").val();
+                    var custID = $(".pcustomer_id").val();
+                   $.ajax({
+                        url: "<?= base_url() ?>ajax/getcustomeritem",
+                        method: "post",
+                        data: {
+                             lead_id: $(".lead_id").val()
+                        },
+                        success: function(status) {
+                             $(".customer-items").html('');
+
+                             // return false;
+                             var status = JSON.parse(status);
+                             var total_amount = 0;
+                             var total_tax = 0;
+                             $.each(status["item_new"], function(k, v) {
+
+                                  var checked = "";
+                                  var tax_amount = "";
+                                  var total_price = "";
+                                  var quantity = "";
+                                  var product_id = "";
+                                  var item_id = "";
+                                  var unit_price = "";
+                                  $.each(status["customer_item"], function(k1, v1) {
+                                       // return false;
+                                       if (status["customer_item"] && v["item_name"] && v["item_id"] == v1["item_id"]) {
+                                            checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";
+                                            total_price = (v1["total_price"]) ? v1["total_price"] : "";
+                                            tax_amount = (v1["tax_amount"]) ? v1["tax_amount"] : "";
+                                            quantity = (v1["quantity"]) ? v1["quantity"] : "";
+                                            product_id = v1["product_id"] ? v1["product_id"] : "";
+                                            item_id = v["item_id"] ? v["item_id"] : "";
+                                            unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
+                                            console.log(v1);
+                                       }
+
+                                  });
+                                  if (v["product_id"] == product_id && v["item_id"] == item_id && status["customer_item"]) {
+
+                                       var html = '<div class="col-sm-12 col-md-3 mb-3 bg-white item_' + v["item_id"] + '"><div class="card bg-light text-dark border border-success"><div class="card-title p-3 border-bottom border-success">' + v["item_name"] + '<input readonly data-id="' + v["item_id"] + '" type="hidden" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control ritem_name_' + v["item_id"] + '""></div>';
+                                       html += '<div class="card-body"><label>Quantity</label><input type="text" name="quantity[]" data-id="' + v["item_id"] + '"  placeholder="Enter Your Quantity" value="' + quantity + '" class="rquantity form-control rquantity_' + v["item_id"] + '">';
+                                       html += '<label>Unit Price</label><input type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="runit_price form-control runit_price_' + v["item_id"] + '">';
+                                       html += '<label>Tax Rate</label><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control rtax_rate_' + v["item_id"] + '">';
+                                       html += '<label>Tax Amount</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control rtax_amount_' + v["item_id"] + '">';
+                                       html += '<label>Total Price</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control rtotal_price_' + v["item_id"] + '">';
+                                       html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
+                                       html += '<input type="hidden" name="product_id" class="product_id" value="' + v["product_id"] + '"></div>';
+                                       html += '<div class="card-footer"><button data-id="' + v["item_id"] + '" class="btn btn-danger remove remove_' + v["item_id"] + '">Remove</button></div></div></div>';
+                                       total_amount = total_amount + parseFloat(total_price);
+                                       total_tax = total_tax + parseFloat(tax_amount);
+                                       $(".customer-items").append(html);
+
+                                  }
+
+                             });
+                             if (total_amount) {
+                                  var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
+                                  alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax + '</div>';
+                                  alltotal += '<div class="col-sm-12 col-md-4"><a href="<?= base_url()?>dashboard/lead/generate_pdf/'+leadID+'/'+custID+'" class="btn btn-success"> PDF GENERATION</a></div>';
+                                  $(".total-items").html(alltotal);
+                             }
+
+                        }
+                   });
+              });
+
               $(".select-product").on("click", function(e) {
                    e.preventDefault();
                    var product_id = $(this).data("product");
@@ -351,7 +429,7 @@
                         method: "post",
                         data: {
                              product_id: product_id,
-                             lead_id:$(".lead_id").val()
+                             lead_id: $(".lead_id").val()
                         },
                         success: function(status) {
                              $("table tbody").html('');
@@ -364,6 +442,7 @@
                                   var tax_amount = "";
                                   var total_price = "";
                                   var quantity = "";
+                                  var unit_price = "";
                                   $.each(status["customer_item"], function(k1, v1) {
                                        // return false;
                                        if (status["customer_item"] && v["item_name"] && v["item_id"] == v1["item_id"]) {
@@ -371,15 +450,16 @@
                                             total_price = (v1["total_price"]) ? v1["total_price"] : "";
                                             tax_amount = (v1["tax_amount"]) ? v1["tax_amount"] : "";
                                             quantity = (v1["quantity"]) ? v1["quantity"] : "";
+                                            unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
                                             console.log(v1);
                                        }
 
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
-
+                                   unit_price = (unit_price) ? unit_price : v["unit_price"];
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity form-control quantity_' + v["item_id"] + '"></td>';
-                                       html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + v["unit_price"] + '" name="unit_price[]"  class="unit_price form-control unit_price_' + v["item_id"] + '"></td>';
+                                       html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price form-control unit_price_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control tax_amount_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
@@ -431,6 +511,252 @@
 
 
                    });
+
+
+                   //data update when quantity value change
+
+                   var id = $(this).data("id");
+
+                   formdata = {
+                        item_id: $(".item_id_" + id).val(),
+                        quantity: $(".quantity_" + id).val(),
+                        tax_rate: $(".tax_rate_" + id).val(),
+                        tax_amount: $(".tax_amount_" + id).val(),
+                        unit_price: $(".unit_price_" + id).val(),
+                        total_price: $(".total_price_" + id).val(),
+                        product_id: $(".product_id").val(),
+                        pcustomer_id: $(".pcustomer_id").val(),
+                        lead_id: $(".lead_id").val(),
+                        is_active: "1"
+                   };
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/singleproductsubmit",
+                        data: formdata,
+                        success: function(status) {
+                             //     console.log(status);
+                        }
+                   })
+              });
+
+
+              $(document).on("keyup", ".quantity", function() {
+
+                   var id = $(this).data("id");
+
+                   var tax_rate = $(".unit_price_" + id).val() * ($(".tax_rate_" + id).val() / 100);
+
+                   // return false;
+
+                   total_tax = tax_rate * $(this).val();
+
+
+
+                   $(".tax_amount_" + id).val(total_tax);
+
+                   var total_price = ($(".unit_price_" + id).val() * $(this).val()) + total_tax;
+
+
+
+                   $(".total_price_" + id).val(total_price);
+
+                   var total = 0;
+
+                   $(".total_price").each(function() {
+                        var id = $(this).data("id");
+
+                        total = total + parseFloat($(this).val());
+
+                        if (total) {
+                             $(".total_amount").val(total);
+                        }
+
+
+
+                   });
+
+
+                   //data update when quantity value change
+
+                   var id = $(this).data("id");
+
+                   formdata = {
+                        item_id: $(".item_id_" + id).val(),
+                        quantity: $(".quantity_" + id).val(),
+                        tax_rate: $(".tax_rate_" + id).val(),
+                        tax_amount: $(".tax_amount_" + id).val(),
+                        unit_price: $(".unit_price_" + id).val(),
+                        total_price: $(".total_price_" + id).val(),
+                        product_id: $(".product_id").val(),
+                        pcustomer_id: $(".pcustomer_id").val(),
+                        lead_id: $(".lead_id").val(),
+                        is_active: "1"
+                   };
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/singleproductsubmit",
+                        data: formdata,
+                        success: function(status) {
+                             //     console.log(status);
+                        }
+                   })
+              });
+
+              $(document).on("keyup", ".rquantity", function() {
+
+                   var id = $(this).data("id");
+
+                   var tax_rate = $(".runit_price_" + id).val() * ($(".rtax_rate_" + id).val() / 100);
+
+                   // return false;
+
+                   total_tax = tax_rate * $(this).val();
+
+
+
+                   $(".rtax_amount_" + id).val(total_tax);
+
+                   var total_price = ($(".runit_price_" + id).val() * $(this).val()) + total_tax;
+
+
+
+                   $(".rtotal_price_" + id).val(total_price);
+
+                   var total = 0;
+
+                   $(".rtotal_price").each(function() {
+                        var id = $(this).data("id");
+
+                        total = total + parseFloat($(this).val());
+
+                        console.log(total);
+
+                        if (total) {
+                             $(".total-price-amount").html('Total Amount ' + total + '');
+                        }
+                   });
+
+
+                   //data update when quantity value change
+
+                   var id = $(this).data("id");
+
+                   formdata = {
+                        item_id: $(".item_id_" + id).val(),
+                        quantity: $(".rquantity_" + id).val(),
+                        tax_rate: $(".rtax_rate_" + id).val(),
+                        tax_amount: $(".rtax_amount_" + id).val(),
+                        unit_price: $(".runit_price_" + id).val(),
+                        total_price: $(".rtotal_price_" + id).val(),
+                        product_id: $(".product_id").val(),
+                        pcustomer_id: $(".pcustomer_id").val(),
+                        lead_id: $(".lead_id").val(),
+                        is_active: "1"
+                   };
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/singleproductsubmit",
+                        data: formdata,
+                        success: function(status) {
+                             //     console.log(status);
+                        }
+                   })
+              });
+
+              $(document).on("keyup",".runit_price",function(){
+
+               var id = $(this).data("id");
+
+                   var tax_rate = $(".runit_price_" + id).val() * ($(".rtax_rate_" + id).val() / 100);
+
+                   // return false;
+
+                   total_tax = tax_rate * $(".rquantity_" + id).val();
+
+
+
+                   $(".rtax_amount_" + id).val(total_tax);
+
+                   var total_price = ($(".rquantity_" + id).val() * $(this).val()) + total_tax;
+
+
+
+                   $(".rtotal_price_" + id).val(total_price);
+
+                   var total = 0;
+
+                   $(".rtotal_price").each(function() {
+                        var id = $(this).data("id");
+
+                        total = total + parseFloat($(this).val());
+
+                        console.log(total);
+
+                        if (total) {
+                             $(".total-price-amount").html('Total Amount ' + total + '');
+                        }
+                   });
+
+
+                   //data update when quantity value change
+
+                   var id = $(this).data("id");
+
+                   formdata = {
+                        item_id: $(".item_id_" + id).val(),
+                        quantity: $(".rquantity_" + id).val(),
+                        tax_rate: $(".rtax_rate_" + id).val(),
+                        tax_amount: $(".rtax_amount_" + id).val(),
+                        unit_price: $(".runit_price_" + id).val(),
+                        total_price: $(".rtotal_price_" + id).val(),
+                        product_id: $(".product_id").val(),
+                        pcustomer_id: $(".pcustomer_id").val(),
+                        lead_id: $(".lead_id").val(),
+                        is_active: "1"
+                   };
+
+
+               //     console.log(formdata); return false;
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/singleproductsubmit",
+                        data: formdata,
+                        success: function(status) {
+                             //     console.log(status);
+                        }
+                   })
+
+              });
+
+              $(document).on("click", ".remove", function() {
+
+                   var id = $(this).data("id");
+
+                   formdata = {
+                        item_id: $(".item_id_" + id).val(),
+                        quantity: $(".quantity_" + id).val(),
+                        tax_rate: $(".tax_rate_" + id).val(),
+                        tax_amount: $(".tax_amount_" + id).val(),
+                        unit_price: $(".unit_price_" + id).val(),
+                        total_price: $(".total_price_" + id).val(),
+                        product_id: $(".product_id").val(),
+                        pcustomer_id: $(".pcustomer_id").val(),
+                        lead_id: $(".lead_id").val(),
+                        is_active: "0"
+                   };
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/singleproductsubmit",
+                        data: formdata,
+                        success: function(status) {
+                             $(".item_" + id).html('');
+                        }
+                   })
               });
 
               $(document).on("change", "#all-data", function() {
@@ -497,75 +823,87 @@
 
               //terms and conditions
 
-              $(".pills-terms-tab").click(function(){
-                    var customer_id = $(".pcustomer_id").val();
-                    $.ajax({
-                         method:"post",
-                         url:"<?= base_url() ?>ajax/getTerms",
-                         data:{customer_id:customer_id},
-                         success:function(status){
-                              status = JSON.parse(status);
-                              $(".terms").html('');
-                              
-                              $.each(status["master_term"],function(k,v){
-                                 var checked = "";
-                                 $.each(status["customer_term"],function(k1,v1){
-                                      if(v["term_id"]==v1["term_id"] && v1["is_active"]==1)
-                                      {
-                                        checked = (v["term_id"]==v1["term_id"]) ? "checked" : "";
-                                      }
-                                   
-                                 });
-                              k = k+1;
-                              var html = "";
-                              
-                              html+="<div class='col-sm-12'><input "+checked+" type='checkbox' class='term-check' value='"+v["term_id"]+"'> "+ k + ' ' + v["term_name"] +"</div>";
-                              $(".terms").append(html);
-                              
-                              });
+              $(".pills-terms-tab").click(function() {
+                   var customer_id = $(".pcustomer_id").val();
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/getTerms",
+                        data: {
+                             customer_id: customer_id
+                        },
+                        success: function(status) {
+                             status = JSON.parse(status);
+                             $(".terms").html('');
 
-                         }
-                    });
+                             $.each(status["master_term"], function(k, v) {
+                                  var checked = "";
+                                  $.each(status["customer_term"], function(k1, v1) {
+                                       if (v["term_id"] == v1["term_id"] && v1["is_active"] == 1) {
+                                            checked = (v["term_id"] == v1["term_id"]) ? "checked" : "";
+                                       }
+
+                                  });
+                                  k = k + 1;
+                                  var html = "";
+
+                                  html += "<div class='col-sm-12'><input " + checked + " type='checkbox' class='term-check' value='" + v["term_id"] + "'> " + k + ' ' + v["term_name"] + "</div>";
+                                  $(".terms").append(html);
+
+                             });
+
+                        }
+                   });
               });
 
-              $(document).on("change",".term-check",function(){
-                    if($(this).prop("checked"))
-                    {
-                         var data = {
-                              term_id:$(this).val(),
-                              customer_id:$(".pcustomer_id").val(),
-                              is_active:1,
-                              lead_id:$(".lead_id").val()
-                         }
-                      $.ajax({
-                           method:"post",
-                           url:"<?= base_url()?>ajax/submitCustomerTerm",
-                           data:data,
-                           success:function(status)
-                           {
+              $(document).on("change", ".term-check", function() {
+                   if ($(this).prop("checked")) {
+                        var data = {
+                             term_id: $(this).val(),
+                             customer_id: $(".pcustomer_id").val(),
+                             is_active: 1,
+                             lead_id: $(".lead_id").val()
+                        }
+                        $.ajax({
+                             method: "post",
+                             url: "<?= base_url() ?>ajax/submitCustomerTerm",
+                             data: data,
+                             success: function(status) {
 
-                           }
-                      })
-                    }
-                    else
-                    {
-                         var data = {
-                              term_id:$(this).val(),
-                              customer_id:$(".pcustomer_id").val(),
-                              is_active:0,
-                              lead_id:$(".lead_id").val()
-                         }
+                             }
+                        })
+                   } else {
+                        var data = {
+                             term_id: $(this).val(),
+                             customer_id: $(".pcustomer_id").val(),
+                             is_active: 0,
+                             lead_id: $(".lead_id").val()
+                        }
 
-                         $.ajax({
-                           method:"post",
-                           url:"<?= base_url()?>ajax/submitCustomerTerm",
-                           data:data,
-                           success:function(status)
-                           {
-                                
-                           }
-                      })
-                    }
+                        $.ajax({
+                             method: "post",
+                             url: "<?= base_url() ?>ajax/submitCustomerTerm",
+                             data: data,
+                             success: function(status) {
+
+                             }
+                        })
+                   }
               });
+
+              $("#customer-search").on("keyup", function() {
+                   var value = $(this).val().toLowerCase();
+
+                   $(".customer-list li").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                   });
+              })
+
+              $("#product-search").on("keyup", function() {
+                   var value = $(this).val().toLowerCase();
+
+                   $(".product-list li").filter(function() {
+                        $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+                   });
+              })
          })
     </script>

@@ -25,7 +25,7 @@ $route["dashboard/leads/quotation/(:any)/(:any)/(:any)"]    =   "leads/lead_quot
 $route["dashboard/assign/leads/(:any)"]                     =  "leads/assign";
 $route["dashboard/edit/leads/(:any)"]                       =  "leads/lead_edit/$1";
 $route["dashboard/delete/leads/(:any)"]                     =  "leads/destroy/$1"; 
-$route["dashboard/lead/generate_pdf/(:any)"]                =  "leads/generate_pdf/$1";
+$route["dashboard/lead/generate_pdf/(:any)/(:any)"]                =  "leads/generate_pdf/$1/$2";
 
 $route["dashboard/leadcustomer"]                            = "leadcustomer/viewdata";
 $route["dashboard/leadcustomer/add"]                        = "leadcustomer/add";
