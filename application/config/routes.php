@@ -58,10 +58,22 @@ $route["dashboard/delete/department/(:any)"]                =  "department/destr
 
 // This routes are used for products crud operation
 
-// $route["products/add"] = "products/addproducts";
-// $route["products/edit/(:any)"] = "products/editproducts/$1";
-// $route["products/update/(:any)"] = "products/updateproducts/$1";
-// $route["products/delete/(:any)"] = "products/deleteproducts/$1";
+$route["dashboard/products"]                                = "products/index";
+$route["dashboard/products/add"]                            = "products/addproducts";
+$route["dashboard/products/edit/(:any)"]                    = "products/editproducts/$1";
+$route["dashboard/products/delete/(:any)"]                  = "products/deleteproducts/$1";
+
+$route["dashboard/products/item/add"]                       = "products/add_item";
+$route["dashboard/products/item/(:any)"]                    = "products/view_item/$1";
+$route["dashboard/products/item/edit/(:any)"]               = "products/edit_item/$1";
+$route["dashboard/products/item/delete/(:any)"]             = "products/delete_item/$1";
+
+$route["dashboard/products/terms"]                           = "products/view_term";
+$route["dashboard/products/terms/add"]                       = "products/add_term";
+$route["dashboard/products/terms/edit/(:any)"]               = "products/edit_term/$1";
+$route["dashboard/products/terms/delete/(:any)"]             = "products/delete_term/$1";
+
+
 
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;

@@ -1698,7 +1698,8 @@
      height: auto; }
    
    textarea.form-control {
-     height: auto; }
+     height: auto !important; 
+    }
    
    .form-group {
      margin-bottom: 1rem; }

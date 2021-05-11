@@ -34,8 +34,10 @@
       <td><?= $leadcustomer->alternate_mobile ?></td>
       <td><?= ($leadcustomer->is_active==1) ? "Active" : "Inactive" ?></td>
       <td>
-      <a href="<?= base_url()?>dashboard/leadcustomer/edit/<?= $leadcustomer->customer_id ?>" class="btn btn-info">EDIT</a>
-      <button type="button" class="btn btn-danger delete-data" data-id="<?= $leadcustomer->customer_id ?>"" data-toggle="modal" data-target="#confirm-modal">DELETE</button>
+      <a href="<?= base_url()?>dashboard/leadcustomer/edit/<?= $leadcustomer->customer_id ?>" class="btn btn-info">
+      <i class="fa fa-pencil"></i></a>
+      <button type="button" class="btn btn-danger delete-data" 
+      data-id="<?= $leadcustomer->customer_id ?>" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
       </td>
     </tr>
   <?php endforeach;?>

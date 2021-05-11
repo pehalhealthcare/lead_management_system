@@ -7,10 +7,12 @@
      <link rel="stylesheet" href="<?= base_url() ?>assets/css/bootstrap.min.css">
      <link rel="stylesheet" href="<?= base_url() ?>assets/css/styles.css">
      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+     <link rel="stylesheet" href="<?= base_url()?>assets/css/bootstrap-datepicker.min.css">
      <title><?= $title?></title>
      <script src="<?= base_url() ?>assets/js/jquery.min.js" ></script>
      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
      <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
+     <script src="<?= base_url() ?>assets/js/bootstrap-datepicker.min.js"></script>
      <script src="<?= base_url() ?>assets/js/main.js"></script>
 </head>
 <body style="height: 100%;">
@@ -55,6 +57,34 @@
 </ul>
 </div>
 </li>
+
+<li>
+<a data-toggle="collapse" href="#collapseEight"><span class="fa fa-briefcase mr-3"></span>Products</a>
+</li>
+<li>
+<div id="collapseEight" class="collapse <?= ($this->uri->uri_string()=="dashboard/products/add" || $this->uri->uri_string()=="dashboard/products" ||  $this->uri->uri_string()=="dashboard/products/item/add" ) ? "show" : ""  ?>" data-parent="#accordion">
+<ul class="list-unstyled components pl-3">
+      <li><a href="<?=base_url()?>dashboard/products/add"><span class="fa fa-plus mr-3"> Add Products</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/products"><span class="fa fa-eye mr-3"> View Products</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/products/item/add"><span class="fa fa-plus mr-3"> Add Products Item</span></a></li>
+</ul>
+</div>
+</li>
+
+<li>
+<a data-toggle="collapse" href="#collapseNine"><span class="fa fa-briefcase mr-3"></span>Products Terms</a>
+</li>
+<li>
+<div id="collapseNine" class="collapse <?= ($this->uri->uri_string()=="dashboard/products/terms/add" || $this->uri->uri_string()=="dashboard/products/terms") ? "show" : ""  ?>" data-parent="#accordion">
+<ul class="list-unstyled components pl-3">
+      <li><a href="<?=base_url()?>dashboard/products/terms/add"><span class="fa fa-plus mr-3"> Add Terms</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/products/terms"><span class="fa fa-eye mr-3"> View Terms</span></a></li>
+</ul>
+</div>
+</li>
+
+
+
 <li>
 <a data-toggle="collapse" href="#collapsefour"><span class="fa fa-briefcase mr-3"></span> Lead</a>
 </li>

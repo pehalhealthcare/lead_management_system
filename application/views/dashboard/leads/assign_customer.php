@@ -3,8 +3,10 @@
 
          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
-
                    <a class="nav-link active nav-tabs pills-home-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Customer</a>
+              </li>
+              <li class="nav-item">
+                   <a class="nav-link nav-tabs pills-oppo-tab <?= (count($lead_customer) == 0) ? "disabled" : "" ?>" id="pills-oppo-tab" data-toggle="pill" href="#pills-oppo" role="tab" aria-controls="pills-oppo" aria-selected="true">Opportunity</a>
               </li>
               <li class="nav-item">
                    <a class="nav-link nav-tabs pills-profile-tab <?= (count($lead_customer) == 0) ? "disabled" : "" ?>" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Product</a>
@@ -213,7 +215,208 @@
               </div>
               <!-- tab 3333333333333333333333333333333333333333333333333333333333333 -->
               <div class="tab-pane fade bg-white p-3" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
-                  <?= print_r($_SESSION) ?>
+                   <div class="col-sm-12">
+                        <div class="row">
+                             <div class="col-sm-12">
+                                  <div class="col-sm-3">
+                                       <div class="form-group">
+                                            <select class="form-control activity">
+                                                 <option value="">Select Activity</option>
+                                                 <?php foreach ($activity as $activities) : ?>
+                                                      <option data-activity="<?= strtolower(str_replace(" ", "_", $activities->name)) ?>" value="<?= $activities->id ?>"><?= $activities->name ?></option>
+                                                 <?php endforeach; ?>
+                                            </select>
+                                       </div>
+                                  </div>
+                             </div>
+
+                             <div class="col-sm-12 meeting d-none">
+
+                                  <form method="post" action="">
+                                       <div class="row">
+                                            <div class="col-sm-8 mx-auto row">
+
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Subject</label>
+                                                      <input type="text" name="subject" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Status</label>
+                                                      <select name="status" class="form-control border-bottom">
+                                                           <option>Planned</option>
+                                                           <option>Held</option>
+                                                           <option>Not Held</option>
+                                                      </select>
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Start date</label>
+                                                      <input type="text" id="startDate" name="fromdate" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Related to</label>
+                                                      <select class="form-control border-bottom" name="related_to">
+                                                           <option>Account</option>
+                                                           <option value="">Contact</option>
+                                                           <option value="">Task</option>
+                                                           <option value="">Opportunity</option>
+                                                           <option value="">Bug</option>
+                                                           <option value="">Case</option>
+                                                           <option value="">Lead</option>
+                                                           <option value="">Project</option>
+                                                           <option value="">Project Task</option>
+                                                           <option value="">Target</option>
+                                                           <option value="">Contract</option>
+                                                           <option value="">Invoice</option>
+                                                           <option value="">Quote</option>
+                                                           <option value="">Product</option>
+                                                      </select>
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      &nbsp;
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <input type="text" name="" value="<?= $this->session->name ?>" class="form-control border-bottom" id="">
+                                                 </div>
+
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">End date</label>
+                                                      <input type="text" id="endDate" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Location</label>
+                                                      <input type="text" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Duration</label>
+                                                      <select name="" class="form-control" id="">
+                                                           <option>15 mins</option>
+                                                           <option>30 mins</option>
+                                                           <option>1 hour</option>
+                                                           <option>1.5 hour</option>
+                                                           <option>2 hour</option>
+                                                           <option>3 hour</option>
+                                                           <option>4 hour</option>
+                                                           <option>5 hour</option>
+                                                           <option>6 hour</option>
+                                                           <option>1 day</option>
+                                                           <option>2 days</option>
+                                                           <option>3 days</option>
+                                                           <option>1 week</option>
+                                                      </select>
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Reminder</label>
+                                                      <input type="text" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Assigned to</label>
+                                                      <input type="text" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-12">
+                                                      <label for="">Description</label>
+                                                      <textarea class="form-control border-bottom" rows="5"></textarea>
+                                                 </div>
+                                                  <div class="form-group col-sm-12">
+                                                    <input type="submit" class="btn btn-success" value="ADD DATA">
+                                                  </div>
+                                            </div>
+                                       </div>
+                                  </form>
+
+                             </div>
+
+                             <div class="col-sm-12 log_call d-none">
+
+                                  <form method="post" action="">
+                                       <div class="row">
+                                            <div class="col-sm-8 mx-auto row">
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Subject</label>
+                                                      <input type="text" name="subject" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Status</label>
+                                                      <div class="row">
+                                                           <div class="col-sm-6">
+                                                                <select name="status" class="form-control border-bottom">
+                                                                     <option>Inbound</option>
+                                                                     <option>Outbound</option>
+                                                                </select>
+                                                           </div>
+                                                           <div class="col-sm-6">
+                                                                <select name="status" class="form-control border-bottom">
+                                                                     <option>Planned</option>
+                                                                     <option>Held</option>
+                                                                     <option>Not Held</option>
+                                                                </select>
+                                                           </div>
+                                                      </div>
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Communication Preferred</label>
+                                                      <select name="" id="" class="form-control border-bottom">
+                                                           <option value="whatsapp">Whatsapp</option>
+                                                           <option value="email">Email</option>
+                                                           <option value="call">Call</option>
+                                                      </select>
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Lead Possibility</label>
+                                                      <select name="" id="" class="form-control border-bottom">
+                                                           <option value="qualified">Qualified</option>
+                                                           <option value="disqualified">Disqualified</option>
+                                                      </select>
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Start date</label>
+                                                      <input type="text" id="startDate" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Related to</label>
+                                                      <input type="text" name="" class="form-control border-bottom" id="">
+                                                 </div>
+
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Duration</label>
+                                                      <div class="row">
+                                                           <div class="col-sm-6">
+                                                                <input type="text" name="" class="form-control border-bottom" id="">
+                                                           </div>
+                                                           <div class="col-sm-6">
+                                                                <select name="" class="form-control  border-bottom" id="">
+                                                                     <option>15 mins</option>
+                                                                     <option>30 mins</option>
+                                                                </select>
+                                                           </div>
+                                                      </div>
+
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Reminder</label>
+                                                      <input type="text" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-6">
+                                                      <label for="">Assigned to</label>
+                                                      <input type="text" class="form-control border-bottom">
+                                                 </div>
+                                                 <div class="form-group col-sm-12">
+                                                      <label for="">Description</label>
+                                                      <textarea class="form-control border-bottom" rows="5"></textarea>
+                                                 </div>
+                                                 <div class="form-group col-sm-12">
+                                                      <input type="submit" class="btn btn-success" value="ADD DATA">
+                                                 </div>
+                                            </div>
+                                       </div>
+                                  </form>
+
+                             </div>
+
+                             <div class="col-sm-12 compose_email d-none">
+
+                             </div>
+                        </div>
+                   </div>
               </div>
          </div>
 
@@ -352,8 +555,8 @@
 
               $(document).on("click", "#pills-review-tab", function(e) {
 
-                    var leadID = $(".lead_id").val();
-                    var custID = $(".pcustomer_id").val();
+                   var leadID = $(".lead_id").val();
+                   var custID = $(".pcustomer_id").val();
                    $.ajax({
                         url: "<?= base_url() ?>ajax/getcustomeritem",
                         method: "post",
@@ -411,7 +614,7 @@
                              if (total_amount) {
                                   var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
                                   alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax + '</div>';
-                                  alltotal += '<div class="col-sm-12 col-md-4"><a href="<?= base_url()?>dashboard/lead/generate_pdf/'+leadID+'/'+custID+'" class="btn btn-success"> PDF GENERATION</a></div>';
+                                  alltotal += '<div class="col-sm-12 col-md-4"><a href="<?= base_url() ?>dashboard/lead/generate_pdf/' + leadID + '/' + custID + '" class="btn btn-success"> PDF GENERATION</a></div>';
                                   $(".total-items").html(alltotal);
                              }
 
@@ -456,7 +659,7 @@
 
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
-                                   unit_price = (unit_price) ? unit_price : v["unit_price"];
+                                       unit_price = (unit_price) ? unit_price : v["unit_price"];
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity form-control quantity_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price form-control unit_price_' + v["item_id"] + '"></td>';
@@ -666,9 +869,9 @@
                    })
               });
 
-              $(document).on("keyup",".runit_price",function(){
+              $(document).on("keyup", ".runit_price", function() {
 
-               var id = $(this).data("id");
+                   var id = $(this).data("id");
 
                    var tax_rate = $(".runit_price_" + id).val() * ($(".rtax_rate_" + id).val() / 100);
 
@@ -719,7 +922,7 @@
                    };
 
 
-               //     console.log(formdata); return false;
+                   //     console.log(formdata); return false;
 
                    $.ajax({
                         method: "post",
@@ -905,5 +1108,40 @@
                         $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                    });
               })
-         })
+
+              $(".activity").on("change", function() {
+                   var activity = $(this).find(":selected").data("activity");
+
+                   if (activity == "schedule_meeting") {
+                        $(".log_call").addClass("d-none");
+                        $(".meeting").removeClass("d-none");
+                   } else if (activity == "log_call") {
+                        $(".log_call").removeClass("d-none");
+                        $(".meeting").addClass("d-none");
+                   } else {
+                        $(".log_call").addClass("d-none");
+                        $(".meeting").addClass("d-none");
+                   }
+              });
+
+
+              $("#startDate").datepicker({
+                   format: 'dd-mm-yyyy',
+                   todayBtn: true,
+                   todayHighlight: true,
+                   autoclose: true,
+                   sta
+              }).on('changeDate', function(selected) {
+                   var minDate = new Date();
+                   $('#endDate').datepicker('setStartDate', minDate);
+              }).datepicker("setDate", "1");;
+
+              $("#endDate").datepicker({
+                   format: 'dd-mm-yyyy',
+                   autoclose: true,
+              }).on('changeDate', function(selected) {
+                   var minDate = new Date(selected.date.valueOf());
+                   $('#startDate').datepicker('setEndDate', minDate);
+              });
+         });
     </script>
