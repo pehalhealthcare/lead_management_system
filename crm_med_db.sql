@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 24, 2021 at 04:26 PM
+-- Generation Time: May 11, 2021 at 11:08 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -20,6 +20,82 @@ SET time_zone = "+00:00";
 --
 -- Database: `crm_med_db`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_activity`
+--
+
+CREATE TABLE `mk_activity` (
+  `id` int(11) NOT NULL,
+  `lead_id` int(11) NOT NULL,
+  `assigned_to` int(11) NOT NULL,
+  `activity_master_id` int(11) NOT NULL,
+  `subject` varchar(250) NOT NULL,
+  `direction` text NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
+  `communication_preferred` varchar(200) NOT NULL,
+  `lead_possibility` varchar(250) NOT NULL,
+  `related_to` int(11) NOT NULL,
+  `related_to_other` int(11) NOT NULL,
+  `start_date_time` varchar(50) NOT NULL,
+  `end_date_time` varchar(50) NOT NULL,
+  `reminder` varchar(250) NOT NULL,
+  `description` text NOT NULL,
+  `location` varchar(250) NOT NULL,
+  `from_add` varchar(250) NOT NULL,
+  `to_add` varchar(250) NOT NULL,
+  `cc` varchar(250) NOT NULL,
+  `bcc` varchar(250) NOT NULL,
+  `body` text NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_activity_attachments`
+--
+
+CREATE TABLE `mk_activity_attachments` (
+  `id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `attachment` text NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL,
+  `is_active` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_activity_master`
+--
+
+CREATE TABLE `mk_activity_master` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL,
+  `is_active` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_activity_master`
+--
+
+INSERT INTO `mk_activity_master` (`id`, `name`, `created_by`, `created_at`, `modified_by`, `modified_at`, `is_active`) VALUES
+(1, 'Schedule Meeting', 1, '2021-05-08 09:04:44', NULL, NULL, 1),
+(2, 'Log Call', 1, '2021-05-08 09:05:26', NULL, NULL, 1),
+(3, 'Compose Email', 1, '2021-05-08 09:05:53', NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -87,10 +163,10 @@ CREATE TABLE `mk_customer` (
 --
 
 INSERT INTO `mk_customer` (`customer_id`, `prefix`, `name`, `email`, `mobile`, `alternate_mobile`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 'Mr', 'Karthik', 'veloukarthik@gmail.com', '9791287056', '9344751727', 1, '2021-04-22 18:30:00', 1, NULL, 0),
-(2, 'Mr', 'Rithik', 'rithik@gmail.com', '9344751727', '9791287056', 1, '2021-04-22 18:30:00', 1, NULL, 0),
-(3, 'Mr', 'Mayank', 'mayank@gmail.com', '1234567890', '9876543210', 1, '2021-04-23 18:30:00', 1, NULL, 0),
-(5, 'Mr', 'Velou', 'velou@gmail.com', '9894792083', '9894792083', 1, '2021-04-23 18:30:00', 1, NULL, 0),
+(1, 'Mr', 'Karthik', 'veloukarthik@gmail.com', '9791287056', '9344751727', 1, '2021-04-26 18:30:00', 1, NULL, 0),
+(2, 'Mr', 'Rithik', 'rithik@gmail.com', '9344751727', '9791287056', 1, '2021-04-26 18:30:00', 1, NULL, 0),
+(3, 'Mr', 'Mayank', 'mayank@gmail.com', '1234567890', '9876543210', 1, '2021-04-26 18:30:00', 1, NULL, 0),
+(5, 'Mr', 'Velou', 'velou@gmail.com', '9894792083', '9894792083', 1, '2021-04-26 18:30:00', 1, NULL, 0),
 (6, 'Mr', 'sheetal', 'sheetal@pehal.com', '989456221232', '9884546623', 1, '2021-04-23 18:30:00', 1, NULL, 0),
 (7, 'Mr', 'Abishek', 'abishek@gmail.com', '9876543210', '9876543210', 1, '2021-04-23 18:30:00', 1, NULL, 0);
 
@@ -123,11 +199,11 @@ CREATE TABLE `mk_customer_address` (
 --
 
 INSERT INTO `mk_customer_address` (`address_id`, `customer_id`, `address_1`, `address_2`, `address_3`, `city`, `state`, `zip`, `country`, `is_primary`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 1, 'Pondicherry', 'Pondicherry ffff', 'Pondicherry', 'Pondicherry', 'Pondicherry', '605001', NULL, 1, 0, '2021-04-22 20:40:51', 1, NULL, 0),
-(2, 2, 'Puduvai', 'Puducherry', 'Puducherry', 'Pondicherry', 'Pondicherry', '605010', NULL, 1, 0, '2021-04-23 01:00:11', 1, NULL, 0),
-(3, 3, 'Delhi', 'Delhi', 'India', 'Indira Nagar', 'New Delhi', '50001', NULL, 1, 0, '2021-04-23 20:24:43', 1, NULL, 0),
+(1, 1, 'Pondicherry', 'Pondicherry ffff', 'Pondicherry', 'Pondicherry', 'Pondicherry', '605001', NULL, 1, 0, '2021-04-27 07:11:50', 1, NULL, 0),
+(2, 2, 'Puduvai', 'Puducherry', 'Puducherry', 'Pondicherry', 'Pondicherry', '605010', NULL, 1, 0, '2021-04-27 07:10:38', 1, NULL, 0),
+(3, 3, 'Delhi', 'Delhi', 'India', 'Indira Nagar', 'New Delhi', '50001', NULL, 1, 0, '2021-04-27 07:11:58', 1, NULL, 0),
 (4, 4, '', '', '', '', '', '', NULL, 1, 0, '2021-04-23 22:32:02', 1, NULL, 0),
-(5, 5, 'Pondy', 'Pondicherry', 'Pondicherry', 'Pondicherry', 'Pondicherry', '605001', NULL, 1, 0, '2021-04-23 23:19:56', 1, NULL, 0),
+(5, 5, 'Pondy', 'Pondicherry', 'Pondicherry', 'Pondicherry', 'Pondicherry', '605001', NULL, 1, 0, '2021-04-27 07:12:06', 1, NULL, 0),
 (6, 6, 'England', 'London', 'Hamster', 'London', 'Bukkinghom Palace', '123456978', NULL, 1, 0, '2021-04-23 19:44:57', 1, NULL, 0),
 (7, 7, 'Delhi', 'Delhi', 'Delhi', 'Delhi', 'Delhi', '1200255', NULL, 1, 0, '2021-04-23 21:37:37', 1, NULL, 0);
 
@@ -162,12 +238,9 @@ CREATE TABLE `mk_customer_item` (
 --
 
 INSERT INTO `mk_customer_item` (`customer_item_id`, `customer_id`, `lead_id`, `product_id`, `purchase_order_id`, `item_id`, `quantity`, `unit_price`, `total_price`, `tax_rate`, `tax_amount`, `total_amount`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 1, 4, 1, NULL, 1, '10', '200', '2240', '12', '240', NULL, 1, '2021-04-22 20:44:54', 1, '2021-04-23 12:14:12', NULL),
-(2, 1, 4, 1, NULL, 2, '10', '100', '1120', '12', '120', NULL, 1, '2021-04-22 20:44:53', 1, '2021-04-23 12:14:53', NULL),
-(3, 3, 3, 1, NULL, 1, '', '200', '', '12', '', NULL, 1, '2021-04-23 20:28:05', 1, '2021-04-24 11:58:05', NULL),
-(4, 3, 3, 2, NULL, 3, '', '100', '', '12', '', NULL, 1, '2021-04-23 20:28:20', 1, '2021-04-24 11:58:20', NULL),
-(5, 7, 7, 1, NULL, 1, '10', '200', '2240', '12', '240', NULL, 1, '2021-04-23 21:38:31', 1, '2021-04-24 13:08:32', NULL),
-(6, 7, 7, 1, NULL, 2, '10', '100', '1120', '12', '120', NULL, 1, '2021-04-23 21:38:33', 1, '2021-04-24 13:08:33', NULL);
+(1, 2, 1, 1, NULL, 1, '10', '200', '2240', '12', '240', NULL, 1, '2021-04-30 03:34:29', 1, '2021-04-30 06:02:19', NULL),
+(2, 2, 1, 1, NULL, 2, '10', '100', '1120', '12', '120', NULL, 1, '2021-04-30 03:31:11', 1, '2021-04-30 07:01:08', NULL),
+(3, 2, 1, 2, NULL, 3, '5', '100', '560', '12', '60', NULL, 1, '2021-04-30 06:59:45', 1, '2021-04-30 10:29:44', NULL);
 
 -- --------------------------------------------------------
 
@@ -198,7 +271,9 @@ INSERT INTO `mk_customer_term` (`customer_term_id`, `term_id`, `customer_id`, `p
 (4, 2, 6, NULL, 0, '2021-04-23 19:50:19', 1, '2021-04-23 20:20:09', 1),
 (5, 1, 3, NULL, 1, '2021-04-23 20:30:50', 1, NULL, NULL),
 (6, 1, 7, NULL, 1, '2021-04-23 21:39:30', 1, NULL, NULL),
-(7, 2, 7, NULL, 1, '2021-04-23 21:39:46', 1, NULL, NULL);
+(7, 2, 7, NULL, 1, '2021-04-23 21:39:46', 1, NULL, NULL),
+(8, 1, 2, NULL, 1, '2021-04-26 20:01:36', 1, NULL, NULL),
+(9, 2, 2, NULL, 1, '2021-04-29 02:38:41', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -329,10 +404,13 @@ CREATE TABLE `mk_lead_customer` (
 --
 
 INSERT INTO `mk_lead_customer` (`id`, `lead_id`, `customer_id`, `po_id`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 1, 5, 0, '2021-04-23 18:30:00', 1, '2021-04-23 18:30:00', 1),
+(1, 1, 2, 0, '2021-04-23 18:30:00', 1, '2021-04-26 18:30:00', 1),
 (2, 2, 6, 0, '2021-04-23 18:30:00', 1, NULL, 0),
 (3, 3, 3, 0, NULL, 0, '2021-04-23 18:30:00', 1),
-(4, 7, 7, 0, '2021-04-23 18:30:00', 1, NULL, 0);
+(4, 7, 7, 0, '2021-04-23 18:30:00', 1, NULL, 0),
+(5, 5, 2, 0, NULL, 0, '2021-04-26 18:30:00', 1),
+(6, 1, 1, 0, NULL, 0, '2021-04-26 18:30:00', 1),
+(7, 1, 5, 0, NULL, 0, '2021-04-26 18:30:00', 1);
 
 -- --------------------------------------------------------
 
@@ -377,6 +455,7 @@ INSERT INTO `mk_lead_quotation` (`id`, `application_number`, `agent_id`, `teamle
 CREATE TABLE `mk_master_product` (
   `product_id` int(11) NOT NULL,
   `product_name` varchar(255) NOT NULL,
+  `product_image` varchar(250) DEFAULT NULL,
   `is_active` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp(),
   `created_by` int(11) NOT NULL,
@@ -388,9 +467,10 @@ CREATE TABLE `mk_master_product` (
 -- Dumping data for table `mk_master_product`
 --
 
-INSERT INTO `mk_master_product` (`product_id`, `product_name`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 'computer', 1, '2021-04-15 10:26:06', 1, NULL, NULL),
-(2, 'Electronics', 1, '2021-04-22 11:41:34', 1, NULL, NULL);
+INSERT INTO `mk_master_product` (`product_id`, `product_name`, `product_image`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
+(1, 'computer', 'india-31.png', 1, '2021-04-15 10:26:06', 1, NULL, NULL),
+(2, 'Electronics', 'baby-photography.png', 1, '2021-04-22 11:41:34', 1, NULL, NULL),
+(3, 'medical equipments', 'medical-equipments-medicine-blue-background_1308-43314.jpg', 0, '2021-05-05 06:55:05', 0, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -402,6 +482,7 @@ CREATE TABLE `mk_master_product_item` (
   `item_id` int(11) NOT NULL,
   `product_id` int(11) NOT NULL,
   `item_name` varchar(100) NOT NULL,
+  `item_image` varchar(250) DEFAULT NULL,
   `partnumber` varchar(250) NOT NULL,
   `unit_price` varchar(200) NOT NULL,
   `tax_rate` varchar(200) NOT NULL,
@@ -416,10 +497,11 @@ CREATE TABLE `mk_master_product_item` (
 -- Dumping data for table `mk_master_product_item`
 --
 
-INSERT INTO `mk_master_product_item` (`item_id`, `product_id`, `item_name`, `partnumber`, `unit_price`, `tax_rate`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 1, 'Keyboard', 'Keyboard', '200', '12', 1, NULL, '2021-04-15 10:26:36', NULL, NULL),
-(2, 1, 'Mouse', 'mouse', '100', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL),
-(3, 2, 'Television', 'television', '100', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL);
+INSERT INTO `mk_master_product_item` (`item_id`, `product_id`, `item_name`, `item_image`, `partnumber`, `unit_price`, `tax_rate`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
+(1, 1, 'Keyboard', NULL, 'Keyboard', '200', '12', 1, NULL, '2021-04-15 10:26:36', NULL, NULL),
+(2, 2, 'Mouse', 'bg2.jpg', 'mouse', '100', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL),
+(3, 2, 'Television', NULL, 'television', '100', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL),
+(4, 1, 'Mouse', 'unnamed.jpg', '', '', '', 1, NULL, '2021-05-07 11:38:12', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -442,8 +524,10 @@ CREATE TABLE `mk_master_term` (
 --
 
 INSERT INTO `mk_master_term` (`term_id`, `term_name`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 'A Terms and Conditions agreement is not legally required', 1, '2021-04-24 04:39:18', 1, NULL, NULL),
-(2, 'Right to make changes to the agreement', 1, '2021-04-24 04:40:33', 1, NULL, NULL);
+(1, 'A Terms and Conditions agreement is legally required.', 1, '2021-05-08 01:39:45', 1, NULL, NULL),
+(2, 'Right to make changes to the agreement', 1, '2021-04-24 04:40:33', 1, NULL, NULL),
+(3, 'testing the terms.....', 1, NULL, NULL, '2021-05-08 02:09:21', 1),
+(4, 'testing the items terms', 0, '2021-05-08 01:37:11', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -513,6 +597,29 @@ INSERT INTO `mk_registration_table` (`id`, `parent_id`, `firstname`, `lastname`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mk_related_to_master`
+--
+
+CREATE TABLE `mk_related_to_master` (
+  `id` int(11) NOT NULL,
+  `name` varchar(200) NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL,
+  `is_active` int(11) NOT NULL DEFAULT 1
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_related_to_master`
+--
+
+INSERT INTO `mk_related_to_master` (`id`, `name`, `created_by`, `created_at`, `modified_by`, `modified_at`, `is_active`) VALUES
+(1, 'accound', NULL, NULL, NULL, NULL, 1);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mk_reset_password_table`
 --
 
@@ -553,6 +660,24 @@ INSERT INTO `mk_roles` (`id`, `roles`, `categories`, `created_at`) VALUES
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `mk_activity`
+--
+ALTER TABLE `mk_activity`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mk_activity_attachments`
+--
+ALTER TABLE `mk_activity_attachments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mk_activity_master`
+--
+ALTER TABLE `mk_activity_master`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mk_admin_login_table`
@@ -658,6 +783,12 @@ ALTER TABLE `mk_registration_table`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mk_related_to_master`
+--
+ALTER TABLE `mk_related_to_master`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mk_reset_password_table`
 --
 ALTER TABLE `mk_reset_password_table`
@@ -672,6 +803,24 @@ ALTER TABLE `mk_roles`
 --
 -- AUTO_INCREMENT for dumped tables
 --
+
+--
+-- AUTO_INCREMENT for table `mk_activity`
+--
+ALTER TABLE `mk_activity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mk_activity_attachments`
+--
+ALTER TABLE `mk_activity_attachments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mk_activity_master`
+--
+ALTER TABLE `mk_activity_master`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mk_admin_login_table`
@@ -701,13 +850,13 @@ ALTER TABLE `mk_customer_address`
 -- AUTO_INCREMENT for table `mk_customer_item`
 --
 ALTER TABLE `mk_customer_item`
-  MODIFY `customer_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `customer_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mk_customer_term`
 --
 ALTER TABLE `mk_customer_term`
-  MODIFY `customer_term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `customer_term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT for table `mk_employee`
@@ -737,7 +886,7 @@ ALTER TABLE `mk_lead_assign`
 -- AUTO_INCREMENT for table `mk_lead_customer`
 --
 ALTER TABLE `mk_lead_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `mk_lead_quotation`
@@ -749,19 +898,19 @@ ALTER TABLE `mk_lead_quotation`
 -- AUTO_INCREMENT for table `mk_master_product`
 --
 ALTER TABLE `mk_master_product`
-  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `product_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mk_master_product_item`
 --
 ALTER TABLE `mk_master_product_item`
-  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `mk_master_term`
 --
 ALTER TABLE `mk_master_term`
-  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `mk_purchase_order`
@@ -774,6 +923,12 @@ ALTER TABLE `mk_purchase_order`
 --
 ALTER TABLE `mk_registration_table`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `mk_related_to_master`
+--
+ALTER TABLE `mk_related_to_master`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mk_reset_password_table`
