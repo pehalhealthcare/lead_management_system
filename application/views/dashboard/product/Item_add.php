@@ -7,10 +7,10 @@
                <div class="card-body">
                <?php echo $error; ?>
                <?php echo form_open_multipart('dashboard/products/item/add'); ?>
-               <div class="form-group">
+               <!-- <div class="form-group">
                     <label for="">Select Item Image</label>
                     <input type="file" name="userfile" size="20" accept="image/*" class="form-control" />
-               </div>
+               </div> -->
                <div class="form-group">
                     <label for="">Select Product</label>
                     <select name="product" id="" class="form-control text-capitalize">
@@ -25,7 +25,23 @@
                     <input type="text" name="fullname" id="" class="form-control border-bottom">
                </div>
                <div class="form-group">
-                    <input type="submit" class="mx-auto btn btn-success" value="ADD DATA" />
+                    <label for="">Part Number</label>
+                    <input type="text" name="partnumber" id=""  class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <label for="">HSN</label>
+                    <input type="text" name="hsn" id=""  class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <label for="">Item Price</label>
+                    <input type="text" name="item_price" id=""  class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <label for="">Tax Rate</label>
+                    <input type="text" name="tax_rate" id="" class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <input type="submit" class="mx-auto btn btn-success" value="SAVE & CLOSE" />
                </div>
                </div>
           </div>

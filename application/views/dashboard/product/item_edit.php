@@ -7,10 +7,10 @@
                <div class="card-body">
                <?php echo $error; ?>
                <?php echo form_open_multipart(''); ?>
-               <div class="form-group">
+               <!-- <div class="form-group">
                     <label for="">Select Item Image</label>
                     <input type="file" name="userfile" size="20" accept="image/*" class="form-control" />
-               </div>
+               </div> -->
                <div class="form-group">
                     <label for="">Select Product</label>
                     <select name="product" id="" class="form-control text-capitalize">
@@ -25,7 +25,24 @@
                     <input type="text" name="fullname" id="" value="<?= $items[0]["item_name"]?>" class="form-control border-bottom">
                </div>
                <div class="form-group">
-                    <input type="submit" class="mx-auto btn btn-success" value="UPDATE DATA" />
+                    <label for="">Part Number</label>
+                    <input type="text" name="partnumber" id="" value="<?= $items[0]["partnumber"]?>" class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <label for="">HSN</label>
+                    <input type="text" name="hsn" id="" value="<?= $items[0]["hsn"] ?>" class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <label for="">Item Price</label>
+                    <input type="text" name="item_price" id="" value="<?= $items[0]["unit_price"]?>" class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <label for="">Tax Rate</label>
+                    <input type="text" name="taxrate" readonly id="" value="<?= $items[0]["tax_rate"]?>" class="form-control border-bottom">
+                    <input type="hidden" name="tax_rate" readonly id="" value="<?= $items[0]["tax_rate"]?>" class="form-control border-bottom">
+               </div>
+               <div class="form-group">
+                    <input type="submit" class="mx-auto btn btn-success" value="UPDATE & CLOSE" />
                </div>
                </div>
           </div>

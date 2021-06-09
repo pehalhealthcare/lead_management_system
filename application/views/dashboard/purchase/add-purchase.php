@@ -49,7 +49,7 @@
      </div>
      <div class="card-footer">
           <div class="form-group">
-               <input type="submit" class="btn btn-success" value="ADD" />
+               <input type="submit" class="btn btn-success" value="SAVE & CLOSE" />
           </div>
      </div>
 </div>

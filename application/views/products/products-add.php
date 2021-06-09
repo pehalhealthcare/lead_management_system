@@ -29,7 +29,7 @@
 </select>
 </div>
 <div class="form-group">
-<input type="submit" class="mx-auto btn btn-success" value="ADD DATA" />
+<input type="submit" class="mx-auto btn btn-success" value="SAVE & CLOSE" />
 </div>
 </div>
 

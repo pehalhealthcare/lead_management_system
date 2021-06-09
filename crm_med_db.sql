@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 11, 2021 at 11:08 AM
+-- Generation Time: May 20, 2021 at 11:15 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -29,31 +29,41 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `mk_activity` (
   `id` int(11) NOT NULL,
-  `lead_id` int(11) NOT NULL,
-  `assigned_to` int(11) NOT NULL,
-  `activity_master_id` int(11) NOT NULL,
-  `subject` varchar(250) NOT NULL,
-  `direction` text NOT NULL,
-  `status` int(11) NOT NULL DEFAULT 1,
-  `communication_preferred` varchar(200) NOT NULL,
-  `lead_possibility` varchar(250) NOT NULL,
-  `related_to` int(11) NOT NULL,
-  `related_to_other` int(11) NOT NULL,
-  `start_date_time` varchar(50) NOT NULL,
-  `end_date_time` varchar(50) NOT NULL,
-  `reminder` varchar(250) NOT NULL,
-  `description` text NOT NULL,
-  `location` varchar(250) NOT NULL,
-  `from_add` varchar(250) NOT NULL,
-  `to_add` varchar(250) NOT NULL,
-  `cc` varchar(250) NOT NULL,
-  `bcc` varchar(250) NOT NULL,
-  `body` text NOT NULL,
+  `lead_id` int(11) DEFAULT NULL,
+  `assigned_to` varchar(50) DEFAULT NULL,
+  `activity_master_id` int(11) DEFAULT NULL,
+  `subject` varchar(250) DEFAULT NULL,
+  `direction` varchar(50) DEFAULT NULL,
+  `status` varchar(50) DEFAULT NULL,
+  `communication_preferred` varchar(200) DEFAULT NULL,
+  `lead_possibility` varchar(250) DEFAULT NULL,
+  `related_to` varchar(50) DEFAULT NULL,
+  `related_to_other` varchar(50) DEFAULT NULL,
+  `start_date_time` varchar(50) DEFAULT NULL,
+  `end_date_time` varchar(50) DEFAULT NULL,
+  `reminder` varchar(250) DEFAULT NULL,
+  `description` text DEFAULT NULL,
+  `location` varchar(250) DEFAULT NULL,
+  `from_add` varchar(250) DEFAULT NULL,
+  `to_add` varchar(250) DEFAULT NULL,
+  `cc` varchar(250) DEFAULT NULL,
+  `bcc` varchar(250) DEFAULT NULL,
+  `body` text DEFAULT NULL,
+  `is_active` int(11) NOT NULL DEFAULT 1,
   `created_by` int(11) DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `modified_by` int(11) DEFAULT NULL,
   `modified_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_activity`
+--
+
+INSERT INTO `mk_activity` (`id`, `lead_id`, `assigned_to`, `activity_master_id`, `subject`, `direction`, `status`, `communication_preferred`, `lead_possibility`, `related_to`, `related_to_other`, `start_date_time`, `end_date_time`, `reminder`, `description`, `location`, `from_add`, `to_add`, `cc`, `bcc`, `body`, `is_active`, `created_by`, `created_at`, `modified_by`, `modified_at`) VALUES
+(1, 1, 'Karthik', 1, 'Schedule Meeting', NULL, 'Planned', NULL, NULL, 'contact', NULL, '13-05-2021', '05/15/2021', '1', 'Schedule Meeting is Updated', 'Chennai', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-13 21:40:13', NULL, NULL),
+(2, 1, 'mayank', 2, 'Testing', 'Outbound', 'Held', 'email', 'qualified', 'Abishek', NULL, '15-05-2021', NULL, '1', 'testing', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-12 21:27:16', NULL, NULL),
+(3, 1, NULL, 3, 'Testing', NULL, NULL, NULL, NULL, 'abishek', NULL, NULL, NULL, NULL, NULL, NULL, 'veloukarthik@gmail.com', 'onlineguruweb@gmail.com', '', '', '<p>Testing</p>', 1, 1, '2021-05-12 21:28:32', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -113,6 +123,7 @@ CREATE TABLE `mk_admin_login_table` (
   `password` varchar(100) NOT NULL,
   `profile` varchar(250) NOT NULL,
   `role` varchar(100) NOT NULL,
+  `category` varchar(100) NOT NULL,
   `status` int(11) NOT NULL,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
@@ -121,8 +132,8 @@ CREATE TABLE `mk_admin_login_table` (
 -- Dumping data for table `mk_admin_login_table`
 --
 
-INSERT INTO `mk_admin_login_table` (`id`, `firstname`, `lastname`, `department`, `email`, `mobile`, `password`, `profile`, `role`, `status`, `created_at`) VALUES
-(1, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '1', 0, '2021-04-05 11:41:08');
+INSERT INTO `mk_admin_login_table` (`id`, `firstname`, `lastname`, `department`, `email`, `mobile`, `password`, `profile`, `role`, `category`, `status`, `created_at`) VALUES
+(1, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '1', 'Admin', 0, '2021-05-15 10:16:41');
 
 -- --------------------------------------------------------
 
@@ -222,6 +233,8 @@ CREATE TABLE `mk_customer_item` (
   `item_id` int(11) NOT NULL,
   `quantity` varchar(200) NOT NULL,
   `unit_price` varchar(200) NOT NULL,
+  `selling_unit_price` varchar(50) DEFAULT NULL,
+  `selling_price` varchar(100) DEFAULT NULL,
   `total_price` varchar(200) NOT NULL,
   `tax_rate` varchar(200) NOT NULL,
   `tax_amount` varchar(200) NOT NULL,
@@ -237,10 +250,9 @@ CREATE TABLE `mk_customer_item` (
 -- Dumping data for table `mk_customer_item`
 --
 
-INSERT INTO `mk_customer_item` (`customer_item_id`, `customer_id`, `lead_id`, `product_id`, `purchase_order_id`, `item_id`, `quantity`, `unit_price`, `total_price`, `tax_rate`, `tax_amount`, `total_amount`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 2, 1, 1, NULL, 1, '10', '200', '2240', '12', '240', NULL, 1, '2021-04-30 03:34:29', 1, '2021-04-30 06:02:19', NULL),
-(2, 2, 1, 1, NULL, 2, '10', '100', '1120', '12', '120', NULL, 1, '2021-04-30 03:31:11', 1, '2021-04-30 07:01:08', NULL),
-(3, 2, 1, 2, NULL, 3, '5', '100', '560', '12', '60', NULL, 1, '2021-04-30 06:59:45', 1, '2021-04-30 10:29:44', NULL);
+INSERT INTO `mk_customer_item` (`customer_item_id`, `customer_id`, `lead_id`, `product_id`, `purchase_order_id`, `item_id`, `quantity`, `unit_price`, `selling_unit_price`, `selling_price`, `total_price`, `tax_rate`, `tax_amount`, `total_amount`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
+(1, 2, 1, 1, NULL, 1, '100', '200', '100', '89', '9968', '12', '1068', NULL, 1, '2021-05-20 05:43:58', 1, '2021-05-20 09:11:17', NULL),
+(2, 2, 1, 1, NULL, 4, '100', '100', '50', '43', '4988', '16', '688', NULL, 1, '2021-05-20 05:44:27', 1, '2021-05-20 09:14:26', NULL);
 
 -- --------------------------------------------------------
 
@@ -415,6 +427,144 @@ INSERT INTO `mk_lead_customer` (`id`, `lead_id`, `customer_id`, `po_id`, `create
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mk_lead_history`
+--
+
+CREATE TABLE `mk_lead_history` (
+  `id` int(11) NOT NULL,
+  `actions` text NOT NULL,
+  `lead_id` int(11) NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_lead_history`
+--
+
+INSERT INTO `mk_lead_history` (`id`, `actions`, `lead_id`, `created_by`, `created_at`) VALUES
+(1, 'Product Items added for lead', 1, 1, '2021-05-13 11:17:07'),
+(2, 'Schedule meeting added for lead', 1, 1, '2021-05-13 11:23:00'),
+(3, 'schedule meeting created for lead', 1, 1, '2021-05-12 20:12:27'),
+(4, 'schedule meeting created for lead', 1, 1, '2021-05-12 20:14:11'),
+(5, 'Log call created for lead', 1, 1, '2021-05-12 21:27:17'),
+(6, 'opportunity created for lead', 1, 1, '2021-05-14 02:59:59'),
+(7, 'opportunity updated for lead', 1, 1, '2021-05-14 06:27:52'),
+(8, 'schedule meeting is updated for lead', 1, 1, '2021-05-13 21:40:13'),
+(9, 'opportunity created for lead', 1, 2, '2021-05-14 21:52:48'),
+(10, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:47'),
+(11, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:48'),
+(12, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:48'),
+(13, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:48'),
+(14, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:51'),
+(15, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:51'),
+(16, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:51'),
+(17, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:51'),
+(18, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:53'),
+(19, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:53'),
+(20, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:53'),
+(21, 'Product item updated for lead', 1, 1, '2021-05-17 07:15:53'),
+(22, 'Product item updated for lead', 1, 1, '2021-05-17 07:18:31'),
+(23, 'Product item updated for lead', 1, 1, '2021-05-17 07:18:31'),
+(24, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:29'),
+(25, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:42'),
+(26, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:42'),
+(27, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:42'),
+(28, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:42'),
+(29, 'Product item added for lead', 1, 1, '2021-05-16 21:30:44'),
+(30, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:44'),
+(31, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:45'),
+(32, 'Product item updated for lead', 1, 1, '2021-05-16 21:30:45'),
+(33, 'Product item added for lead', 1, 1, '2021-05-16 21:33:19'),
+(34, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:19'),
+(35, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:19'),
+(36, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:19'),
+(37, 'Product item added for lead', 1, 1, '2021-05-16 21:33:21'),
+(38, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:21'),
+(39, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:21'),
+(40, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:21'),
+(41, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:23'),
+(42, 'Product item updated for lead', 1, 1, '2021-05-16 21:33:24'),
+(43, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:50'),
+(44, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:50'),
+(45, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:50'),
+(46, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:50'),
+(47, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:52'),
+(48, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:52'),
+(49, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:52'),
+(50, 'Product item updated for lead', 1, 1, '2021-05-16 21:34:52'),
+(51, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:19'),
+(52, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:19'),
+(53, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:19'),
+(54, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:19'),
+(55, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:23'),
+(56, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:23'),
+(57, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:24'),
+(58, 'Product item updated for lead', 1, 1, '2021-05-16 21:35:24'),
+(59, 'Product item updated for lead', 1, 1, '2021-05-16 21:57:27'),
+(60, 'Product item updated for lead', 1, 1, '2021-05-16 21:57:27'),
+(61, 'Product item updated for lead', 1, 1, '2021-05-16 21:57:27'),
+(62, 'Product item updated for lead', 1, 1, '2021-05-16 21:57:27'),
+(63, 'Product item updated for lead', 1, 1, '2021-05-16 21:59:09'),
+(64, 'Product item updated for lead', 1, 1, '2021-05-16 21:59:09'),
+(65, 'Product item updated for lead', 1, 1, '2021-05-16 22:07:13'),
+(66, 'Product item updated for lead', 1, 1, '2021-05-16 22:07:13'),
+(67, 'Product item updated for lead', 1, 1, '2021-05-16 22:07:16'),
+(68, 'Product item updated for lead', 1, 1, '2021-05-16 22:07:16'),
+(69, 'Product item updated for lead', 1, 1, '2021-05-16 22:07:48'),
+(70, 'Product item updated for lead', 1, 1, '2021-05-16 22:12:29'),
+(71, 'Product item updated for lead', 1, 1, '2021-05-16 22:12:30'),
+(72, 'Product item updated for lead', 1, 1, '2021-05-16 22:13:13'),
+(73, 'Product item updated for lead', 1, 1, '2021-05-16 22:13:17'),
+(74, 'Product item updated for lead', 1, 1, '2021-05-16 22:13:32'),
+(75, 'Product item updated for lead', 1, 1, '2021-05-16 22:13:37'),
+(76, 'Product item updated for lead', 1, 1, '2021-05-20 02:05:46'),
+(77, 'Product item updated for lead', 1, 1, '2021-05-20 02:05:48'),
+(78, 'Product item updated for lead', 1, 1, '2021-05-20 02:05:58'),
+(79, 'Product item updated for lead', 1, 1, '2021-05-20 02:07:11'),
+(80, 'Product item updated for lead', 1, 1, '2021-05-20 02:07:11'),
+(81, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:33'),
+(82, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:33'),
+(83, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:41'),
+(84, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:41'),
+(85, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:47'),
+(86, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:49'),
+(87, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:52'),
+(88, 'Product item updated for lead', 1, 1, '2021-05-20 02:08:54'),
+(89, 'Product item updated for lead', 1, 1, '2021-05-20 02:11:42'),
+(90, 'Product item updated for lead', 1, 1, '2021-05-20 02:11:45'),
+(91, 'Product item updated for lead', 1, 1, '2021-05-20 02:11:45'),
+(92, 'Product item updated for lead', 1, 1, '2021-05-20 02:11:46'),
+(93, 'Product item updated for lead', 1, 1, '2021-05-20 02:11:48'),
+(94, 'Product item updated for lead', 1, 1, '2021-05-20 02:13:56'),
+(95, 'Product item updated for lead', 1, 1, '2021-05-20 02:13:57'),
+(96, 'Product item updated for lead', 1, 1, '2021-05-20 02:13:57'),
+(97, 'Product item updated for lead', 1, 1, '2021-05-20 02:14:01'),
+(98, 'Product item updated for lead', 1, 1, '2021-05-20 02:14:01'),
+(99, 'Product item updated for lead', 1, 1, '2021-05-20 02:14:01'),
+(100, 'Product item updated for lead', 1, 1, '2021-05-20 02:15:31'),
+(101, 'Product item updated for lead', 1, 1, '2021-05-20 02:15:31'),
+(102, 'Product item updated for lead', 1, 1, '2021-05-20 02:15:31'),
+(103, 'Product item updated for lead', 1, 1, '2021-05-20 02:15:44'),
+(104, 'Product item updated for lead', 1, 1, '2021-05-20 02:15:45'),
+(105, 'Product item updated for lead', 1, 1, '2021-05-20 02:15:45'),
+(106, 'Product item updated for lead', 1, 1, '2021-05-20 05:29:33'),
+(107, 'Product item updated for lead', 1, 1, '2021-05-20 05:29:33'),
+(108, 'Product item updated for lead', 1, 1, '2021-05-20 05:29:33'),
+(109, 'Product item updated for lead', 1, 1, '2021-05-20 05:29:34'),
+(110, 'Product item updated for lead', 1, 1, '2021-05-20 05:29:36'),
+(111, 'Product item added for lead', 1, 1, '2021-05-20 05:41:17'),
+(112, 'Product item updated for lead', 1, 1, '2021-05-20 05:41:17'),
+(113, 'Product item updated for lead', 1, 1, '2021-05-20 05:41:34'),
+(114, 'Product item updated for lead', 1, 1, '2021-05-20 05:41:53'),
+(115, 'Product item updated for lead', 1, 1, '2021-05-20 05:43:58'),
+(116, 'Product item added for lead', 1, 1, '2021-05-20 05:44:26'),
+(117, 'Product item updated for lead', 1, 1, '2021-05-20 05:44:27'),
+(118, 'Product item updated for lead', 1, 1, '2021-05-20 05:44:27');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mk_lead_quotation`
 --
 
@@ -485,6 +635,7 @@ CREATE TABLE `mk_master_product_item` (
   `item_image` varchar(250) DEFAULT NULL,
   `partnumber` varchar(250) NOT NULL,
   `unit_price` varchar(200) NOT NULL,
+  `selling_price` varchar(100) DEFAULT NULL,
   `tax_rate` varchar(200) NOT NULL,
   `is_active` int(11) NOT NULL DEFAULT 1,
   `created_at` int(11) DEFAULT NULL,
@@ -497,11 +648,11 @@ CREATE TABLE `mk_master_product_item` (
 -- Dumping data for table `mk_master_product_item`
 --
 
-INSERT INTO `mk_master_product_item` (`item_id`, `product_id`, `item_name`, `item_image`, `partnumber`, `unit_price`, `tax_rate`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 1, 'Keyboard', NULL, 'Keyboard', '200', '12', 1, NULL, '2021-04-15 10:26:36', NULL, NULL),
-(2, 2, 'Mouse', 'bg2.jpg', 'mouse', '100', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL),
-(3, 2, 'Television', NULL, 'television', '100', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL),
-(4, 1, 'Mouse', 'unnamed.jpg', '', '', '', 1, NULL, '2021-05-07 11:38:12', NULL, NULL);
+INSERT INTO `mk_master_product_item` (`item_id`, `product_id`, `item_name`, `item_image`, `partnumber`, `unit_price`, `selling_price`, `tax_rate`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
+(1, 1, 'Keyboard', NULL, 'Keyboard', '200', '', '12', 1, NULL, '2021-04-15 10:26:36', NULL, NULL),
+(2, 2, 'Monitor', 'bg2.jpg', 'Monitor', '100', '', '12', 1, 1, '2021-04-15 10:27:01', 2021, '0000-00-00 00:00:00'),
+(3, 2, 'Television', NULL, 'television', '100', '', '12', 1, 1, '2021-04-15 10:27:01', NULL, NULL),
+(4, 1, 'Mouse', 'unnamed.jpg', 'mouse', '100', '', '16', 1, NULL, '2021-05-07 11:38:12', 2021, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -528,6 +679,36 @@ INSERT INTO `mk_master_term` (`term_id`, `term_name`, `is_active`, `created_at`,
 (2, 'Right to make changes to the agreement', 1, '2021-04-24 04:40:33', 1, NULL, NULL),
 (3, 'testing the terms.....', 1, NULL, NULL, '2021-05-08 02:09:21', 1),
 (4, 'testing the items terms', 0, '2021-05-08 01:37:11', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_opportunity`
+--
+
+CREATE TABLE `mk_opportunity` (
+  `id` int(11) NOT NULL,
+  `opportunity_name` varchar(100) NOT NULL,
+  `expected_amount` varchar(100) NOT NULL,
+  `expected_date` varchar(100) NOT NULL,
+  `lead_id` int(11) NOT NULL,
+  `status` varchar(250) NOT NULL,
+  `remarks` varchar(250) NOT NULL,
+  `is_active` int(11) NOT NULL DEFAULT 1,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modifed_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_opportunity`
+--
+
+INSERT INTO `mk_opportunity` (`id`, `opportunity_name`, `expected_amount`, `expected_date`, `lead_id`, `status`, `remarks`, `is_active`, `created_by`, `created_at`, `modifed_by`, `modified_at`) VALUES
+(1, 'Testing Opportunity', '300', '2022-05-02', 1, '1', 'good', 0, 1, '2021-05-14 06:27:52', NULL, NULL),
+(2, 'Testing Opportunity', '300', '2022-05-02', 0, '1', 'good', 0, 1, '2021-05-14 06:25:37', NULL, NULL),
+(3, 'Testing the opportunity', '3000', '2021-05-15', 1, '1', 'good', 1, 2, '2021-05-14 21:52:48', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -577,7 +758,7 @@ CREATE TABLE `mk_registration_table` (
   `profile` varchar(250) NOT NULL,
   `role` varchar(100) NOT NULL,
   `category` varchar(50) NOT NULL,
-  `status` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -586,13 +767,13 @@ CREATE TABLE `mk_registration_table` (
 --
 
 INSERT INTO `mk_registration_table` (`id`, `parent_id`, `firstname`, `lastname`, `department`, `email`, `mobile`, `password`, `profile`, `role`, `category`, `status`, `created_at`) VALUES
-(1, 0, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '2', 'BTL', 0, '2021-04-09 09:45:56'),
-(2, 1, 'arumugam', 'velou', 'IT', 'karthikvelou@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 10:37:28'),
-(3, 1, 'velou', 'karthik', 'IT', 'karthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 10:37:23'),
-(4, 1, 'rithik', 'karthik', 'IT', 'rithikkarthik@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20'),
-(5, 1, 'arun', 'kumar', 'IT', 'arunkumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20'),
-(6, 1, 'kumar', 'arun', 'IT', 'kumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20'),
-(7, 1, 'saravanan', 'kuppusamy', 'IT', 'saravanan@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-04-09 09:13:20');
+(1, 0, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '1', 'CA', 1, '2021-05-15 10:26:47'),
+(2, 1, 'arumugam', 'velou', 'IT', 'karthikvelou@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BTL', 1, '2021-05-17 10:29:10'),
+(3, 1, 'velou', 'karthik', 'CSC', 'karthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 1, '2021-05-17 10:33:13'),
+(4, 1, 'rithik', 'karthik', 'IT', 'rithikkarthik@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 1, '2021-05-15 10:26:52'),
+(5, 1, 'arun', 'kumar', 'IT', 'arunkumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OA', 1, '2021-05-17 10:15:34'),
+(6, 1, 'kumar', 'arun', 'IT', 'kumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 1, '2021-05-15 10:26:55'),
+(7, 1, 'saravanan', 'kuppusamy', 'IT', 'saravanan@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 1, '2021-05-15 10:26:57');
 
 -- --------------------------------------------------------
 
@@ -615,7 +796,20 @@ CREATE TABLE `mk_related_to_master` (
 --
 
 INSERT INTO `mk_related_to_master` (`id`, `name`, `created_by`, `created_at`, `modified_by`, `modified_at`, `is_active`) VALUES
-(1, 'accound', NULL, NULL, NULL, NULL, 1);
+(1, 'Account', NULL, NULL, NULL, NULL, 1),
+(2, 'Contact', NULL, NULL, NULL, NULL, 1),
+(3, 'Task', NULL, NULL, NULL, NULL, 1),
+(4, 'Opportunity', NULL, NULL, NULL, NULL, 1),
+(5, 'Bug', NULL, NULL, NULL, NULL, 1),
+(6, 'Case', NULL, NULL, NULL, NULL, 1),
+(7, 'Lead', NULL, NULL, NULL, NULL, 1),
+(8, 'Project', NULL, NULL, NULL, NULL, 1),
+(9, 'Project Task', NULL, NULL, NULL, NULL, 1),
+(10, 'Target', NULL, NULL, NULL, NULL, 1),
+(11, 'Contract', NULL, NULL, NULL, NULL, 1),
+(12, 'Invoice', NULL, NULL, NULL, NULL, 1),
+(13, 'Quote', NULL, NULL, NULL, NULL, 1),
+(14, 'Product', NULL, NULL, NULL, NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -747,6 +941,12 @@ ALTER TABLE `mk_lead_customer`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `mk_lead_history`
+--
+ALTER TABLE `mk_lead_history`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mk_lead_quotation`
 --
 ALTER TABLE `mk_lead_quotation`
@@ -769,6 +969,12 @@ ALTER TABLE `mk_master_product_item`
 --
 ALTER TABLE `mk_master_term`
   ADD PRIMARY KEY (`term_id`);
+
+--
+-- Indexes for table `mk_opportunity`
+--
+ALTER TABLE `mk_opportunity`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `mk_purchase_order`
@@ -808,7 +1014,7 @@ ALTER TABLE `mk_roles`
 -- AUTO_INCREMENT for table `mk_activity`
 --
 ALTER TABLE `mk_activity`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `mk_activity_attachments`
@@ -850,7 +1056,7 @@ ALTER TABLE `mk_customer_address`
 -- AUTO_INCREMENT for table `mk_customer_item`
 --
 ALTER TABLE `mk_customer_item`
-  MODIFY `customer_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `customer_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mk_customer_term`
@@ -889,6 +1095,12 @@ ALTER TABLE `mk_lead_customer`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
+-- AUTO_INCREMENT for table `mk_lead_history`
+--
+ALTER TABLE `mk_lead_history`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=119;
+
+--
 -- AUTO_INCREMENT for table `mk_lead_quotation`
 --
 ALTER TABLE `mk_lead_quotation`
@@ -913,6 +1125,12 @@ ALTER TABLE `mk_master_term`
   MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `mk_opportunity`
+--
+ALTER TABLE `mk_opportunity`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
 -- AUTO_INCREMENT for table `mk_purchase_order`
 --
 ALTER TABLE `mk_purchase_order`
@@ -928,7 +1146,7 @@ ALTER TABLE `mk_registration_table`
 -- AUTO_INCREMENT for table `mk_related_to_master`
 --
 ALTER TABLE `mk_related_to_master`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT for table `mk_reset_password_table`

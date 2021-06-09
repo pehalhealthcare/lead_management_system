@@ -20,11 +20,14 @@
                <td><?= $user->mobile ?></td>
                <td><?= $user->email ?></td>
                <td><?= ($user->role==1) ? "Admin" : "Group"?></td>
-               <td><?= ($user->category=="BA") ? "Business Agent" : ""?>
-                    <?= ($user->category=="OA") ? "Operation Agent" : ""?></td>
                <td>
-               <a href="" class="btn btn-sm btn-primary">EDIT</a>
-               <a href="" class="btn btn-sm btn-danger">DELETE</a></td>
+                    <?= ($user->category=="BTL") ? "Business Team Leader" : ""?>
+                    <?= ($user->category=="BA") ? "Business Agent" : ""?>
+                    <?= ($user->category=="OA") ? "Operation Agent" : ""?>
+               </td>
+               <td>
+               <a href="<?= base_url()?>dashboard/edit/user/<?= $user->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
+               <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
           </tr>
           <?php endforeach;?>
      </thead>

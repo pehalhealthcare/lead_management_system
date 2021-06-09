@@ -44,6 +44,9 @@ class User extends CI_Controller {
                          $this->session->email = $user[0]->email;
                          $this->session->name = $user[0]->firstname;
                          $this->session->userID = $user[0]->id;
+                         $this->session->role= $user[0]->role;
+                         $this->session->category= $user[0]->category;
+
 
                          // print_r($user);
                          
@@ -116,6 +119,65 @@ class User extends CI_Controller {
                 }
      }
 
+     public function edit_user($id="")
+     {
+
+          $data["title"] = "Edit User Details";
+          $email = $this->input->post("email");
+
+
+          $data["userdata"] = $this->user_model->userdata($id);
+
+          // print_r($data["userdata"]); die();
+
+          $insertdata = array(
+               "firstname" => $this->input->post("first_name"),
+               "lastname" => $this->input->post("last_name"),
+               "mobile" =>    $this->input->post("mobile"),
+               "email" =>    $this->input->post("email"),
+               "role" => $this->input->post("role"),
+               "category" => $this->input->post("category"),
+               "department" => $this->input->post("department"),
+               "parent_id" => $this->session->userID
+          );
+
+          if($this->input->post("password"))
+          {
+               $insertdata["password"] = hash("sha256",$this->input->post("password"));
+          }
+          
+
+
+         $this->form_validation->set_rules('email', 'Email', 'required');
+                
+
+                if ($this->form_validation->run() == FALSE)
+                {        
+                        $this->load->view("inc/header",$data);
+                        $this->load->view('dashboard/user/edit-user');
+                        $this->load->view("inc/footer");
+                }
+                else
+                {
+                    
+                   
+                         $cond = array("id"=>$id);
+                         if($this->common_model->updatedata("mk_registration_table",$insertdata,$cond))
+                         {
+                              return redirect("dashboard/user");
+                              // print_r($insertdata);
+                         }
+                         else
+                         {
+                              $data["error"] = "User Already Registered";
+                              $this->load->view("inc/header",$data);
+                              $this->load->view('dashboard/user/create-user');
+                              $this->load->view("inc/footer");
+                         }
+                    
+                }
+     }
+
      public function view_user()
      {
           $data["title"] = "Dashboard | User Details";
@@ -124,6 +186,24 @@ class User extends CI_Controller {
           $this->load->view("inc/header",$data);
           $this->load->view('dashboard/user/view-user',$data);
           $this->load->view("inc/footer");
+     }
+
+     public function delete_user($id)
+     {
+          $cond = array("id"=>$id);
+
+          $data = array(
+               "status"=>0
+          );
+          if($this->common_model->updatedata("mk_registration_table",$data,$cond))
+          {
+               return redirect("dashboard/user");
+               // print_r($insertdata);
+          }
+          else
+          {
+               return redirect("dashboard/user");
+          }
      }
 
      public function forgotpassword()
@@ -175,20 +255,6 @@ class User extends CI_Controller {
                          $this->load->view("inc/footer");
                     }
                     
-
-                    // $user = $this->user_model->userlogin($username,$password);
-                    // if($user!="")
-                    // {
-                    //      $this->session->email = $user[0]->email;
-                    //      $this->session->name = $user[0]->username;
-                         
-                    //      return redirect("/products");
-                        
-                    // }
-                    // else
-                    // {
-                    //      echo "No Data Found";
-                    // }
                 }
      }
 

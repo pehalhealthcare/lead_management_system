@@ -29,20 +29,21 @@
   <?php $i=0; foreach($leads as $lead): $i++?>
     <tr>
       <td><?= $i;?></td>
-      <td><?= ($lead->lead_source==2) ? "PRODUCT" : ""; ?><?= ($lead->lead_source==1) ? "SERVICES" : "";?> <?=($lead->lead_source==3) ? "PRODUCT AND SERVICE" : "";
+      <td><?= ($lead->category==2) ? "PRODUCT" : ""; ?><?= ($lead->category==1) ? "SERVICES" : "";?> <?=($lead->category==3) ? "PRODUCT AND SERVICE" : "";
       ?></td>
       <td><?php echo $this->user_model->username($lead->assigned_to);//?></td>
-      <td><img src="<?= base_url();?>uploads/lead_image/<?= $lead->lead_image ?>" style="width:50px" /></td>
+      <td><img src="<?= base_url();?>uploads/lead_image/<?= ($lead->lead_image) ? $lead->lead_image : "no-image.jpg" ?>" style="width:50px" /></td>
       <!-- <td><?= $lead->status ?></td>
       <td><?= $lead->reasons ?></td> -->
       <td>
-      <a href="<?= base_url()?>dashboard/leads/assign/customer/<?= $lead->id?>" title="Assign Leads" class="btn btn-primary">
+      <a href="<?= base_url()?>dashboard/leads/assign/<?= $lead->id?>" title="Assign Leads" class="btn btn-primary">
       <i class="fa fa-user"></i></a>
-      <!-- <a href="<?= base_url()?>dashboard/add/purchase-order/<?= $lead->id?>" class="btn btn-primary">Create Purchase</a> -->
+      <?php if($this->session->category=="BTL" || $this->session->role==1):?>
       <a href="<?= base_url()?>dashboard/edit/leads/<?= $lead->id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
       <button type="button" class="btn btn-danger delete-data" data-id="<?= $lead->id ?>"
       data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
       </td>
+      <?php endif; ?>
     </tr>
   <?php endforeach;?>
  </table>

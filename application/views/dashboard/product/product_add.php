@@ -16,7 +16,7 @@
                          <input type="text" name="fullname" id="" class="form-control border-bottom">
                     </div>
                     <div class="form-group">
-                         <input type="submit" class="mx-auto btn btn-success" value="ADD DATA" />
+                         <input type="submit" class="mx-auto btn btn-success" value="SAVE & CLOSE" />
                     </div>
                </div>
           </div>

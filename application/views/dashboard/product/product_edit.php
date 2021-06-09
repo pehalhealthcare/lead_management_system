@@ -16,7 +16,7 @@
                          <input type="text" name="fullname" value="<?= $products[0]["product_name"]; ?>" id="" class="form-control border-bottom">
                     </div>
                     <div class="form-group">
-                         <input type="submit" class="mx-auto btn btn-success" value="UPDATE DATA" />
+                         <input type="submit" class="mx-auto btn btn-success" value="UPDATE & CLOSE" />
                     </div>
                </div>
                

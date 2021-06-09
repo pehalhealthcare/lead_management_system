@@ -21,92 +21,97 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th>To</th>
 						<th>&nbsp;</th>
 						<th>DATE</th>
-						<th><?= date("d-m-Y") ?></th>
+						<th colspan="7"><?= date("d-m-Y") ?></th>
+						
 					</tr>
 					<tr>
 						<th><?= $customer[0]["prefix"]?></th>
 						<th><?= $customer[0]["name"]?></th>
 						<th>Terms</th>
-						<th>100% Advance Payment</th>
+						<th colspan="7">100% Advance Payment</th>
+						
 					</tr>
 					<tr>
 						<th>Address</th>
 						<th><?= $custAddress[0]["address_1"]?></th>
 						<th>Ref No</th>
-						<th>&nbsp;</th>
+						<th colspan="7">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 2</th>
 						<th><?= $custAddress[0]["address_2"]?> <?= $custAddress[0]["zip"]?></th>
 						<th>Ref 1</th>
-						<th>&nbsp;</th>
+						<th colspan="7">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 3</th>
 						<th><?= $custAddress[0]["address_3"]?></th>
 						<th>Ref 2</th>
-						<th>&nbsp;</th>
+						<th colspan="7">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Email ID</th>
 						<th><?= $customer[0]["email"]?></th>
 						<th>Ref 3</th>
-						<th>&nbsp;</th>
+						<th colspan="7">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Mobile </th>
 						<th><?= $customer[0]["mobile"]?></th>
 						<th>Ref 4</th>
-						<th>&nbsp;</th>
+						<th colspan="7">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>From</th>
 						<th>&nbsp;</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>M/s</th>
 						<th>Medikart Healthcare Systems Pvt Ltd</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 1</th>
 						<th>FF-45 Omaxe Square</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 2</th>
 						<th>Jasola District Centre</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 3</th>
 						<th>Behind Apollo Hopital ,New Delhi</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Email</th>
 						<th>lavi@gmail.com</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					
 					<tr>
 						<th>Mobile</th>
 						<th>8527911677</th>
-						<th colspan="2">&nbsp;</th>
+						<th colspan="8">&nbsp;</th>
 					</tr>
 					</table>
 					<table border="1" style="width:100%;border-collapse:collapse;">
 					<tr>
-						<td align="center" colspan="7"><h4>PartiCulars</h4></td>
+						<td align="center" colspan="10"><h4>PartiCulars</h4></td>
 					</tr>
 					<tr>
 						<th>SI NO</th>
 						<th>ITEM NAME</th>
 						<th>QUANTITY</th>
-						<th>ITEM PRICE</th>
+						<th>UNIT PRICE</th>
+						<th>SELLING PRICE</th>
 						<th>ITEM TAX(%)</th>
-						<th>ITEM TAX AMOUNT</th>
+						<th>TAX AMOUNT</th>
+						<th>Total Price(Without Tax)</th>
+						<th>ITEM TOTAL TAX AMOUNT</th>
 						<th>ITEM PRICE(WITH TAX)</th>
 					</tr>
 					<?php $i=0; $item_name=""; $taxtotal=0; $totalamount=0; foreach($customer_item as $pdfdata): $i++; ?>
@@ -123,10 +128,13 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<td><?= $item_name ?></td>
 						<td><?= $pdfdata["quantity"] ?></td>
 						<td><?= $pdfdata["unit_price"] ?></td>
+						<td><?= $pdfdata["selling_unit_price"] ?></td>
 						<td><?= $pdfdata["tax_rate"] ?></td>
 						<td><?= $pdfdata["tax_amount"] ?></td>
+						<td><?= $pdfdata["total_price_wo_tax"] ?></td>
+						<td><?= $pdfdata["total_tax_amount"] ?></td>
 						<td><?= $pdfdata["total_price"] ?></td>
-						<?php $taxtotal = $taxtotal+$pdfdata["tax_amount"]; $totalamount= $totalamount+$pdfdata["total_price"]; ?>
+						<?php $taxtotal = $taxtotal+$pdfdata["total_tax_amount"]; $totalamount= $totalamount+$pdfdata["total_price"]; ?>
 					</tr>
 						
 					<?php endforeach;?>
@@ -138,18 +146,21 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
+						<td>&nbsp;</td>
 					</tr>
 					
 					
 					<tr>
-						<th colspan="5">Grand Total</th>
+						<th colspan="8">Grand Total</th>
 						<th><?= $taxtotal ?></th>
 						<th><?= $totalamount ?></th>
 					</tr>
 					</table>
 					<table border="1" style="width:100%;border-collapse: collapse;">
 						<tr>
-							<th colspan="2">&nbsp;</th>
+							<th colspan="10">&nbsp;</th>
 						</tr>
 						<tr>
 							<th>Account Name : MediKart HealthCare Systems Pvt Ltd<br>
@@ -159,7 +170,7 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 							Bank Address : Kailsh Building ,K.G.Marg, C.P. New Delhi -110001
 							</th>
 						
-						<th>This is a Digital Document -It does not require SignaturesDisclusre by <br>(
+						<th colspan="2">This is a Digital Document -It does not require SignaturesDisclusre by <br>(
 							 Medikart HealthCare Systems Pvt Ltd<br>
 						CIN:U51909DL2013PTC262006,<br>
 						GSTIN:
@@ -167,7 +178,7 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						</th>
 						</tr >
 						<tr align="left">
-							<th colspan="2">Terms</th>
+							<th colspan="3">Terms</th>
 						</tr>
 						<?php $i=0; $term_name=""; foreach($customer_term as $customer): $i++; ?>
 						<?php 
@@ -178,7 +189,7 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						endforeach;
 						?>
 							<tr align="left">
-							  <th colspan="2"><?= $i?> : <?= $term_name ?></th>
+							  <th colspan="3"><?= $i?> : <?= $term_name ?></th>
 							</tr>
 						<?php endforeach;?>
 						

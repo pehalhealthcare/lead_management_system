@@ -22,11 +22,76 @@
                     <label for="">Lead Source</label>
                     <select name="lead_source" id="" class="form-control">
                          <option value="">Select Lead Source</option>
-                         <option value="1">Services</option>
-                         <option value="2">Product</option>
-                         <option value="3">Both Product & Service</option>
+                         <option label="Whats App" value="whatsapp">Whats App</option>
+                         <option label="India Mart" value="india_mart">India Mart</option>
+                         <option label="Cold Call" value="Cold Call">Cold Call</option>
+                         <option label="Existing Customer" value="Existing Customer">Existing Customer</option>
+                         <option label="Self Generated" value="Self Generated">Self Generated</option>
+                         <option label="Employee" value="Employee">Employee</option>
+                         <option label="Partner" value="Partner">Partner</option>
+                         <option label="Public Relations" value="Public Relations">Public Relations</option>
+                         <option label="Direct Mail" value="Direct Mail">Direct Mail</option>
+                         <option label="Conference" value="Conference">Conference</option>
+                         <option label="Trade Show" value="Trade Show">Trade Show</option>
+                         <option label="Web Site" value="Web Site">Web Site</option>
+                         <option label="Word of mouth" value="Word of mouth">Word of mouth</option>
+                         <option label="Email" value="Email">Email</option>
+                         <option label="Campaign" value="Campaign">Campaign</option>
+                         <option label="Other" value="Other">Other</option>
                     </select>
                </div>
+
+
+               <div class="form-group">
+                    <label for="">Lead Category</label>
+                    <select name="category" id="maincategory" class="form-control">
+                         <option value="">Select Category</option>
+                         <option value="1">Services</option>
+                         <option value="2">Product</option>
+                    </select>
+               </div>
+
+               <div class="form-group category_1 d-none">
+                    <label for="">Select Sub Category</label>
+                    <select name="sub_category" id="category_1" class="form-control">
+                         <option value="">Choose Sub Category</option>
+                         <option value="Sleep and Respiratory Diagnostics">Sleep and Respiratory Diagnostics</option>
+                         <option value="Patinet HomeCare">Patinet HomeCare</option>
+                         <option value="Rental services">Rental services</option>
+                         <option value="Medicines arrangement">Medicines arrangement</option>
+                         <option value="Blood Check facilities">Blood Check facilities</option>
+                         <option value="Patient Transport">Patient Transport</option>
+                         <option value="Patient Councseling">Patient Councseling</option>
+                         <option value="Any other specify-1">Any other specify-1</option>
+                         <option value="Any other specify-2">Any other specify-2</option>
+                         <option value="Any other specify-3">Any other specify-3</option>
+                    </select>
+               </div>
+
+               <div class="form-group category_2 d-none">
+                    <label for="">Select Sub Category</label>
+                    <select name="sub_category" id="category_2" class="form-control">
+                         <option value="">Choose Sub Category</option>
+                         <option value="CPAP Therapy">CPAP Therapy</option>
+                         <option value="BIPAP therapy">BIPAP therapy</option>
+                         <option value="NIV">NIV</option>
+                         <option value="Ventilators">Ventilators</option>
+                         <option value="Oxygen concentrators">Oxygen concentrators</option>
+                         <option value="Portable oxygen concentrator">Portable oxygen concentrator</option>
+                         <option value="Mask and Aceesories">Mask and Aceesories</option>
+                         <option value="Wheel chair and support Aids">Wheel chair and support Aids</option>
+                         <option value="Hospital Beds and other furniture">Hospital Beds and other furniture</option>
+                         <option value="Bed Accessories ,Matress etc">Bed Accessories ,Matress etc</option>
+                         <option value="Monitoring Devices">Monitoring Devices</option>
+                         <option value="Nebulizers & Atomisers">Nebulizers & Atomisers</option>
+                         <option value="Indoor pollution control devices & Purifiers">Indoor pollution control devices & Purifiers</option>
+                         <option value="Any other specify-1">Any other specify-1</option>
+                         <option value="Any other specify-2">Any other specify-2</option>
+                         <option value="Any other specify-3">Any other specify-3</option>
+                    </select>
+               </div>
+
+
 
                <div class="form-group">
                     <label for="">Assigned To</label>
@@ -94,7 +159,7 @@
           </div>
           <div class="card-footer">
                <div class="form-group">
-                    <input type="submit" class="btn btn-success" value="ADD" />
+                    <input type="submit" class="btn btn-success" value="SAVE & CLOSE" />
                </div>
           </div>
      </div>
@@ -163,7 +228,7 @@
 
                     <!-- Modal footer -->
                     <div class="modal-footer">
-                         <input type="submit" value="ADD" class="btn btn-success">
+                         <input type="submit" value="SAVE & CLOSE" class="btn btn-success">
                          <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
                     </div>
                </form>
@@ -174,6 +239,20 @@
 
 <script>
      $(document).ready(function() {
+
+          $("#maincategory").on("change",function(){
+               var value = $(this).find(":selected").val()
+               if(value==1)
+               {
+                    $(".category_1").removeClass("d-none");
+                    $(".category_2").addClass("d-none");
+               }
+               else if(value==2)
+               {
+                    $(".category_2").removeClass("d-none");
+                    $(".category_1").addClass("d-none");
+               }
+          });
 
           $(".customer").change(function() {
                if ($(".customer:checked").val() == "new") {

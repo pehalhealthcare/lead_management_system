@@ -101,10 +101,10 @@ else
 {
 	$db['default'] = array(
 		'dsn'	=> '',
-		'hostname' => 'localhost',
-		'username' => 'root',
-		'password' => '',
-		'database' => 'demo',
+		'hostname' => 'sql301.epizy.com',
+		'username' => 'epiz_28664506',
+		'password' => '97xgSyd7qn',
+		'database' => 'epiz_28664506_crm_med_db',
 		'dbdriver' => 'mysqli',
 		'dbprefix' => '',
 		'pconnect' => FALSE,

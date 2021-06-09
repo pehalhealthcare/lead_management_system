@@ -12,7 +12,7 @@
                               <label for="">Surname</label>
                               <select class="form-control" name="surname">
                                    <option value="Mr">Mr</option>
-                                   <option value="Miss">Miss</option>
+                                   <option value="Ms">Ms</option>
                                    <option value="Mrs">Mrs</option>
                               </select>
                          </div>
@@ -68,7 +68,7 @@
 
                </div>
                <div class="card-footer">
-                    <input type="submit" value="ADD" class="btn btn-success">
+                    <input type="submit" value="SAVE & CLOSE" class="btn btn-success">
                </div>
           </form>
      </div>

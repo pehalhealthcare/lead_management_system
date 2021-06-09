@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" >
 <head>
      <meta charset="UTF-8">
      <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,15 +14,18 @@
      <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script>
      <script src="<?= base_url() ?>assets/js/bootstrap-datepicker.min.js"></script>
      <script src="<?= base_url() ?>assets/js/main.js"></script>
+     <script src="<?= base_url() ?>assets/js/ckeditor.js"></script>
 </head>
-<body style="height: 100%;">
+<body>
 
-<div class="container-fluid p-0 m-0" >
 
-<div class="wrapper d-flex align-items-stretch" style="height: 120vh;">
+
+<div class="container-fluid p-0 m-0" style="height: 100%;">
+
+<div class="wrapper d-flex align-items-stretch" style="height: auto;min-height:100%" >
 
 <nav id="sidebar">
-<div class="custom-menu">
+<div class="custom-menu" >
 <button type="button" id="sidebarCollapse" class="btn btn-primary">
 <i class="fa fa-bars"></i>
 <span class="sr-only">Toggle Menu</span>
@@ -33,31 +36,32 @@
 <h1><a href="<?= base_url();?>" class="logo"><img src="<?= base_url();?>assets/images/logo.jpeg" style="width:100%" /></a></h1>
 <ul class="list-unstyled components mb-5">
 <li class="active">
-<a href="#"><span class="fa fa-home mr-3"></span> Home</a>
+<a href="<?= base_url()?>dashboard/"><span class="fa fa-home mr-3"></span> Home</a>
 </li>
+
+<?php if($this->session->role==1):?>
 <li>
 <a data-toggle="collapse" href="#collapseOne"><span class="fa fa-user mr-3"></span> Categories</a>
 </li>
 <li>
-<div id="collapseOne" class="collapse" data-parent="#accordion">
+<div id="collapseOne" class="collapse <?= ($this->uri->uri_string()=="dashboard/category") ? "show" : "" ?>" data-parent="#accordion">
 <ul class="list-unstyled components pl-3">
-      <li><a href="<?=base_url()?>dashboard/add/category"><span class="fa fa-plus mr-3"> Add Category</span></a></li>
-      <li><a href="<?=base_url()?>dashboard/category"><span class="fa fa-eye mr-3"> View Category</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/category"><span class="fa fa-plus mr-3"> View Category</span></a></li>
 </ul>
 </div>
 </li>
 <li>
-<a data-toggle="collapse" href="#collapsetwo"><span class="fa fa-briefcase mr-3"></span> Department</a>
+<a data-toggle="collapse" href="#collapsetwo"><span class="fa fa-briefcase mr-3"></span> Services</a>
 </li>
 <li>
-<div id="collapsetwo" class="collapse" data-parent="#accordion">
+<div id="collapsetwo" class="collapse <?= ($this->uri->uri_string()=="dashboard/services/add" || $this->uri->uri_string()=="dashboard/services" || $this->uri->uri_string()=="dashboard/services/item/add") ? "show" : "" ?>" data-parent="#accordion">
 <ul class="list-unstyled components pl-3">
-      <li><a href="<?=base_url()?>dashboard/add/department"><span class="fa fa-plus mr-3"> Add Department</span></a></li>
-      <li><a href="<?=base_url()?>dashboard/department"><span class="fa fa-eye mr-3"> View Department</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/services/add"><span class="fa fa-plus mr-3"> Add Services</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/services"><span class="fa fa-eye mr-3"> View Services</span></a></li>
+      <li><a href="<?=base_url()?>dashboard/services/item/add"><span class="fa fa-plus mr-3"> Add Service Item</span></a></li>
 </ul>
 </div>
 </li>
-
 <li>
 <a data-toggle="collapse" href="#collapseEight"><span class="fa fa-briefcase mr-3"></span>Products</a>
 </li>
@@ -70,7 +74,6 @@
 </ul>
 </div>
 </li>
-
 <li>
 <a data-toggle="collapse" href="#collapseNine"><span class="fa fa-briefcase mr-3"></span>Products Terms</a>
 </li>
@@ -82,6 +85,8 @@
 </ul>
 </div>
 </li>
+
+<?php endif;?>
 
 
 
@@ -98,6 +103,8 @@
 </div>
 </li>
 
+
+<?php if($this->session->role==1):?>
 <li>
 <a data-toggle="collapse" href="#collapsefive"><span class="fa fa-briefcase mr-3"></span> Lead Customer</a>
 </li>
@@ -110,20 +117,6 @@
 </ul>
 </div>
 </li>
-
-<!-- <li>
-<a data-toggle="collapse" href="#collapsesix"><span class="fa fa-briefcase mr-3"></span>Purchase Order</a>
-</li>
-<li>
-<div id="collapsesix" class="collapse <?= ($this->uri->uri_string()=="dashboard/add/purchase-order" || $this->uri->uri_string()=="dashboard/purchase-order") ? "show" : ""  ?>" data-parent="#accordion">
-<ul class="list-unstyled components pl-3">
-      <li><a href="<?=base_url()?>dashboard/add/purchase-order"><span class="fa fa-plus mr-3"> Add Purchase Order</span></a></li>
-      <li><a href="<?=base_url()?>dashboard/purchase-order"><span class="fa fa-eye mr-3"> View Purchase Order</span></a></li>
-      
-</ul>
-</div>
-</li> -->
-
 <li>
 <a data-toggle="collapse" href="#collapsethree"><span class="fa fa-sticky-note mr-3"></span> User Manage</a>
 </li>
@@ -135,6 +128,7 @@
 </ul>
 </div>
 </li>
+<?php endif;?>
 <li>
 <a href="<?=base_url()?>logout"><span class="fa fa-sign-out mr-3"></span> Logout</a>
 </li>

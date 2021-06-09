@@ -12,7 +12,7 @@
                               <label for="">Surname</label>
                               <select class="form-control" name="surname">
                                    <option <?= ($leadcustomer[0]["prefix"] == "Mr") ? "selected" : "" ?> value="Mr">Mr</option>
-                                   <option <?= ($leadcustomer[0]["prefix"] == "Miss") ? "selected" : "" ?> value="Miss">Miss</option>
+                                   <option <?= ($leadcustomer[0]["prefix"] == "Ms") ? "selected" : "" ?> value="Ms">Ms</option>
                                    <option <?= ($leadcustomer[0]["prefix"] == "Mrs") ? "selected" : "" ?> value="Mrs">Mrs</option>
                               </select>
                          </div>
@@ -68,7 +68,7 @@
 
                </div>
                <div class="card-footer">
-                    <input type="submit" value="UPDATE" class="btn btn-success">
+                    <input type="submit" "UPDATE & CLOSE" class="btn btn-success">
                </div>
           </form>
      </div>

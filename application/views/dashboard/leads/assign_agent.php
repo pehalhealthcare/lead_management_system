@@ -36,7 +36,7 @@
               </div>
            </div>
            <div class="card-footer">
-                    <input type="submit" class="btn btn-success" value="ADD">
+                    <input type="submit" class="btn btn-success" value="SAVE & CLOSE">
            </div>
            </form>   
       </div>
