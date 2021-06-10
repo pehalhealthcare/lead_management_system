@@ -23,10 +23,10 @@
                          <input type="text" name="last_name" class="form-control" value="<?php echo $userdata[0]->lastname ? $userdata[0]->lastname : set_value('last_name'); ?>"  />
                     </div>
 
-                    <div class="form-group col-sm-12 col-md-6">
+                    <!-- <div class="form-group col-sm-12 col-md-6">
                          <label for="">Department</label>
                          <input type="text" name="department" class="form-control" value="<?php echo $userdata[0]->department ? $userdata[0]->department : set_value('department'); ?>"  />
-                    </div>
+                    </div> -->
 
 
                     <div class="form-group col-sm-12 col-md-6">

@@ -90,7 +90,8 @@ class User_model extends CI_Model
 
      public function user_detail($id)
      {
-          $array = array("parent_id",$id,"status"=>1);
+          // "parent_id"=>$id,
+          $array = array("status"=>1);
           $this->db->where($array);
           $user = $this->db->get("mk_registration_table");
 

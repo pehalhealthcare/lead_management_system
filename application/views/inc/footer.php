@@ -40,7 +40,34 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        Are you sure want to close the leads ?
+        <input type="hidden" id="close_lead_id" value="<?= ($lead_id) ? $lead_id : ""?>" />
+        <select class="form-control border lead-reasons">
+          <option value="">Select Reasons</option>
+          <option value="Already Purchased">Already Purchased</option>
+          <option value="Not Interested Now">Not Interested Now</option>
+          <option value="Will Ask Relative">Will Ask Relative</option>
+          <option value="Rental Unit Taken">Rental Unit Taken</option>
+          <option value="Competition Price Issue">Competition Price Issue</option>
+          <option value="Budget is Low">Budget is Low</option>
+          <option value="Outside and Local Service Request">Outside and Local Service Request</option>
+          <option value="Unrelated Product">Unrelated Product</option>
+          <option value="Competition Brand Lead">Competition Brand Lead</option>
+          <option value="Need Service">Need Service</option>
+          <option value="Seller Ready & Promotion">Seller Ready & Promotion</option>
+          <option value="Product Not Available">Product Not Available</option>
+          <option value="Just Raised Enquiry for Price">Just Raised Enquiry for Price</option>
+          <option value="Buy Back">Buy Back</option>
+          <option value="Don't Make Query">Don't Make Query</option>
+          <option value="Not Comfortable">Not Comfortable</option>
+          <option value="Next Month Purchase">Next Month Purchase</option>
+          <option value="1st time Call">1st time Call</option>
+          <option value="Hold the Requirement">Hold the Requirement</option>
+          <option value="Number Not Valid">Number Not Valid</option>
+          <option value="Purchase Locally">Purchase Locally</option>
+          <option value="Purchase Online">Purchase Online</option>
+          <option value="MOP Problem">MOP Problem</option>
+          <!-- <option value=""></option> -->
+        </select>
       </div>
 
       <!-- Modal footer -->
@@ -65,9 +92,24 @@ $(document).ready(function(){
   });
 
   $(".closeBox").click(function(){
+    var data = {
+      lead_id:$("#close_lead_id").val(),
+      reason:$(".lead-reasons").find(":selected").val()
+    };
+    $.ajax({
+      method:"post",
+      url:"<?= base_url()?>ajax/leadclose",
+      data:data,
+      success:function(status)
+      {
+        
+      }
+    })
     $("#closeBoxConfirm").hide();
-    location.reload();
+    // location.reload();
   });
+
+
   $("#closeBox").click(function(){
     $("#closeBoxConfirm").hide();
     // window.location.href="<?= base_url() ?>";

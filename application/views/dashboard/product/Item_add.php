@@ -29,6 +29,10 @@
                     <input type="text" name="partnumber" id=""  class="form-control border-bottom">
                </div>
                <div class="form-group">
+                    <label for="">Local Part Number</label>
+                    <input type="text" name="local_partnumber" id=""  class="form-control border-bottom">
+               </div>
+               <div class="form-group">
                     <label for="">HSN</label>
                     <input type="text" name="hsn" id=""  class="form-control border-bottom">
                </div>

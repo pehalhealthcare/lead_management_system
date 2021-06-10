@@ -193,7 +193,7 @@ class Ajax extends CI_Controller
      {
           $service_id = $this->input->post("service_id");
 
-          $cond = array("product_id" => $service_id,"is_active"=>1,"lead_id"=>$this->input->post("lead_id"));
+          $cond = array("service_id" => $service_id,"is_active"=>1,"lead_id"=>$this->input->post("lead_id"));
 
           $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
 
@@ -401,13 +401,28 @@ class Ajax extends CI_Controller
                
           );
 
-          $cols = array(
-               // "purchase_order_id" => $this->input->post("application"),
-               "customer_id" => $this->input->post("pcustomer_id"),
-               "item_id" => $this->input->post("item_id"),
-               "lead_id"=>$this->input->post("lead_id")
-          );
+          if($this->input->post("product_id"))
+          {
+               $cols = array(
+                    "product_id" => $this->input->post("product_id"),
+                    "customer_id" => $this->input->post("pcustomer_id"),
+                    "item_id" => $this->input->post("item_id"),
+                    "lead_id"=>$this->input->post("lead_id")
+               );
+     
+          }
 
+          if($this->input->post("service_id"))
+          {
+               $cols = array(
+                    "service_id" => $this->input->post("service_id"),
+                    "customer_id" => $this->input->post("pcustomer_id"),
+                    "item_id" => $this->input->post("item_id"),
+                    "lead_id"=>$this->input->post("lead_id")
+               );
+          }
+
+          
           $datacheck = $this->common_model->viewwheredata($cols, "mk_customer_item");
 
           if(empty($datacheck))
@@ -808,6 +823,20 @@ class Ajax extends CI_Controller
                        echo json_encode(array("message"=>"Category Updated Successfully"));
                     }
               
+          }
+     }
+
+     public function leadClose()
+     {
+          $data = array(
+               "reason"=>$this->input->post("reason"),
+               "is_active"=>0
+          );
+          $id = $this->input->post("lead_id");
+
+          if($this->common_model->updatedata("mk_lead",$data,array("id"=>$id)))
+          {
+               echo json_encode(array("message"=>"Leads Closed Successfully"));
           }
      }
 }

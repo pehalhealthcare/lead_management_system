@@ -29,6 +29,10 @@
                     <input type="text" name="partnumber" id="" value="<?= $items[0]["partnumber"]?>" class="form-control border-bottom">
                </div>
                <div class="form-group">
+                    <label for="">Local Part Number</label>
+                    <input type="text" name="local_partnumber" id="" value="<?= $items[0]["local_partnumber"]?>" class="form-control border-bottom">
+               </div>
+               <div class="form-group">
                     <label for="">HSN</label>
                     <input type="text" name="hsn" id="" value="<?= $items[0]["hsn"] ?>" class="form-control border-bottom">
                </div>

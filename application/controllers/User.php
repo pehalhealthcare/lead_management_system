@@ -76,7 +76,7 @@ class User extends CI_Controller {
                "password" => hash("sha256",$this->input->post("password")),
                "role" => $this->input->post("role"),
                "category" => $this->input->post("category"),
-               "department" => $this->input->post("department"),
+               // "department" => $this->input->post("department"),
                "parent_id" => $this->session->userID
           );
           
@@ -137,7 +137,7 @@ class User extends CI_Controller {
                "email" =>    $this->input->post("email"),
                "role" => $this->input->post("role"),
                "category" => $this->input->post("category"),
-               "department" => $this->input->post("department"),
+               // "department" => $this->input->post("department"),
                "parent_id" => $this->session->userID
           );
 

@@ -2,7 +2,7 @@
      <div class="col-sm-12 mt-5 ">
           <div class="col-sm-12 text-right">
             <button class="btn btn-success mb-2" data-toggle="modal" data-target="#importModal" >IMPORT ITEM</button>
-            <a href="" class="btn btn-success mb-2">ADD ITEM</a>
+            <a href="<?= base_url()?>dashboard/products/item/add" class="btn btn-success mb-2">ADD ITEM</a>
           </div>
           <table class="table table-border">
            <tr>
@@ -10,6 +10,7 @@
                <th>Item Name</th>
                <!-- <th>Product Image</th> -->
                <th>PartNumber</th>
+               <th>Local PartNumber</th>
                <th>HSN</th>
                <th>Item Price</th>
                <th>Tax Rate</th>
@@ -21,6 +22,7 @@
                <td class="text-capitalize"><?= $product["item_name"] ?></td>
                <!-- <td><img style="width:100px;" src="<?= base_url()?>uploads/<?= ($product["item_image"]) ? $product["item_image"] : "no-image.jpg"?>" /></td> -->
                <td><?= $product["partnumber"] ?></td>
+               <td><?= $product["local_partnumber"] ?></td>
                <td><?= $product["hsn"] ?></td>
                <td><?= $product["unit_price"] ?></td>
                <td><?= $product["tax_rate"] ?></td>

@@ -12,7 +12,7 @@
                <th>Category</th>
                <th>Actions</th>
           </tr>
-          <?php $i=1; foreach($userdetails as $user):?>
+          <?php $i=1; foreach($userdetails as $user): if($user->role!="1"):?>
           <tr>
                <td><?= $i++; ?></td>
                <td><?= $user->firstname ?></td>
@@ -27,9 +27,9 @@
                </td>
                <td>
                <a href="<?= base_url()?>dashboard/edit/user/<?= $user->id ?>" class="btn btn-sm btn-primary"><i class="fa fa-pencil"></i></a>
-               <a href="" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
+               <a href="<?= base_url()?>dashboard/delete/user/<?= $user->id?>" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a></td>
           </tr>
-          <?php endforeach;?>
+          <?php endif; endforeach;?>
      </thead>
      
 </table>

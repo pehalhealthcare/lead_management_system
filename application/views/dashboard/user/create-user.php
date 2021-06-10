@@ -15,43 +15,43 @@
                <div class="row">
                     <div class="form-group  col-sm-12 col-md-6">
                          <label for="">First Name</label>
-                         <input type="text" name="first_name" class="form-control" value="<?php echo set_value('first_name'); ?>"  />
+                         <input type="text" name="first_name" required class="form-control" value="<?php echo set_value('first_name'); ?>"  />
                     </div>
 
                     <div class="form-group col-sm-12 col-md-6">
                          <label for="">Last Name</label>
-                         <input type="text" name="last_name" class="form-control" value="<?php echo set_value('last_name'); ?>"  />
+                         <input type="text" name="last_name" required class="form-control" value="<?php echo set_value('last_name'); ?>"  />
                     </div>
 
-                    <div class="form-group col-sm-12 col-md-6">
+                    <!-- <div class="form-group col-sm-12 col-md-6">
                          <label for="">Department</label>
                          <input type="text" name="department" class="form-control" value="<?php echo set_value('department'); ?>"  />
-                    </div>
+                    </div> -->
 
 
                     <div class="form-group col-sm-12 col-md-6">
                          <label for="">Email ID</label>
-                         <input type="text" name="email" class="form-control" value="<?php echo set_value('email'); ?>"  />
+                         <input type="email" name="email" required class="form-control" value="<?php echo set_value('email'); ?>"  />
                     </div>
 
                     <div class="form-group col-sm-12 col-md-6">
                          <label>Password</label>
-                         <input type="password" name="password" class="form-control" value="<?php echo set_value('password'); ?>"  />
+                         <input type="password" name="password" required class="form-control" value="<?php echo set_value('password'); ?>"  />
                     </div>
 
                     <div class="form-group col-sm-12 col-md-6">
                          <label>Confirm Password</label>
-                         <input type="password" name="cpassword" class="form-control" value="<?php echo set_value('cpassword'); ?>"  />
+                         <input type="password" name="cpassword" required class="form-control" value="<?php echo set_value('cpassword'); ?>"  />
                     </div>
 
                     <div class="form-group col-sm-12 col-md-6">
                          <label for="">Mobile</label>
-                         <input type="text" name="mobile" class="form-control" value="<?php echo set_value('mobile'); ?>"  />
+                         <input type="text" name="mobile" required class="form-control" value="<?php echo set_value('mobile'); ?>"  />
                     </div>
 
                     <div class="form-group col-sm-12 col-md-6">
                          <label for="">Role</label>
-                         <Select class="role form-control" name="role" id="role">
+                         <Select class="role form-control" required name="role" id="role">
                               <option value="">Select role</option>
                               <option value="1">Admin</option>
                               <option value="2">Group</option>

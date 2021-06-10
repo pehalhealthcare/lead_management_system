@@ -20,7 +20,7 @@
 
                <div class="form-group">
                     <label for="">Lead Source</label>
-                    <select name="lead_source" id="" class="form-control">
+                    <select name="lead_source" required id="" class="form-control">
                          <option value="">Select Lead Source</option>
                          <option label="Whats App" value="whatsapp">Whats App</option>
                          <option label="India Mart" value="india_mart">India Mart</option>
@@ -44,7 +44,7 @@
 
                <div class="form-group">
                     <label for="">Lead Category</label>
-                    <select name="category" id="maincategory" class="form-control">
+                    <select name="category" required id="maincategory" class="form-control">
                          <option value="">Select Category</option>
                          <option value="1">Services</option>
                          <option value="2">Product</option>
@@ -95,7 +95,7 @@
 
                <div class="form-group">
                     <label for="">Assigned To</label>
-                    <select name="assigned_to" id="" class="form-control">
+                    <select name="assigned_to" required id="" class="form-control">
                          <option value="">Select Assigned to</option>
                          <?php foreach ($agents as $agent) : if ($agent["role"] == "2" && $agent["category"] == "BA") : ?>
                                    <option value="<?= $agent["id"] ?> "><?php echo $agent["firstname"]; ?></option>

@@ -275,7 +275,7 @@
                                             </div>
                                             <div class="col-sm-9 productDetails">
                                                  <caption>Product Details</caption>
-                                                 <table class="table table-bordered product-table">
+                                                 <table class="table-responsive-md table-responsive-sm table-bordered product-table d-none">
                                                       <thead>
                                                            <th><input type="checkbox" name="" id="all-data"></th>
                                                            <th>Item Name</th>
@@ -1010,9 +1010,9 @@
                              $("#closeBoxConfirm").modal("show");
                              $(".customers").removeClass("active");
                              $(".nav-tabs#pills-profile-tab").removeClass("disabled")
-                             $(".add-customer").trigger("reset");
+                         //     $(".add-customer").trigger("reset");
 
-                             getcusotmer();
+                         //     getcusotmer();
                         }
                    })
 
@@ -1031,7 +1031,7 @@
                              localStorage.setItem("tabs", "#pills-contact");
                              $("#pills-activity-tab").removeClass("disabled");
                              $("#closeBoxConfirm").modal("show");
-                             $("#oppo-form").trigger("reset");
+                              //$("#oppo-form").trigger("reset");
                         }
                    })
 
@@ -1048,8 +1048,8 @@
                              $(".meeting").addClass("d-none");
                              localStorage.setItem("tabs", "#pills-profile");
                              $("#closeBoxConfirm").modal("show");
-                             $("#activity-form").trigger("reset");
-                             getActivity();
+                              //$("#activity-form").trigger("reset");
+                             
                         }
                    })
 
@@ -1342,6 +1342,7 @@
 
                                             quantity = (v1["quantity"]) ? v1["quantity"] : "";
                                             unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
+                                            
                                             selling_unit_price = (v1["selling_unit_price"]) ? v1["selling_unit_price"] : "";
                                             selling_price = (v1["selling_price"]) ? v1["selling_price"] : "";
                                        }
@@ -1351,6 +1352,7 @@
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
                                        unit_price = (unit_price) ? unit_price : v["unit_price"];
+                                       unit_price = unit_price.replace(',','.') 
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
@@ -1361,7 +1363,9 @@
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
                                        html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
                                        html += '<input type="hidden" name="product_id" class="product_id" value="' + product_id + '"></td></tr>';
+                                       
                                        $(".product-table tbody").append(html);
+                                       $(".product-table").removeClass("d-none");
                                   }
 
                              });
@@ -1537,7 +1541,7 @@
 
                    var id = $(this).data("id");
 
-                   if ($(this).val() < $(".runit_price_" + id).val()) {
+                   if ($(this).val() <= $(".runit_price_" + id).val()) {
 
                         var tax_rate = $(".rtax_rate_" + id).val();
 
@@ -1611,7 +1615,8 @@
                         })
 
                    } else {
-                        alert("Selling price is greater than unit price")
+                        $(this).attr("disable",true).attr("readonly",true);
+                    //     alert("Selling price is greater than unit price")
                    }
 
 
