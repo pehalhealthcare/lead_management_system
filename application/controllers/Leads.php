@@ -270,6 +270,8 @@ class Leads extends CI_Controller
 
           $data["leads"] = $this->common_model->viewwheredata(array("id" => $lead_id), "mk_lead");
 
+          $data["customer_item"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_customer_item");
+
           $data["opportunity"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id, "is_active" => 1), "mk_opportunity");
 
           $data["customers"] = $this->common_model->viewdata("mk_customer", "multiple");

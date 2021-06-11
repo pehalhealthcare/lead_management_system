@@ -41,25 +41,25 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th>Address 2</th>
 						<th><?= $custAddress[0]["address_2"]?> <?= $custAddress[0]["zip"]?></th>
 						<th>Ref 1</th>
-						<th colspan="7">&nbsp;</th>
+						<th colspan="7"><?= $customer_item[0]["ref_1"] ?></th>
 					</tr>
 					<tr>
 						<th>Address 3</th>
 						<th><?= $custAddress[0]["address_3"]?></th>
 						<th>Ref 2</th>
-						<th colspan="7">&nbsp;</th>
+						<th colspan="7"><?= $customer_item[0]["ref_2"] ?></th>
 					</tr>
 					<tr>
 						<th>Email ID</th>
 						<th><?= $customer[0]["email"]?></th>
 						<th>Ref 3</th>
-						<th colspan="7">&nbsp;</th>
+						<th colspan="7"><?= $customer_item[0]["ref_3"] ?></th>
 					</tr>
 					<tr>
 						<th>Mobile </th>
 						<th><?= $customer[0]["mobile"]?></th>
 						<th>Ref 4</th>
-						<th colspan="7">&nbsp;</th>
+						<th colspan="7"><?= $customer_item[0]["ref_4"] ?></th>
 					</tr>
 					<tr>
 						<th>From</th>
@@ -98,21 +98,23 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th colspan="8">&nbsp;</th>
 					</tr>
 					</table>
-					<table border="1" style="width:100%;border-collapse:collapse;">
+
+					<table border="1"  style="table-layout:fixed;width:100%;">
 					<tr>
-						<td align="center" colspan="10"><h4>PartiCulars</h4></td>
+						<td align="center" colspan="11"><h4>PartiCulars</h4></td>
 					</tr>
 					<tr>
-						<th>SI NO</th>
-						<th>ITEM NAME</th>
-						<th>QUANTITY</th>
-						<th>UNIT PRICE</th>
-						<th>SELLING PRICE</th>
-						<th>ITEM TAX(%)</th>
-						<th>TAX AMOUNT</th>
-						<th>Total Price(Without Tax)</th>
-						<th>ITEM TOTAL TAX AMOUNT</th>
-						<th>ITEM PRICE(WITH TAX)</th>
+						<td style="font-size: 14px;">SI NO</td>
+						<td style="font-size:14px">ITEM NAME</td>
+						<td style="font-size:14px">QTY</td>
+						<td style="font-size:14px">UNIT PRICE</td>
+						<td style="font-size:14px">DIS (%)</td>
+						<td style="font-size:14px">SELLING PRICE</td>
+						<td style="font-size:14px">ITEM TAX(%)</td>
+						<td style="font-size:14px">TAX AMOUNT</td>
+						<td style="font-size:14px">Total Price (Without Tax)</td>
+						<td style="font-size:14px">ITEM TOTAL TAX AMOUNT</td>
+						<td style="font-size:14px">ITEM PRICE (WITH TAX)</td>
 					</tr>
 					<?php $i=0; $item_name=""; $taxtotal=0; $totalamount=0; foreach($customer_item as $pdfdata): $i++; ?>
 
@@ -123,20 +125,25 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 					endif;
 					
 					endforeach;?>
+
+					<?php
+					$discount = ($pdfdata["selling_unit_price"]/$pdfdata["unit_price"])*100;
+					$discount = ($discount==100) ? "0%" : $discount ?>
 					<tr>
 						<td><?= $i?></td>
 						<td><?= $item_name ?></td>
 						<td><?= $pdfdata["quantity"] ?></td>
 						<td><?= $pdfdata["unit_price"] ?></td>
+						<td><?= $discount ?></td>
 						<td><?= $pdfdata["selling_unit_price"] ?></td>
 						<td><?= $pdfdata["tax_rate"] ?></td>
 						<td><?= $pdfdata["tax_amount"] ?></td>
 						<td><?= $pdfdata["total_price_wo_tax"] ?></td>
 						<td><?= $pdfdata["total_tax_amount"] ?></td>
 						<td><?= $pdfdata["total_price"] ?></td>
-						<?php $taxtotal = $taxtotal+$pdfdata["total_tax_amount"]; $totalamount= $totalamount+$pdfdata["total_price"]; ?>
-					</tr>
 						
+					</tr>
+					<?php $taxtotal = $taxtotal+$pdfdata["total_tax_amount"]; $totalamount= $totalamount+$pdfdata["total_price"]; ?>
 					<?php endforeach;?>
 					<tr>
 						<td>&nbsp;</td>
@@ -149,16 +156,17 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
 						<td>&nbsp;</td>
+						<td>&nbsp;</td>
 					</tr>
 					
 					
 					<tr>
-						<th colspan="8">Grand Total</th>
+						<th colspan="9">Grand Total</th>
 						<th><?= $taxtotal ?></th>
 						<th><?= $totalamount ?></th>
 					</tr>
 					</table>
-					<table border="1" style="width:100%;border-collapse: collapse;">
+					<table border="1" style="width:100%;table-layout:auto;">
 						<tr>
 							<th colspan="10">&nbsp;</th>
 						</tr>

@@ -839,4 +839,22 @@ class Ajax extends CI_Controller
                echo json_encode(array("message"=>"Leads Closed Successfully"));
           }
      }
+
+     public function leadReference()
+     {
+          $lead_id = $this->input->post("lead_id");
+          $customer_id = $this->input->post("rcustomer_id");
+
+          $data = array(
+               "ref_1"=>$this->input->post("ref1"),
+               "ref_2"=>$this->input->post("ref2"),
+               "ref_3"=>$this->input->post("ref3"),
+               "ref_4"=>$this->input->post("ref4"),
+          );
+
+          if($this->common_model->updatedata("mk_customer_item",$data,array("lead_id"=>$lead_id,"customer_id"=>$customer_id)))
+          {
+               echo json_encode(array("message"=>"Leads reference updated successfully"));
+          }
+     }
 }

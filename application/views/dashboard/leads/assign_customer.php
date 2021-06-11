@@ -387,6 +387,45 @@
                              <div class="col-sm-12 terms row">
 
                              </div>
+                             <div class="col-sm-12 refer">
+                             <h4>Reference Details</h4>
+                             <div class="col-sm-6">
+                              <form action="" method="post" class="refer-form">
+                              <?php
+                              $ref_1=$ref_2=$ref_3=$ref_4="";
+                              if($customer_item)
+                              {
+                                   $ref_1 = ($customer_item[0]["ref_1"]) ? $customer_item[0]["ref_1"] : "";
+                                   $ref_2 =  ($customer_item[0]["ref_2"]) ? $customer_item[0]["ref_2"] : "" ;
+                                   $ref_3 = ($customer_item[0]["ref_3"]) ? $customer_item[0]["ref_3"] : "";
+                                   $ref_4 = ($customer_item[0]["ref_4"]) ? $customer_item[0]["ref_4"] : "";
+                              }
+                              
+                              ?>
+                                   <input type="hidden" name="lead_id" value="<?= $lead_id ?>">
+                                   <input type="hidden" class="rcustomer_id" name="rcustomer_id" value="" />
+                                   <div class="form-group">
+                                        <label>Reference 1</label>
+                                        <input type="text" name="ref1" value="<?= $ref_1 ?>" class="form-control border" placeholder="Reference 1" id="">
+                                   </div>
+                                   <div class="form-group">
+                                        <label>Reference 2</label>
+                                        <input type="text" name="ref2" value="<?= $ref_2 ?>" class="form-control border" placeholder="Reference 2" id="">
+                                   </div>
+                                   <div class="form-group">
+                                         <label>Reference 3</label>
+                                        <input type="text" name="ref3" value="<?= $ref_3 ?>" class="form-control border" placeholder="Reference 3" id="">
+                                   </div>
+                                   <div class="form-group">
+                                        <label>Reference 4</label>
+                                        <input type="text" name="ref4" value="<?= $ref_4 ?>" class="form-control border" placeholder="Reference 4" id="">
+                                   </div>
+                                   <div class="form-group">
+                                    <input type="submit" class="btn btn-success" value="Save">
+                                   </div>
+                              </form>
+                              </div>
+                             </div>
 
                         </div>
                    </div>
@@ -963,6 +1002,11 @@
               .catch(error => {
                    console.error(error);
               });
+
+          var rcustomer_id = $(".pcustomer_id").val();
+
+          $(".rcustomer_id").val($(".pcustomer_id").val());
+
          var local = "<?= count($lead_customer) ?>"
          if (local == 0) {
               localStorage.removeItem("tabs");
@@ -1045,7 +1089,7 @@
                         url: "<?= base_url() ?>ajax/activitymeeting",
                         data: formdata,
                         success: function(res) {
-                             $(".meeting").addClass("d-none");
+                         //     $(".meeting").addClass("d-none");
                              localStorage.setItem("tabs", "#pills-profile");
                              $("#closeBoxConfirm").modal("show");
                               //$("#activity-form").trigger("reset");
@@ -1063,7 +1107,7 @@
                         url: "<?= base_url() ?>ajax/logCall",
                         data: formdata,
                         success: function(res) {
-                             $(".log_call").addClass("d-none");
+                         //     $(".log_call").addClass("d-none");
                              localStorage.setItem("tabs", "#pills-profile");
                              $("#closeBoxConfirm").modal("show");
                              $(".log_form").trigger("reset");
@@ -1266,9 +1310,16 @@
                                   });
 
                                             total_price = (v["total_price"]) ? v["total_price"] : "";
+                                            total_price = total_price.toFixed(2);
+                                            
                                             total_price_wo_tax = (v["total_price_wo_tax"]) ? v["total_price_wo_tax"] : "";
+                                            total_price_wo_tax = total_price_wo_tax.toFixed(2);
+
                                             tax_amount = (v["tax_amount"]) ? v["tax_amount"] : "";
+
                                             total_tax_amount = (v["total_tax_amount"]) ? v["total_tax_amount"] : "";
+                                            total_tax_amount = total_tax_amount.toFixed(2);
+
                                             quantity = (v["quantity"]) ? v["quantity"] : "";
                                             unit_price = (v["unit_price"]) ? v["unit_price"] : "";
                                             selling_unit_price = (v["selling_unit_price"]) ? v["selling_unit_price"] : "";
@@ -1297,7 +1348,7 @@
 
                              });
                              if (total_amount) {
-                                  var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
+                                  var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount.toFixed(2) + '</div>';
                                   alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax.toFixed(2) + '</div>';
                                   $(".total-items").html(alltotal);
                              }
@@ -2334,6 +2385,23 @@
                              location.reload();
                         }
                    })
-              })
+              });
+
+
+              $(document).on("submit",".refer-form",function(e){
+                    e.preventDefault();
+
+                    var formdata = $(this).serializeArray();
+
+                    $.ajax({
+                         method:"post",
+                         url:"<?= base_url()?>ajax/leadreference",
+                         data:formdata,
+                         success:function(Status)
+                         {
+                              console.log(status);
+                         }
+                    })
+              });
          });
     </script>
