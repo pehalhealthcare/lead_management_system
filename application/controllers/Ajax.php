@@ -850,6 +850,8 @@ class Ajax extends CI_Controller
                "ref_2"=>$this->input->post("ref2"),
                "ref_3"=>$this->input->post("ref3"),
                "ref_4"=>$this->input->post("ref4"),
+               "refer"=>$this->input->post("refer"),
+               "terms"=>$this->input->post("terms"),
           );
 
           if($this->common_model->updatedata("mk_customer_item",$data,array("lead_id"=>$lead_id,"customer_id"=>$customer_id)))

@@ -24,6 +24,15 @@ class Leads extends CI_Controller
 
           $insertdata = array();
 
+
+          $customerdata = array(
+               "name" => $this->input->post("name"),
+               "email" => $this->input->post("email"),
+               "mobile" => $this->input->post("mobile"),
+          );
+
+          $customer_count = $this->common_model->viewwheredata(array("email"=>$this->input->post("email")),"mk_customer");
+
           $this->form_validation->set_rules('assigned_to', 'Assignee', 'required');
 
 
@@ -99,11 +108,21 @@ class Leads extends CI_Controller
                               );
                               // echo 'No data';
                               $this->common_model->adddata("mk_lead", $insertdata);
-
-                              $this->session->set_flashdata('message_name', 'Lead Data Image Not Available');
-                              return redirect("dashboard/leads");
+                              if(count($customer_count)>0)
+                              {
+                                   $this->session->set_flashdata('message_name', 'Lead Data Image Not Available');
+                                   return redirect("dashboard/leads");
+                              }
+                              else
+                              {
+                                   $this->common_model->adddata("mk_customer",$customerdata);
+                                   $this->session->set_flashdata('message_name', 'Lead Data Image Not Available');
+                                   return redirect("dashboard/leads");
+                              }
+                              
                          }
                     }
+                    
                } else {
                     $insertdata = array(
                          "lead_source" => $this->input->post("lead_source"),
@@ -115,8 +134,19 @@ class Leads extends CI_Controller
                          "created_by" => $this->session->userID,
                          "created_at" => date("Y-m-d l:i:s")
                     );
+
                     // echo 'No data';
                     $this->common_model->adddata("mk_lead", $insertdata);
+
+                    if(count($customer_count)>0)
+                    {
+
+                    }
+                    else
+                    {
+                         $this->common_model->adddata("mk_customer",$customerdata);
+                    }
+
                     $this->session->set_flashdata('message_name', 'Lead Data Not Inserted');
                     return redirect("dashboard/leads");
                }
@@ -129,8 +159,8 @@ class Leads extends CI_Controller
      {
           $data["title"] = "Dashboard | Leads";
           $this->load->view("inc/header", $data);
-          $data["leads"] = $this->common_model->viewdata("mk_lead", "multiple");
-          // print_r($data["leads"]);
+          $data["leads"] = $this->common_model->vieworderby("mk_lead", "multiple","id","desc");
+          // print_r($data["leads"]); return;
           $this->load->view("dashboard/leads/view-leads", $data);
           $this->load->view("inc/footer");
           //   print_r($this->session->flashdata('message_name'));
@@ -151,6 +181,12 @@ class Leads extends CI_Controller
                "mobile" => $this->input->post("mobile"),
                "created_by" => $this->input->post("assigned_by"),
                "created_at" => date("Y-m-d l:i:s")
+          );
+
+          $customerdata = array(
+               "name" => $this->input->post("name"),
+               "email" => $this->input->post("email"),
+               "mobile" => $this->input->post("mobile"),
           );
 
 
@@ -184,7 +220,8 @@ class Leads extends CI_Controller
                $this->load->view("inc/header", $data);
                $this->load->view('dashboard/leads/edit-leads', $data);
                $this->load->view("inc/footer");
-          } else {
+          } 
+          else {
                $this->upload->do_upload();
                $id = $this->input->post("lead_id");
                $imagedata = array('upload_data' => $this->upload->data());
@@ -198,9 +235,8 @@ class Leads extends CI_Controller
 
                if ($this->common_model->updatedata("mk_lead", $insertdata, array("id" => $id))) {
 
+                    $this->common_model->adddata("mk_customer",$customerdata);
                     $this->session->set_flashdata('message_name', 'Lead Data Updated Succesfully');
-
-                    // print_r($insertdata); die("condition");
 
                     return redirect("dashboard/leads");
                } else {
@@ -210,7 +246,8 @@ class Leads extends CI_Controller
                     // print_r($insertdata); die("no condition");
                     // After that you need to used redirect function instead of load view such as 
                     return redirect("dashboard/leads");
-
+                    
+                    $this->common_model->adddata("mk_customer",$customerdata);
                     // Get Flash data on view 
 
 
@@ -274,7 +311,7 @@ class Leads extends CI_Controller
 
           $data["opportunity"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id, "is_active" => 1), "mk_opportunity");
 
-          $data["customers"] = $this->common_model->viewdata("mk_customer", "multiple");
+          $data["customers"] = $this->common_model->vieworderby("mk_customer", "multiple","customer_id","desc");
 
           $data["products"] = $this->common_model->viewdata("mk_master_product", "multiple");
 

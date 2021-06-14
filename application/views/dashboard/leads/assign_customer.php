@@ -1,8 +1,4 @@
-    <div class="col-md-9 col-sm-12 mt-5 mx-auto">
-
-         <?php
-          //     echo count($lead_customer);
-          ?>
+    <div class="col-md-8 col-sm-9 mt-5 mx-auto">
 
          <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
               <li class="nav-item">
@@ -26,12 +22,6 @@
          <div class="tab-content bg-white p-3" id="pills-tabContent">
               <!-- tab 1111111111111111111111111111111111111111111111111111 -->
               <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
-
-                   <!-- <div class="form-group">
-                        <input type="radio" class="customer" name="customer" value="new">New Customer
-                        <input type="radio" class="customer custom1" name="customer" checked value="old">Existing Customer
-                   </div> -->
-
 
                    <div class="row">
                         <div class="col-sm-3">
@@ -242,7 +232,7 @@
                         </li>
                    </ul>
                    <div class="tab-content bg-white p-3" id="pills-tabContent">
-                        <!-- tab 1111111111111111111111111111111111111111111111111111 -->
+
                         <div class="tab-pane fade active show" id="pills-product-item" role="tabpanel" aria-labelledby="pills-product-item-tab">
                              <form action="" method="post" class="assign-product" enctype="multipart/form-data">
                                   <div class="row">
@@ -300,9 +290,9 @@
                              </form>
 
                         </div>
+                        <!-- product items end -->
 
-
-                        <!-- tab 1111111111111111111111111111111111111111111111111111 -->
+                        <!-- Service items started -->
                         <div class="tab-pane fade" id="pills-service-item" role="tabpanel" aria-labelledby="pills-service-item-tab">
                              <form action="" method="post" class="assign-service" enctype="multipart/form-data">
                                   <div class="row">
@@ -360,9 +350,9 @@
                              </form>
 
                         </div>
+                        <!-- service items end -->
 
-
-
+                        <!-- review part start -->
                         <div class="tab-pane fade" id="pills-review" role="tabpanel" aria-labelledby="pills-review-tab">
                              <div class="row customer-items">
 
@@ -372,6 +362,9 @@
                              </div>
 
                         </div>
+                        <!-- review part end -->
+
+                        <!-- terms part start -->
                         <div class="tab-pane fade" id="pills-terms" role="tabpanel" aria-labelledby="pills-terms-tab">
 
                              <div class="col-sm-12 text-right">
@@ -388,51 +381,65 @@
 
                              </div>
                              <div class="col-sm-12 refer">
-                             <h4>Reference Details</h4>
-                             <div class="col-sm-6">
-                              <form action="" method="post" class="refer-form">
-                              <?php
-                              $ref_1=$ref_2=$ref_3=$ref_4="";
-                              if($customer_item)
-                              {
-                                   $ref_1 = ($customer_item[0]["ref_1"]) ? $customer_item[0]["ref_1"] : "";
-                                   $ref_2 =  ($customer_item[0]["ref_2"]) ? $customer_item[0]["ref_2"] : "" ;
-                                   $ref_3 = ($customer_item[0]["ref_3"]) ? $customer_item[0]["ref_3"] : "";
-                                   $ref_4 = ($customer_item[0]["ref_4"]) ? $customer_item[0]["ref_4"] : "";
-                              }
-                              
-                              ?>
-                                   <input type="hidden" name="lead_id" value="<?= $lead_id ?>">
-                                   <input type="hidden" class="rcustomer_id" name="rcustomer_id" value="" />
-                                   <div class="form-group">
-                                        <label>Reference 1</label>
-                                        <input type="text" name="ref1" value="<?= $ref_1 ?>" class="form-control border" placeholder="Reference 1" id="">
-                                   </div>
-                                   <div class="form-group">
-                                        <label>Reference 2</label>
-                                        <input type="text" name="ref2" value="<?= $ref_2 ?>" class="form-control border" placeholder="Reference 2" id="">
-                                   </div>
-                                   <div class="form-group">
-                                         <label>Reference 3</label>
-                                        <input type="text" name="ref3" value="<?= $ref_3 ?>" class="form-control border" placeholder="Reference 3" id="">
-                                   </div>
-                                   <div class="form-group">
-                                        <label>Reference 4</label>
-                                        <input type="text" name="ref4" value="<?= $ref_4 ?>" class="form-control border" placeholder="Reference 4" id="">
-                                   </div>
-                                   <div class="form-group">
-                                    <input type="submit" class="btn btn-success" value="Save">
-                                   </div>
-                              </form>
-                              </div>
+                                  <h4>Reference Details</h4>
+                                  <div class="col-sm-6">
+                                       <form action="" method="post" class="refer-form">
+                                            <?php
+                                             $ref_1 = $ref_2 = $ref_3 = $ref_4 = "";
+                                             $refer = $terms = "";
+                                             if ($customer_item) {
+                                                  $ref_1 = ($customer_item[0]["ref_1"]) ? $customer_item[0]["ref_1"] : "";
+                                                  $ref_2 =  ($customer_item[0]["ref_2"]) ? $customer_item[0]["ref_2"] : "";
+                                                  $ref_3 = ($customer_item[0]["ref_3"]) ? $customer_item[0]["ref_3"] : "";
+                                                  $ref_4 = ($customer_item[0]["ref_4"]) ? $customer_item[0]["ref_4"] : "";
+                                                  $refer = ($customer_item[0]["refer"]) ? $customer_item[0]["refer"] : "";
+                                                  $terms = ($customer_item[0]["terms"]) ? $customer_item[0]["terms"] : "";
+                                             }
+
+                                             ?>
+                                            <input type="hidden" name="lead_id" value="<?= $lead_id ?>">
+                                            <input type="hidden" class="rcustomer_id" name="rcustomer_id" value="" />
+                                            <div class="form-group">
+                                                 <label>Terms</label>
+                                                 <input type="text" name="terms" value="<?= $terms ?>" class="form-control border" placeholder="Terms" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                 <label>Reference</label>
+                                                 <input type="text" name="refer" value="<?= $refer ?>" class="form-control border" placeholder="Reference Number" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                 <label>Reference 1</label>
+                                                 <input type="text" name="ref1" value="<?= $ref_1 ?>" class="form-control border" placeholder="Reference 1" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                 <label>Reference 2</label>
+                                                 <input type="text" name="ref2" value="<?= $ref_2 ?>" class="form-control border" placeholder="Reference 2" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                 <label>Reference 3</label>
+                                                 <input type="text" name="ref3" value="<?= $ref_3 ?>" class="form-control border" placeholder="Reference 3" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                 <label>Reference 4</label>
+                                                 <input type="text" name="ref4" value="<?= $ref_4 ?>" class="form-control border" placeholder="Reference 4" id="">
+                                            </div>
+                                            <div class="form-group">
+                                                 <input type="submit" class="btn btn-success" value="Save">
+                                            </div>
+                                       </form>
+                                  </div>
                              </div>
 
                         </div>
+                        <!-- terms part end -->
                    </div>
-
               </div>
+
+
+
               <!-- tab 3333333333333333333333333333333333333333333333333333333333333 -->
               <div class="tab-pane fade bg-white p-3" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+
                    <div class="col-sm-12">
                         <div class="row">
                              <div class="col-sm-12">
@@ -1003,36 +1010,15 @@
                    console.error(error);
               });
 
-          var rcustomer_id = $(".pcustomer_id").val();
+         var rcustomer_id = $(".pcustomer_id").val();
 
-          $(".rcustomer_id").val($(".pcustomer_id").val());
+         $(".rcustomer_id").val($(".pcustomer_id").val());
 
          var local = "<?= count($lead_customer) ?>"
-         if (local == 0) {
-              localStorage.removeItem("tabs");
-         } else {
-              // localStorage.removeItem("tabs");
-         }
+          
          $(document).ready(function() {
 
-              if (localStorage.getItem("tabs")) {
-                   var tabs = localStorage.getItem("tabs");
-                   if (tabs == $(tabs + "-tab").attr("href")) {
-
-                        $(".nav-tabs").removeClass("active");
-                        $(tabs + "-tab").addClass("active")
-
-                        $(".tab-pane").removeClass("active show");
-
-                        $(tabs).addClass("active");
-                        $(tabs).addClass("show");
-                   }
-
-              }
-
-              $(".nav-tabs").click(function() {
-                   localStorage.setItem("tabs", $(this).attr("href"));
-              });
+         
 
               $(".create").on("click", function() {
                    $(".add-customer").trigger("reset");
@@ -1054,9 +1040,9 @@
                              $("#closeBoxConfirm").modal("show");
                              $(".customers").removeClass("active");
                              $(".nav-tabs#pills-profile-tab").removeClass("disabled")
-                         //     $(".add-customer").trigger("reset");
+                             //     $(".add-customer").trigger("reset");
 
-                         //     getcusotmer();
+                             //     getcusotmer();
                         }
                    })
 
@@ -1072,10 +1058,10 @@
                         url: "<?= base_url() ?>ajax/opportunity",
                         data: formdata,
                         success: function(res) {
-                             localStorage.setItem("tabs", "#pills-contact");
+                            
                              $("#pills-activity-tab").removeClass("disabled");
                              $("#closeBoxConfirm").modal("show");
-                              //$("#oppo-form").trigger("reset");
+                             //$("#oppo-form").trigger("reset");
                         }
                    })
 
@@ -1089,11 +1075,11 @@
                         url: "<?= base_url() ?>ajax/activitymeeting",
                         data: formdata,
                         success: function(res) {
-                         //     $(".meeting").addClass("d-none");
-                             localStorage.setItem("tabs", "#pills-profile");
+                             //     $(".meeting").addClass("d-none");
+                            
                              $("#closeBoxConfirm").modal("show");
-                              //$("#activity-form").trigger("reset");
-                             
+                             //$("#activity-form").trigger("reset");
+
                         }
                    })
 
@@ -1107,8 +1093,8 @@
                         url: "<?= base_url() ?>ajax/logCall",
                         data: formdata,
                         success: function(res) {
-                         //     $(".log_call").addClass("d-none");
-                             localStorage.setItem("tabs", "#pills-profile");
+                             //     $(".log_call").addClass("d-none");
+                             
                              $("#closeBoxConfirm").modal("show");
                              $(".log_form").trigger("reset");
                              getActivity();
@@ -1227,8 +1213,7 @@
 
 
                              $(".nav-tabs#pills-oppo-tab").removeClass("disabled");
-                             localStorage.setItem("tabs", "#pills-oppo");
-
+                             
                              $(".new-customer").removeClass("d-none");
 
                              $(".add-customer").trigger("reset");
@@ -1272,7 +1257,7 @@
                              var total_tax = 0;
                              $.each(status["customer_item"], function(k, v) {
 
-                                 console.log("customer_item",v);
+                                  console.log("customer_item", v);
 
                                   var checked = "";
                                   var tax_amount = "";
@@ -1287,45 +1272,45 @@
                                   var item_name = "";
 
                                   $.each(status["product_item"], function(k1, v1) {
-                                   // console.log("product_item",v1);
-                                   if (status["product_item"] && v["item_id"] == v1["item_id"] && v["product_id"]!=null) {
-                                            item_name = (v1["item_name"]) ;
-                                            checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";  
+                                       // console.log("product_item",v1);
+                                       if (status["product_item"] && v["item_id"] == v1["item_id"] && v["product_id"] != null) {
+                                            item_name = (v1["item_name"]);
+                                            checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";
                                             product_id = v1["product_id"] ? v1["product_id"] : "";
                                             item_id = v1["item_id"] ? v1["item_id"] : "";
-                                          
+
                                        }
 
                                   });
 
                                   $.each(status["service_item"], function(k3, s1) {
-                                        // console.log("service_item",s1);
-                                       if (status["service_item"] && v["item_id"] == s1["item_id"] && v["service_id"]!=null) {
-                                            item_name = (s1["item_name"]) ;
-                                            checked = (v["item_id"] == s1["item_id"]) ? "checked" : "";                                      
+                                       // console.log("service_item",s1);
+                                       if (status["service_item"] && v["item_id"] == s1["item_id"] && v["service_id"] != null) {
+                                            item_name = (s1["item_name"]);
+                                            checked = (v["item_id"] == s1["item_id"]) ? "checked" : "";
                                             product_id = s1["service_id"] ? s1["service_id"] : "";
                                             item_id = s1["item_id"] ? s1["item_id"] : "";
-                                            
+
                                        }
                                   });
 
-                                            total_price = (v["total_price"]) ? v["total_price"] : "";
-                                            total_price = total_price.toFixed(2);
-                                            
-                                            total_price_wo_tax = (v["total_price_wo_tax"]) ? v["total_price_wo_tax"] : "";
-                                            total_price_wo_tax = total_price_wo_tax.toFixed(2);
+                                  total_price = (v["total_price"]) ? v["total_price"] : "";
+                                  //     total_price = total_price.toFixed(2);
 
-                                            tax_amount = (v["tax_amount"]) ? v["tax_amount"] : "";
+                                  total_price_wo_tax = (v["total_price_wo_tax"]) ? v["total_price_wo_tax"] : "";
+                                  //     total_price_wo_tax = total_price_wo_tax.toFixed(2);
 
-                                            total_tax_amount = (v["total_tax_amount"]) ? v["total_tax_amount"] : "";
-                                            total_tax_amount = total_tax_amount.toFixed(2);
+                                  tax_amount = (v["tax_amount"]) ? v["tax_amount"] : "";
 
-                                            quantity = (v["quantity"]) ? v["quantity"] : "";
-                                            unit_price = (v["unit_price"]) ? v["unit_price"] : "";
-                                            selling_unit_price = (v["selling_unit_price"]) ? v["selling_unit_price"] : "";
-                                            selling_price = (v["selling_price"]) ? v["selling_price"] : "";
+                                  total_tax_amount = (v["total_tax_amount"]) ? v["total_tax_amount"] : "";
+                                  //     total_tax_amount = total_tax_amount.toFixed(2);
 
-                                  if (v["product_id"] == product_id || v["service_id"] == product_id && v["item_id"] == item_id ) {
+                                  quantity = (v["quantity"]) ? v["quantity"] : "";
+                                  unit_price = (v["unit_price"]) ? v["unit_price"] : "";
+                                  selling_unit_price = (v["selling_unit_price"]) ? v["selling_unit_price"] : "";
+                                  selling_price = (v["selling_price"]) ? v["selling_price"] : "";
+
+                                  if (v["product_id"] == product_id || v["service_id"] == product_id && v["item_id"] == item_id) {
 
                                        var html = '<div class="col-sm-12 col-md-3 mb-3 bg-white item_' + v["item_id"] + '"><div class="card bg-light text-dark border border-success"><div class="card-title p-3 border-bottom border-success">' + item_name + '<input readonly data-id="' + v["item_id"] + '" type="hidden" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control ritem_name_' + v["item_id"] + '""></div>';
                                        html += '<div class="card-body"><label>Quantity</label><input type="text" name="quantity[]" data-id="' + v["item_id"] + '"  placeholder="Enter Your Quantity" value="' + quantity + '" class="rquantity border-bottom form-control rquantity_' + v["item_id"] + '">';
@@ -1393,7 +1378,7 @@
 
                                             quantity = (v1["quantity"]) ? v1["quantity"] : "";
                                             unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
-                                            
+
                                             selling_unit_price = (v1["selling_unit_price"]) ? v1["selling_unit_price"] : "";
                                             selling_price = (v1["selling_price"]) ? v1["selling_price"] : "";
                                        }
@@ -1403,7 +1388,7 @@
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
                                        unit_price = (unit_price) ? unit_price : v["unit_price"];
-                                       unit_price = unit_price.replace(',','.') 
+                                       unit_price = unit_price.replace(',', '.')
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
@@ -1414,7 +1399,7 @@
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
                                        html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
                                        html += '<input type="hidden" name="product_id" class="product_id" value="' + product_id + '"></td></tr>';
-                                       
+
                                        $(".product-table tbody").append(html);
                                        $(".product-table").removeClass("d-none");
                                   }
@@ -1666,8 +1651,8 @@
                         })
 
                    } else {
-                        $(this).attr("disable",true).attr("readonly",true);
-                    //     alert("Selling price is greater than unit price")
+                        $(this).attr("disable", true).attr("readonly", true);
+                        //     alert("Selling price is greater than unit price")
                    }
 
 
@@ -2097,7 +2082,7 @@
                         url: "<?= base_url() ?>ajax/opportunity",
                         data: formdata,
                         success: function(res) {
-                             localStorage.setItem("tabs", "#pills-contact");
+                            
                              $("#oppo-form").trigger("reset");
                              location.reload();
                         }
@@ -2388,20 +2373,19 @@
               });
 
 
-              $(document).on("submit",".refer-form",function(e){
-                    e.preventDefault();
+              $(document).on("submit", ".refer-form", function(e) {
+                   e.preventDefault();
 
-                    var formdata = $(this).serializeArray();
+                   var formdata = $(this).serializeArray();
 
-                    $.ajax({
-                         method:"post",
-                         url:"<?= base_url()?>ajax/leadreference",
-                         data:formdata,
-                         success:function(Status)
-                         {
-                              console.log(status);
-                         }
-                    })
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/leadreference",
+                        data: formdata,
+                        success: function(Status) {
+                             console.log(status);
+                        }
+                   })
               });
          });
     </script>

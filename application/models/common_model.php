@@ -42,6 +42,29 @@ class Common_model extends CI_Model
           
      }
 
+     public function vieworderby($table="",$action="",$field="",$order="")
+     {
+          if($action=="multiple")
+          {
+               $this->db->where("is_active","1");
+               $this->db->order_by($field,$order);
+               $run = $this->db->get($table);
+               // echo $this->db->last_query();
+               $data = $run->result();
+
+               return $data;
+          }
+          elseif($action=="single")
+          {
+               $run = $this->db->get($table);
+
+               $data = $run->row();
+
+               return $data;
+          }
+          
+     }
+
      public function viewwheredata($column=array(),$table="")
      {
           $this->db->where($column);

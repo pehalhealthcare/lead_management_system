@@ -35,7 +35,7 @@
       <!-- Modal Header -->
       <div class="modal-header">
         <h4 class="modal-title">Confirmation Box</h4>
-        <button type="button" class="close closeBox" data-dismiss="modal">&times;</button>
+        <button type="button" class="close" id="closeBox" data-dismiss="modal">&times;</button>
       </div>
 
       <!-- Modal body -->
@@ -105,7 +105,7 @@ $(document).ready(function(){
         
       }
     })
-    $("#closeBoxConfirm").hide();
+    window.location.href = "<?= base_url() ?>dashboard/leads"
     // location.reload();
   });
 

@@ -28,14 +28,14 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th><?= $customer[0]["prefix"]?></th>
 						<th><?= $customer[0]["name"]?></th>
 						<th>Terms</th>
-						<th colspan="7">100% Advance Payment</th>
+						<th colspan="7"><?= $customer_item[0]["terms"] ?></th>
 						
 					</tr>
 					<tr>
 						<th>Address</th>
 						<th><?= $custAddress[0]["address_1"]?></th>
 						<th>Ref No</th>
-						<th colspan="7">&nbsp;</th>
+						<th colspan="7"><?= $customer_item[0]["refer"] ?></th>
 					</tr>
 					<tr>
 						<th>Address 2</th>
@@ -64,42 +64,42 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 					<tr>
 						<th>From</th>
 						<th>&nbsp;</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white" >&nbsp;</th>
 					</tr>
 					<tr>
 						<th>M/s</th>
 						<th>Medikart Healthcare Systems Pvt Ltd</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 1</th>
 						<th>FF-45 Omaxe Square</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white">Special Comments</th>
 					</tr>
 					<tr>
 						<th>Address 2</th>
 						<th>Jasola District Centre</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Address 3</th>
 						<th>Behind Apollo Hopital ,New Delhi</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white">&nbsp;</th>
 					</tr>
 					<tr>
 						<th>Email</th>
 						<th>lavi@gmail.com</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white">&nbsp;</th>
 					</tr>
 					
 					<tr>
 						<th>Mobile</th>
 						<th>8527911677</th>
-						<th colspan="8">&nbsp;</th>
+						<th colspan="8" style="border-bottom:1px solid white">&nbsp;</th>
 					</tr>
 					</table>
 
-					<table border="1"  style="table-layout:fixed;width:100%;">
+					<table border="1"  style="table-layout:fixed;width:100%;border-collapse:collapse;">
 					<tr>
 						<td align="center" colspan="11"><h4>PartiCulars</h4></td>
 					</tr>
@@ -127,7 +127,7 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 					endforeach;?>
 
 					<?php
-					$discount = ($pdfdata["selling_unit_price"]/$pdfdata["unit_price"])*100;
+					$discount = (($pdfdata["unit_price"]-$pdfdata["selling_unit_price"])/$pdfdata["unit_price"])*100;
 					$discount = ($discount==100) ? "0%" : $discount ?>
 					<tr>
 						<td><?= $i?></td>
@@ -166,7 +166,7 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<th><?= $totalamount ?></th>
 					</tr>
 					</table>
-					<table border="1" style="width:100%;table-layout:auto;">
+					<table border="1" style="width:100%;table-layout:auto;border-collapse:collapse;">
 						<tr>
 							<th colspan="10">&nbsp;</th>
 						</tr>
