@@ -997,25 +997,7 @@
          </div>
     </div>
 
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-         <div class="modal-dialog modal-dialog-centered" role="document">
-              <div class="modal-content">
-                   <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                             <span aria-hidden="true">&times;</span>
-                        </button>
-                   </div>
-                   <div class="modal-body">
-                         Reference Data Updated Successfully
-                   </div>
-                   <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                   </div>
-              </div>
-         </div>
-    </div>
+    
 
 
     <style>
@@ -1430,7 +1412,7 @@
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
                                        unit_price = (unit_price) ? unit_price : v["unit_price"];
-                                       unit_price = unit_price.replace(',', '.')
+                                   //     unit_price = unit_price.replace(',', '.')
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
@@ -2420,7 +2402,7 @@
 
                    
 
-                   $("#exampleModalCenter").modal("show");
+                   
 
                    var formdata = $(this).serializeArray();
 

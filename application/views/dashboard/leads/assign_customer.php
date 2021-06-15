@@ -546,7 +546,7 @@
                                                  </div>
                                                  <div class="form-group col-sm-12">
                                                       <input type="submit" class="btn btn-success button" value="SAVE & PROCEED">
-                                                      <input type="button" class="btn btn-success continue" value="SAVE & CONTINUE">
+                                                      <input type="button" class="btn btn-success meeting-continue" value="SAVE & CONTINUE">
                                                       <input type="button" class="btn btn-success addMeetingClose" value="SAVE & CLOSE">
                                                  </div>
                                             </div>
@@ -623,7 +623,7 @@
                                                  </div>
                                                  <div class="form-group col-sm-12">
                                                       <input type="submit" class="btn btn-success button" value="SAVE & PROCEED">
-                                                      <input type="button" class="btn btn-success continue" value="SAVE & CONTINUE">
+                                                      <input type="button" class="btn btn-success log-continue" value="SAVE & CONTINUE">
                                                       <input type="button" class="btn btn-success addLogClose" value="SAVE & CLOSE">
                                                  </div>
                                             </div>
@@ -998,6 +998,26 @@
     </div>
 
 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                   <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Confirmation Box</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                        </button>
+                   </div>
+                   <div class="modal-body">
+                         Reference Data Updated Successfully
+                   </div>
+                   <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                   </div>
+              </div>
+         </div>
+    </div>
+
+
     <style>
          .ck-editor__editable {
               min-height: 15em;
@@ -1079,11 +1099,30 @@
                             
                              $("#closeBoxConfirm").modal("show");
                              //$("#activity-form").trigger("reset");
-
+                             getActivity();
                         }
                    })
 
               });
+
+              $(document).on("click", ".meeting-continue", function() {
+                   var formdata = $("#activity-form").serializeArray();
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/activitymeeting",
+                        data: formdata,
+                        success: function(res) {
+                             //     $(".meeting").addClass("d-none");
+                            
+                             $("#activity-form").trigger("reset");
+                             getActivity();
+                        }
+                   })
+
+              });
+
+
 
               $(document).on("click", ".addLogClose", function() {
                    var formdata = $(".log_form").serializeArray();
@@ -1102,6 +1141,23 @@
                    })
 
               });
+
+              $(document).on("click", ".log-continue", function() {
+                   var formdata = $(".log_form").serializeArray();
+
+                   $.ajax({
+                        method: "post",
+                        url: "<?= base_url() ?>ajax/logCall",
+                        data: formdata,
+                        success: function(res) {
+                            $(".log_form").trigger("reset");
+                             getActivity();
+                        }
+                   })
+
+              });
+
+              
 
               $(".customers").click(function() {
                    var id = $(this).data("customer");
@@ -1217,7 +1273,7 @@
                              $(".new-customer").removeClass("d-none");
 
                              $(".add-customer").trigger("reset");
-                             location.reload();
+                         //     location.reload();
                              //     getcusotmer();
                         }
                    })
@@ -1311,7 +1367,7 @@
                                   selling_price = (v["selling_price"]) ? v["selling_price"] : "";
 
                                   if (v["product_id"] == product_id || v["service_id"] == product_id && v["item_id"] == item_id) {
-
+                                        var item_type = (v["product_id"]) ? "product" : "service";
                                        var html = '<div class="col-sm-12 col-md-3 mb-3 bg-white item_' + v["item_id"] + '"><div class="card bg-light text-dark border border-success"><div class="card-title p-3 border-bottom border-success">' + item_name + '<input readonly data-id="' + v["item_id"] + '" type="hidden" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control ritem_name_' + v["item_id"] + '""></div>';
                                        html += '<div class="card-body"><label>Quantity</label><input type="text" name="quantity[]" data-id="' + v["item_id"] + '"  placeholder="Enter Your Quantity" value="' + quantity + '" class="rquantity border-bottom form-control rquantity_' + v["item_id"] + '">';
                                        html += '<label>Unit Price</label><input type="text" readonly data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="runit_price border-bottom form-control runit_price_' + v["item_id"] + '">';
@@ -1323,7 +1379,9 @@
                                        html += '<label>Total Price(Without Tax)</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price_wo_tax + '"  class="rwototal_price form-control rwototal_price_' + v["item_id"] + '">';
                                        html += '<label>Total Price(With Tax)</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="rtotal_price form-control rtotal_price_' + v["item_id"] + '">';
                                        html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
-                                       html += '<input type="hidden" name="product_id" class="product_id" value="' + v["product_id"] + '"></div>';
+                                       html += '<input type="hidden" name="item_type" class="item_type" value="'+item_type+'">';
+                                       html += '<input type="hidden" name="product_id" class="product_id" value="' + v["product_id"] + '">'
+                                       html += '<input type="hidden" name="product_id" class="service_id" value="' + v["service_id"] + '"></div>';
                                        html += '<div class="card-footer"><button data-id="' + v["item_id"] + '" class="btn btn-danger remove remove_' + v["item_id"] + '">Remove</button></div></div></div>';
                                        total_amount = total_amount + parseFloat(total_price);
                                        total_tax = total_tax + parseFloat(total_tax_amount);
@@ -1379,6 +1437,7 @@
                                             quantity = (v1["quantity"]) ? v1["quantity"] : "";
                                             unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
 
+                                        //     unit_price = unit_price.toFixed(2);
                                             selling_unit_price = (v1["selling_unit_price"]) ? v1["selling_unit_price"] : "";
                                             selling_price = (v1["selling_price"]) ? v1["selling_price"] : "";
                                        }
@@ -1388,7 +1447,7 @@
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
                                        unit_price = (unit_price) ? unit_price : v["unit_price"];
-                                       unit_price = unit_price.replace(',', '.')
+                                   //     unit_price = unit_price.replace(',', '.')
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
@@ -1904,12 +1963,14 @@
 
                    formdata = {
                         item_id: $(".item_id_" + id).val(),
-                        quantity: $(".quantity_" + id).val(),
-                        tax_rate: $(".tax_rate_" + id).val(),
-                        tax_amount: $(".tax_amount_" + id).val(),
-                        unit_price: $(".unit_price_" + id).val(),
-                        total_price: $(".total_price_" + id).val(),
+                        quantity: $(".rquantity_" + id).val(),
+                        tax_rate: $(".rtax_rate_" + id).val(),
+                        tax_amount: $(".rtax_amount_" + id).val(),
+                        unit_price: $(".runit_price_" + id).val(),
+                        total_price: $(".rtotal_price_" + id).val(),
                         product_id: $(".product_id").val(),
+                        service_id: $(".service_id").val(),
+                        item_type:$(".item_type").val(),
                         pcustomer_id: $(".pcustomer_id").val(),
                         lead_id: $(".lead_id").val(),
                         is_active: "0"
@@ -2377,13 +2438,14 @@
                    e.preventDefault();
 
                    var formdata = $(this).serializeArray();
-
+                   
                    $.ajax({
                         method: "post",
                         url: "<?= base_url() ?>ajax/leadreference",
                         data: formdata,
-                        success: function(Status) {
-                             console.log(status);
+                        success: function(status) {
+                            
+                             $("#exampleModalCenter").modal("show");
                         }
                    })
               });

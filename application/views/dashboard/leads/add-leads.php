@@ -44,7 +44,7 @@
 
                <div class="form-group">
                     <label for="">Lead Category</label>
-                    <select name="category" required id="maincategory" class="form-control">
+                    <select name="category" id="maincategory" class="form-control">
                          <option value="">Select Category</option>
                          <option value="1">Services</option>
                          <option value="2">Product</option>

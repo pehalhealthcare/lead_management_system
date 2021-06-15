@@ -405,8 +405,9 @@ class Leads extends CI_Controller
           $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_term");
 
 
+          
 
-
+         
           // $this->load->view('dashboard/leads/pdf_quotation',$data);
 
           //     return false;

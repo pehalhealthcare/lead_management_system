@@ -333,7 +333,7 @@ class Products extends CI_Controller
                                    "tax_rate" => $data[4],
                                    "unit_price" => $data[5]
                               );
-                              print_r($inserData);
+                              // print_r($inserData);
                               if ($this->common_model->viewwheredata(array("partnumber" => $data[0]), "mk_master_product_item")) {
                                    $message = "Data already existed";
                               }
@@ -350,7 +350,7 @@ class Products extends CI_Controller
                     }
 
                     $this->session->set_flashdata('message', $message);
-                    // return redirect("dashboard/products");
+                    return redirect("dashboard/products");
                }
           
      }
