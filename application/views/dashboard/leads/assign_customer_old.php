@@ -997,6 +997,26 @@
          </div>
     </div>
 
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+         <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                   <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                             <span aria-hidden="true">&times;</span>
+                        </button>
+                   </div>
+                   <div class="modal-body">
+                         Reference Data Updated Successfully
+                   </div>
+                   <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="button" class="btn btn-primary">Save changes</button>
+                   </div>
+              </div>
+         </div>
+    </div>
+
 
     <style>
          .ck-editor__editable {
@@ -1015,31 +1035,31 @@
          $(".rcustomer_id").val($(".pcustomer_id").val());
 
          var local = "<?= count($lead_customer) ?>"
-          //     if (local == 0) {
-          //          localStorage.removeItem("tabs");
-          //     } else {
-          //          // localStorage.removeItem("tabs");
-          //     }
+         //     if (local == 0) {
+         //          localStorage.removeItem("tabs");
+         //     } else {
+         //          // localStorage.removeItem("tabs");
+         //     }
          $(document).ready(function() {
 
-          //     if (localStorage.getItem("tabs")) {
-          //          var tabs = localStorage.getItem("tabs");
-          //          if (tabs == $(tabs + "-tab").attr("href")) {
+              //     if (localStorage.getItem("tabs")) {
+              //          var tabs = localStorage.getItem("tabs");
+              //          if (tabs == $(tabs + "-tab").attr("href")) {
 
-          //               $(".nav-tabs").removeClass("active");
-          //               $(tabs + "-tab").addClass("active")
+              //               $(".nav-tabs").removeClass("active");
+              //               $(tabs + "-tab").addClass("active")
 
-          //               $(".tab-pane").removeClass("active show");
+              //               $(".tab-pane").removeClass("active show");
 
-          //               $(tabs).addClass("active");
-          //               $(tabs).addClass("show");
-          //          }
+              //               $(tabs).addClass("active");
+              //               $(tabs).addClass("show");
+              //          }
 
-          //     }
+              //     }
 
-          //     $(".nav-tabs").click(function() {
-          //          localStorage.setItem("tabs", $(this).attr("href"));
-          //     });
+              //     $(".nav-tabs").click(function() {
+              //          localStorage.setItem("tabs", $(this).attr("href"));
+              //     });
 
               $(".create").on("click", function() {
                    $(".add-customer").trigger("reset");
@@ -2398,16 +2418,23 @@
               $(document).on("submit", ".refer-form", function(e) {
                    e.preventDefault();
 
+                   
+
+                   $("#exampleModalCenter").modal("show");
+
                    var formdata = $(this).serializeArray();
+
+                   console.log(formdata);
 
                    $.ajax({
                         method: "post",
                         url: "<?= base_url() ?>ajax/leadreference",
                         data: formdata,
-                        success: function(Status) {
-                             console.log(status);
+                        success: function(status) {
+                             console.log("testing reference", status);
                         }
                    })
+
               });
          });
     </script>

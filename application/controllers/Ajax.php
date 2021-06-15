@@ -854,6 +854,8 @@ class Ajax extends CI_Controller
                "terms"=>$this->input->post("terms"),
           );
 
+          print_r($data);
+
           if($this->common_model->updatedata("mk_customer_item",$data,array("lead_id"=>$lead_id,"customer_id"=>$customer_id)))
           {
                echo json_encode(array("message"=>"Leads reference updated successfully"));

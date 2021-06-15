@@ -134,13 +134,13 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 						<td><?= $item_name ?></td>
 						<td><?= $pdfdata["quantity"] ?></td>
 						<td><?= $pdfdata["unit_price"] ?></td>
-						<td><?= $discount ?></td>
+						<td><?= number_format($discount,2); ?></td>
 						<td><?= $pdfdata["selling_unit_price"] ?></td>
 						<td><?= $pdfdata["tax_rate"] ?></td>
 						<td><?= $pdfdata["tax_amount"] ?></td>
 						<td><?= $pdfdata["total_price_wo_tax"] ?></td>
 						<td><?= $pdfdata["total_tax_amount"] ?></td>
-						<td><?= $pdfdata["total_price"] ?></td>
+						<td><?= number_format($pdfdata["total_price"],2) ?></td>
 						
 					</tr>
 					<?php $taxtotal = $taxtotal+$pdfdata["total_tax_amount"]; $totalamount= $totalamount+$pdfdata["total_price"]; ?>
@@ -162,8 +162,8 @@ New Delhi-110044,Landline :91-11-46601398, CIN:U51909DL2013PTC262006 ,GSTIN: 07A
 					
 					<tr>
 						<th colspan="9">Grand Total</th>
-						<th><?= $taxtotal ?></th>
-						<th><?= $totalamount ?></th>
+						<th><?= number_format($taxtotal,2); ?></th>
+						<th><?= number_format($totalamount,2); ?></th>
 					</tr>
 					</table>
 					<table border="1" style="width:100%;table-layout:auto;border-collapse:collapse;">
