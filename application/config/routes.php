@@ -71,7 +71,7 @@ $route["dashboard/delete/department/(:any)"]                =  "department/destr
 
 $route["dashboard/products"]                                = "products/index";
 $route["dashboard/products/add"]                            = "products/addproducts";
-$route["dashboard/product/import"]                           = "products/importprduct";
+$route["dashboard/product/import"]                          = "products/importproduct";
 $route["dashboard/products/edit/(:any)"]                    = "products/editproducts/$1";
 $route["dashboard/products/delete/(:any)"]                  = "products/deleteproducts/$1";
 
@@ -90,6 +90,7 @@ $route["dashboard/products/terms/delete/(:any)"]             = "products/delete_
 
 $route["dashboard/services"]                                = "services/index";
 $route["dashboard/services/add"]                            = "services/addservices";
+$route["dashboard/service/import"]                          = "services/importservice";
 $route["dashboard/services/edit/(:any)"]                    = "services/editservices/$1";
 $route["dashboard/services/delete/(:any)"]                  = "services/deleteservices/$1";
 

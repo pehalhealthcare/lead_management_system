@@ -97,7 +97,7 @@
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">Full Name <span class="text-danger">*</span></label>
-                                            <input type="text" name="customer-name" required id="customer-name" placeholder="Enter Customer Name" class="form-control  border">
+                                            <input type="text" name="customer-name" required id="customer-name" value="<?= $leads[0]["name"]; ?>" placeholder="Enter Customer Name" class="form-control  border">
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">Address 2</label>
@@ -105,7 +105,7 @@
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">Mobile <span class="text-danger">*</span></label>
-                                            <input type="text" name="mobile" required id="mobile" placeholder="Enter Mobile" class="form-control  border">
+                                            <input type="text" name="mobile" required id="mobile" value="<?= $leads[0]["mobile"]; ?>" placeholder="Enter Mobile" class="form-control  border">
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">Address 3</label>
@@ -113,7 +113,7 @@
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">Email <span class="text-danger">*</span></label>
-                                            <input type="email" name="email" required id="email" placeholder="Enter Email" class="form-control  border">
+                                            <input type="email" name="email" required id="email" value="<?= $leads[0]["email"]; ?>" placeholder="Enter Email" class="form-control  border">
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">State <span class="text-danger">*</span></label>

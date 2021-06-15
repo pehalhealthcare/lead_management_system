@@ -1,5 +1,9 @@
 <div class="col-sm-9 row mx-auto ">
      <div class="col-sm-12 mt-5 ">
+          <div class="col-sm-12 text-right">
+            <button class="btn btn-success mb-2" data-toggle="modal" data-target="#importModal" >IMPORT ITEM</button>
+            <a href="<?= base_url()?>dashboard/services/item/add" class="btn btn-success mb-2">ADD ITEM</a>
+          </div>
           <table class="table table-border">
            <tr>
                <th>SI NO</th>
@@ -44,6 +48,28 @@
         <button type="button" class="btn btn-success confirmed">Yes</button>
         <button type="button" class="btn btn-danger"  data-dismiss="modal">No</button>
       </div>
+    </div>
+  </div>
+</div>
+
+<div class="modal fade" id="importModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Import Items</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form method="post" action="<?= base_url() ?>dashboard/service/import" enctype="multipart/form-data">
+      <div class="modal-body">
+       <input type="file" name="file" class="form-control" />
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-success confirmed">SAVE & CLOSE</button>
+        <button type="button" class="btn btn-danger"  data-dismiss="modal">No</button>
+      </div>
+      </form>
     </div>
   </div>
 </div>

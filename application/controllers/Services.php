@@ -80,6 +80,57 @@ class Services extends CI_Controller
          }
     }
 
+    public function importservice()
+     {
+
+        
+               $file_mimes = array('text/x-comma-separated-values', 'text/comma-separated-values', 'application/octet-stream', 'application/vnd.ms-excel', 'application/x-csv', 'text/x-csv', 'text/csv', 'application/csv', 'application/excel', 'application/vnd.msexcel', 'text/plain', 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+               if (isset($_FILES['file']['name']) && in_array($_FILES['file']['type'], $file_mimes)) {
+                    $arr_file = explode('.', $_FILES['file']['name']);
+                    $extension = end($arr_file);
+                    if ('csv' == $extension) {
+                         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Csv();
+                    } else {
+                         $reader = new \PhpOffice\PhpSpreadsheet\Reader\Xlsx();
+                    }
+                    $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
+                    $sheetData = $spreadsheet->getActiveSheet()->toArray();
+                    echo "<pre>";
+                    // print_r($sheetData[0]);
+                    $inserData = array();
+                    $message = "";
+                    $i = 0;
+                    foreach ($sheetData as $data) {
+                         $i++;
+                         if ($i > 1) {
+                              $inserData = array(
+                                   "service_id" => 1,
+                                   "item_name" => $data[1],
+                                   "tax_rate" => $data[2],
+                                   "unit_price" => $data[3]
+                              );
+                              // print_r($inserData);
+                              if ($this->common_model->viewwheredata(array("partnumber" => $data[0]), "mk_master_service_item")) {
+                                   $message = "Data already existed";
+                              }
+                              else
+                              {
+                                   if ($this->common_model->adddata("mk_master_service_item", $inserData)) {
+                                        $message = "Data Inserted";
+                                   } else {
+                                        $message = "Data not Inserted";
+                                   }
+
+                              }
+                         }
+                    }
+
+                    $this->session->set_flashdata('message', $message);
+                    return redirect("dashboard/services");
+               }
+          
+     }
+
 
     public function editservices($id = "")
     {

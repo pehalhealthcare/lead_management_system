@@ -301,7 +301,7 @@ class Products extends CI_Controller
           }
      }
 
-     public function importprduct()
+     public function importproduct()
      {
 
         
