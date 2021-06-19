@@ -108,7 +108,7 @@
                                             <input type="text" name="mobile" required id="mobile" value="<?= $leads[0]["mobile"]; ?>" placeholder="Enter Mobile" class="form-control  border">
                                        </div>
                                        <div class="form-group col-sm-6">
-                                            <label for="">Address 3</label>
+                                            <label for="">Delivery Address</label>
                                             <input type="text" name="address_3" id="address_3" class="form-control  border">
                                        </div>
                                        <div class="form-group col-sm-6">
@@ -233,7 +233,7 @@
                    </ul>
                    <div class="tab-content bg-white p-3" id="pills-tabContent">
 
-                        <div class="tab-pane fade active show" id="pills-product-item" role="tabpanel" aria-labelledby="pills-product-item-tab">
+                        <div class="tab-pane active show" id="pills-product-item" role="tabpanel" aria-labelledby="pills-product-item-tab">
                              <form action="" method="post" class="assign-product" enctype="multipart/form-data">
                                   <div class="row">
                                        <?php if (!empty($lead_customer)) : ?>
@@ -478,7 +478,7 @@
                                                  </div>
                                                  <div class="form-group col-sm-6">
                                                       <label for="">Start date</label>
-                                                      <input type="text" id="startDate" name="fromdate" class="form-control border-bottom">
+                                                      <input type="datetime-local" id="startDate" name="fromdate" class="form-control border-bottom">
                                                  </div>
                                                  <div class="form-group col-sm-6">
                                                       <label for="">Related to</label>
@@ -508,7 +508,7 @@
 
                                                  <div class="form-group col-sm-6">
                                                       <label for="">End date</label>
-                                                      <input type="text" name="todate" id="endDate" class="form-control border-bottom">
+                                                      <input type="datetime-local" name="todate" id="endDate" class="form-control border-bottom endDate">
                                                  </div>
                                                  <div class="form-group col-sm-6">
                                                       <label for="">Location</label>
@@ -545,9 +545,9 @@
                                                       <textarea name="description" class="form-control border-bottom" rows="5"></textarea>
                                                  </div>
                                                  <div class="form-group col-sm-12">
-                                                      <input type="submit" class="btn btn-success button" value="SAVE & PROCEED">
-                                                      <input type="button" class="btn btn-success meeting-continue" value="SAVE & CONTINUE">
-                                                      <input type="button" class="btn btn-success addMeetingClose" value="SAVE & CLOSE">
+                                                      <input type="submit" class="btn btn-success button mt-2" value="SAVE & PROCEED">
+                                                      <input type="button" class="btn btn-success meeting-continue mt-2" value="SAVE & CONTINUE">
+                                                      <input type="button" class="btn btn-success addMeetingClose mt-2" value="SAVE & CLOSE">
                                                  </div>
                                             </div>
                                        </div>
@@ -601,7 +601,7 @@
                                                  </div>
                                                  <div class="form-group col-sm-6">
                                                       <label for="">Start date</label>
-                                                      <input type="text" name="fromdate" id="fromdate" class="form-control border-bottom fromdate">
+                                                      <input type="datetime-local" name="fromdate" id="fromdate" class="form-control border-bottom fromdate">
                                                  </div>
                                                  <div class="form-group col-sm-6">
                                                       <label for="">Related to</label>
@@ -862,7 +862,7 @@
 
                                        <div class="form-group col-sm-6">
                                             <label for="">End date</label>
-                                            <input type="text" name="todate" id="endDate" class="form-control border-bottom mtodate">
+                                            <input type="text" name="todate" id="endDate" class="form-control border-bottom mtodate endDate">
                                        </div>
                                        <div class="form-group col-sm-6">
                                             <label for="">Location</label>
@@ -1008,7 +1008,7 @@
                         </button>
                    </div>
                    <div class="modal-body">
-                         Reference Data Updated Successfully
+                        Reference Data Updated Successfully
                    </div>
                    <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -1035,10 +1035,33 @@
          $(".rcustomer_id").val($(".pcustomer_id").val());
 
          var local = "<?= count($lead_customer) ?>"
-          
+         if (local == 0) {
+              localStorage.removeItem("tabs");
+         } else {
+              //     localStorage.removeItem("tabs");
+         }
+
          $(document).ready(function() {
 
-         
+              if (localStorage.getItem("tabs")) {
+                   var tabs = localStorage.getItem("tabs");
+                   if (tabs == $(tabs + "-tab").attr("href")) {
+
+                        $(".nav-tabs").removeClass("active");
+                        $(tabs + "-tab").addClass("active")
+
+                        $(".tab-pane").removeClass("active show");
+
+                        $(tabs).addClass("active");
+                        $(tabs).addClass("show");
+                   }
+
+              }
+
+              $(".nav-tabs").click(function() {
+                   localStorage.setItem("tabs", $(this).attr("href"));
+              });
+
 
               $(".create").on("click", function() {
                    $(".add-customer").trigger("reset");
@@ -1078,7 +1101,7 @@
                         url: "<?= base_url() ?>ajax/opportunity",
                         data: formdata,
                         success: function(res) {
-                            
+                             localStorage.setItem("tabs", "#pills-contact");
                              $("#pills-activity-tab").removeClass("disabled");
                              $("#closeBoxConfirm").modal("show");
                              //$("#oppo-form").trigger("reset");
@@ -1096,7 +1119,7 @@
                         data: formdata,
                         success: function(res) {
                              //     $(".meeting").addClass("d-none");
-                            
+                             localStorage.setItem("tabs", "#pills-profile");
                              $("#closeBoxConfirm").modal("show");
                              //$("#activity-form").trigger("reset");
                              getActivity();
@@ -1114,7 +1137,7 @@
                         data: formdata,
                         success: function(res) {
                              //     $(".meeting").addClass("d-none");
-                            
+
                              $("#activity-form").trigger("reset");
                              getActivity();
                         }
@@ -1133,7 +1156,7 @@
                         data: formdata,
                         success: function(res) {
                              //     $(".log_call").addClass("d-none");
-                             
+                             localStorage.setItem("tabs", "#pills-profile");
                              $("#closeBoxConfirm").modal("show");
                              $(".log_form").trigger("reset");
                              getActivity();
@@ -1150,14 +1173,14 @@
                         url: "<?= base_url() ?>ajax/logCall",
                         data: formdata,
                         success: function(res) {
-                            $(".log_form").trigger("reset");
+                             $(".log_form").trigger("reset");
                              getActivity();
                         }
                    })
 
               });
 
-              
+
 
               $(".customers").click(function() {
                    var id = $(this).data("customer");
@@ -1184,12 +1207,37 @@
                              $("#email").val(res["customer"][0]["email"]);
                              $("#mobile").val(res["customer"][0]["mobile"]);
                              $("#alternate_mobile").val(res["customer"][0]["alternate_mobile"]);
-                             $("#address_1").val(res["address"][0]["address_1"]);
-                             $("#address_2").val(res["address"][0]["address_2"]);
-                             $("#address_3").val(res["address"][0]["address_3"]);
-                             $("#state").val(res["address"][0]["state"]);
-                             $("#city").val(res["address"][0]["city"]);
-                             $("#zipcode").val(res["address"][0]["zip"]);
+
+
+                             var address_1 = address_2 = address_3 = state = city = zip = "";
+                             if (res["address"] && res["address"].length > 0) {
+                                  if (res["address"][0]["address_1"]) {
+                                       address_1 = res["address"][0]["address_1"];
+                                  }
+                                  if (res["address"][0]["address_2"]) {
+                                       address_2 = res["address"][0]["address_2"]
+                                  }
+                                  if (res["address"][0]["address_3"]) {
+                                       address_3 = res["address"][0]["address_3"]
+                                  }
+                                  if (res["address"][0]["state"]) {
+                                       state = res["address"][0]["state"]
+                                  }
+                                  if (res["address"][0]["city"]) {
+                                       city = res["address"][0]["city"]
+                                  }
+                                  if (res["address"][0]["zip"]) {
+                                       zip = res["address"][0]["zip"]
+                                  }
+
+                             }
+
+                             $("#address_1").val(address_1);
+                             $("#address_2").val(address_2);
+                             $("#address_3").val(address_3);
+                             $("#state").val(state);
+                             $("#city").val(city);
+                             $("#zipcode").val(zip);
 
                         }
                    })
@@ -1267,32 +1315,17 @@
                         data: formdata,
                         success: function(status) {
 
-
                              $(".nav-tabs#pills-oppo-tab").removeClass("disabled");
-                             
+                             localStorage.setItem("tabs", "#pills-oppo");
                              $(".new-customer").removeClass("d-none");
-
                              $(".add-customer").trigger("reset");
-                         //     location.reload();
+                             location.reload();
                              //     getcusotmer();
                         }
                    })
               });
 
-              $(".assign-customer").on("submit", function(e) {
-                   e.preventDefault();
-                   var formdata = $(".assign-customer").serialize();
 
-
-                   $.ajax({
-                        url: "<?= base_url() ?>ajax/assigncustomerdata",
-                        method: "post",
-                        data: formdata,
-                        success: function(status) {
-
-                        }
-                   })
-              });
 
               $(document).on("click", "#pills-review-tab", function(e) {
 
@@ -1329,7 +1362,7 @@
 
                                   $.each(status["product_item"], function(k1, v1) {
                                        // console.log("product_item",v1);
-                                       if (status["product_item"] && v["item_id"] == v1["item_id"] && v["product_id"] != null) {
+                                       if (status["product_item"] && v["item_id"] == v1["item_id"] && v["product_id"] != null && v["item_type"]=="product") {
                                             item_name = (v1["item_name"]);
                                             checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";
                                             product_id = v1["product_id"] ? v1["product_id"] : "";
@@ -1341,12 +1374,11 @@
 
                                   $.each(status["service_item"], function(k3, s1) {
                                        // console.log("service_item",s1);
-                                       if (status["service_item"] && v["item_id"] == s1["item_id"] && v["service_id"] != null) {
+                                       if (status["service_item"] && v["item_id"] == s1["item_id"] && v["service_id"] != null && v["item_type"]=="service") {
                                             item_name = (s1["item_name"]);
                                             checked = (v["item_id"] == s1["item_id"]) ? "checked" : "";
                                             product_id = s1["service_id"] ? s1["service_id"] : "";
                                             item_id = s1["item_id"] ? s1["item_id"] : "";
-
                                        }
                                   });
 
@@ -1367,22 +1399,25 @@
                                   selling_price = (v["selling_price"]) ? v["selling_price"] : "";
 
                                   if (v["product_id"] == product_id || v["service_id"] == product_id && v["item_id"] == item_id) {
-                                        var item_type = (v["product_id"]) ? "product" : "service";
-                                       var html = '<div class="col-sm-12 col-md-3 mb-3 bg-white item_' + v["item_id"] + '"><div class="card bg-light text-dark border border-success"><div class="card-title p-3 border-bottom border-success">' + item_name + '<input readonly data-id="' + v["item_id"] + '" type="hidden" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control ritem_name_' + v["item_id"] + '""></div>';
-                                       html += '<div class="card-body"><label>Quantity</label><input type="text" name="quantity[]" data-id="' + v["item_id"] + '"  placeholder="Enter Your Quantity" value="' + quantity + '" class="rquantity border-bottom form-control rquantity_' + v["item_id"] + '">';
-                                       html += '<label>Unit Price</label><input type="text" readonly data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="runit_price border-bottom form-control runit_price_' + v["item_id"] + '">';
-                                       html += '<label>Tax Rate</label><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control rtax_rate_' + v["item_id"] + '">';
-                                       html += '<label>Selling Unit Price</label><input type="text" data-id="' + v["item_id"] + '"  value="' + selling_unit_price + '" name="rselling_unit_price[]"  class="rselling_unit_price border-bottom form-control rselling_unit_price_' + v["item_id"] + '">';
-                                       html += '<label>Selling Price</label><input type="text" data-id="' + v["item_id"] + '" value="' + selling_price + '"  name="rselling_price[]" readonly class="rselling_price border-bottom form-control rselling_price_' + v["item_id"] + '">';
-                                       html += '<label>Tax Amount</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control rtax_amount_' + v["item_id"] + '">';
-                                       html += '<label>Total Tax Amount</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + total_tax_amount + '" class="rtotal_tax_amount form-control rtotal_tax_amount_' + v["item_id"] + '">';
-                                       html += '<label>Total Price(Without Tax)</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price_wo_tax + '"  class="rwototal_price form-control rwototal_price_' + v["item_id"] + '">';
-                                       html += '<label>Total Price(With Tax)</label><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="rtotal_price form-control rtotal_price_' + v["item_id"] + '">';
-                                       html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
-                                       html += '<input type="hidden" name="item_type" class="item_type" value="'+item_type+'">';
-                                       html += '<input type="hidden" name="product_id" class="product_id" value="' + v["product_id"] + '">'
-                                       html += '<input type="hidden" name="product_id" class="service_id" value="' + v["service_id"] + '"></div>';
-                                       html += '<div class="card-footer"><button data-id="' + v["item_id"] + '" class="btn btn-danger remove remove_' + v["item_id"] + '">Remove</button></div></div></div>';
+                                       console.log("test",v["product_id"]);
+                                       var item_type_ = (v["product_id"] || v["prduct_id"]!=null) ? "product" : "service";
+                                       var item_type = (v["product_id"] || v["prduct_id"]!=null) ? "product" : "service";
+
+                                       var html = '<div class="col-sm-12 col-md-3 mb-3 bg-white item_' + v["item_id"] + '"><div class="card bg-light text-dark border border-success"><div class="card-title p-3 border-bottom border-success">' + item_name + '<input readonly data-id="' + v["item_id"] + '" type="hidden" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control '+item_type_+'ritem_name_' + v["item_id"] + '""></div>';
+                                       html += '<div class="card-body"><label>Quantity</label><input type="text" data-item-type="' + item_type + '" name="quantity[]" data-id="' + v["item_id"] + '"  placeholder="Enter Your Quantity" value="' + quantity + '" class="rquantity border-bottom form-control '+item_type_+'rquantity_' + v["item_id"] + '">';
+                                       html += '<label>Unit Price</label><input type="text" readonly data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"   value="' + unit_price + '" name="unit_price[]"  class="runit_price border-bottom form-control '+item_type_+'runit_price_' + v["item_id"] + '">';
+                                       html += '<label>Tax Rate</label><input readonly type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control '+item_type_+'rtax_rate_' + v["item_id"] + '">';
+                                       html += '<label>Selling Unit Price</label><input type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"  value="' + selling_unit_price + '" name="rselling_unit_price[]"  class="rselling_unit_price border-bottom form-control '+item_type_+'rselling_unit_price_' + v["item_id"] + '">';
+                                       html += '<label>Selling Price</label><input type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '" value="' + selling_price + '"  name="rselling_price[]" readonly class="rselling_price border-bottom form-control '+item_type_+'rselling_price_' + v["item_id"] + '">';
+                                       html += '<label>Tax Amount</label><input readonly type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control '+item_type_+'rtax_amount_' + v["item_id"] + '">';
+                                       html += '<label>Total Tax Amount</label><input readonly type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + total_tax_amount + '" class="rtotal_tax_amount form-control '+item_type_+'rtotal_tax_amount_' + v["item_id"] + '">';
+                                       html += '<label>Total Price(Without Tax)</label><input readonly data-item-type="' + item_type + '" type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price_wo_tax + '"  class="rwototal_price form-control '+item_type_+'rwototal_price_' + v["item_id"] + '">';
+                                       html += '<label>Total Price(With Tax)</label><input readonly data-item-type="' + item_type + '" type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="rtotal_price form-control '+item_type_+'rtotal_price_' + v["item_id"] + '">';
+                                       html += '<input type="hidden" name="item_id[]" data-item-type="' + item_type + '" class="' + item_type + 'item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
+                                       html += '<input type="hidden" name="item_type" data-item-type="' + item_type + '" class="item_type" value="' + item_type + '">';
+                                       html += '<input type="hidden" name="product_id" data-item-type="' + item_type + '" class="' + item_type + '_product_id_' + v["item_id"] + '" value="' + v["product_id"] + '">'
+                                       html += '<input type="hidden" name="product_id" data-item-type="' + item_type + '" class="' + item_type + '_service_id_' + v["item_id"] + '" value="' + v["service_id"] + '"></div>';
+                                       html += '<div class="card-footer"><button data-item-type="' + item_type + '" data-id="' + v["item_id"] + '" class="btn btn-danger remove '+item_type_+'remove_' + v["item_id"] + '">Remove</button></div></div></div>';
                                        total_amount = total_amount + parseFloat(total_price);
                                        total_tax = total_tax + parseFloat(total_tax_amount);
                                        $(".customer-items").append(html);
@@ -1437,7 +1472,7 @@
                                             quantity = (v1["quantity"]) ? v1["quantity"] : "";
                                             unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
 
-                                        //     unit_price = unit_price.toFixed(2);
+                                            //     unit_price = unit_price.toFixed(2);
                                             selling_unit_price = (v1["selling_unit_price"]) ? v1["selling_unit_price"] : "";
                                             selling_price = (v1["selling_price"]) ? v1["selling_price"] : "";
                                        }
@@ -1447,7 +1482,7 @@
                                   });
                                   if (v["item_name"] && status["customer_item"]) {
                                        unit_price = (unit_price) ? unit_price : v["unit_price"];
-                                   //     unit_price = unit_price.replace(',', '.')
+                                       //     unit_price = unit_price.replace(',', '.')
                                        var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                        html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
                                        html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
@@ -1611,7 +1646,7 @@
                         total_tax_amount: total_tax_amount.toFixed(2),
                         total_price_wo_tax: selling_price_wo_tax.toFixed(2),
                         total_price: $(".stotal_price_" + id).val(),
-                        service_id: $(".service_id").val(),
+                        service_id: ($(".service_id").val()) ? $(".service_id").val() : "",
                         pcustomer_id: $(".pcustomer_id").val(),
                         lead_id: $(".lead_id").val(),
                         is_active: "1"
@@ -1630,17 +1665,19 @@
 
               $(document).on("keyup", ".rselling_unit_price", function() {
 
-
+                    var item_type = $(this).data("item-type");
 
                    var selling_unit_price = $(this).val();
 
                    var id = $(this).data("id");
 
-                   if ($(this).val() <= $(".runit_price_" + id).val()) {
+                   console.log($(this).val());
 
-                        var tax_rate = $(".rtax_rate_" + id).val();
+                   if (($(this).val()=="") || parseFloat($("."+item_type+"runit_price_" + id).val()) >= parseFloat($(this).val())) {
 
-                        var quantity = $(".rquantity_" + id).val();
+                        var tax_rate = $("."+item_type+"rtax_rate_" + id).val();
+
+                        var quantity = $("."+item_type+"rquantity_" + id).val();
 
                         var total_price = parseFloat(tax_rate) + 100;
 
@@ -1654,28 +1691,29 @@
 
                         var selling_price_wo_tax = selling_price * quantity;
 
-                        $(".rtotal_tax_amount_" + id).val(total_tax_amount.toFixed(2));
+                        $("."+item_type+"rtotal_tax_amount_" + id).val(total_tax_amount.toFixed(2));
 
-                        $(".rtax_amount_" + id).val(tax_amount.toFixed(2));
+                        $("."+item_type+"rtax_amount_" + id).val(tax_amount.toFixed(2));
 
-                        $(".rwototal_price_" + id).val(selling_price_wo_tax.toFixed(2));
+                        $("."+item_type+"rwototal_price_" + id).val(selling_price_wo_tax.toFixed(2));
 
-                        $(".rtotal_price_" + id).val(selling_unit_price);
+                        $("."+item_type+"rtotal_price_" + id).val(selling_unit_price);
 
-                        $(".rselling_price_" + id).val(selling_price.toFixed(2));
+                        $("."+item_type+"rselling_price_" + id).val(selling_price.toFixed(2));
 
                         formdata = {
-                             item_id: $(".item_id_" + id).val(),
-                             quantity: $(".rquantity_" + id).val(),
-                             tax_rate: $(".rtax_rate_" + id).val(),
-                             total_tax_amount: $(".rtotal_tax_amount_" + id).val(),
-                             tax_amount: $(".rtax_amount_" + id).val(),
-                             unit_price: $(".runit_price_" + id).val(),
-                             selling_price: $(".rselling_price_" + id).val(),
-                             selling_unit_price: $(".rselling_unit_price_" + id).val(),
-                             total_price_wo_tax: $(".rwototal_price_" + id).val(),
-                             total_price: $(".rtotal_price_" + id).val(),
-                             product_id: $(".product_id").val(),
+                             item_id: $("."+item_type+"item_id_" + id).val(),
+                             quantity: $("."+item_type+"rquantity_" + id).val(),
+                             tax_rate: $("."+item_type+"rtax_rate_" + id).val(),
+                             total_tax_amount: $("."+item_type+"rtotal_tax_amount_" + id).val(),
+                             tax_amount: $("."+item_type+"rtax_amount_" + id).val(),
+                             unit_price: $("."+item_type+"runit_price_" + id).val(),
+                             selling_price: $("."+item_type+"rselling_price_" + id).val(),
+                             selling_unit_price: $("."+item_type+"rselling_unit_price_" + id).val(),
+                             total_price_wo_tax: $("."+item_type+"rwototal_price_" + id).val(),
+                             total_price: $("."+item_type+"rtotal_price_" + id).val(),
+                             product_id: $("."+item_type+"_product_id_"+ id).val(),
+                             service_id: $("."+item_type+"_service_id_"+ id).val(),
                              pcustomer_id: $(".pcustomer_id").val(),
                              lead_id: $(".lead_id").val(),
                              is_active: "1"
@@ -1691,8 +1729,6 @@
                         $(".rtotal_tax_amount").each(function(k, v) {
                              total_tax = total_tax + parseFloat($(this).val());
                         });
-
-                        console.log(total_amount);
 
                         var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
                         alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax.toFixed(2) + '</div>';
@@ -1710,6 +1746,7 @@
                         })
 
                    } else {
+                        console.log("selling price" + $(this).val() + "unit_price" + $(".runit_price_" + id).val())
                         $(this).attr("disable", true).attr("readonly", true);
                         //     alert("Selling price is greater than unit price")
                    }
@@ -1814,106 +1851,113 @@
               $(document).on("keyup", ".rquantity", function() {
 
 
+                   var item_type = $(this).data("item-type");
 
-                   var id = $(this).data("id");
+                 
 
-                   var selling_unit_price = $(".rselling_unit_price_" + id).val() //$(this).val();
+                        var id = $(this).data("id");
 
-                   var tax_rate = $(".rtax_rate_" + id).val();
+                        var selling_unit_price = $("."+item_type+"rselling_unit_price_" + id).val() //$(this).val();
 
-                   var quantity = $(this).val(); //$(".rquantity_" + id).val();
+                        var tax_rate = $("."+item_type+"rtax_rate_" + id).val();
 
-                   var total_price = parseFloat(tax_rate) + 100;
+                        var quantity = $(this).val(); //$(".rquantity_" + id).val();
 
-                   var selling_price = (selling_unit_price * 100) / total_price;
+                        var total_price = parseFloat(tax_rate) + 100;
 
-                   var tax_amount = selling_price * (tax_rate / 100);
+                        var selling_price = (selling_unit_price * 100) / total_price;
 
-                   var total_tax_amount = tax_amount * quantity;
+                        var tax_amount = selling_price * (tax_rate / 100);
 
-                   selling_unit_price = selling_unit_price * quantity;
+                        var total_tax_amount = tax_amount * quantity;
 
-                   var selling_price_wo_tax = selling_price * quantity;
+                        selling_unit_price = selling_unit_price * quantity;
 
-                   $(".rtotal_tax_amount_" + id).val(total_tax_amount.toFixed(2));
+                        var selling_price_wo_tax = selling_price * quantity;
 
-                   $(".rtax_amount_" + id).val(tax_amount.toFixed(2));
+                        $("."+item_type+"rtotal_tax_amount_" + id).val(total_tax_amount.toFixed(2));
 
-                   $(".rwototal_price_" + id).val(selling_price_wo_tax.toFixed(2));
+                        $("."+item_type+"rtax_amount_" + id).val(tax_amount.toFixed(2));
 
-                   $(".rtotal_price_" + id).val(selling_unit_price);
+                        $("."+item_type+"rwototal_price_" + id).val(selling_price_wo_tax.toFixed(2));
 
-                   $(".rselling_price_" + id).val(selling_price.toFixed(2));
+                        $("."+item_type+"rtotal_price_" + id).val(selling_unit_price);
 
-                   formdata = {
-                        item_id: $(".item_id_" + id).val(),
-                        quantity: $(".rquantity_" + id).val(),
-                        tax_rate: $(".rtax_rate_" + id).val(),
-                        total_tax_amount: $(".rtotal_tax_amount_" + id).val(),
-                        tax_amount: $(".rtax_amount_" + id).val(),
-                        unit_price: $(".runit_price_" + id).val(),
-                        selling_price: $(".rselling_price_" + id).val(),
-                        selling_unit_price: $(".rselling_unit_price_" + id).val(),
-                        total_price_wo_tax: $(".rwototal_price_" + id).val(),
-                        total_price: $(".rtotal_price_" + id).val(),
-                        product_id: $(".product_id").val(),
-                        pcustomer_id: $(".pcustomer_id").val(),
-                        lead_id: $(".lead_id").val(),
-                        is_active: "1"
-                   };
+                        $("."+item_type+"rselling_price_" + id).val(selling_price.toFixed(2));
+
+                        formdata = {
+                             item_id: $("."+item_type+"item_id_" + id).val(),
+                             quantity: $("."+item_type+"rquantity_" + id).val(),
+                             tax_rate: $("."+item_type+"rtax_rate_" + id).val(),
+                             total_tax_amount: $(".rtotal_tax_amount_" + id).val(),
+                             tax_amount: $("."+item_type+"rtax_amount_" + id).val(),
+                             unit_price: $("."+item_type+"runit_price_" + id).val(),
+                             selling_price: $("."+item_type+"rselling_price_" + id).val(),
+                             selling_unit_price: $("."+item_type+"rselling_unit_price_" + id).val(),
+                             total_price_wo_tax: $("."+item_type+"rwototal_price_" + id).val(),
+                             total_price: $("."+item_type+"rtotal_price_" + id).val(),
+                             product_id: $("."+item_type+"product_id_"+id).val(),
+                             service_id:$("."+item_type+"_service_id_"+id).val(),
+                             pcustomer_id: $(".pcustomer_id").val(),
+                             lead_id: $(".lead_id").val(),
+                             is_active: "1"
+                        };
+                        
+                       
 
 
-                   var total_amount = 0
-                   var total_tax = 0;
+                        var total_amount = 0
+                        var total_tax = 0;
 
-                   $(".rtotal_price").each(function(k, v) {
-                        total_amount = total_amount + parseFloat($(this).val());
-                   });
-                   $(".rtotal_tax_amount").each(function(k, v) {
-                        total_tax = total_tax + parseFloat($(this).val());
-                   });
+                        $(".rtotal_price").each(function(k, v) {
+                             total_amount = total_amount + parseFloat($(this).val());
+                        });
+                        $(".rtotal_tax_amount").each(function(k, v) {
+                             total_tax = total_tax + parseFloat($(this).val());
+                        });
 
-                   console.log(total_amount);
+                        console.log(total_amount);
 
-                   var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
-                   alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax + '</div>';
-                   $(".total-items").html(alltotal);
+                        var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
+                        alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax + '</div>';
+                        $(".total-items").html(alltotal);
 
-                   $.ajax({
-                        method: "post",
-                        url: "<?= base_url() ?>ajax/singleproductsubmit",
-                        data: formdata,
-                        success: function(status) {
-                             if (total_amount) {
+                        $.ajax({
+                             method: "post",
+                             url: "<?= base_url() ?>ajax/singleproductsubmit",
+                             data: formdata,
+                             success: function(status) {
+                                  if (total_amount) {
 
+                                  }
                              }
-                        }
-                   })
+                        })
+
+                   
+
+
               });
 
               $(document).on("keyup", ".runit_price", function() {
 
-                   var id = $(this).data("id");
+               var item_type = $(this).data("item-type");
 
-                   var tax_rate = $(".runit_price_" + id).val() * ($(".rtax_rate_" + id).val() / 100);
+               
+                    var id = $(this).data("id");
 
-                   // return false;
+                   var tax_rate = $("."+item_type+"runit_price_" + id).val() * ($(".rtax_rate_" + id).val() / 100);
 
-                   total_tax = tax_rate * $(".rquantity_" + id).val();
+                   total_tax = tax_rate * $("."+item_type+"rquantity_" + id).val();
 
+                   $("."+item_type+"rtax_amount_" + id).val(total_tax);
 
+                   var total_price = ($("."+item_type+"rquantity_" + id).val() * $(this).val()) + total_tax;
 
-                   $(".rtax_amount_" + id).val(total_tax);
-
-                   var total_price = ($(".rquantity_" + id).val() * $(this).val()) + total_tax;
-
-
-
-                   $(".rtotal_price_" + id).val(total_price);
+                   $("."+item_type+"rtotal_price_" + id).val(total_price);
 
                    var total = 0;
 
-                   $(".rtotal_price").each(function() {
+                   $("."+item_type+"rtotal_price").each(function() {
                         var id = $(this).data("id");
 
                         total = total + parseFloat($(this).val());
@@ -1931,13 +1975,14 @@
                    var id = $(this).data("id");
 
                    formdata = {
-                        item_id: $(".item_id_" + id).val(),
+                        item_id: $("."+item_type+"item_id_" + id).val(),
                         quantity: $(this).val(),
-                        tax_rate: $(".rtax_rate_" + id).val(),
-                        tax_amount: $(".rtax_amount_" + id).val(),
-                        unit_price: $(".runit_price_" + id).val(),
-                        total_price: $(".rtotal_price_" + id).val(),
-                        product_id: $(".product_id").val(),
+                        tax_rate: $("."+item_type+"rtax_rate_" + id).val(),
+                        tax_amount: $("."+item_type+"rtax_amount_" + id).val(),
+                        unit_price: $("."+item_type+"runit_price_" + id).val(),
+                        total_price: $("."+item_type+"rtotal_price_" + id).val(),
+                        product_id: ($(".product_id").val()) ? $(".product_id").val() : "",
+                        service_id: ($(".service_id").val()) ? $(".service_id").val() : "",
                         pcustomer_id: $(".pcustomer_id").val(),
                         lead_id: $(".lead_id").val(),
                         is_active: "1"
@@ -1955,34 +2000,44 @@
                         }
                    })
 
+              
+
+                   
+
               });
 
               $(document).on("click", ".remove", function() {
 
                    var id = $(this).data("id");
 
+                   var item_type = $(this).data("item-type");
+
+               //     console.log(item_type);
+
                    formdata = {
-                        item_id: $(".item_id_" + id).val(),
-                        quantity: $(".rquantity_" + id).val(),
-                        tax_rate: $(".rtax_rate_" + id).val(),
-                        tax_amount: $(".rtax_amount_" + id).val(),
-                        unit_price: $(".runit_price_" + id).val(),
-                        total_price: $(".rtotal_price_" + id).val(),
-                        product_id: $(".product_id").val(),
-                        service_id: $(".service_id").val(),
-                        item_type:$(".item_type").val(),
+                        item_id: $("."+item_type+"item_id_" + id).val(),
+                        quantity: $("."+item_type+"rquantity_" + id).val(),
+                        tax_rate: $("."+item_type+"rtax_rate_" + id).val(),
+                        tax_amount: $("."+item_type+"rtax_amount_" + id).val(),
+                        unit_price: $("."+item_type+"runit_price_" + id).val(),
+                        total_price: $("."+item_type+"rtotal_price_" + id).val(),
+                        product_id: ($("."+item_type+"_product_id_"+ id).val()) ? $("."+item_type+"_product_id_"+ id).val() : "",
+                        service_id: ($("."+item_type+"_service_id_"+ id).val()) ? $("."+item_type+"_service_id_"+ id).val() : "",
+                        item_type: $("."+item_type+"item_type").val(),
                         pcustomer_id: $(".pcustomer_id").val(),
                         lead_id: $(".lead_id").val(),
                         is_active: "0"
                    };
+
+               //     console.log("remove",formdata); return false;
 
                    $.ajax({
                         method: "post",
                         url: "<?= base_url() ?>ajax/singleproductsubmit",
                         data: formdata,
                         success: function(status) {
+                             $("#pills-review-tab").trigger("click");
                              $(".customer-items .item_" + id).remove();
-
                         }
                    })
               });
@@ -2143,7 +2198,7 @@
                         url: "<?= base_url() ?>ajax/opportunity",
                         data: formdata,
                         success: function(res) {
-                            
+                             localStorage.setItem("tabs", "#pills-contact");
                              $("#oppo-form").trigger("reset");
                              location.reload();
                         }
@@ -2170,40 +2225,40 @@
               });
 
 
-              $("#startDate").datepicker({
-                   format: 'dd-mm-yyyy',
-                   todayBtn: true,
-                   todayHighlight: true,
-                   autoclose: true,
-              }).on('changeDate', function(selected) {
-                   var minDate = new Date();
-                   $('#endDate').datepicker('setStartDate', minDate);
-              }).datepicker("setDate", "1");
+          //     $("#startDate").datetimepicker({
+          //          format: 'dd/mm/yyyy',
+          //          timeFormat:  "hh:mm:ss",
+          //          autoclose: true,
+          //          todayBtn: true,
+          //          todayHighlight: true
+          //     }).on('changeDate', function(selected) {
+          //          var minDate = new Date();
+          //          $('.endDate').datepicker('setStartDate', minDate);
+          //     });
 
-              $("#fromdate").datepicker({
-                   format: 'dd-mm-yyyy',
-                   todayBtn: true,
-                   todayHighlight: true,
-                   autoclose: true,
-              }).on('changeDate', function(selected) {
-                   var minDate = new Date();
-                   $('#endDate').datepicker('setStartDate', minDate);
-              }).datepicker("setDate", "1");;
+          //     $(".endDate").datetimepicker({
+          //          format: 'dd/mm/yyyy',
+          //          timeFormat:  "hh:mm:ss",
+          //          autoclose: true,
+          //     }).on('changeDate', function(selected) {
+          //          var minDate = new Date(selected.date.valueOf());
+          //          $('#startDate').datepicker('setEndDate', minDate);
+          //     });
+
+          //     $("#fromdate").datetimepicker({
+          //          format: 'dd/mm/yyyy',
+          //          timeFormat:  "hh:mm:ss",
+          //          autoclose: true,
+          //          todayBtn: true,
+          //          todayHighlight: true
+          //     }).datepicker("setDate", "1");
 
 
-              $("#endDate").datepicker({
-                   format: 'dd-mm-yyyy',
-                   autoclose: true,
-              }).on('changeDate', function(selected) {
-                   var minDate = new Date(selected.date.valueOf());
-                   $('#startDate').datepicker('setEndDate', minDate);
-              });
+
 
               $(document).on("submit", "#activity-form", function(e) {
                    e.preventDefault();
                    var formdata = $(this).serializeArray();
-
-
 
                    $.ajax({
                         method: "post",
@@ -2211,7 +2266,9 @@
                         data: formdata,
                         success: function(res) {
                              $(".meeting").addClass("d-none");
+                             localStorage.setItem("tabs", "#pills-profile");
                              $("#activity-form").trigger("reset");
+                             location.reload();
                              getActivity();
                         }
                    })
@@ -2230,6 +2287,8 @@
                              // console.log(res); return false;
                              $(".log_call").addClass("d-none");
                              $(".log_form").trigger("reset");
+                             localStorage.setItem("tabs", "#pills-profile");
+                             location.reload();
                              getActivity();
                         }
                    })
@@ -2438,13 +2497,13 @@
                    e.preventDefault();
 
                    var formdata = $(this).serializeArray();
-                   
+
                    $.ajax({
                         method: "post",
                         url: "<?= base_url() ?>ajax/leadreference",
                         data: formdata,
                         success: function(status) {
-                            
+
                              $("#exampleModalCenter").modal("show");
                         }
                    })

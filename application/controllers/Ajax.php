@@ -96,7 +96,7 @@ class Ajax extends CI_Controller
                "modified_by" => $this->session->userID
              );
 
-               // $wherecond = array("lead_id"=>$this->input->post("lead_id"));
+               $wherecond = array("lead_id"=>$this->input->post("lead_id"),"customer_id"=>$customercheck[0]["customer_id"]);
 
               if($this->common_model->updatedata("mk_customer",$insertdata,$wherecon))
               {
@@ -126,10 +126,11 @@ class Ajax extends CI_Controller
                          }
                          else
                          {
-                              // if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
-                              // {
-                              //      echo json_encode(array("message" => "Data Updated Successfully"));
-                              // }
+                              echo "Data Not Updated";
+                              if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
+                              {
+                                   echo json_encode(array("message" => "Data Updated Successfully"));
+                              }
                          }
                          
                     }
@@ -400,8 +401,9 @@ class Ajax extends CI_Controller
                "service_id"=>$this->input->post("service_id")
                
           );
+          // echo "checking product".$this->input->post("product_id");
 
-          if($this->input->post("product_id"))
+          if($this->input->post("product_id") && $this->input->post("product_id")!="null")
           {
                $cols = array(
                     "product_id" => $this->input->post("product_id"),
@@ -409,10 +411,14 @@ class Ajax extends CI_Controller
                     "item_id" => $this->input->post("item_id"),
                     "lead_id"=>$this->input->post("lead_id")
                );
+
+               $insertdata["item_type"] = "product";
      
           }
 
-          if($this->input->post("service_id"))
+          // echo "checking service".$this->input->post("service_id");
+
+          if($this->input->post("service_id") && $this->input->post("service_id")!="null")
           {
                $cols = array(
                     "service_id" => $this->input->post("service_id"),
@@ -420,13 +426,18 @@ class Ajax extends CI_Controller
                     "item_id" => $this->input->post("item_id"),
                     "lead_id"=>$this->input->post("lead_id")
                );
+
+               $insertdata["item_type"] = "service";
           }
 
+          
+          // print_r($cols); die();
           
           $datacheck = $this->common_model->viewwheredata($cols, "mk_customer_item");
 
           if(empty($datacheck))
           {
+               echo "empty";
                $insertdata["is_active"] = $this->input->post("is_active");
                if ($this->common_model->adddata("mk_customer_item", $insertdata)) {
                     $historydata = array(
@@ -444,11 +455,27 @@ class Ajax extends CI_Controller
           else
           {
                $insertdata["is_active"] = $this->input->post("is_active");
-               $condition = array(
-                    "customer_id" => $this->input->post("pcustomer_id"),
-                    "item_id" => $this->input->post("item_id"),
-                    "lead_id"=>$this->input->post("lead_id")
-               );
+
+               if($datacheck[0]["item_type"]=="service")
+               {
+                    $condition = array(
+                         "customer_id" => $this->input->post("pcustomer_id"),
+                         "item_id" => $this->input->post("item_id"),
+                         "lead_id"=>$this->input->post("lead_id"),
+                         "item_type"=>"service"
+                    );
+
+               }
+               else
+               {
+                    $condition = array(
+                         "customer_id" => $this->input->post("pcustomer_id"),
+                         "item_id" => $this->input->post("item_id"),
+                         "lead_id"=>$this->input->post("lead_id"),
+                         "item_type"=>"product"
+                    );
+               }
+
                if ($this->common_model->updatedata("mk_customer_item", $insertdata, $condition)) {
                     $historydata = array(
                          "actions"=>"Product item updated for lead",

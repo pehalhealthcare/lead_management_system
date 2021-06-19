@@ -85,42 +85,64 @@ th
             <th colspan="7"><?= date("d-m-Y") ?></th>
             
           </tr>
+          <?php
+          $address_1 = $address_2=$address_3=$zip="";
+          if(count($custAddress))
+          {
+            $address_1=$custAddress[0]["address_1"];
+            $address_2=$custAddress[0]["address_2"];
+            $address_3=$custAddress[0]["address_3"];
+            $zip=$custAddress[0]["zip"];
+          }
+          $refer=$refer1=$refer2=$refer3=$refer4=$terms="";
+          if(count($customer_item))
+          {
+            
+            $refer = $customer_item[0]["refer"];
+            $refer1=$customer_item[0]["ref_1"];
+            $refer2=$customer_item[0]["ref_2"];
+            $refer3=$customer_item[0]["ref_3"];
+            $refer4=$customer_item[0]["ref_4"];
+            $terms=$customer_item[0]["terms"];
+          }
+          ?>
           <tr>
             <th><?= $customer[0]["prefix"]?></th>
             <th><?= $customer[0]["name"]?></th>
             <th>Terms</th>
-            <th colspan="7"><?= $customer_item[0]["terms"] ?></th>
+            <th colspan="7"><?= $terms; ?></th>
             
           </tr>
           <tr>
+          
             <th>Address</th>
-            <th><?= $custAddress[0]["address_1"]?></th>
+            <th><?= $address_1?></th>
             <th>Ref No</th>
-            <th colspan="7"><?= $customer_item[0]["refer"] ?></th>
+            <th colspan="7"><?= $refer ?></th>
           </tr>
           <tr>
             <th>Address 2</th>
-            <th><?= $custAddress[0]["address_2"]?> <?= $custAddress[0]["zip"]?></th>
+            <th><?= $address_2 ?>
             <th>Ref 1</th>
-            <th colspan="7"><?= $customer_item[0]["ref_1"] ?></th>
+            <th colspan="7"><?= $refer1 ?></th>
           </tr>
           <tr>
-            <th>Address 3</th>
-            <th><?= $custAddress[0]["address_3"]?></th>
+            <th>Delivery Address</th>
+            <th><?= $address_3 ?></th>
             <th>Ref 2</th>
-            <th colspan="7"><?= $customer_item[0]["ref_2"] ?></th>
+            <th colspan="7"><?=  $refer2;?></th>
           </tr>
           <tr>
             <th>Email ID</th>
             <th><?= $customer[0]["email"]?></th>
             <th>Ref 3</th>
-            <th colspan="7"><?= $customer_item[0]["ref_3"] ?></th>
+            <th colspan="7"><?= $refer3; ?></th>
           </tr>
           <tr class="bottom_border">
             <th>Mobile </th>
             <th><?= $customer[0]["mobile"]?></th>
             <th>Ref 4</th>
-            <th colspan="7"><?= $customer_item[0]["ref_4"] ?></th>
+            <th colspan="7"><?= $refer4; ?></th>
           </tr>
           <tr>
             <th>From</th>

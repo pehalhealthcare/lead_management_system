@@ -21,7 +21,7 @@ class CI_Numbertowordconvertsconver {
         // Ones
         $result = "";
         if ($giga) {
-            $result .= $this->convert_number($giga) .  "Million";
+            $result .= $this->convert_number($giga) .  " Million ";
         }
         if ($kilo) {
             $result .= (empty($result) ? "" : " ") .$this->convert_number($kilo) . " Thousand";

@@ -299,7 +299,7 @@ class Leads extends CI_Controller
           $data["title"] = "Dashboard | Assign Leads";
           $data["lead_id"] = $lead_id;
 
-          $data["lead_customer"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_lead_customer");
+          $data["lead_customer"] = $this->common_model->viewwheredataorderby(array("lead_id" => $lead_id), "mk_lead_customer","id","desc");
 
           $data["activity"] = $this->common_model->viewdata("mk_activity_master", "multiple");
 
@@ -404,10 +404,6 @@ class Leads extends CI_Controller
 
           $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_term");
 
-
-          
-
-         
           // $this->load->view('dashboard/leads/pdf_quotation',$data);
 
           //     return false;

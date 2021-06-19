@@ -69,6 +69,25 @@ class Common_model extends CI_Model
      {
           $this->db->where($column);
 
+         
+
+          $run = $this->db->get($table);
+
+          $data = $run->result_array();
+
+          // echo $this->db->last_query();
+
+          return $data;
+
+          
+     }
+
+     public function viewwheredataorderby($column=array(),$table="",$field,$order)
+     {
+          $this->db->where($column);
+
+          $this->db->order_by($field,$order);
+
           $run = $this->db->get($table);
 
           $data = $run->result_array();
