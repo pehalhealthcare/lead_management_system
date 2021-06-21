@@ -1,6 +1,15 @@
 
 
-<div class="col-sm-12 col-md-8 mx-auto mt-5">
+<div class="main-panel">
+     <div class="content-wrapper mt-5">
+          <div class="page-header">
+               <h3 class="page-title">
+                    <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                         <i class="mdi mdi-home"></i>
+                    </span> Dashboard
+               </h3>
+          </div>
+     </div>
 <?php echo validation_errors(); ?>
 
 <form action="" class="item-form" enctype="multipart/form-data" method="post">

@@ -80,10 +80,10 @@ $route["dashboard/products/item/(:any)"]                    = "products/view_ite
 $route["dashboard/products/item/edit/(:any)"]               = "products/edit_item/$1";
 $route["dashboard/products/item/delete/(:any)"]             = "products/delete_item/$1";
 
-$route["dashboard/products/terms"]                           = "products/view_term";
-$route["dashboard/products/terms/add"]                       = "products/add_term";
-$route["dashboard/products/terms/edit/(:any)"]               = "products/edit_term/$1";
-$route["dashboard/products/terms/delete/(:any)"]             = "products/delete_term/$1";
+$route["dashboard/terms"]                                   = "products/view_term";
+$route["dashboard/terms/add"]                               = "products/add_term";
+$route["dashboard/terms/edit/(:any)"]                       = "products/edit_term/$1";
+$route["dashboard/terms/delete/(:any)"]                     = "products/delete_term/$1";
 
 
 //This routes are used for services

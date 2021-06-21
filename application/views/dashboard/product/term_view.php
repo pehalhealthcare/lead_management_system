@@ -1,5 +1,6 @@
-<div class="col-sm-9 row mx-auto ">
-     <div class="col-sm-12 mt-5 ">
+<div class="main-panel">
+     <div class="content-wrapper mt-5">
+     <div class="col-sm-12 bg-white">
           <?php if ($this->session->flashdata("message")) : ?>
                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong><?= $this->session->flashdata('message') ?>.</strong>
@@ -20,7 +21,7 @@
                          <td><?= $i; ?></td>
                          <td class="text-capitalize"><?= $term->term_name ?></td>
                          <td>
-                              <a href="<?= base_url() ?>dashboard/products/terms/edit/<?= $term->term_id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                              <a href="<?= base_url() ?>dashboard/terms/edit/<?= $term->term_id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                               <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" 
                               data-target="#confirm-modal" data-id="<?= $term->term_id ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
                          </td>

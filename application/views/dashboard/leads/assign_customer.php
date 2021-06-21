@@ -1,6 +1,7 @@
-    <div class="col-md-8 col-sm-9 mt-5 mx-auto">
+<div class="main-panel">
+          <div class="content-wrapper mt-5">
 
-         <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+         <ul class="nav nav-pills mb-3 bg-white" id="pills-tab" role="tablist">
               <li class="nav-item">
                    <a class="nav-link active nav-tabs pills-home-tab" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Customer</a>
               </li>
@@ -659,7 +660,7 @@
               </div>
          </div>
     </div>
-
+</div>
     <div class="modal bd-example-modal-lg" id="edit-opportunity">
          <div class="modal-dialog modal-lg">
               <div class="modal-content">

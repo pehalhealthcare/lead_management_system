@@ -1,5 +1,6 @@
-<div class="col-sm-9 row">
-     <div class="col-sm-6 mx-auto mt-3">
+<div class="main-panel">
+     <div class="content-wrapper mt-5">
+     <div class="col-sm-12 mx-auto mt-3">
           <div class="card">
                <div class="card-header">
                     <h4>EDIT ITEMS</h4>
@@ -51,4 +52,5 @@
                </div>
           </div>
      </div>
+</div>
 </div>
