@@ -82,6 +82,7 @@
     $(document).ready(function() {
 
       localStorage.removeItem("tabs");
+      localStorage.removeItem("subtabs");
       $(document).on("click", ".delete-data", function() {
         var id = $(this).data("id");
         $(".confirm-delete").attr("data-id", id);

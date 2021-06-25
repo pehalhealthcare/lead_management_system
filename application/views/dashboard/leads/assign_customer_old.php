@@ -2399,10 +2399,7 @@
 
               $(document).on("submit", ".refer-form", function(e) {
                    e.preventDefault();
-
-                   
-
-                   
+                 
 
                    var formdata = $(this).serializeArray();
 

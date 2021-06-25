@@ -26,14 +26,8 @@
 </head>
 
 <body>
-
-
-
       <div class="container-fluid p-0 m-0" style="height: 100%;">
-
             <div class="wrapper d-flex align-items-stretch" style="height: auto;min-height:100%">
-            <?php print_r($_SESSION)?>
-
                   <nav class="navbar default-layout-navbar col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
                         <div class="text-center navbar-brand-wrapper d-flex align-items-center justify-content-center">
                               <a class="navbar-brand brand-logo" href="<?= base_url()?>"><img src="<?= base_url() ?>assets/images/logo.png" alt="logo" /></a>
@@ -204,6 +198,9 @@
                 <i class="mdi mdi-home menu-icon"></i>
               </a>
             </li>
+
+            <?php if ($this->session->role == 1) : ?>
+
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#service" aria-expanded="false" aria-controls="service">
                 <span class="menu-title">Services</span>
@@ -212,9 +209,9 @@
               </a>
               <div class="collapse" id="service">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/services/add">Add Services</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/create/services">Add Services</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/services">View Services</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/services/item/add">Add Service Item</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/create/services/items">Add Services Item</a></li>
                 </ul>
               </div>
             </li>
@@ -227,14 +224,12 @@
               </a>
               <div class="collapse" id="products">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/products/add">Add Products</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/create/products">Add Products</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/products">View Products</a></li>
-                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/products/item/add">Add Products Item</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/create/products/item">Add Products Item</a></li>
                 </ul>
               </div>
             </li>
-
-            
 
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#terms" aria-expanded="false" aria-controls="terms">
@@ -244,11 +239,13 @@
               </a>
               <div class="collapse" id="terms">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/terms/add">Add Terms</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/create/terms">Add Terms</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/terms">View Terms</a></li>
                 </ul>
               </div>
-            </li>
+            </li>  
+
+            <?php endif;?>
 
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#leads" aria-expanded="false" aria-controls="leads">
@@ -263,7 +260,7 @@
                 </ul>
               </div>
             </li>
-
+            <?php if ($this->session->role == 1) : ?>
             <li class="nav-item">
               <a class="nav-link" data-toggle="collapse" href="#leadsCustomer" aria-expanded="false" aria-controls="leadsCustomer">
                 <span class="menu-title">Lead customer</span>
@@ -272,7 +269,7 @@
               </a>
               <div class="collapse" id="leadsCustomer">
                 <ul class="nav flex-column sub-menu">
-                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/leadcustomer/add">Add Lead Customer</a></li>
+                  <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/create/leadcustomer">Add Lead Customer</a></li>
                   <li class="nav-item"> <a class="nav-link" href="<?= base_url() ?>dashboard/leadcustomer"> View Lead Customer</a></li>
                 </ul>
               </div>
@@ -291,6 +288,7 @@
                 </ul>
               </div>
             </li>
+            <?php endif; ?>
             <li class="nav-item">
               <a class="nav-link" href="<?= base_url() ?>logout">
                 <span class="menu-title">Logout</span>

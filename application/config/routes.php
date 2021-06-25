@@ -11,7 +11,7 @@ $route["password-reset"] = 'user/password_reset';
 
 
 
-$route["dashboard/"]                                         = "dashboard/index";
+$route["dashboard/"]                                        = "dashboard/index";
 
 $route["dashboard/add/user"]                                = 'user/add_user';
 $route["dashboard/user"]                                    = 'user/view_user';
@@ -33,10 +33,12 @@ $route["dashboard/assign/leads/(:any)"]                     =  "leads/assign";
 $route["dashboard/edit/leads/(:any)"]                       =  "leads/lead_edit/$1";
 $route["dashboard/delete/leads/(:any)"]                     =  "leads/destroy/$1"; 
 $route["dashboard/lead/generate_pdf/(:any)/(:any)"]         =  "leads/generate_pdf/$1/$2";
+$route["dashboard/lead/generate_quotation/(:any)/(:any)"]   =  "leads/generate_quotation/$1/$2";
+$route["dashboard/order/submit"]                            =  "leads/ordersubmit";
 
 $route["dashboard/leadcustomer"]                            = "leadcustomer/viewdata";
-$route["dashboard/leadcustomer/add"]                        = "leadcustomer/add";
-$route["dashboard/leadcustomer/create"]                        = "leadcustomer/createcustomer";
+$route["dashboard/create/leadcustomer"]                     = "leadcustomer/add";
+// $route["dashboard/leadcustomer/create"]                     = "leadcustomer/createcustomer";
 $route["dashboard/leadcustomer/edit/(:any)"]                = "leadcustomer/editdata/$1";
 $route["dashboard/leadcustomer/update/(:any)"]              = "leadcustomer/updatedata/$1";
 $route["dashboard/leadcustomer/delete/(:any)"]              = "leadcustomer/deletedata/$1";
@@ -70,18 +72,18 @@ $route["dashboard/delete/department/(:any)"]                =  "department/destr
 
 
 $route["dashboard/products"]                                = "products/index";
-$route["dashboard/products/add"]                            = "products/addproducts";
+$route["dashboard/create/products"]                            = "products/addproducts";
 $route["dashboard/product/import"]                          = "products/importproduct";
 $route["dashboard/products/edit/(:any)"]                    = "products/editproducts/$1";
 $route["dashboard/products/delete/(:any)"]                  = "products/deleteproducts/$1";
 
-$route["dashboard/products/item/add"]                       = "products/add_item";
+$route["dashboard/create/products/item"]                       = "products/add_item";
 $route["dashboard/products/item/(:any)"]                    = "products/view_item/$1";
 $route["dashboard/products/item/edit/(:any)"]               = "products/edit_item/$1";
 $route["dashboard/products/item/delete/(:any)"]             = "products/delete_item/$1";
 
 $route["dashboard/terms"]                                   = "products/view_term";
-$route["dashboard/terms/add"]                               = "products/add_term";
+$route["dashboard/create/terms"]                            = "products/add_term";
 $route["dashboard/terms/edit/(:any)"]                       = "products/edit_term/$1";
 $route["dashboard/terms/delete/(:any)"]                     = "products/delete_term/$1";
 
@@ -89,12 +91,12 @@ $route["dashboard/terms/delete/(:any)"]                     = "products/delete_t
 //This routes are used for services
 
 $route["dashboard/services"]                                = "services/index";
-$route["dashboard/services/add"]                            = "services/addservices";
+$route["dashboard/create/services"]                            = "services/addservices";
 $route["dashboard/service/import"]                          = "services/importservice";
 $route["dashboard/services/edit/(:any)"]                    = "services/editservices/$1";
 $route["dashboard/services/delete/(:any)"]                  = "services/deleteservices/$1";
 
-$route["dashboard/services/item/add"]                       = "services/add_services_item";
+$route["dashboard/create/services/items"]                       = "services/add_services_item";
 $route["dashboard/services/item/(:any)"]                    = "services/view_services_item/$1";
 $route["dashboard/services/item/edit/(:any)"]               = "services/edit_services_item/$1";
 $route["dashboard/services/item/delete/(:any)"]             = "services/delete_services_item/$1";

@@ -50,6 +50,10 @@
 /*-------------------------------------------------------------------*/
 /* === SCSS Compass Functions === */
 
+.dropdown .dropdown-menu .dropdown-item:hover
+{
+  color: #000 !important;
+}
 @-webkit-keyframes flash {
   0% {
     opacity: 1; }

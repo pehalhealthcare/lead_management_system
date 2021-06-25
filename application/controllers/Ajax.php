@@ -888,4 +888,51 @@ class Ajax extends CI_Controller
                echo json_encode(array("message"=>"Leads reference updated successfully"));
           }
      }
+
+     public function ordersubmit()
+     {
+          $data = array(
+               "quotation_id"=>$this->input->post("qid"),
+               "lead_id"=>$this->input->post("lead_id"),
+               "assign_to_agent"=>$this->input->post("agent"),
+               "assign_to_tl"=>$this->input->post("teamleader"),
+               "order_no"=>"ORD_".time(),
+               "decision"=>$this->input->post("decision"),
+               "payment"=>"no",
+               "status"=>0,
+               "approved"=>"no",
+          );
+          $lead_id=$this->input->post("lead_id");
+          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")),"mk_order");
+
+          // print_r($datacheck); die();
+
+          if($datacheck)
+          {
+               $data["modified_by"]=$this->session->userID;
+               $data["modified_at"]=date("Y-m-d h:i:s");
+
+               $array = array(
+                    "lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")
+               );
+               if($this->common_model->updatedata("mk_order",$data,$array))
+               {
+                    $this->session->set_flashdata('message_name', 'Order Data Updated');
+                    // return redirect("/dashboard/leads/assign/".$lead_id);
+               }
+               
+
+          }
+          else
+          {
+               $data["created_by"]=$this->session->userID;
+               $data["created_at"]=date("Y-m-d h:i:s");
+               if($this->common_model->adddata("mk_order",$data))
+               {
+                    // $this->session->set_flashdata('message_name', 'Order Data Added');
+                    // return redirect("/dashboard/leads/assign/".$lead_id);
+               }
+          }
+         
+     }
 }

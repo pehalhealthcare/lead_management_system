@@ -230,12 +230,15 @@ class Leads extends CI_Controller
                     $insertdata["lead_image"] = $imagedata["upload_data"]["file_name"];
                }
 
-
-
+               $existCustomer = $this->common_model->viewwheredata(array("email" => $this->input->post("email")), "mk_customer");
 
                if ($this->common_model->updatedata("mk_lead", $insertdata, array("id" => $id))) {
 
-                    $this->common_model->adddata("mk_customer",$customerdata);
+                    if(count($existCustomer)==0)
+                    {
+                         $this->common_model->adddata("mk_customer",$customerdata);
+                    }
+                    
                     $this->session->set_flashdata('message_name', 'Lead Data Updated Succesfully');
 
                     return redirect("dashboard/leads");
@@ -247,7 +250,11 @@ class Leads extends CI_Controller
                     // After that you need to used redirect function instead of load view such as 
                     return redirect("dashboard/leads");
                     
-                    $this->common_model->adddata("mk_customer",$customerdata);
+                    if(count($existCustomer)==0)
+                    {
+                         $this->common_model->adddata("mk_customer",$customerdata);
+                    }
+                 
                     // Get Flash data on view 
 
 
@@ -316,6 +323,8 @@ class Leads extends CI_Controller
           $data["products"] = $this->common_model->viewdata("mk_master_product", "multiple");
 
           $data["services"] = $this->common_model->viewdata("mk_master_services", "multiple");
+
+          $data["quotation"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_quotation");
 
           $this->load->view("inc/header", $data);
           $this->load->view("dashboard/leads/assign_customer", $data);
@@ -404,6 +413,47 @@ class Leads extends CI_Controller
 
           $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_term");
 
+          $total_price = 0;
+         foreach($data["customer_item"] as $customer_item)
+         {
+               $total_price = $total_price + $customer_item["total_price"];
+         }
+     //     echo $total_price;
+         $pdf = base_url()."dashboard/lead/generate_quotation/".$lead_id."/".$customer_id;
+          $insertdata = array(
+               "quotation_no"=>time(),
+               "lead_id"=>$lead_id,
+               "pdf"=>$pdf,
+               "item_total"=>$total_price,
+               "customer_id"=>$customer_id
+             
+          );
+
+          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"customer_id"=>$customer_id),"mk_quotation");
+
+          if($datacheck)
+          {
+               $insertdata["modified_by"]=$this->session->userID;
+               $insertdata["modified_at"]=date("Y-m-d h:i:s");
+
+               if($this->common_model->updatedata("mk_quotation",$insertdata,array("lead_id"=>$lead_id,"customer_id"=>$customer_id)))
+               {
+                    echo "Data Updated";
+               }
+               
+          }
+          else
+          {
+               $insertdata["created_by"]=$this->session->userID;
+               $insertdata["created_at"]=date("Y-m-d h:i:s");
+              if($this->common_model->adddata("mk_quotation",$insertdata))
+              {
+                   echo "Data Inserted";
+              }
+          }
+          // print_r($datacheck);
+          // die();
+
           // $this->load->view('dashboard/leads/pdf_quotation',$data);
 
           //     return false;
@@ -423,6 +473,91 @@ class Leads extends CI_Controller
 
           // Output the generated PDF to Browser
           $dompdf->stream(time() . ".pdf");
+     }
+
+     public function generate_quotation($lead_id = "", $customer_id = "")
+     {
+        
+
+          $data["customer"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer");
+
+          $data["custAddress"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_address");
+
+          $data["product_item"] = $this->common_model->viewdata("mk_master_product_item", "multiple");
+
+          $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id, "lead_id" => $lead_id, "is_active" => 1), "mk_customer_item");
+
+          $data["master_term"] = $this->common_model->viewdata("mk_master_term", "multiple");
+
+          $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_term");
+
+          $data["lead"] = $this->common_model->viewwheredata(array("id" => $lead_id), "mk_lead");
+
+          // print_r($data["lead"]); die();
+
+          $data["qid"] = $this->input->get("qid");
+
+
+          // print_r($data["qid"]); die();    
+
+          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"customer_id"=>$customer_id),"mk_quotation");
+
+         
+          // print_r($datacheck);
+          // die();
+
+          $this->load->view('dashboard/leads/generate_quotation',$data);
+
+          return false;
+
+          
+     }
+
+     public function ordersubmit()
+     {
+          $data = array(
+               "quotation_id"=>$this->input->post("qid"),
+               "lead_id"=>$this->input->post("lead_id"),
+               "assign_to_agent"=>$this->input->post("agent"),
+               "assign_to_tl"=>$this->input->post("teamleader"),
+               "order_no"=>"ORD_".time(),
+               "decision"=>$this->input->post("decision"),
+               "payment"=>$this->input->post("payment"),
+               "status"=>1,
+               "approved"=>"yes",
+          );
+          $lead_id=$this->input->post("lead_id");
+          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")),"mk_order");
+
+          // print_r($datacheck); die();
+
+          if($datacheck)
+          {
+               $data["modified_by"]=$this->session->userID;
+               $data["modified_at"]=date("Y-m-d h:i:s");
+
+               $array = array(
+                    "lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")
+               );
+               if($this->common_model->updatedata("mk_order",$data,$array))
+               {
+                    $this->session->set_flashdata('message_name', 'Order Data Updated');
+                    return redirect("/dashboard/leads/assign/".$lead_id);
+               }
+               
+
+          }
+          else
+          {
+               $data["created_by"]=$this->session->userID;
+               $data["created_at"]=date("Y-m-d h:i:s");
+               if($this->common_model->adddata("mk_order",$data))
+               {
+                    $this->session->set_flashdata('message_name', 'Order Data Added');
+                    return redirect("/dashboard/leads/assign/".$lead_id);
+               }
+          }
+         
      }
 
 
