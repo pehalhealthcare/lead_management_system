@@ -31,8 +31,8 @@
                </div>
                <div class="form-group">
                     <label for="">Tax Rate</label>
-                    <input type="text" name="taxrate" readonly id="" value="<?= $items[0]["tax_rate"]?>" class="form-control border-bottom">
-                    <input type="hidden" name="tax_rate" readonly id="" value="<?= $items[0]["tax_rate"]?>" class="form-control border-bottom">
+                    <input type="text" name="tax_rate" id="" value="<?= $items[0]["tax_rate"]?>" class="form-control border-bottom">
+                    <!-- <input type="hidden" name="tax_rate" readonly id="" value="<?= $items[0]["tax_rate"]?>" class="form-control border-bottom"> -->
                </div>
                <div class="form-group">
                     <input type="submit" class="mx-auto btn btn-success" value="UPDATE & CLOSE" />

@@ -1,0 +1,49 @@
+ALTER TABLE `ptree_institution_curri_topic_section` ADD `tags` VARCHAR(255) NOT NULL AFTER `section_learning_objective`;
+ALTER TABLE `ptree_institution_curri_topic_sec_bckup` ADD `tags` VARCHAR(255) NOT NULL AFTER `section_learning_objective`;
+
+ALTER TABLE `ptree_institution_curri_topic_sec_lecture` ADD `tags` VARCHAR(255) NOT NULL AFTER `show_end_date`;
+ALTER TABLE `ptree_institution_curri_topic_sec_lec_backup` ADD `tags` VARCHAR(255) NOT NULL AFTER `show_end_date`;
+
+ALTER TABLE `ptree_institution_curri_topic_sec_lec_assignment` ADD `tags` VARCHAR(255) NOT NULL AFTER `show_end_date`;
+ALTER TABLE `ptree_institution_curri_topic_sec_lec_assi_backup` ADD `tags` VARCHAR(255) NOT NULL AFTER `show_end_date`;
+
+ALTER TABLE `ptree_institution_curri_topic_sec_lec_quiz` ADD `tags` VARCHAR(255) NOT NULL AFTER `quiz_submmission_date`;
+ALTER TABLE `ptree_institution_curri_topic_sec_lec_quiz_backup` ADD `tags` VARCHAR(255) NOT NULL AFTER `quiz_submmission_date`;
+
+CREATE TABLE `ptree_words_to_sentence` (
+  `words_to_sentence_id` bigint(20) NOT NULL,
+  `encrypt_id` varchar(64) DEFAULT '',
+  `country_id` varchar(64) DEFAULT '',
+  `industry_type_id` varchar(64) DEFAULT '',
+  `industry_id` varchar(64) DEFAULT '',
+  `communities_id` varchar(64) DEFAULT '',
+  `subcommunites_id` varchar(64) DEFAULT '',
+  `institution_id` varchar(64) DEFAULT '',
+  `branch_id` varchar(64) DEFAULT '',
+  `teacher_id` varchar(64) DEFAULT '',
+  `pre_course_id` varchar(64) DEFAULT '',
+  `course_id` varchar(64) DEFAULT '',
+  `course_semester` varchar(64) DEFAULT '',
+  `class_section_id` varchar(64) DEFAULT '',
+  `teacher_subject_id` varchar(64) DEFAULT '',
+  `pre_subject_id` varchar(64) DEFAULT '',
+  `subject_id` varchar(64) DEFAULT '',
+  `book_id` varchar(64) DEFAULT '',
+  `chapter_id` varchar(64) DEFAULT '',
+  `topic_id` varchar(64) DEFAULT '',
+  `section_id` varchar(64) DEFAULT '',
+  `lecture_id` varchar(64) DEFAULT '',
+  `lec_assign_id` varchar(64) DEFAULT '',
+  `question_id` varchar(64) DEFAULT '',
+  `chapter_code` varchar(64) DEFAULT '',
+  `excersie_no` varchar(64) DEFAULT '',
+  `question_type` varchar(50) DEFAULT 'words_to_sentence',
+  `question` varchar(512) DEFAULT '',
+  `sub_question` varchar(512) DEFAULT '',
+  `question_answer` longtext,
+  `tags` varchar(255) DEFAULT '',
+  `question_marks` tinyint(4) DEFAULT '0',
+  `creation_date` datetime DEFAULT '1970-01-01 00:00:00',
+  `update_date` datetime DEFAULT '1970-01-01 00:00:00',
+  `status` enum('Y','N') DEFAULT 'Y'
+);

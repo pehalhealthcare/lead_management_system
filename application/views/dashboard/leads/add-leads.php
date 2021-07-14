@@ -1,17 +1,12 @@
 <div class="main-panel">
      <div class="content-wrapper mt-5">
           <?php echo validation_errors(); ?>
-          <?php echo form_open_multipart('dashboard/add/leads'); ?>
+          <?php echo form_open_multipart(base_url().'dashboard/add/leads'); ?>
           <div class="card bg-white">
                <div class="card-header">
                     <h4 class="text-center">Create Leads</h4>
                </div>
                <div class="card-body">
-
-                    <!-- <div class="form-group">
-               <label for="">Application Number</label>
-               <input type="text" name="application" class="form-control" value="<?php echo set_value('application') ? set_value('application') : time(); ?>"  />
-          </div> -->
 
                     <div class="form-group">
                          <label for="">Lead Image</label>
@@ -106,41 +101,7 @@
 
                     <input type="hidden" name="assigned_by" value="<?= $this->session->userID; ?>">
 
-                    <!-- <div class="form-group">
-               <input type="radio" class="customer" name="customer" value="new" id="">New Customer
-               <input type="radio" class="customer" name="customer" value="old" id="">Existing Customer
-          </div> -->
-
-                    <!-- <div class="form-group d-none exist-customers">
-               <label for="">Select Customer</label>
-               <select name="customer" id="" class="form-control select-customer">
-                    <option value="">Select Customers</option>
-                    <?php foreach ($customers as $customer) : ?>
-                         <option value="<?= $customer->customer_id ?>"><?= $customer->name ?></option>
-                    <?php endforeach; ?>
-               </select>
-          </div> -->
-
-                    <!--      <div class="form-group d-none new-customer">
-               <label for="">New Customer</label>
-               <input type="text" name="customer" class="form-control input-customer" id="">
-               <input type="hidden" name="customer_id" class="customer_id">
-          </div> -->
-
-
-                    <!-- <div class="form-group">
-               <label for="">Status</label>
-               <select name="status" id="" class="form-control">
-                    <option value="">Select Lead Call</option>
-                    <option value="qualified">Qualified</option>
-                    <option value="disqualified">DisQualified</option>
-               </select>
-          </div> -->
-
-                    <!-- <div class="form-group">
-               <label for="">Reason with Queries</label>
-               <input type="text" name="reasons" class="form-control" value="<?php echo set_value('reasons'); ?>"  />
-          </div> -->
+                  
 
                     <div class="form-group ">
                          <label for="">Name</label>

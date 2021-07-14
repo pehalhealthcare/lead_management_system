@@ -1,0 +1,112 @@
+var a = [1, 2, 3, 4];
+for(let i = 0; i < a.length; i++) {
+ setTimeout( function() {
+  console.log('----', a[i]);
+ }, 1000);
+}
+
+O/P:
+
+4
+
+Reverse:
+
+var a = [1, 2, 3, 4];
+for(let i = a.length-1; i >= 0; i--) {
+
+  console.log('----', a[i]);
+}
+
+
+jsx tsx difference ?
+
+enum data type ?
+
+array fun ? 
+
+blocked var ? 
+
+type typescript ? build - user defined type
+
+sql to no sql convertion data ?
+
+tags - HTML
+
+loops concenpts ?
+
+OOPS concepts ?
+
+what is class ?
+
+object.protype
+object. = methods search?
+
+semantic html ?
+
+build methods angular?
+
+
+products: 
+
+idea2it met
+idea2it rx
+
+
+Antony Andrus A12:46 PM
+var a = [1, 2, 3, 4];
+for(i = 0; i < a.length; i++) {
+ setTimeout( function() {
+  console.log('----', a[i]);
+ }, 1000);
+}
+
+
+https://meet.google.com/bkh-khew-gmu
+
+
+
+var a = [1, 2, 3, 4];
+for(i = 0; i < a.length; i++) {
+ setTimeout( function() {
+  console.log('----', a[i]);
+ }, 1000);
+}
+5
+4VM55:4 ---- undefined
+var a = [1, 2, 3, 4];
+for(i = 0; i < a.length; i++) {
+ setTimeout( function() {
+  console.log('----', a[i]);
+ }, 1000);
+}
+
+9
+4VM190:4 ---- undefined
+var a = [1, 2, 3, 4];
+for(let i = 0; i < a.length; i++) {
+ setTimeout( function() {
+  console.log('----', a[i]);
+ }, 1000);
+}
+13
+VM304:4 ---- 1
+VM304:4 ---- 2
+VM304:4 ---- 3
+VM304:4 ---- 4
+var a = [1, 2, 3, 4];
+for(let i = a.length; i < a.length; i++) {
+ setTimeout( function() {
+  console.log('----', a[i]);
+ }, 1000);
+}
+undefined
+var a = [1, 2, 3, 4];
+for(let i = a.length-1; i >= 0; i--) {
+
+  console.log('----', a[i]);
+}
+VM826:4 ---- 4
+VM826:4 ---- 3
+VM826:4 ---- 2
+VM826:4 ---- 1
+undefined

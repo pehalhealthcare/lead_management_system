@@ -64,6 +64,7 @@ class Leads extends CI_Controller
                               "lead_source" => $this->input->post("lead_source"),
                               "category" => $this->input->post("category"),
                               "assigned_to" => $this->input->post("assigned_to"),
+                              "assigned_by"=>$this->session->userID,
                               "name" => $this->input->post("name"),
                               "email" => $this->input->post("email"),
                               "mobile" => $this->input->post("mobile"),
@@ -100,6 +101,7 @@ class Leads extends CI_Controller
                                    "lead_source" => $this->input->post("lead_source"),
                                    "category" => $this->input->post("category"),
                                    "assigned_to" => $this->input->post("assigned_to"),
+                                   "assigned_by"=>$this->session->userID,
                                    "name" => $this->input->post("name"),
                                    "email" => $this->input->post("email"),
                                    "mobile" => $this->input->post("mobile"),
@@ -128,6 +130,7 @@ class Leads extends CI_Controller
                          "lead_source" => $this->input->post("lead_source"),
                          "category" => $this->input->post("category"),
                          "assigned_to" => $this->input->post("assigned_to"),
+                         "assigned_by"=>$this->session->userID,
                          "name" => $this->input->post("name"),
                          "email" => $this->input->post("email"),
                          "mobile" => $this->input->post("mobile"),
@@ -159,9 +162,19 @@ class Leads extends CI_Controller
      {
           $data["title"] = "Dashboard | Leads";
           $this->load->view("inc/header", $data);
-          $data["leads"] = $this->common_model->vieworderby("mk_lead", "multiple","id","desc");
+         
           // print_r($data["leads"]); return;
-          $this->load->view("dashboard/leads/view-leads", $data);
+          if($this->session->category=="OA" || $this->session->category=="BA")
+          {
+               $data["leads"] = $this->common_model->viewwheredata(array("assigned_to"=>$this->session->userID),"mk_lead");
+               $this->load->view("dashboard/leads/view-leads-agent", $data);
+          }
+          else
+          {
+               $data["leads"] = $this->common_model->vieworderby("mk_lead", "multiple","id","desc");
+               $this->load->view("dashboard/leads/view-leads", $data);
+          }
+          
           $this->load->view("inc/footer");
           //   print_r($this->session->flashdata('message_name'));
      }
@@ -176,6 +189,7 @@ class Leads extends CI_Controller
                "category" => $this->input->post("category"),
                "sub_category" => ($this->input->post("sub_category_1")) ? $this->input->post("sub_category_1") : $this->input->post("sub_category_2"),
                "assigned_to" => $this->input->post("assigned_to"),
+               "assigned_by"=>$this->session->userID,
                "name" => $this->input->post("name"),
                "email" => $this->input->post("email"),
                "mobile" => $this->input->post("mobile"),
@@ -326,6 +340,10 @@ class Leads extends CI_Controller
 
           $data["quotation"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_quotation");
 
+          $data["order"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_order");
+
+          // $data["users"] = $this->common_model->viewwheredata(array(""=>""),"mk_registration_table");
+
           $this->load->view("inc/header", $data);
           $this->load->view("dashboard/leads/assign_customer", $data);
           $this->load->view("inc/footer");
@@ -475,6 +493,45 @@ class Leads extends CI_Controller
           $dompdf->stream(time() . ".pdf");
      }
 
+     public function view_quotation($lead_id = "", $customer_id = "")
+     {
+          //     load library
+          $dompdf = new Dompdf\Dompdf();
+
+          //     $data["testing"] = "Karthik";
+
+          $data["customer"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer");
+
+          $data["custAddress"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_address");
+
+          $data["product_item"] = $this->common_model->viewdata("mk_master_product_item", "multiple");
+
+          $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id, "lead_id" => $lead_id, "is_active" => 1), "mk_customer_item");
+
+          $data["master_term"] = $this->common_model->viewdata("mk_master_term", "multiple");
+
+          $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id), "mk_customer_term");
+
+          $total_price = 0;
+         foreach($data["customer_item"] as $customer_item)
+         {
+               $total_price = $total_price + $customer_item["total_price"];
+         }
+     //     echo $total_price;
+         
+
+        
+
+         
+          // print_r($datacheck);
+          // die();
+
+          $this->load->view('dashboard/leads/pdf_quotation',$data);
+
+          return false;
+
+     }
+
      public function generate_quotation($lead_id = "", $customer_id = "")
      {
         
@@ -505,7 +562,7 @@ class Leads extends CI_Controller
          
           // print_r($datacheck);
           // die();
-
+          
           $this->load->view('dashboard/leads/generate_quotation',$data);
 
           return false;
@@ -527,9 +584,7 @@ class Leads extends CI_Controller
                "approved"=>"yes",
           );
           $lead_id=$this->input->post("lead_id");
-          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")),"mk_order");
-
-          // print_r($datacheck); die();
+          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")),"mk_order");          
 
           if($datacheck)
           {
@@ -539,6 +594,26 @@ class Leads extends CI_Controller
                $array = array(
                     "lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")
                );
+
+              
+
+                    if($_FILES["file"]["name"])
+                    {
+                         $target = "./uploads/order_docs/";
+                         move_uploaded_file($_FILES["file"]["tmp_name"],$target.$_FILES["file"]["name"]);
+                         $filename = $_FILES["file"]["name"];
+
+                         $orderdata = array(
+                              "document"=>$filename,
+                              "order_id"=>$datacheck[0]["order_id"],
+                              "created_by"=>$this->session->userID,
+                              "created_at"=>date("Y-m-d h:i:s")
+                         );
+
+                    }
+                    // print_r($orderdata); die();
+               $this->common_model->adddata("mk_order_docs", $orderdata);
+
                if($this->common_model->updatedata("mk_order",$data,$array))
                {
                     $this->session->set_flashdata('message_name', 'Order Data Updated');
@@ -553,6 +628,27 @@ class Leads extends CI_Controller
                $data["created_at"]=date("Y-m-d h:i:s");
                if($this->common_model->adddata("mk_order",$data))
                {
+                    if($_FILES["file"]["name"])
+                    {
+                         $target = "./uploads/order_docs/";
+                         move_uploaded_file($_FILES["file"]["tmp_name"],$target.$_FILES["file"]["name"]);
+
+                         $filename = $_FILES["file"]["name"];
+
+                         $dataorder=$this->common_model->lastinsert_id("mk_order","order_id");
+
+                         // print_r($dataorder); die();
+
+                         $orderdata = array(
+                              "document"=>$filename,
+                              "order_id"=>$dataorder[0]["order_id"],
+                              "created_by"=>$this->session->userID,
+                              "created_at"=>date("Y-m-d h:i:s")
+                         );
+
+                         $this->common_model->adddata("mk_order_docs", $orderdata);
+                    }
+
                     $this->session->set_flashdata('message_name', 'Order Data Added');
                     return redirect("/dashboard/leads/assign/".$lead_id);
                }

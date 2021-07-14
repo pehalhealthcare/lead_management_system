@@ -1,6 +1,6 @@
 <div class="main-panel">
      <div class="content-wrapper mt-5">
-     <div class="col-sm-12 bg-white">
+     <div class="col-sm-12 bg-white p-5">
           <?php if ($this->session->flashdata("message")) : ?>
                <div class="alert alert-success alert-dismissible fade show" role="alert">
                     <strong><?= $this->session->flashdata('message') ?>.</strong>
@@ -9,15 +9,17 @@
                     </button>
                </div>
           <?php endif; ?>
-          <table class="table table-border">
-               <tr>
+          <p class="text-success">Note: Mobile view do vertical scrolling</p>
+          <div class="table-responsive">
+          <table class="table table-bordered">
+               <tr class="p-3">
                     <th>SI NO</th>
                     <th>Term Name</th>
                     <th>Actions</th>
                </tr>
                <?php $i = 0;
                foreach ($terms as $term) : $i++; ?>
-                    <tr>
+                    <tr class="p-3">
                          <td><?= $i; ?></td>
                          <td class="text-capitalize"><?= $term->term_name ?></td>
                          <td>
@@ -28,6 +30,7 @@
                     </tr>
                <?php endforeach; ?>
           </table>
+          </div>
      </div>
 </div>
 
@@ -61,7 +64,7 @@
           $(document).on("click", ".confirmed", function() {
                var id = $(this).data("id");
 
-               window.location.href = "<?= base_url(); ?>dashboard/products/terms/delete/" + id;
+               window.location.href = "<?= base_url(); ?>dashboard/terms/delete/" + id;
           });
      });
 </script>

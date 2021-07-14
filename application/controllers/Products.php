@@ -133,6 +133,22 @@ class Products extends CI_Controller
                          return redirect("/dashboard/products");
                     }
                }
+               else
+               {
+                    $data = array(
+                         "product_name" => $this->input->post("fullname"),
+                         "modified_by" => $this->session->userID,
+                         "modified_at" => date("Y-m-d h:i:s")
+                    );
+                    if ($this->common_model->updatedata("mk_master_product", $data, array("product_id" => $id)) == true) {
+                         // print_r($data); 
+                         $this->session->set_flashdata('message', 'Data Updated Successfully');
+                         return redirect("/dashboard/products");
+                    } else {
+                         $this->session->set_flashdata('message', 'Data Not Updated Successfully');
+                         return redirect("/dashboard/products");
+                    }
+               }
           }
      }
 
@@ -268,6 +284,7 @@ class Products extends CI_Controller
                     $data = array(
                          "item_name" => $this->input->post("fullname"),
                          "partnumber" => $this->input->post("partnumber"),
+                         "local_partnumber"=>$this->input->post("local_partnumber"),
                          "unit_price" => $this->input->post("item_price"),
                          "hsn" => $this->input->post("hsn"),
                          "tax_rate" => $this->input->post("tax_rate"),
@@ -316,7 +333,7 @@ class Products extends CI_Controller
                     }
                     $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
                     $sheetData = $spreadsheet->getActiveSheet()->toArray();
-                    echo "<pre>";
+                    // echo "<pre>";
                     // print_r($sheetData[0]);
                     $inserData = array();
                     $message = "";
@@ -391,10 +408,10 @@ class Products extends CI_Controller
 
                if ($this->products_model->adddata("mk_master_term", $data) == true) {
                     $this->session->set_flashdata('message', 'Data Inserted Successfully');
-                    return redirect("dashboard/products/terms");
+                    return redirect("dashboard/terms");
                } else {
                     $this->session->set_flashdata('message', 'Data Not Inserted Successfully');
-                    return redirect("dashboard/products/terms");
+                    return redirect("dashboard/terms");
                }
           }
      }
@@ -427,10 +444,10 @@ class Products extends CI_Controller
 
                if ($this->common_model->updatedata("mk_master_term", $data, array("term_id" => $id)) == true) {
                     $this->session->set_flashdata('message', 'Data Updated Successfully');
-                    return redirect("/dashboard/products/terms");
+                    return redirect("dashboard/terms");
                } else {
                     $this->session->set_flashdata('message', 'Data Not Updated Successfully');
-                    return redirect("/dashboard/products/terms");
+                    return redirect("dashboard/terms");
                }
           }
      }
@@ -440,10 +457,10 @@ class Products extends CI_Controller
           $data = array("is_active" => 0);
           if ($this->common_model->updatedata("mk_master_term", $data, array("term_id" => $id)) == true) {
                $this->session->set_flashdata('message', 'Data Deleted Successfully');
-               return redirect("dashboard/products/terms");
+               return redirect("dashboard/terms");
           } else {
                $this->session->set_flashdata('message', 'Data Deleted Successfully');
-               return redirect("dashboard/products/terms");
+               return redirect("dashboard/terms");
           }
      }
 }

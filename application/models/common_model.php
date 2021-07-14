@@ -42,6 +42,25 @@ class Common_model extends CI_Model
           
      }
 
+     public function joinQuery($query="")
+     {
+          $run= $this->db->query($query);
+
+          return $run->result();
+     }
+
+     public function joinTables($t1="",$t2="",$type="",$t1_f1="",$t2_f1="",$cond="")
+     {
+          $this->db->select("*");
+          $this->db->from($t1);
+          $this->db->join($t2, $t2_f1.'='.$t1_f1 ,$type);
+          $this->db->where($cond);
+          $run = $this->db->get();
+
+          return $run->result();
+
+     }
+
      public function vieworderby($table="",$action="",$field="",$order="")
      {
           if($action=="multiple")

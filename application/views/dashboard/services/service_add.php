@@ -7,7 +7,7 @@
                     </div>
                     <div class="card-body">
                          <?php echo $error; ?>
-                         <?php echo form_open_multipart('dashboard/services/add'); ?>
+                         <form action="" method="POST" enctype="multipart/form-data">
                          <div class="form-group">
                               <label for="">Select Service Image</label>
                               <input type="file" name="userfile" size="20" accept="image/*" class="form-control" />
@@ -19,6 +19,7 @@
                          <div class="form-group">
                               <input type="submit" class="mx-auto btn btn-success" value="SAVE & CLOSE" />
                          </div>
+                         </form>
                     </div>
                </div>
           </div>

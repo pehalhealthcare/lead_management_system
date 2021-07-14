@@ -2,7 +2,7 @@
      <div class="content-wrapper mt-5">
           <?php echo validation_errors(); ?>
 
-          <?php echo form_open('dashboard/add/user'); ?>
+          <?php echo form_open(''); ?>
 
           <div class="card bg-white">
                <div class="card-header col-sm-12 col-md-12">

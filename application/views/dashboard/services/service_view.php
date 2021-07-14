@@ -9,27 +9,30 @@
                          </button>
                     </div>
                <?php endif; ?>
-               <table class="table table-border">
-                    <tr>
-                         <th>SI NO</th>
-                         <th>Service Name</th>
-                         <th>Service Image</th>
-                         <th>Actions</th>
-                    </tr>
-                    <?php $i = 0;
-                    foreach ($products as $product) : $i++; ?>
+               <div class="table-responsive bg-white">
+                    <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
+                    <table class="table table-border">
                          <tr>
-                              <td><?= $i; ?></td>
-                              <td class="text-capitalize"><?= $product->service_name ?></td>
-                              <td><img style="width:100px;" src="<?= base_url() ?>uploads/<?= ($product->service_image) ? $product->service_image : "no-image.jpg" ?>" /></td>
-                              <td>
-                                   <a href="<?= base_url() ?>dashboard/services/item/<?= $product->service_id ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                   <a href="<?= base_url() ?>dashboard/services/edit/<?= $product->service_id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                   <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" data-target="#confirm-modal" data-id="<?= $product->service_id ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
-                              </td>
+                              <th>SI NO</th>
+                              <th>Service Name</th>
+                              <th>Service Image</th>
+                              <th>Actions</th>
                          </tr>
-                    <?php endforeach; ?>
-               </table>
+                         <?php $i = 0;
+                         foreach ($products as $product) : $i++; ?>
+                              <tr>
+                                   <td><?= $i; ?></td>
+                                   <td class="text-capitalize"><?= $product->service_name ?></td>
+                                   <td><img style="width:100px;" src="<?= base_url() ?>uploads/<?= ($product->service_image) ? $product->service_image : "no-image.jpg" ?>" /></td>
+                                   <td>
+                                        <a href="<?= base_url() ?>dashboard/services/item/<?= $product->service_id ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
+                                        <a href="<?= base_url() ?>dashboard/services/edit/<?= $product->service_id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                                        <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" data-target="#confirm-modal" data-id="<?= $product->service_id ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
+                                   </td>
+                              </tr>
+                         <?php endforeach; ?>
+                    </table>
+               </div>
           </div>
      </div>
 </div>

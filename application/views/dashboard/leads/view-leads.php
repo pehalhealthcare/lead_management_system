@@ -16,8 +16,9 @@
         <a href="<?= base_url() ?>dashboard/add/leads" class="btn btn-success">ADD DATA</a>
       </div>
     </div>
-
-    <table class="table table-bordered bg-white">
+    <div class="table-responsive bg-white">
+    <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
+    <table class="table table-responsive-sm table-bordered bg-white p-2">
       <tr>
         <th>SI NO</th>
         <th>LEAD SOURCE</th>
@@ -49,7 +50,7 @@
         </tr>
       <?php endforeach; ?>
     </table>
-
+    </div>
   </div>
 
   <div class="modal" id="confirm-modal">

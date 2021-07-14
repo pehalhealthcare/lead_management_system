@@ -8,7 +8,7 @@
                     </div>
                     <div class="card-body">
                          <?php echo $error; ?>
-                         <?php echo form_open_multipart('dashboard/services/item/add'); ?>
+                         <?php echo form_open_multipart(''); ?>
                          <!-- <div class="form-group">
                     <label for="">Select Item Image</label>
                     <input type="file" name="userfile" size="20" accept="image/*" class="form-control" />

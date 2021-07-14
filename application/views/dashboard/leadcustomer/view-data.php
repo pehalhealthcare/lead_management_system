@@ -11,10 +11,21 @@
       </div>
     <?php endif; ?>
     <div class="row m-0 bg-white">
-      <div class="col-sm-12 mb-2 text-right">
-        <a href="<?= base_url() ?>dashboard/leadcustomer/add" class="btn btn-success">ADD DATA</a>
+      <div class="col-sm-12 mb-2 mt-2">
+        <div class="row">
+          <div class="col-sm-12 col-md-6">
+            <h4>Customer Details</h4>
+          </div>
+
+          <div class="col-sm-12 col-md-6 text-right">
+            <a href="<?= base_url() ?>dashboard/leadcustomer/add" class="btn btn-success ">ADD DATA</a>
+          </div>
+        </div>
       </div>
     </div>
+    
+    <div class="table-responsive bg-white">
+    <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
     <table class="table table-bordered bg-white">
       <tr>
         <th>SI NO</th>
@@ -42,7 +53,7 @@
         </tr>
       <?php endforeach; ?>
     </table>
-
+    </div>
   </div>
 
   <div class="modal" id="confirm-modal">

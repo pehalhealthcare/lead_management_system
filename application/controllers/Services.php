@@ -42,8 +42,6 @@ class Services extends CI_Controller
          $data["error"] = "";
          $data["user"] = $_SESSION;
 
-
-
          $this->form_validation->set_rules('fullname', 'Fullname', 'required');
 
          if ($this->form_validation->run() == FALSE) {
@@ -55,24 +53,25 @@ class Services extends CI_Controller
               $config['allowed_types']        = 'gif|jpg|png|jpeg';
 
               $this->load->library('upload', $config);
+              $insertdata = array(
+               "service_name" => $this->input->post("fullname"),
+               "created_by" => $this->session->userID,
+               "created_at" => date("Y-m-d h:i:s")
+          );
 
               if ($this->upload->do_upload()) {
 
                    $imagedata = array('upload_data' => $this->upload->data());
 
-                   $data = array(
-                        "service_image" => $imagedata["upload_data"]["file_name"],
-                        "service_name" => $this->input->post("fullname"),
-                        "created_by" => $this->session->userID,
-                        "created_at" => date("Y-m-d h:i:s")
-                   );
+                   $insertdata["service_image"] = $imagedata["upload_data"]["file_name"];
 
 
-                   if ($this->products_model->adddata("mk_master_services", $data) == true) {
+                   if ($this->products_model->adddata("mk_master_services", $insertdata) == true) {
                         $this->session->set_flashdata('message', 'Data Inserted Successfully');
                         return redirect("/dashboard/services");
                    }
               } else {
+                    print_r($insertdata); die();
                    $this->session->set_flashdata('message', 'Data Not Inserted Successfully');
                    return redirect("/dashboard/services");
                    return redirect("/services");
@@ -95,8 +94,7 @@ class Services extends CI_Controller
                     }
                     $spreadsheet = $reader->load($_FILES['file']['tmp_name']);
                     $sheetData = $spreadsheet->getActiveSheet()->toArray();
-                    echo "<pre>";
-                    // print_r($sheetData[0]);
+                    
                     $inserData = array();
                     $message = "";
                     $i = 0;
@@ -110,7 +108,7 @@ class Services extends CI_Controller
                                    "unit_price" => $data[3]
                               );
                               // print_r($inserData);
-                              if ($this->common_model->viewwheredata(array("partnumber" => $data[0]), "mk_master_service_item")) {
+                              if ($this->common_model->viewwheredata(array("item_name" => $data[1]), "mk_master_service_item")) {
                                    $message = "Data already existed";
                               }
                               else

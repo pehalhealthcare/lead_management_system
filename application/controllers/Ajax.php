@@ -36,115 +36,95 @@ class Ajax extends CI_Controller
                "created_by" => $this->session->userID
           );
 
-          $customercheck = $this->common_model->viewwheredata(array("email"=>$this->input->post("email")),"mk_customer");
+          $customercheck = $this->common_model->viewwheredata(array("email" => $this->input->post("email")), "mk_customer");
 
-          if(empty($customercheck))
-          {
-               if ($this->common_model->adddata("mk_customer", $insertdata)) 
-               {
-     
+          if (empty($customercheck)) {
+               if ($this->common_model->adddata("mk_customer", $insertdata)) {
+
                     $id = ($this->common_model->lastinsert_id("mk_customer", "customer_id"));
-     
-                    
-     
+
+
+
                     $insertaddress["customer_id"] = $id[0]->customer_id;
-     
-                    if ($this->common_model->adddata("mk_customer_address", $insertaddress)) 
-                    {
+
+                    if ($this->common_model->adddata("mk_customer_address", $insertaddress)) {
                          $insertleaddata = array(
                               "lead_id" => $this->input->post("lead_id"),
                               "customer_id" => $insertaddress["customer_id"],
                               "created_at" => date("Y-m-d l:s:i"),
                               "created_by" => $this->session->userID
                          );
-               
+
                          $whereData = array(
                               // "lead_id" => $this->input->post("lead_id"),
                               "customer_id" => $insertaddress["customer_id"]
                          );
-               
+
                          $datacheck = $this->common_model->viewwheredata($whereData, "mk_lead_customer");
-               
+
                          if (empty($datacheck)) {
                               if ($this->common_model->adddata("mk_lead_customer", $insertleaddata)) {
                                    $historydata = array(
-                                        "actions"=>"Customer added for lead",
-                                        "lead_id"=>$this->input->post("lead_id"),
-                                        "created_by"=>$this->session->userID,
-                                        "created_at"=>date("Y-m-d h:i:s")
+                                        "actions" => "Customer added for lead",
+                                        "lead_id" => $this->input->post("lead_id"),
+                                        "created_by" => $this->session->userID,
+                                        "created_at" => date("Y-m-d h:i:s")
                                    );
-                                   $this->common_model->adddata("mk_lead_history",$historydata);
+                                   $this->common_model->adddata("mk_lead_history", $historydata);
                                    echo json_encode(array("message" => "data Inserted"));
-                              } 
+                              }
                          }
                          // echo json_encode($id);
                     }
-               } 
-               else {
+               } else {
                     echo json_encode(array("message" => "No data Inserted"));
-                    
                }
-          }
-          else
-          {
-              $wherecon = array("customer_id"=>$customercheck[0]["customer_id"]);
+          } else {
+               $wherecon = array("customer_id" => $customercheck[0]["customer_id"]);
 
-              $insertleaddata = array(
-               "lead_id" => $this->input->post("lead_id"),
-               "customer_id" => $customercheck[0]["customer_id"],
-               "modified_at" => date("Y-m-d l:s:i"),
-               "modified_by" => $this->session->userID
-             );
+               $insertleaddata = array(
+                    "lead_id" => $this->input->post("lead_id"),
+                    "customer_id" => $customercheck[0]["customer_id"],
+                    "modified_at" => date("Y-m-d l:s:i"),
+                    "modified_by" => $this->session->userID
+               );
 
-               $wherecond = array("lead_id"=>$this->input->post("lead_id"),"customer_id"=>$customercheck[0]["customer_id"]);
+               $wherecond = array("lead_id" => $this->input->post("lead_id"), "customer_id" => $customercheck[0]["customer_id"]);
 
-              if($this->common_model->updatedata("mk_customer",$insertdata,$wherecon))
-              {
+               if ($this->common_model->updatedata("mk_customer", $insertdata, $wherecon)) {
                     $whereData = array(
                          "customer_id" => $customercheck[0]["customer_id"],
-                         "lead_id"=>$this->input->post("lead_id")
+                         "lead_id" => $this->input->post("lead_id")
                     );
-                    if($this->common_model->updatedata("mk_customer_address",$insertaddress,$wherecon))
-                    {
-                         
+                    if ($this->common_model->updatedata("mk_customer_address", $insertaddress, $wherecon)) {
+
 
                          $datacheck = $this->common_model->viewwheredata($whereData, "mk_lead_customer");
 
-                         if(empty($datacheck))
-                         {
-                                  if($this->common_model->adddata("mk_lead_customer",$insertleaddata))
-                                  {
+                         if (empty($datacheck)) {
+                              if ($this->common_model->adddata("mk_lead_customer", $insertleaddata)) {
                                    $historydata = array(
-                                        "actions"=>"customer details updated for lead",
-                                        "lead_id"=>$this->input->post("lead_id"),
-                                        "created_by"=>$this->session->userID,
-                                        "created_at"=>date("Y-m-d h:i:s")
+                                        "actions" => "customer details updated for lead",
+                                        "lead_id" => $this->input->post("lead_id"),
+                                        "created_by" => $this->session->userID,
+                                        "created_at" => date("Y-m-d h:i:s")
                                    );
-                                   $this->common_model->adddata("mk_lead_history",$historydata);
-                                    echo json_encode(array("message" => "Data Updated Successfully"));
-                                  }
-                         }
-                         else
-                         {
+                                   $this->common_model->adddata("mk_lead_history", $historydata);
+                                   echo json_encode(array("message" => "Data Updated Successfully"));
+                              }
+                         } else {
                               echo "Data Not Updated";
-                              if($this->common_model->updatedata("mk_lead_customer",$insertleaddata,$wherecond))
-                              {
+                              if ($this->common_model->updatedata("mk_lead_customer", $insertleaddata, $wherecond)) {
                                    echo json_encode(array("message" => "Data Updated Successfully"));
                               }
                          }
-                         
-                    }
-                    else
-                    {
+                    } else {
                          echo json_encode(array("message" => "Data Not Updated Successfully"));
                     }
-              }
-
+               }
           }
 
           return false;
-
-          
      }
 
      public function assigncustomerdata()
@@ -176,49 +156,42 @@ class Ajax extends CI_Controller
      {
           $product_id = $this->input->post("product_id");
 
-          $cond = array("product_id" => $product_id,"is_active"=>1,"lead_id"=>$this->input->post("lead_id"));
+          $cond = array("product_id" => $product_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
 
           $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
 
-          $data["item_new"] = $this->common_model->viewwheredata(array("product_id" => $product_id,"is_active"=>1), "mk_master_product_item");
+          $data["item_new"] = $this->common_model->viewwheredata(array("product_id" => $product_id, "is_active" => 1), "mk_master_product_item");
 
-         
+
           echo json_encode($data);
-
-          
-
-         
      }
 
      public function getServiceItem()
      {
           $service_id = $this->input->post("service_id");
 
-          $cond = array("service_id" => $service_id,"is_active"=>1,"lead_id"=>$this->input->post("lead_id"));
+          $cond = array("service_id" => $service_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
 
           $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
 
-          $data["item_new"] = $this->common_model->viewwheredata(array("service_id" => $service_id,"is_active"=>1), "mk_master_service_item");
-         
+          $data["item_new"] = $this->common_model->viewwheredata(array("service_id" => $service_id, "is_active" => 1), "mk_master_service_item");
+
           echo json_encode($data);
-
-
-         
      }
 
      public function getCustomerItem()
      {
           $lead_id = $this->input->post("lead_id");
 
-          $cond = array("is_active"=>1,"lead_id"=>$lead_id);
+          $cond = array("is_active" => 1, "lead_id" => $lead_id);
 
           $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
 
-          $data["product_item"] = $this->common_model->viewwheredata(array("is_active"=>1), "mk_master_product_item");
+          $data["product_item"] = $this->common_model->viewwheredata(array("is_active" => 1), "mk_master_product_item");
 
-          $data["service_item"] = $this->common_model->viewwheredata(array("is_active"=>1), "mk_master_service_item");
+          $data["service_item"] = $this->common_model->viewwheredata(array("is_active" => 1), "mk_master_service_item");
 
-         
+
           echo json_encode($data);
      }
 
@@ -226,9 +199,9 @@ class Ajax extends CI_Controller
      {
           $id = $this->input->post("id");
 
-          $data["customer"] = $this->common_model->viewwheredata(array("customer_id"=>$id),"mk_customer");
+          $data["customer"] = $this->common_model->viewwheredata(array("customer_id" => $id), "mk_customer");
 
-          $data["address"] = $this->common_model->viewwheredata(array("customer_id"=>$id),"mk_customer_address");
+          $data["address"] = $this->common_model->viewwheredata(array("customer_id" => $id), "mk_customer_address");
 
           echo json_encode($data);
      }
@@ -237,75 +210,69 @@ class Ajax extends CI_Controller
      {
           $id = $this->input->post("customer_id");
 
-          $data["master_term"] = $this->common_model->viewdata("mk_master_term","multiple");
+          $data["master_term"] = $this->common_model->viewdata("mk_master_term", "multiple");
 
-          $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id"=>$id,"is_active"=>"1"),"mk_customer_term");
+          $data["customer_term"] = $this->common_model->viewwheredata(array("customer_id" => $id, "is_active" => "1"), "mk_customer_term");
 
           echo json_encode($data);
      }
 
      public function submitCustomerTerm()
      {
-         $cond = array("customer_id"=>$this->input->post("customer_id"),
-         "term_id"=>$this->input->post("term_id"));
+          $cond = array(
+               "customer_id" => $this->input->post("customer_id"),
+               "term_id" => $this->input->post("term_id")
+          );
 
-          $data["customer_term"] = $this->common_model->viewwheredata($cond,"mk_customer_term");
+          $data["customer_term"] = $this->common_model->viewwheredata($cond, "mk_customer_term");
 
 
           // print_r($data); die();
 
-          if(empty($data["customer_term"]))
-          {
+          if (empty($data["customer_term"])) {
                $insertdata = array(
-                    "customer_id"=>$this->input->post("customer_id"),
-                    "term_id"=>$this->input->post("term_id"),
-                    "is_active"=>$this->input->post("is_active"),
-                    "created_at"=>date("Y-m-d h:i:s"),
-                    "created_by"=>$this->session->userID
+                    "customer_id" => $this->input->post("customer_id"),
+                    "term_id" => $this->input->post("term_id"),
+                    "is_active" => $this->input->post("is_active"),
+                    "created_at" => date("Y-m-d h:i:s"),
+                    "created_by" => $this->session->userID
                );
 
-               if($this->common_model->adddata("mk_customer_term",$insertdata))
-               {
+               if ($this->common_model->adddata("mk_customer_term", $insertdata)) {
                     $historydata = array(
-                         "actions"=>"Customer terms added for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "Customer terms added for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
-                    echo json_encode(array("message"=>"Data Inserted Successfully"));
+                    $this->common_model->adddata("mk_lead_history", $historydata);
+                    echo json_encode(array("message" => "Data Inserted Successfully"));
+               } else {
+                    echo json_encode(array("message" => "Data Not Inserted Successfully"));
                }
-               else
-               {
-                    echo json_encode(array("message"=>"Data Not Inserted Successfully"));
-               }
-          }
-          else
-          {
+          } else {
                $insertdata = array(
-                    "customer_id"=>$this->input->post("customer_id"),
-                    "term_id"=>$this->input->post("term_id"),
-                    "is_active"=>$this->input->post("is_active"),
-                    "modified_at"=>date("Y-m-d h:i:s"),
-                    "modified_by"=>$this->session->userID
+                    "customer_id" => $this->input->post("customer_id"),
+                    "term_id" => $this->input->post("term_id"),
+                    "is_active" => $this->input->post("is_active"),
+                    "modified_at" => date("Y-m-d h:i:s"),
+                    "modified_by" => $this->session->userID
                );
                $condition = array(
-                    "customer_id"=>$this->input->post("customer_id"),
-                    "term_id"=>$this->input->post("term_id")
+                    "customer_id" => $this->input->post("customer_id"),
+                    "term_id" => $this->input->post("term_id")
                );
-               if($this->common_model->updatedata("mk_customer_term",$insertdata,$condition))
-               {
+               if ($this->common_model->updatedata("mk_customer_term", $insertdata, $condition)) {
                     $historydata = array(
-                         "actions"=>"customer terms updated for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "customer terms updated for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
-                    echo json_encode(array("message"=>"Data Updated Successfully"));
+                    $this->common_model->adddata("mk_lead_history", $historydata);
+                    echo json_encode(array("message" => "Data Updated Successfully"));
                }
           }
-
      }
 
      public function submitProductItem()
@@ -322,37 +289,37 @@ class Ajax extends CI_Controller
                          "item_id" => $this->input->post("item_id")[$i],
                          "quantity" => $this->input->post("quantity")[$i],
                          "unit_price" => $this->input->post("unit_price")[$i],
-                         "selling_price"=>$this->input->post("selling_price")[$i],
+                         "selling_price" => $this->input->post("selling_price")[$i],
                          "tax_rate" => $this->input->post("tax_rate")[$i],
                          "tax_amount" => $this->input->post("tax_amount")[$i],
                          "total_price" => $this->input->post("total_price")[$i],
                          // "total_amount" => $this->input->post("total_amount"),
                          "created_at" => date("Y-m-d h:i:s"),
                          "created_by" => $this->session->userID,
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "product_id"=>$this->input->post("product_id")
+                         "lead_id" => $this->input->post("lead_id"),
+                         "product_id" => $this->input->post("product_id")
                     );
                     // print_r($insertdata); die();
                     $cols = array(
                          // "purchase_order_id" => $this->input->post("application"),
                          "customer_id" => $this->input->post("pcustomer_id"),
                          "item_id" => $this->input->post("item_id")[$i],
-                         "lead_id"=>$this->input->post("lead_id")
+                         "lead_id" => $this->input->post("lead_id")
                     );
 
                     $datacheck = $this->common_model->viewwheredata($cols, "mk_customer_item");
 
-                    
 
-                    if (count($datacheck)==0) {
+
+                    if (count($datacheck) == 0) {
                          if ($this->common_model->adddata("mk_customer_item", $insertdata)) {
                               $historydata = array(
-                                   "actions"=>"Product items added for lead",
-                                   "lead_id"=>$this->input->post("lead_id"),
-                                   "created_by"=>$this->session->userID,
-                                   "created_at"=>date("Y-m-d h:i:s")
+                                   "actions" => "Product items added for lead",
+                                   "lead_id" => $this->input->post("lead_id"),
+                                   "created_by" => $this->session->userID,
+                                   "created_at" => date("Y-m-d h:i:s")
                               );
-                              $this->common_model->adddata("mk_lead_history",$historydata);
+                              $this->common_model->adddata("mk_lead_history", $historydata);
                               echo json_encode(array("message" => "Data added Successfully"));
                          } else {
                               echo json_encode(array("message" => "Data Not added Successfully"));
@@ -361,22 +328,21 @@ class Ajax extends CI_Controller
                          $condition = array(
                               "customer_id" => $this->input->post("pcustomer_id"),
                               "item_id" => $this->input->post("item_id")[$i],
-                              "lead_id"=>$this->input->post("lead_id")
+                              "lead_id" => $this->input->post("lead_id")
                          );
                          if ($this->common_model->updatedata("mk_customer_item", $insertdata, $condition)) {
                               $historydata = array(
-                                   "actions"=>"Product items updated for lead",
-                                   "lead_id"=>$this->input->post("lead_id"),
-                                   "created_by"=>$this->session->userID,
-                                   "created_at"=>date("Y-m-d h:i:s")
+                                   "actions" => "Product items updated for lead",
+                                   "lead_id" => $this->input->post("lead_id"),
+                                   "created_by" => $this->session->userID,
+                                   "created_at" => date("Y-m-d h:i:s")
                               );
-                              $this->common_model->adddata("mk_lead_history",$historydata);
+                              $this->common_model->adddata("mk_lead_history", $historydata);
                               echo json_encode(array("message" => "Data updated Successfully"));
                          }
                     }
                }
-          } 
-         
+          }
      }
 
      public function singleproductsubmit()
@@ -387,341 +353,313 @@ class Ajax extends CI_Controller
                "item_id" => $this->input->post("item_id"),
                "quantity" => $this->input->post("quantity"),
                "unit_price" => $this->input->post("unit_price"),
-               "selling_unit_price"=>$this->input->post("selling_unit_price"),
-               "selling_price"=>$this->input->post("selling_price"),
+               "selling_unit_price" => $this->input->post("selling_unit_price"),
+               "selling_price" => $this->input->post("selling_price"),
                "tax_rate" => $this->input->post("tax_rate"),
                "tax_amount" => $this->input->post("tax_amount"),
-               "total_tax_amount"=>$this->input->post("total_tax_amount"),
-               "total_price_wo_tax"=>$this->input->post("total_price_wo_tax"),
+               "total_tax_amount" => $this->input->post("total_tax_amount"),
+               "total_price_wo_tax" => $this->input->post("total_price_wo_tax"),
                "total_price" => $this->input->post("total_price"),
                "created_at" => date("Y-m-d h:i:s"),
                "created_by" => $this->session->userID,
-               "lead_id"=>$this->input->post("lead_id"),
-               "product_id"=>$this->input->post("product_id"),
-               "service_id"=>$this->input->post("service_id")
-               
+               "lead_id" => $this->input->post("lead_id"),
+               "product_id" => $this->input->post("product_id"),
+               "service_id" => $this->input->post("service_id")
+
           );
           // echo "checking product".$this->input->post("product_id");
 
-          if($this->input->post("product_id") && $this->input->post("product_id")!="null")
-          {
+          if ($this->input->post("product_id") && $this->input->post("product_id") != "null") {
                $cols = array(
                     "product_id" => $this->input->post("product_id"),
                     "customer_id" => $this->input->post("pcustomer_id"),
                     "item_id" => $this->input->post("item_id"),
-                    "lead_id"=>$this->input->post("lead_id")
+                    "lead_id" => $this->input->post("lead_id")
                );
 
                $insertdata["item_type"] = "product";
-     
           }
 
           // echo "checking service".$this->input->post("service_id");
 
-          if($this->input->post("service_id") && $this->input->post("service_id")!="null")
-          {
+          if ($this->input->post("service_id") && $this->input->post("service_id") != "null") {
                $cols = array(
                     "service_id" => $this->input->post("service_id"),
                     "customer_id" => $this->input->post("pcustomer_id"),
                     "item_id" => $this->input->post("item_id"),
-                    "lead_id"=>$this->input->post("lead_id")
+                    "lead_id" => $this->input->post("lead_id")
                );
 
                $insertdata["item_type"] = "service";
           }
 
-          
+
           // print_r($cols); die();
-          
+
           $datacheck = $this->common_model->viewwheredata($cols, "mk_customer_item");
 
-          if(empty($datacheck))
-          {
+          if (empty($datacheck)) {
                echo "empty";
                $insertdata["is_active"] = $this->input->post("is_active");
                if ($this->common_model->adddata("mk_customer_item", $insertdata)) {
                     $historydata = array(
-                         "actions"=>"Product item added for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "Product item added for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo json_encode(array("message" => "Data added Successfully"));
                } else {
                     echo json_encode(array("message" => "Data Not added Successfully"));
                }
-          }
-          else
-          {
+          } else {
                $insertdata["is_active"] = $this->input->post("is_active");
 
-               if($datacheck[0]["item_type"]=="service")
-               {
+               if ($datacheck[0]["item_type"] == "service") {
                     $condition = array(
                          "customer_id" => $this->input->post("pcustomer_id"),
                          "item_id" => $this->input->post("item_id"),
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "item_type"=>"service"
+                         "lead_id" => $this->input->post("lead_id"),
+                         "item_type" => "service"
                     );
-
-               }
-               else
-               {
+               } else {
                     $condition = array(
                          "customer_id" => $this->input->post("pcustomer_id"),
                          "item_id" => $this->input->post("item_id"),
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "item_type"=>"product"
+                         "lead_id" => $this->input->post("lead_id"),
+                         "item_type" => "product"
                     );
                }
 
                if ($this->common_model->updatedata("mk_customer_item", $insertdata, $condition)) {
                     $historydata = array(
-                         "actions"=>"Product item updated for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "Product item updated for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo json_encode(array("message" => "Data updated Successfully"));
                }
           }
-
-         
      }
 
      public function activityMeeting()
      {
-        $data = array(
-          "lead_id"=>$this->input->post("lead_id"),
-          "assigned_to"=>$this->input->post("assigned_to"),
-          "activity_master_id"=>$this->input->post("mactivity_id"),
-          "subject"=>$this->input->post("subject"),
-          "status"=>$this->input->post("status"),
-          "related_to"=>$this->input->post("related_to"),
-          "start_date_time"=>$this->input->post("fromdate"),
-          "end_date_time"=>$this->input->post("todate"),
-          "location"=>$this->input->post("location"),
-          "reminder"=>$this->input->post("reminder"),
-          "description"=>$this->input->post("description"),
-          "created_at"=>date("Y-m-d h:i:s"),
-          "created_by"=>$this->session->userID
-        );
+          $data = array(
+               "lead_id" => $this->input->post("lead_id"),
+               "assigned_to" => $this->input->post("assigned_to"),
+               "activity_master_id" => $this->input->post("mactivity_id"),
+               "subject" => $this->input->post("subject"),
+               "status" => $this->input->post("status"),
+               "related_to" => $this->input->post("related_to"),
+               "start_date_time" => $this->input->post("fromdate"),
+               "end_date_time" => $this->input->post("todate"),
+               "location" => $this->input->post("location"),
+               "reminder" => $this->input->post("reminder"),
+               "description" => $this->input->post("description"),
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID
+          );
 
-        $this->form_validation->set_rules("subject","Subject","required");
+          $this->form_validation->set_rules("subject", "Subject", "required");
 
-        if($this->form_validation->run()==true)
-        {
-               if($this->common_model->adddata("mk_activity",$data))
-               {
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->adddata("mk_activity", $data)) {
                     $historydata = array(
-                         "actions"=>"schedule meeting created for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "schedule meeting created for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo "Data Inserted successfully";
                }
-        }
+          }
      }
 
      public function updateMeeting()
      {
-        $id=$this->input->post("mactivity_id");
-        $data = array(
-          "lead_id"=>$this->input->post("lead_id"),
-          "assigned_to"=>$this->input->post("assigned_to"),
-          "activity_master_id"=>$this->input->post("mactivity_id"),
-          "subject"=>$this->input->post("subject"),
-          "status"=>$this->input->post("status"),
-          "related_to"=>$this->input->post("related_to"),
-          "start_date_time"=>$this->input->post("fromdate"),
-          "end_date_time"=>$this->input->post("todate"),
-          "location"=>$this->input->post("location"),
-          "reminder"=>$this->input->post("reminder"),
-          "description"=>$this->input->post("description"),
-          "created_at"=>date("Y-m-d h:i:s"),
-          "created_by"=>$this->session->userID
-        );
+          $id = $this->input->post("mactivity_id");
+          $data = array(
+               "lead_id" => $this->input->post("lead_id"),
+               "assigned_to" => $this->input->post("assigned_to"),
+               "activity_master_id" => $this->input->post("mactivity_id"),
+               "subject" => $this->input->post("subject"),
+               "status" => $this->input->post("status"),
+               "related_to" => $this->input->post("related_to"),
+               "start_date_time" => $this->input->post("fromdate"),
+               "end_date_time" => $this->input->post("todate"),
+               "location" => $this->input->post("location"),
+               "reminder" => $this->input->post("reminder"),
+               "description" => $this->input->post("description"),
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID
+          );
 
-        $this->form_validation->set_rules("subject","Subject","required");
+          $this->form_validation->set_rules("subject", "Subject", "required");
 
-        if($this->form_validation->run()==true)
-        {
-               if($this->common_model->updatedata("mk_activity",$data,array("id"=>$id)))
-               {
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->updatedata("mk_activity", $data, array("id" => $id))) {
                     $historydata = array(
-                         "actions"=>"schedule meeting is updated for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "schedule meeting is updated for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo "Data updated successfully";
                }
-        }
+          }
      }
 
      public function logCall()
      {
-        $data = array(
-          "lead_id"=>$this->input->post("lead_id"),
-          "assigned_to"=>$this->input->post("assigned_to"),
-          "activity_master_id"=>$this->input->post("lactivity_id"),
-          "subject"=>$this->input->post("subject"),
-          "direction"=>$this->input->post("direction"),
-          "status"=>$this->input->post("status"),
-          "related_to"=>$this->input->post("related_to"),
-          "communication_preferred"=>$this->input->post("communication"),
-          "lead_possibility"=>$this->input->post("lead_possibility"),
-          "start_date_time"=>$this->input->post("fromdate"),
-          // "end_date_time"=>$this->input->post("todate"),
-          // "location"=>$this->input->post("location"),
-          "reminder"=>$this->input->post("reminder"),
-          "description"=>$this->input->post("description"),
-          "created_at"=>date("Y-m-d h:i:s"),
-          "created_by"=>$this->session->userID
-        );
-        
-         $this->form_validation->set_rules("subject","Subject","required");
+          $data = array(
+               "lead_id" => $this->input->post("lead_id"),
+               "assigned_to" => $this->input->post("assigned_to"),
+               "activity_master_id" => $this->input->post("lactivity_id"),
+               "subject" => $this->input->post("subject"),
+               "direction" => $this->input->post("direction"),
+               "status" => $this->input->post("status"),
+               "related_to" => $this->input->post("related_to"),
+               "communication_preferred" => $this->input->post("communication"),
+               "lead_possibility" => $this->input->post("lead_possibility"),
+               "start_date_time" => $this->input->post("fromdate"),
+               // "end_date_time"=>$this->input->post("todate"),
+               // "location"=>$this->input->post("location"),
+               "reminder" => $this->input->post("reminder"),
+               "description" => $this->input->post("description"),
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID
+          );
 
-        if($this->form_validation->run()==true)
-        {
-               if($this->common_model->adddata("mk_activity",$data))
-               {
+          $this->form_validation->set_rules("subject", "Subject", "required");
+
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->adddata("mk_activity", $data)) {
                     $historydata = array(
-                         "actions"=>"Log call created for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "Log call created for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo "Data Inserted successfully";
                }
-        }
+          }
      }
 
      public function updatelogCall()
      {
-        $id=$this->input->post("lactivity_id");
-        $data = array(
-          "lead_id"=>$this->input->post("lead_id"),
-          "assigned_to"=>$this->input->post("assigned_to"),
-          "subject"=>$this->input->post("subject"),
-          "direction"=>$this->input->post("direction"),
-          "status"=>$this->input->post("status"),
-          "related_to"=>$this->input->post("related_to"),
-          "communication_preferred"=>$this->input->post("communication"),
-          "lead_possibility"=>$this->input->post("lead_possibility"),
-          "start_date_time"=>$this->input->post("fromdate"),
-          // "end_date_time"=>$this->input->post("todate"),
-          // "location"=>$this->input->post("location"),
-          "reminder"=>$this->input->post("reminder"),
-          "description"=>$this->input->post("description"),
-          "created_at"=>date("Y-m-d h:i:s"),
-          "created_by"=>$this->session->userID
-        );
-        
-         $this->form_validation->set_rules("subject","Subject","required");
+          $id = $this->input->post("lactivity_id");
+          $data = array(
+               "lead_id" => $this->input->post("lead_id"),
+               "assigned_to" => $this->input->post("assigned_to"),
+               "subject" => $this->input->post("subject"),
+               "direction" => $this->input->post("direction"),
+               "status" => $this->input->post("status"),
+               "related_to" => $this->input->post("related_to"),
+               "communication_preferred" => $this->input->post("communication"),
+               "lead_possibility" => $this->input->post("lead_possibility"),
+               "start_date_time" => $this->input->post("fromdate"),
+               // "end_date_time"=>$this->input->post("todate"),
+               // "location"=>$this->input->post("location"),
+               "reminder" => $this->input->post("reminder"),
+               "description" => $this->input->post("description"),
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID
+          );
 
-        if($this->form_validation->run()==true)
-        {
-               if($this->common_model->updatedata("mk_activity",$data,array("id"=>$id)))
-               {
+          $this->form_validation->set_rules("subject", "Subject", "required");
+
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->updatedata("mk_activity", $data, array("id" => $id))) {
                     $historydata = array(
-                         "actions"=>"Log call is updated for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "Log call is updated for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo "Data Updated successfully";
                }
-        }
+          }
      }
 
      public function composeMail()
      {
           // print_r($_POST); die();
-        $data = array(
-          "from_add"=>$this->input->post("from_address"),
-          "to_add"=>$this->input->post("to_address"),
-          "cc"=>$this->input->post("cc_address"),
-          "bcc"=>$this->input->post("bcc_address"),
-          "lead_id"=>$this->input->post("lead_id"),
-          "assigned_to"=>$this->input->post("assigned_to"),
-          "activity_master_id"=>$this->input->post("cactivity_id"),
-          "subject"=>$this->input->post("subject"),
-          "related_to"=>$this->input->post("related_to"),
-          "body"=>$this->input->post("body"),
-          "created_at"=>date("Y-m-d h:i:s"),
-          "created_by"=>$this->session->userID
-        );
+          $data = array(
+               "from_add" => $this->input->post("from_address"),
+               "to_add" => $this->input->post("to_address"),
+               "cc" => $this->input->post("cc_address"),
+               "bcc" => $this->input->post("bcc_address"),
+               "lead_id" => $this->input->post("lead_id"),
+               "assigned_to" => $this->input->post("assigned_to"),
+               "activity_master_id" => $this->input->post("cactivity_id"),
+               "subject" => $this->input->post("subject"),
+               "related_to" => $this->input->post("related_to"),
+               "body" => $this->input->post("body"),
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID
+          );
 
-     //    print_r($data); die();
+          //    print_r($data); die();
 
-         $this->form_validation->set_rules("subject","Subject","required");
-         $this->form_validation->set_rules("to_address","To Address","required");
-         $this->form_validation->set_rules("from_address","From Address","required");
+          $this->form_validation->set_rules("subject", "Subject", "required");
+          $this->form_validation->set_rules("to_address", "To Address", "required");
+          $this->form_validation->set_rules("from_address", "From Address", "required");
 
-        if($this->form_validation->run()==true)
-        {
-               if($this->common_model->adddata("mk_activity",$data))
-               {
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->adddata("mk_activity", $data)) {
                     $this->email->to($this->input->post("to_address"));
                     $this->email->from('onlineguruweb@gmail.com');
-                    $this->email->subject('Here is your info '.$this->input->post("subject"));
-                    $this->email->message('Hi '.$this->input->post("subject").' Here is the info you requested.');
-                    if($this->email->send())
-                    {
+                    $this->email->subject('Here is your info ' . $this->input->post("subject"));
+                    $this->email->message('Hi ' . $this->input->post("subject") . ' Here is the info you requested.');
+                    if ($this->email->send()) {
                          $historydata = array(
-                              "actions"=>"Mail has been sent for the lead",
-                              "lead_id"=>$this->input->post("lead_id"),
-                              "created_by"=>$this->session->userID,
-                              "created_at"=>date("Y-m-d h:i:s")
+                              "actions" => "Mail has been sent for the lead",
+                              "lead_id" => $this->input->post("lead_id"),
+                              "created_by" => $this->session->userID,
+                              "created_at" => date("Y-m-d h:i:s")
                          );
-                         $this->common_model->adddata("mk_lead_history",$historydata);
+                         $this->common_model->adddata("mk_lead_history", $historydata);
+                         echo "Data Inserted successfully";
+                    } else {
                          echo "Data Inserted successfully";
                     }
-                    else
-                    {
-                         echo "Data Inserted successfully";
-                    }
-                   
                }
-        }
+          }
      }
 
      public function opportunity()
      {
           $data = array(
-               "opportunity_name"=>$this->input->post("opportunity_name"),
-               "expected_amount"=>$this->input->post("exp_amount"),
-               "expected_date"=>$this->input->post("exp_date"),
-               "status"=>$this->input->post("status"),
-               "remarks"=>$this->input->post("remarks"),
-               "lead_id"=>$this->input->post("lead_id"),
-               "is_active"=>1,
-               "created_at"=>date("Y-m-d h:i:s"),
-               "created_by"=>$this->session->userID,
+               "opportunity_name" => $this->input->post("opportunity_name"),
+               "expected_amount" => $this->input->post("exp_amount"),
+               "expected_date" => $this->input->post("exp_date"),
+               "status" => $this->input->post("status"),
+               "remarks" => $this->input->post("remarks"),
+               "lead_id" => $this->input->post("lead_id"),
+               "is_active" => 1,
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID,
           );
 
-          $this->form_validation->set_rules("exp_amount","Expected Amount","required");
-          $this->form_validation->set_rules("exp_date","Expected Date","required");
+          $this->form_validation->set_rules("exp_amount", "Expected Amount", "required");
+          $this->form_validation->set_rules("exp_date", "Expected Date", "required");
 
-          if($this->form_validation->run()==true)
-          {
-               if($this->common_model->adddata("mk_opportunity",$data))
-               {
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->adddata("mk_opportunity", $data)) {
                     $historydata = array(
-                         "actions"=>"opportunity created for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "opportunity created for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo "Data Inserted Successfully";
                }
           }
@@ -731,31 +669,29 @@ class Ajax extends CI_Controller
      {
           $id = $this->input->post("opportunity_id");
           $data = array(
-               "opportunity_name"=>$this->input->post("opportunity_name"),
-               "expected_amount"=>$this->input->post("exp_amount"),
-               "expected_date"=>$this->input->post("exp_date"),
-               "status"=>$this->input->post("status"),
-               "remarks"=>$this->input->post("remarks"),
-               "lead_id"=>$this->input->post("lead_id"),
-               "is_active"=>1,
-               "created_at"=>date("Y-m-d h:i:s"),
-               "created_by"=>$this->session->userID,
+               "opportunity_name" => $this->input->post("opportunity_name"),
+               "expected_amount" => $this->input->post("exp_amount"),
+               "expected_date" => $this->input->post("exp_date"),
+               "status" => $this->input->post("status"),
+               "remarks" => $this->input->post("remarks"),
+               "lead_id" => $this->input->post("lead_id"),
+               "is_active" => 1,
+               "created_at" => date("Y-m-d h:i:s"),
+               "created_by" => $this->session->userID,
           );
 
-          $this->form_validation->set_rules("exp_amount","Expected Amount","required");
-          $this->form_validation->set_rules("exp_date","Expected Date","required");
+          $this->form_validation->set_rules("exp_amount", "Expected Amount", "required");
+          $this->form_validation->set_rules("exp_date", "Expected Date", "required");
 
-          if($this->form_validation->run()==true)
-          {
-               if($this->common_model->updatedata("mk_opportunity",$data,array("id"=>$id)))
-               {
+          if ($this->form_validation->run() == true) {
+               if ($this->common_model->updatedata("mk_opportunity", $data, array("id" => $id))) {
                     $historydata = array(
-                         "actions"=>"opportunity updated for lead",
-                         "lead_id"=>$this->input->post("lead_id"),
-                         "created_by"=>$this->session->userID,
-                         "created_at"=>date("Y-m-d h:i:s")
+                         "actions" => "opportunity updated for lead",
+                         "lead_id" => $this->input->post("lead_id"),
+                         "created_by" => $this->session->userID,
+                         "created_at" => date("Y-m-d h:i:s")
                     );
-                    $this->common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history", $historydata);
                     echo "Data Updated Successfully";
                }
           }
@@ -763,7 +699,7 @@ class Ajax extends CI_Controller
 
      public function getActivity()
      {
-          $data = $this->common_model->viewwheredata(array("lead_id"=>$this->input->post("lead_id"),"is_active"=>1), "mk_activity");
+          $data = $this->common_model->viewwheredata(array("lead_id" => $this->input->post("lead_id"), "is_active" => 1), "mk_activity");
 
           echo json_encode($data);
      }
@@ -771,14 +707,14 @@ class Ajax extends CI_Controller
 
      public function getMeeting()
      {
-          $data = $this->common_model->viewwheredata(array("id"=>$this->input->post("activity_id")), "mk_activity");
+          $data = $this->common_model->viewwheredata(array("id" => $this->input->post("activity_id")), "mk_activity");
 
           echo json_encode($data);
      }
 
      public function getLogCall()
      {
-          $data = $this->common_model->viewwheredata(array("id"=>$this->input->post("activity_id")), "mk_activity");
+          $data = $this->common_model->viewwheredata(array("id" => $this->input->post("activity_id")), "mk_activity");
 
           echo json_encode($data);
      }
@@ -794,7 +730,7 @@ class Ajax extends CI_Controller
 
      public function getLeadHistory()
      {
-          $data = $this->common_model->viewwheredata(array("lead_id"=>$this->input->post("lead_id")), "mk_lead_history");
+          $data = $this->common_model->viewwheredata(array("lead_id" => $this->input->post("lead_id")), "mk_lead_history");
 
           echo json_encode($data);
      }
@@ -808,21 +744,19 @@ class Ajax extends CI_Controller
           $this->form_validation->set_rules('category', 'Category', 'required');
 
           if ($this->form_validation->run() == FALSE) {
-               echo json_encode(array("message"=>"please enter the category field"));
-          } 
-          else {
-                    $data = array(
-                         "category" => $this->input->post("category"),
-                         "is_active"=>$this->input->post("status"),
-                         "created_by" => $this->session->userID,
-                         "created_at" => date("Y-m-d h:i:s")
-                    );
+               echo json_encode(array("message" => "please enter the category field"));
+          } else {
+               $data = array(
+                    "category" => $this->input->post("category"),
+                    "is_active" => $this->input->post("status"),
+                    "created_by" => $this->session->userID,
+                    "created_at" => date("Y-m-d h:i:s")
+               );
 
 
-                    if ($this->products_model->adddata("mk_master_lead_category", $data) == true) {
-                         echo json_encode(array("message"=>"Category Inserted Successfully"));
-                   }
-               
+               if ($this->products_model->adddata("mk_master_lead_category", $data) == true) {
+                    echo json_encode(array("message" => "Category Inserted Successfully"));
+               }
           }
      }
 
@@ -832,38 +766,35 @@ class Ajax extends CI_Controller
           $data["error"] = "";
           $data["user"] = $_SESSION;
 
-         $this->form_validation->set_rules('category', 'Category', 'required');
+          $this->form_validation->set_rules('category', 'Category', 'required');
 
           if ($this->form_validation->run() == FALSE) {
-               echo json_encode(array("message"=>"please enter the category field"));
-          } 
-          else {
-                    $data = array(
-                         "category" => $this->input->post("category"),
-                         "is_active"=>$this->input->post("status"),
-                         "modified_by" => $this->session->userID,
-                         "modified_at" => date("Y-m-d h:i:s")
-                    );
+               echo json_encode(array("message" => "please enter the category field"));
+          } else {
+               $data = array(
+                    "category" => $this->input->post("category"),
+                    "is_active" => $this->input->post("status"),
+                    "modified_by" => $this->session->userID,
+                    "modified_at" => date("Y-m-d h:i:s")
+               );
 
 
-                    if ($this->products_model->updatedata("mk_master_lead_category", $data,array("id"=>$id)) == true) {
-                       echo json_encode(array("message"=>"Category Updated Successfully"));
-                    }
-              
+               if ($this->products_model->updatedata("mk_master_lead_category", $data, array("id" => $id)) == true) {
+                    echo json_encode(array("message" => "Category Updated Successfully"));
+               }
           }
      }
 
      public function leadClose()
      {
           $data = array(
-               "reason"=>$this->input->post("reason"),
-               "is_active"=>0
+               "reason" => $this->input->post("reason"),
+               "is_active" => 0
           );
           $id = $this->input->post("lead_id");
 
-          if($this->common_model->updatedata("mk_lead",$data,array("id"=>$id)))
-          {
-               echo json_encode(array("message"=>"Leads Closed Successfully"));
+          if ($this->common_model->updatedata("mk_lead", $data, array("id" => $id))) {
+               echo json_encode(array("message" => "Leads Closed Successfully"));
           }
      }
 
@@ -873,66 +804,221 @@ class Ajax extends CI_Controller
           $customer_id = $this->input->post("rcustomer_id");
 
           $data = array(
-               "ref_1"=>$this->input->post("ref1"),
-               "ref_2"=>$this->input->post("ref2"),
-               "ref_3"=>$this->input->post("ref3"),
-               "ref_4"=>$this->input->post("ref4"),
-               "refer"=>$this->input->post("refer"),
-               "terms"=>$this->input->post("terms"),
+               "ref_1" => $this->input->post("ref1"),
+               "ref_2" => $this->input->post("ref2"),
+               "ref_3" => $this->input->post("ref3"),
+               "ref_4" => $this->input->post("ref4"),
+               "refer" => $this->input->post("refer"),
+               "terms" => $this->input->post("terms"),
           );
 
-          
 
-          if($this->common_model->updatedata("mk_customer_item",$data,array("lead_id"=>$lead_id,"customer_id"=>$customer_id)))
-          {
-               echo json_encode(array("message"=>"Leads reference updated successfully"));
+
+          if ($this->common_model->updatedata("mk_customer_item", $data, array("lead_id" => $lead_id, "customer_id" => $customer_id))) {
+               echo json_encode(array("message" => "Leads reference updated successfully"));
           }
      }
 
      public function ordersubmit()
      {
           $data = array(
-               "quotation_id"=>$this->input->post("qid"),
-               "lead_id"=>$this->input->post("lead_id"),
-               "assign_to_agent"=>$this->input->post("agent"),
-               "assign_to_tl"=>$this->input->post("teamleader"),
-               "order_no"=>"ORD_".time(),
-               "decision"=>$this->input->post("decision"),
-               "payment"=>"no",
-               "status"=>0,
-               "approved"=>"no",
+               "quotation_id" => $this->input->post("qid"),
+               "lead_id" => $this->input->post("lead_id"),
+               "assign_to_agent" => $this->input->post("agent"),
+               "assign_to_tl" => $this->input->post("teamleader"),
+               "order_no" => "ORD_" . time(),
+               "decision" => $this->input->post("decision"),
+               "payment" => "no",
+               "status" => 0,
+               "approved" => "no",
           );
-          $lead_id=$this->input->post("lead_id");
-          $datacheck = $this->common_model->viewwheredata(array("lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")),"mk_order");
+          $lead_id = $this->input->post("lead_id");
+          $datacheck = $this->common_model->viewwheredata(array("lead_id" => $lead_id, "quotation_id" => $this->input->post("qid")), "mk_order");
 
           // print_r($datacheck); die();
 
-          if($datacheck)
-          {
-               $data["modified_by"]=$this->session->userID;
-               $data["modified_at"]=date("Y-m-d h:i:s");
+          if ($datacheck) {
+               $data["modified_by"] = $this->session->userID;
+               $data["modified_at"] = date("Y-m-d h:i:s");
 
                $array = array(
-                    "lead_id"=>$lead_id,"quotation_id"=>$this->input->post("qid")
+                    "lead_id" => $lead_id, "quotation_id" => $this->input->post("qid")
                );
-               if($this->common_model->updatedata("mk_order",$data,$array))
-               {
+               if ($this->common_model->updatedata("mk_order", $data, $array)) {
                     $this->session->set_flashdata('message_name', 'Order Data Updated');
                     // return redirect("/dashboard/leads/assign/".$lead_id);
                }
-               
-
-          }
-          else
-          {
-               $data["created_by"]=$this->session->userID;
-               $data["created_at"]=date("Y-m-d h:i:s");
-               if($this->common_model->adddata("mk_order",$data))
-               {
+          } else {
+               $data["created_by"] = $this->session->userID;
+               $data["created_at"] = date("Y-m-d h:i:s");
+               if ($this->common_model->adddata("mk_order", $data)) {
                     // $this->session->set_flashdata('message_name', 'Order Data Added');
                     // return redirect("/dashboard/leads/assign/".$lead_id);
                }
           }
-         
+     }
+
+     public function orderdoc()
+     {
+          $filename = $_FILES["userfile"]["name"];
+          $temp = $_FILES["userfile"]["tmp_name"];
+
+
+          $data = array(
+               "document" => $filename,
+               "order_id" => $this->input->post("order_id"),
+               "created_by" => $this->session->userID,
+               "created_at" => date("Y-m-d h:i:s")
+          );
+
+          // echo $_FILES["userfile"]["size"]; die();
+          if ($_FILES["userfile"]["size"] <= 2000000) {
+
+               if (move_uploaded_file($temp, "./uploads/order_docs/" . $filename)) {
+                    if ($this->common_model->adddata("mk_order_docs", $data)) {
+                         echo "Data Inserted";
+                    } else {
+                         echo "Not Inserted";
+                    }
+               } else {
+                    echo "file not upload";
+               }
+          } else {
+               echo "File size is greater";
+          }
+     }
+
+     public function dowloadorderdocs()
+     {
+          $data = array(
+               "order_id" => $this->input->post("order_id")
+          );
+
+          $result = $this->common_model->viewwheredata($data, "mk_order_docs");
+
+          // echo $this->db->last_query();
+
+          echo json_encode($result);
+     }
+
+     public function existcustomer()
+     {
+          if ($this->input->post("action") == "mobile") {
+               $data = array(
+                    "mobile" => $this->input->post("userdata")
+               );
+          }
+
+
+          if ($this->input->post("action") == "email") {
+               $data = array(
+                    "email" => $this->input->post("userdata")
+               );
+          }
+
+
+          $datacheck = $this->common_model->viewwheredata($data, "mk_customer");
+
+          if ($datacheck) {
+               echo json_encode(array("error" => "Customer Data already exists"));
+          } else {
+               // echo json_encode(array("success"=>"Customer Data Available"));
+          }
+     }
+
+     public function email_template_1($customer_email = "")
+     {
+
+          $message = $this->load->view("dashboard/email_templates/order_email");
+
+          $this->email->from('ravi@medikart.co.in', 'Your Name');
+          $this->email->to($customer_email);
+          // $this->email->cc('another@another-example.com');
+          // $this->email->bcc('them@their-example.com');
+
+          $this->email->subject('Thanks for the order');
+          $this->email->message($message);
+
+          $this->email->send();
+     }
+
+     public function email_template_2($customer_email = "")
+     {
+
+          $message = $this->load->view("dashboard/email_templates/query_email");
+
+          $this->email->from('ravi@medikart.co.in', 'Your Name');
+          $this->email->to($customer_email);
+          // $this->email->cc('another@another-example.com');
+          // $this->email->bcc('them@their-example.com');
+
+          $this->email->subject('Query Reply');
+          $this->email->message($message);
+
+          $this->email->send();
+     }
+
+     public function email_template_3($customer_email = "")
+     {
+
+          $message = $this->load->view("dashboard/email_templates/confirmation_email");
+
+          $this->email->from('ravi@medikart.co.in', 'Your Name');
+          $this->email->to($customer_email);
+          // $this->email->cc('another@another-example.com');
+          // $this->email->bcc('them@their-example.com');
+
+          $this->email->subject('Order Confirmation Email');
+          $this->email->message($message);
+
+          $this->email->send();
+     }
+
+     public function sms_template_1($customer="",$mobile="",$order="")
+     {
+          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&
+          sender=MDKART&mobile=".$mobile."&
+          text=Dear%20%7B".$customer." %7D%20Thanks%20for%20your%20order%20for
+          %20%7B".$order."%7D%20Your%20order%20has%20been%20punched%20in%20our
+          %20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to
+          %20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20%2C%20
+          Please%20email%20at%20.%20customercare%40medikart.co.in	&
+          entityid=1501651890000015375&templateid=1507162262983788026";
+          // echo $url;
+
+          // file_get_contents($url);
+          $ch = curl_init($url); // such as http://example.com/example.xml
+          // curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+          // curl_setopt($ch, CURLOPT_HEADER, 0);
+          // $data = curl_exec($ch);
+          // // echo json_encode($data);
+          // curl_close($ch);
+     }
+
+     public function sms_template_2($customer="",$order="",$mobile="")
+     {
+
+          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&
+          sender=MDKART&mobile=".$mobile."&
+          text=Dear%20%7B".$customer." %7D%20Thanks%20for%20your%20order%20for
+          %20%7B".$order."%7D%20Your%20order%20has%20been%20punched%20in%20our
+          %20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to
+          %20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20%2C%20
+          Please%20email%20at%20.%20customercare%40medikart.co.in	&
+          entityid=1501651890000015375&templateid=1507162262983788026";
+
+          echo $url;
+
+          $curl_handle = curl_init();
+          curl_setopt($curl_handle, CURLOPT_URL, $url);
+          curl_setopt($curl_handle, CURLOPT_CONNECTTIMEOUT, 2);
+          curl_setopt($curl_handle, CURLOPT_RETURNTRANSFER, 1);
+          $buffer = curl_exec($curl_handle);
+          curl_close($curl_handle);
+          if (empty($buffer)) {
+               print "SMS Not Send";
+          } else {
+               print $buffer;
+          }
      }
 }

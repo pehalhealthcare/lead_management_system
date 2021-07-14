@@ -33,6 +33,7 @@ $route["dashboard/assign/leads/(:any)"]                     =  "leads/assign";
 $route["dashboard/edit/leads/(:any)"]                       =  "leads/lead_edit/$1";
 $route["dashboard/delete/leads/(:any)"]                     =  "leads/destroy/$1"; 
 $route["dashboard/lead/generate_pdf/(:any)/(:any)"]         =  "leads/generate_pdf/$1/$2";
+$route["dashboard/lead/view_quotation/(:any)/(:any)"]       =  "leads/view_quotation/$1/$2";
 $route["dashboard/lead/generate_quotation/(:any)/(:any)"]   =  "leads/generate_quotation/$1/$2";
 $route["dashboard/order/submit"]                            =  "leads/ordersubmit";
 
@@ -48,6 +49,8 @@ $route["dashboard/purchase-order"]                          = "purchaseorder/vie
 $route["dashboard/add/purchase-order/(:any)"]               = "purchaseorder/adddata/$1";
 $route["dashboard/edit/purchase-order/(:any)"]              = "purchaseorder/editdata/$1";
 $route["dashboard/delete/purchase-order/(:any)"]            = "purchaseorder/deletedata/$1";
+
+$route["dashboard/test/sms/(:any)/(:any)/(:any)"]           = "ajax/sms_template_1/$1/$2/$3";
 
 
 
@@ -100,6 +103,14 @@ $route["dashboard/create/services/items"]                       = "services/add_
 $route["dashboard/services/item/(:any)"]                    = "services/view_services_item/$1";
 $route["dashboard/services/item/edit/(:any)"]               = "services/edit_services_item/$1";
 $route["dashboard/services/item/delete/(:any)"]             = "services/delete_services_item/$1";
+
+$route["dashboard/operation/order"]                         = "orders/order_details/" ;
+$route["dashboard/operation/order/assign/(:any)"]           = "orders/order_assign/$1" ;
+$route["dashboard/operation/order/view/(:any)"]            = "orders/order_view/$1";
+$route["dashboard/operation/order/verification/(:any)"]     = "orders/order_verification/$1" ;
+$route["dashboard/operation/payment/verification"]          = "orders/lead/payment_verification/";
+$route["dashboard/operation/customer/verification"]         = "orders/lead/customer_verification/";
+
 
 
 

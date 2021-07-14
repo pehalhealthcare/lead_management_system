@@ -83,9 +83,9 @@
                                         <div class="form-group col-sm-6">
 
                                              <label for="">Surname <span class="text-danger">*</span></label>
-                                             <select class="form-control border" required id="surname" name="surname">
+                                             <select class="form-control border" id="surname" name="surname">
                                                   <option value="">Select Surname</option>
-                                                  <option value="Mr">Mr</option>
+                                                  <option selected value="Mr">Mr</option>
                                                   <option value="Ms">Ms</option>
                                                   <option value="Mrs">Mrs</option>
                                              </select>
@@ -93,44 +93,46 @@
                                         </div>
 
                                         <div class="form-group col-sm-6">
-                                             <label for="">Address 1 <span class="text-danger">*</span></label>
-                                             <input type="text" name="address_1" required id="address_1" placeholder="for example door no" class="form-control  border">
+                                             <label for="">Customer Address 1 <span class="text-danger">*</span></label>
+                                             <input type="text" name="address_1" id="address_1" placeholder="for example door no" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Full Name <span class="text-danger">*</span></label>
+                                             <label for="">Customer Full Name <span class="text-danger">*</span></label>
                                              <input type="text" name="customer-name" required id="customer-name" value="<?= $leads[0]["name"]; ?>" placeholder="Enter Customer Name" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Address 2</label>
+                                             <label for="">Customer Address 2</label>
                                              <input type="text" name="address_2" id="address_2" placeholder="for example street/block" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Mobile <span class="text-danger">*</span></label>
-                                             <input type="text" name="mobile" required id="mobile" value="<?= $leads[0]["mobile"]; ?>" placeholder="Enter Mobile" class="form-control  border">
+                                             <label for="">Customer Mobile <span class="text-danger">*</span></label>
+                                             <input type="text" name="mobile" required id="mobile" minlength="10" value="<?= $leads[0]["mobile"]; ?>" placeholder="Enter Mobile" class="form-control  border">
+                                             <span class="mobile-error text-danger"></span>
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Delivery Address</label>
+                                             <label for="">Customer Delivery Address</label>
                                              <input type="text" name="address_3" id="address_3" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Email <span class="text-danger">*</span></label>
+                                             <label for="">Customer Email <span class="text-danger">*</span></label>
                                              <input type="email" name="email" required id="email" value="<?= $leads[0]["email"]; ?>" placeholder="Enter Email" class="form-control  border">
+                                             <span class="email-error text-danger"></span>
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">State <span class="text-danger">*</span></label>
-                                             <input type="text" name="state" required id="state" class="form-control  border">
+                                             <label for="">Customer State </label>
+                                             <input type="text" name="state" id="state" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Alternate Mobile</label>
+                                             <label for="">Customer Alternate Mobile</label>
                                              <input type="text" name="alternate_mobile" id="alternate_mobile" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">City <span class="text-danger">*</span></label>
-                                             <input type="text" name="city" required id="city" class="form-control  border">
+                                             <label for="">Customer City </label>
+                                             <input type="text" name="city" id="city" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
-                                             <label for="">Zip Code <span class="text-danger">*</span></label>
-                                             <input type="text" name="zip" required id="zipcode" class="form-control  border">
+                                             <label for="">Customer Zip Code <span class="text-danger">*</span></label>
+                                             <input type="number" name="zip" id="zipcode" class="form-control  border">
                                         </div>
                                         <div class="form-group col-sm-6">
                                              <label for="">&nbsp;</label>
@@ -236,16 +238,16 @@
                          </li>
                     </ul>
                     <div class="tab-content bg-white p-3" id="pills-tabContent">
-                    <?php if ($this->session->flashdata('message_name')) :
-                    ?>
+                         <?php if ($this->session->flashdata('message_name')) :
+                         ?>
 
-                         <div class="alert alert-success alert-dismissible fade show" role="alert">
-                         <strong><?= $this->session->flashdata('message_name') ?>.</strong>
-                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                              <span aria-hidden="true">&times;</span>
-                         </button>
-                         </div>
-                    <?php endif; ?>
+                              <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                   <strong><?= $this->session->flashdata('message_name') ?>.</strong>
+                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                   </button>
+                              </div>
+                         <?php endif; ?>
 
                          <div class="tab-pane active show" id="pills-product-item" role="tabpanel" aria-labelledby="pills-product-item-tab">
                               <form action="" method="post" class="assign-product" enctype="multipart/form-data">
@@ -284,7 +286,7 @@
                                                             <th><input type="checkbox" name="" id="all-data"></th>
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
-                                                            <th>Unit Price</th>
+                                                            <th>Per Unit Price</th>
                                                             <!-- <th>Selling Unit Price</th>
                                                            <th>Selling Price</th> -->
                                                             <th>Tax Rate</th>
@@ -344,7 +346,7 @@
                                                             <th><input type="checkbox" name="" id="all-data"></th>
                                                             <th>Item Name</th>
                                                             <th>Quantity</th>
-                                                            <th>Unit Price</th>
+                                                            <th>Per Unit Price</th>
                                                             <!-- <th>Selling Unit Price</th>
                                                            <th>Selling Price</th> -->
                                                             <th>Tax Rate</th>
@@ -392,12 +394,13 @@
 
                                         <?php endif; ?>
                                    <?php endforeach; ?>
-                                   <?php if($customer_item): ?>
-                                        <a href="<?= base_url() ?>dashboard/lead/generate_pdf/<?= $lead_id ?>/<?= $customerID ?>" 
-                                  class="btn btn-success"> PDF GENERATION</a>
-                                  <?php else:?>
-                                   <a href="javascript:void(0)" class="btn btn-success"> PDF GENERATION</a>
-                                   <?php endif;?>
+                                   <?php if ($customer_item) : ?>
+                                        <a href="<?= base_url() ?>dashboard/lead/generate_pdf/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
+                                        <a href="<?= base_url() ?>dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-success col-md-2 col-sm-12"> VIEW QUOTATION</a>
+                                   <?php else : ?>
+                                        <a href="javascript:void(0)" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
+                                   <?php endif; ?>
+                                   <a href="#" class="btn btn-success mb-2 mt-2 col-md-2 col-sm-12"> SEND MAIL</a>
                               </div>
                               <h4>Terms and conditions</h4>
                               <div class="col-sm-12 terms row">
@@ -427,7 +430,7 @@
                                                   <input type="text" name="terms" value="<?= $terms ?>" class="form-control border" placeholder="Terms" id="">
                                              </div>
                                              <div class="form-group">
-                                                  <label>Reference</label>
+                                                  <label>GST Number</label>
                                                   <input type="text" name="refer" value="<?= $refer ?>" class="form-control border" placeholder="Reference Number" id="">
                                              </div>
                                              <div class="form-group">
@@ -443,7 +446,7 @@
                                                   <input type="text" name="ref3" value="<?= $ref_3 ?>" class="form-control border" placeholder="Reference 3" id="">
                                              </div>
                                              <div class="form-group">
-                                                  <label>Reference 4</label>
+                                                  <label>Special Commments</label>
                                                   <input type="text" name="ref4" value="<?= $ref_4 ?>" class="form-control border" placeholder="Reference 4" id="">
                                              </div>
                                              <div class="form-group">
@@ -463,7 +466,7 @@
                                    <div class="col-sm-12 col-md-12 mb-3 mt-3 text-right">
                                         <button class="btn btn-primary approve disabled mt-2 mb-2">Approve</button>
                                         <a href="" class="btn btn-success gorder d-none mt-2 mb-2">Generate Order</a>
-                                        <button class="btn btn-danger  mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal" >Disapprove</button>
+                                        <button class="btn btn-danger disapprove disabled  mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
                                    </div>
                                    <table class="table table-bordered bg-white">
                                         <tr>
@@ -476,22 +479,24 @@
                                              <th>ACTIONS</th>
                                         </tr>
                                         <?php $i = 0;
-                                        $quid="";
+                                        $quid = "";
                                         foreach ($quotation as $quo) : $i++; ?>
 
-                                             <?php 
-                                             $status =  ($quo["status"] == 1) ? "ACTIVE" : "";
-                                             $status =  ($quo["status"] == 0) ? "CLOSED" : "";
+                                             <?php
+                                            
                                              $quid = $quo["quotation_id"];
+                                             $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
+                                             
+                                             $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
                                              ?>
                                              <tr>
-                                                  <td><input type="checkbox" class="boxchecked" data-qid="<?= $quo["quotation_id"] ?>" data-link="<?= $quo["pdf"] ?>" value="<?= $quo["quotation_id"] ?>" name="select_<?= $quo["quotation_id"] ?>" /></td>
+                                                  <td><input type="checkbox" data-order="<?= $orders ?>" class="boxchecked" data-qid="<?= $quo["quotation_id"] ?>" data-link="<?= $quo["pdf"] ?>" value="<?= $quo["quotation_id"] ?>" name="select_<?= $quo["quotation_id"] ?>" /></td>
                                                   <td><?= $i ?></td>
                                                   <td><?= $quo["quotation_no"] ?></td>
                                                   <td><?= $quo["item_total"] ?></td>
                                                   <td><?= $quo["comments"] ?></td>
                                                   <td><?= $status ?></td>
-                                                  <td><a href="<?= $quo["pdf"] ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
+                                                  <td><a href="<?= base_url() ?>/dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
                                              </tr>
                                         <?php endforeach; ?>
                                    </table>
@@ -543,7 +548,7 @@
                                                   </div>
                                                   <div class="form-group col-sm-6">
                                                        <label for="">Start date</label>
-                                                       <input type="datetime-local" id="startDate" name="fromdate" class="form-control border-bottom">
+                                                       <input type="datetime-local" id="startDate" min="<?= date("Y-m-d") . "T" . "00:00" ?>" name="fromdate" class="form-control border-bottom">
                                                   </div>
                                                   <div class="form-group col-sm-6">
                                                        <label for="">Related to</label>
@@ -568,35 +573,19 @@
                                                        &nbsp;
                                                   </div>
                                                   <div class="form-group col-sm-6">
-                                                       <input type="text" name="parent_name" value="<?= $this->session->name ?>" class="form-control border-bottom" id="">
+                                                       <label>Assigned By</label>
+
                                                   </div>
 
                                                   <div class="form-group col-sm-6">
                                                        <label for="">End date</label>
-                                                       <input type="datetime-local" name="todate" id="endDate" class="form-control border-bottom endDate">
+                                                       <input type="datetime-local" min="<?= date("Y-m-d") . "T" . "00:00" ?>" name="todate" id="endDate" class="form-control border-bottom endDate">
                                                   </div>
                                                   <div class="form-group col-sm-6">
                                                        <label for="">Location</label>
                                                        <input type="text" name="location" class="form-control border-bottom">
                                                   </div>
-                                                  <!-- <div class="form-group col-sm-6">
-                                                      <label for="">Duration</label>
-                                                      <select name="duration" class="form-control" id="">
-                                                           <option>15 mins</option>
-                                                           <option>30 mins</option>
-                                                           <option>1 hour</option>
-                                                           <option>1.5 hour</option>
-                                                           <option>2 hour</option>
-                                                           <option>3 hour</option>
-                                                           <option>4 hour</option>
-                                                           <option>5 hour</option>
-                                                           <option>6 hour</option>
-                                                           <option>1 day</option>
-                                                           <option>2 days</option>
-                                                           <option>3 days</option>
-                                                           <option>1 week</option>
-                                                      </select>
-                                                 </div> -->
+
                                                   <div class="form-group col-sm-6">
                                                        <label for="">Reminder</label><br />
                                                        <input type="checkbox" name="reminder" value="1" class="form-control-check border-bottom"> Remind me
@@ -666,7 +655,7 @@
                                                   </div>
                                                   <div class="form-group col-sm-6">
                                                        <label for="">Start date</label>
-                                                       <input type="datetime-local" name="fromdate" id="fromdate" class="form-control border-bottom fromdate">
+                                                       <input type="datetime-local" name="fromdate" min="<?= date("Y-m-d") . "T" . "00:00" ?>" id="fromdate" class="form-control border-bottom fromdate">
                                                   </div>
                                                   <div class="form-group col-sm-6">
                                                        <label for="">Related to</label>
@@ -1092,17 +1081,17 @@
                     </button>
                </div>
                <form action="" class="disapproveform" method="post">
-               <div class="modal-body">
-                   <label>Reason for Disapprove</label>
-                   <input type="hidden" name="lead_id" value="<?= $leads[0]["id"]?>">
-                   <input type="hidden" name="agent" value="<?= $leads[0]["assigned_to"]?>">
-                   <input type="hidden" name="teamleader" value="<?= $leads[0]["assigned_by"]?>">
-                   <input type="hidden" name="qid" id="qid" value="<?= $quid?>">
-                   <input type="text" require name="decision" class="form-control" />
-               </div>
-               <div class="modal-footer">
-                    <button type="submit" class="btn btn-success">Submit</button>
-               </div>
+                    <div class="modal-body">
+                         <label>Reason for Disapprove</label>
+                         <input type="hidden" name="lead_id" value="<?= $leads[0]["id"] ?>">
+                         <input type="hidden" name="agent" value="<?= $leads[0]["assigned_to"] ?>">
+                         <input type="hidden" name="teamleader" value="<?= $leads[0]["assigned_by"] ?>">
+                         <input type="hidden" name="qid" id="qid" value="<?= $quid ?>">
+                         <input type="text" require name="decision" class="form-control" />
+                    </div>
+                    <div class="modal-footer">
+                         <button type="submit" class="btn btn-success">Submit</button>
+                    </div>
                </form>
           </div>
      </div>
@@ -1133,6 +1122,14 @@
      }
 
      $(document).ready(function() {
+
+
+          // elem = document.getElementById("dateInput")
+          // var iso = new Date().toISOString();
+          // var minDate = iso.substring(0,iso.length-1);
+          // elem.value = minDate
+          // elem.min = minDate
+
 
           if (localStorage.getItem("tabs")) {
                var tabs = localStorage.getItem("tabs");
@@ -1167,11 +1164,11 @@
                localStorage.setItem("tabs", $(this).attr("href"));
           });
 
-          $(".sub-nav-tabs").click(function(){
-               localStorage.setItem("subtabs",$(this).attr("href"));
+          $(".sub-nav-tabs").click(function() {
+               localStorage.setItem("subtabs", $(this).attr("href"));
           });
 
-          $("#pills-create-quotation-tab").click(function(){
+          $("#pills-create-quotation-tab").click(function() {
                location.reload();
           });
 
@@ -1196,9 +1193,7 @@
                          $("#closeBoxConfirm").modal("show");
                          $(".customers").removeClass("active");
                          $(".nav-tabs#pills-profile-tab").removeClass("disabled")
-                         //     $(".add-customer").trigger("reset");
 
-                         //     getcusotmer();
                     }
                })
 
@@ -1353,6 +1348,39 @@
                          $("#city").val(city);
                          $("#zipcode").val(zip);
 
+                    }
+               })
+          });
+
+          $(document).on("blur", "#mobile", function() {
+               var mobile =
+                    $(".mobile-error").html("");
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/existcustomer",
+                    data: {
+                         userdata: $(this).val(),
+                         action: "mobile"
+                    },
+                    success: function(status) {
+                         var error = JSON.parse(status);
+                         $(".mobile-error").html(error["error"])
+                    }
+               });
+          });
+
+          $(document).on("blur", "#email", function() {
+               $(".email-error").html("");
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/existcustomer",
+                    data: {
+                         userdata: $(this).val(),
+                         action: "email"
+                    },
+                    success: function(status) {
+                         var error = JSON.parse(status);
+                         $(".email-error").html(error["error"])
                     }
                })
           });
@@ -1519,7 +1547,7 @@
 
                                    var html = '<div class="col-sm-12 col-md-3 mb-3 bg-white item_' + v["item_id"] + '"><div class="card bg-light text-dark border border-success"><div class="card-title p-3 border-bottom border-success">' + item_name + '<input readonly data-id="' + v["item_id"] + '" type="hidden" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control ' + item_type_ + 'ritem_name_' + v["item_id"] + '""></div>';
                                    html += '<div class="card-body"><label>Quantity</label><input type="text" data-item-type="' + item_type + '" name="quantity[]" data-id="' + v["item_id"] + '"  placeholder="Enter Your Quantity" value="' + quantity + '" class="rquantity border-bottom form-control ' + item_type_ + 'rquantity_' + v["item_id"] + '">';
-                                   html += '<label>Unit Price</label><input type="text" readonly data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"   value="' + unit_price + '" name="unit_price[]"  class="runit_price border-bottom form-control ' + item_type_ + 'runit_price_' + v["item_id"] + '">';
+                                   html += '<label>Per Unit Price</label><input type="text" readonly data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"   value="' + unit_price + '" name="unit_price[]"  class="runit_price border-bottom form-control ' + item_type_ + 'runit_price_' + v["item_id"] + '">';
                                    html += '<label>Tax Rate</label><input readonly type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control ' + item_type_ + 'rtax_rate_' + v["item_id"] + '">';
                                    html += '<label>Selling Unit Price</label><input type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '"  value="' + selling_unit_price + '" name="rselling_unit_price[]"  class="rselling_unit_price border-bottom form-control ' + item_type_ + 'rselling_unit_price_' + v["item_id"] + '">';
                                    html += '<label>Selling Price</label><input type="text" data-item-type="' + item_type + '" data-id="' + v["item_id"] + '" value="' + selling_price + '"  name="rselling_price[]" readonly class="rselling_price border-bottom form-control ' + item_type_ + 'rselling_price_' + v["item_id"] + '">';
@@ -2338,36 +2366,8 @@
                }
           });
 
-          
 
 
-          //     $("#startDate").datetimepicker({
-          //          format: 'dd/mm/yyyy',
-          //          timeFormat:  "hh:mm:ss",
-          //          autoclose: true,
-          //          todayBtn: true,
-          //          todayHighlight: true
-          //     }).on('changeDate', function(selected) {
-          //          var minDate = new Date();
-          //          $('.endDate').datepicker('setStartDate', minDate);
-          //     });
-
-          //     $(".endDate").datetimepicker({
-          //          format: 'dd/mm/yyyy',
-          //          timeFormat:  "hh:mm:ss",
-          //          autoclose: true,
-          //     }).on('changeDate', function(selected) {
-          //          var minDate = new Date(selected.date.valueOf());
-          //          $('#startDate').datepicker('setEndDate', minDate);
-          //     });
-
-          //     $("#fromdate").datetimepicker({
-          //          format: 'dd/mm/yyyy',
-          //          timeFormat:  "hh:mm:ss",
-          //          autoclose: true,
-          //          todayBtn: true,
-          //          todayHighlight: true
-          //     }).datepicker("setDate", "1");
 
 
 
@@ -2625,40 +2625,45 @@
                })
           });
 
-          $(document).on("change",".boxchecked",function(){
-               if($(this).prop("checked"))
-               {
+          $(document).on("change", ".boxchecked", function() {
+               if ($(this).prop("checked")) {
                     var url = $(this).data("link");
                     var qid = $(this).data("qid");
-                    $(".approve").removeClass("disabled");
-                    $(".gorder").attr("href",url+"?qid="+qid);
-                    $("#qid").val(qid);
-               }
-               else
-               {
+                    if ($(this).data("order") == "available") {
+                         $(".gorder").removeClass("d-none");
+                    } else {
+                         $(".approve").removeClass("disabled");
+                         $(".disapprove").removeClass("disabled");
+                         $(".gorder").attr("href", url + "?qid=" + qid);
+                         $("#qid").val(qid);
+                         $(".gorder").removeClass("d-none");
+                    }
+
+               } else {
                     $(".approve").addClass("disabled");
+                    $(".gorder").addClass("d-none");
+                    $(".disapprove").addClass("disabled");
                     $(".gorder").addClass("d-none");
                }
           });
 
-          $(document).on("click",".approve",function(){
+          $(document).on("click", ".approve", function() {
                $(".gorder").removeClass("d-none");
           });
 
-          $(document).on("submit",".disapproveform",function(e){
+          $(document).on("submit", ".disapproveform", function(e) {
                e.preventDefault();
                var formdata = $(this).serializeArray();
 
                $.ajax({
-                    method:"post",
-                    url:"<?= base_url()?>ajax/ordersubmit",
-                    data:formdata,
-                    success:function(status)
-                    {
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/ordersubmit",
+                    data: formdata,
+                    success: function(status) {
                          console.log(status);
                     }
                })
-               
+
           });
      });
 </script>

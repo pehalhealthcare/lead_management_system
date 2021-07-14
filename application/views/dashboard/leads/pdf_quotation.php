@@ -190,7 +190,7 @@ th
             <td class="text-small">SI NO</td>
             <td class="text-small" colspan="2">Item Name</td>
             <td class="text-small">Qty.</td>
-            <td class="text-small">Unit Price</td>
+            <td class="text-small">Per Unit</td>
             <td class="text-small">Dis. (%)</td>
             <td class="text-small">Selling Price</td>
             <td class="text-small">Item Tax(%)</td>

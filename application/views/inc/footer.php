@@ -40,6 +40,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
+        <?php $lead_id=""; if($lead_id) $lead_id=$lead_id; ?>
         <input type="hidden" id="close_lead_id" value="<?= ($lead_id) ? $lead_id : ""?>" />
         <select class="form-control border lead-reasons">
           <option value="">Select Reasons</option>
@@ -81,11 +82,13 @@
 </div>
 
 
+
 <script src="<?= base_url() ?>assets/vendors/js/vendor.bundle.base.js"></script>
 <!-- endinject -->
 <!-- Plugin js for this page -->
 <script src="<?= base_url() ?>assets/vendors/chart.js/Chart.min.js"></script>
 <!-- End plugin js for this page -->
+
 <!-- inject:js -->
 <script src="<?= base_url() ?>assets/js/off-canvas.js"></script>
 <script src="<?= base_url() ?>assets/js/hoverable-collapse.js"></script>
@@ -94,6 +97,8 @@
 <!-- Custom js for this page -->
 <script src="<?= base_url() ?>assets/js/dashboard.js"></script>
 <script src="<?= base_url() ?>assets/js/todolist.js"></script>
+
+<script src="<?= base_url() ?>assets/js/chart.js"></script>
 
 
 <script>

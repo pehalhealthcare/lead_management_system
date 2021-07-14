@@ -1,0 +1,1641 @@
+ERROR - 2021-07-13 02:53:45 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:53:45 --> Config Class Initialized
+INFO - 2021-07-13 02:53:45 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:53:45 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:53:45 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:53:45 --> URI Class Initialized
+DEBUG - 2021-07-13 02:53:45 --> No URI present. Default controller set.
+INFO - 2021-07-13 02:53:45 --> Router Class Initialized
+INFO - 2021-07-13 02:53:45 --> Output Class Initialized
+INFO - 2021-07-13 02:53:45 --> Security Class Initialized
+DEBUG - 2021-07-13 02:53:45 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:53:45 --> Input Class Initialized
+INFO - 2021-07-13 02:53:45 --> Language Class Initialized
+INFO - 2021-07-13 02:53:45 --> Loader Class Initialized
+INFO - 2021-07-13 02:53:45 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:53:45 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:53:45 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:53:45 --> Email Class Initialized
+INFO - 2021-07-13 02:53:45 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:53:45 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:53:46 --> Model "User_model" initialized
+INFO - 2021-07-13 02:53:46 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:53:46 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:53:46 --> Controller Class Initialized
+INFO - 2021-07-13 02:53:46 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/login-header.php
+INFO - 2021-07-13 02:53:46 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\user/login.php
+INFO - 2021-07-13 02:53:46 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:53:46 --> Final output sent to browser
+DEBUG - 2021-07-13 02:53:46 --> Total execution time: 0.8557
+ERROR - 2021-07-13 02:53:58 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:53:58 --> Config Class Initialized
+INFO - 2021-07-13 02:53:58 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:53:58 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:53:58 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:53:58 --> URI Class Initialized
+DEBUG - 2021-07-13 02:53:58 --> No URI present. Default controller set.
+INFO - 2021-07-13 02:53:58 --> Router Class Initialized
+INFO - 2021-07-13 02:53:58 --> Output Class Initialized
+INFO - 2021-07-13 02:53:58 --> Security Class Initialized
+DEBUG - 2021-07-13 02:53:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:53:58 --> Input Class Initialized
+INFO - 2021-07-13 02:53:58 --> Language Class Initialized
+INFO - 2021-07-13 02:53:58 --> Loader Class Initialized
+INFO - 2021-07-13 02:53:58 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:53:58 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:53:58 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:53:58 --> Email Class Initialized
+INFO - 2021-07-13 02:53:58 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:53:58 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:53:58 --> Model "User_model" initialized
+INFO - 2021-07-13 02:53:58 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:53:58 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:53:58 --> Controller Class Initialized
+INFO - 2021-07-13 02:53:58 --> Language file loaded: language/english/form_validation_lang.php
+ERROR - 2021-07-13 02:53:59 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:53:59 --> Config Class Initialized
+INFO - 2021-07-13 02:53:59 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:53:59 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:53:59 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:53:59 --> URI Class Initialized
+INFO - 2021-07-13 02:53:59 --> Router Class Initialized
+INFO - 2021-07-13 02:53:59 --> Output Class Initialized
+INFO - 2021-07-13 02:53:59 --> Security Class Initialized
+DEBUG - 2021-07-13 02:53:59 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:53:59 --> Input Class Initialized
+INFO - 2021-07-13 02:53:59 --> Language Class Initialized
+INFO - 2021-07-13 02:53:59 --> Loader Class Initialized
+INFO - 2021-07-13 02:53:59 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:53:59 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:53:59 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:53:59 --> Email Class Initialized
+INFO - 2021-07-13 02:53:59 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:53:59 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:53:59 --> Model "User_model" initialized
+INFO - 2021-07-13 02:53:59 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:53:59 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:53:59 --> Controller Class Initialized
+INFO - 2021-07-13 02:53:59 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:53:59 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/index.php
+INFO - 2021-07-13 02:53:59 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:53:59 --> Final output sent to browser
+DEBUG - 2021-07-13 02:53:59 --> Total execution time: 0.4700
+ERROR - 2021-07-13 02:54:28 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:54:28 --> Config Class Initialized
+INFO - 2021-07-13 02:54:28 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:54:28 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:54:28 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:54:28 --> URI Class Initialized
+INFO - 2021-07-13 02:54:28 --> Router Class Initialized
+INFO - 2021-07-13 02:54:28 --> Output Class Initialized
+INFO - 2021-07-13 02:54:28 --> Security Class Initialized
+DEBUG - 2021-07-13 02:54:28 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:54:28 --> Input Class Initialized
+INFO - 2021-07-13 02:54:28 --> Language Class Initialized
+INFO - 2021-07-13 02:54:28 --> Loader Class Initialized
+INFO - 2021-07-13 02:54:28 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:54:28 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:54:28 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:54:28 --> Email Class Initialized
+INFO - 2021-07-13 02:54:28 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:54:28 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:54:28 --> Model "User_model" initialized
+INFO - 2021-07-13 02:54:28 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:54:28 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:54:28 --> Controller Class Initialized
+INFO - 2021-07-13 02:54:28 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:54:28 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/order/view-order.php
+INFO - 2021-07-13 02:54:28 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:54:28 --> Final output sent to browser
+DEBUG - 2021-07-13 02:54:28 --> Total execution time: 0.0791
+ERROR - 2021-07-13 02:54:43 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:54:43 --> Config Class Initialized
+INFO - 2021-07-13 02:54:43 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:54:43 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:54:43 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:54:43 --> URI Class Initialized
+INFO - 2021-07-13 02:54:43 --> Router Class Initialized
+INFO - 2021-07-13 02:54:43 --> Output Class Initialized
+INFO - 2021-07-13 02:54:43 --> Security Class Initialized
+DEBUG - 2021-07-13 02:54:43 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:54:43 --> Input Class Initialized
+INFO - 2021-07-13 02:54:43 --> Language Class Initialized
+INFO - 2021-07-13 02:54:47 --> Loader Class Initialized
+INFO - 2021-07-13 02:54:47 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:54:47 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:54:47 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:54:47 --> Email Class Initialized
+INFO - 2021-07-13 02:54:47 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:54:47 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:54:47 --> Model "User_model" initialized
+INFO - 2021-07-13 02:54:47 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:54:47 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:54:47 --> Controller Class Initialized
+INFO - 2021-07-13 02:54:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$status D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 40
+ERROR - 2021-07-13 02:54:47 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+INFO - 2021-07-13 02:54:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/view-leads.php
+INFO - 2021-07-13 02:54:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:54:47 --> Final output sent to browser
+DEBUG - 2021-07-13 02:54:47 --> Total execution time: 4.0669
+ERROR - 2021-07-13 02:55:54 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:55:54 --> Config Class Initialized
+INFO - 2021-07-13 02:55:54 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:55:54 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:55:54 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:55:54 --> URI Class Initialized
+INFO - 2021-07-13 02:55:54 --> Router Class Initialized
+INFO - 2021-07-13 02:55:54 --> Output Class Initialized
+INFO - 2021-07-13 02:55:54 --> Security Class Initialized
+DEBUG - 2021-07-13 02:55:54 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:55:54 --> Input Class Initialized
+INFO - 2021-07-13 02:55:54 --> Language Class Initialized
+INFO - 2021-07-13 02:55:54 --> Loader Class Initialized
+INFO - 2021-07-13 02:55:54 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:55:54 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:55:54 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:55:54 --> Email Class Initialized
+INFO - 2021-07-13 02:55:54 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:55:54 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:55:54 --> Model "User_model" initialized
+INFO - 2021-07-13 02:55:54 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:55:54 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:55:54 --> Controller Class Initialized
+INFO - 2021-07-13 02:55:54 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:55:54 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:55:54 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:55:54 --> Final output sent to browser
+DEBUG - 2021-07-13 02:55:54 --> Total execution time: 0.4023
+ERROR - 2021-07-13 02:55:55 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:55:55 --> Config Class Initialized
+INFO - 2021-07-13 02:55:55 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:55:55 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:55:55 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:55:55 --> URI Class Initialized
+ERROR - 2021-07-13 02:55:55 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:55:55 --> Config Class Initialized
+INFO - 2021-07-13 02:55:55 --> Router Class Initialized
+INFO - 2021-07-13 02:55:55 --> Hooks Class Initialized
+INFO - 2021-07-13 02:55:55 --> Output Class Initialized
+DEBUG - 2021-07-13 02:55:55 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:55:55 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:55:55 --> Security Class Initialized
+INFO - 2021-07-13 02:55:55 --> URI Class Initialized
+DEBUG - 2021-07-13 02:55:55 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:55:55 --> Input Class Initialized
+INFO - 2021-07-13 02:55:55 --> Language Class Initialized
+INFO - 2021-07-13 02:55:55 --> Router Class Initialized
+INFO - 2021-07-13 02:55:55 --> Output Class Initialized
+INFO - 2021-07-13 02:55:55 --> Loader Class Initialized
+INFO - 2021-07-13 02:55:55 --> Security Class Initialized
+DEBUG - 2021-07-13 02:55:55 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:55:55 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:55:55 --> Input Class Initialized
+INFO - 2021-07-13 02:55:55 --> Language Class Initialized
+INFO - 2021-07-13 02:55:55 --> Loader Class Initialized
+INFO - 2021-07-13 02:55:55 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:55:55 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:55:55 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:55:55 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:55:55 --> Email Class Initialized
+INFO - 2021-07-13 02:55:55 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:55:55 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:55:55 --> Model "User_model" initialized
+INFO - 2021-07-13 02:55:55 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:55:55 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:55:55 --> Controller Class Initialized
+INFO - 2021-07-13 02:55:55 --> Final output sent to browser
+DEBUG - 2021-07-13 02:55:55 --> Total execution time: 0.1034
+INFO - 2021-07-13 02:55:55 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:55:55 --> Email Class Initialized
+INFO - 2021-07-13 02:55:55 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:55:55 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:55:55 --> Model "User_model" initialized
+INFO - 2021-07-13 02:55:55 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:55:55 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:55:55 --> Controller Class Initialized
+INFO - 2021-07-13 02:55:55 --> Final output sent to browser
+DEBUG - 2021-07-13 02:55:55 --> Total execution time: 0.1730
+ERROR - 2021-07-13 02:55:58 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:55:58 --> Config Class Initialized
+INFO - 2021-07-13 02:55:58 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:55:58 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:55:58 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:55:58 --> URI Class Initialized
+INFO - 2021-07-13 02:55:58 --> Router Class Initialized
+INFO - 2021-07-13 02:55:58 --> Output Class Initialized
+INFO - 2021-07-13 02:55:58 --> Security Class Initialized
+DEBUG - 2021-07-13 02:55:58 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:55:58 --> Input Class Initialized
+INFO - 2021-07-13 02:55:58 --> Language Class Initialized
+INFO - 2021-07-13 02:55:58 --> Loader Class Initialized
+INFO - 2021-07-13 02:55:58 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:55:58 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:55:58 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:55:58 --> Email Class Initialized
+INFO - 2021-07-13 02:55:58 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:55:58 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:55:58 --> Model "User_model" initialized
+INFO - 2021-07-13 02:55:58 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:55:58 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:55:58 --> Controller Class Initialized
+INFO - 2021-07-13 02:55:58 --> Final output sent to browser
+DEBUG - 2021-07-13 02:55:58 --> Total execution time: 0.2136
+ERROR - 2021-07-13 02:56:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:56:00 --> Config Class Initialized
+INFO - 2021-07-13 02:56:00 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:56:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:56:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:56:00 --> URI Class Initialized
+INFO - 2021-07-13 02:56:00 --> Router Class Initialized
+INFO - 2021-07-13 02:56:00 --> Output Class Initialized
+INFO - 2021-07-13 02:56:00 --> Security Class Initialized
+DEBUG - 2021-07-13 02:56:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:56:00 --> Input Class Initialized
+INFO - 2021-07-13 02:56:00 --> Language Class Initialized
+INFO - 2021-07-13 02:56:00 --> Loader Class Initialized
+INFO - 2021-07-13 02:56:00 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:56:00 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:56:00 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:56:00 --> Email Class Initialized
+INFO - 2021-07-13 02:56:00 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:56:00 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:56:00 --> Model "User_model" initialized
+INFO - 2021-07-13 02:56:00 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:56:00 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:56:00 --> Controller Class Initialized
+INFO - 2021-07-13 02:56:00 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:56:00 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:56:00 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:56:00 --> Final output sent to browser
+DEBUG - 2021-07-13 02:56:00 --> Total execution time: 0.0460
+ERROR - 2021-07-13 02:56:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+ERROR - 2021-07-13 02:56:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:56:00 --> Config Class Initialized
+INFO - 2021-07-13 02:56:00 --> Hooks Class Initialized
+INFO - 2021-07-13 02:56:00 --> Config Class Initialized
+INFO - 2021-07-13 02:56:00 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:56:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:56:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:56:00 --> URI Class Initialized
+DEBUG - 2021-07-13 02:56:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:56:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:56:00 --> Router Class Initialized
+INFO - 2021-07-13 02:56:00 --> URI Class Initialized
+INFO - 2021-07-13 02:56:00 --> Router Class Initialized
+INFO - 2021-07-13 02:56:00 --> Output Class Initialized
+INFO - 2021-07-13 02:56:00 --> Security Class Initialized
+INFO - 2021-07-13 02:56:00 --> Output Class Initialized
+DEBUG - 2021-07-13 02:56:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:56:00 --> Input Class Initialized
+INFO - 2021-07-13 02:56:00 --> Security Class Initialized
+INFO - 2021-07-13 02:56:00 --> Language Class Initialized
+DEBUG - 2021-07-13 02:56:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:56:00 --> Input Class Initialized
+INFO - 2021-07-13 02:56:00 --> Language Class Initialized
+INFO - 2021-07-13 02:56:00 --> Loader Class Initialized
+INFO - 2021-07-13 02:56:00 --> Loader Class Initialized
+INFO - 2021-07-13 02:56:00 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:56:00 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:56:00 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:56:00 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:56:00 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:56:00 --> Email Class Initialized
+INFO - 2021-07-13 02:56:00 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:56:00 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:56:00 --> Model "User_model" initialized
+INFO - 2021-07-13 02:56:00 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:56:00 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:56:00 --> Controller Class Initialized
+INFO - 2021-07-13 02:56:00 --> Final output sent to browser
+DEBUG - 2021-07-13 02:56:00 --> Total execution time: 0.0338
+INFO - 2021-07-13 02:56:00 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:56:00 --> Email Class Initialized
+INFO - 2021-07-13 02:56:00 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:56:00 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:56:00 --> Model "User_model" initialized
+INFO - 2021-07-13 02:56:00 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:56:00 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:56:00 --> Controller Class Initialized
+INFO - 2021-07-13 02:56:00 --> Final output sent to browser
+DEBUG - 2021-07-13 02:56:00 --> Total execution time: 0.0423
+ERROR - 2021-07-13 02:56:41 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:56:41 --> Config Class Initialized
+INFO - 2021-07-13 02:56:41 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:56:41 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:56:41 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:56:41 --> URI Class Initialized
+INFO - 2021-07-13 02:56:41 --> Router Class Initialized
+INFO - 2021-07-13 02:56:41 --> Output Class Initialized
+INFO - 2021-07-13 02:56:41 --> Security Class Initialized
+DEBUG - 2021-07-13 02:56:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:56:41 --> Input Class Initialized
+INFO - 2021-07-13 02:56:41 --> Language Class Initialized
+INFO - 2021-07-13 02:56:41 --> Loader Class Initialized
+INFO - 2021-07-13 02:56:41 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:56:41 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:56:41 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:56:41 --> Email Class Initialized
+INFO - 2021-07-13 02:56:41 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:56:41 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:56:41 --> Model "User_model" initialized
+INFO - 2021-07-13 02:56:41 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:56:41 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:56:41 --> Controller Class Initialized
+INFO - 2021-07-13 02:56:41 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:56:41 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:56:41 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:56:41 --> Final output sent to browser
+DEBUG - 2021-07-13 02:56:41 --> Total execution time: 0.0547
+ERROR - 2021-07-13 02:56:42 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:56:42 --> Config Class Initialized
+INFO - 2021-07-13 02:56:42 --> Hooks Class Initialized
+ERROR - 2021-07-13 02:56:42 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 02:56:42 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:56:42 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:56:42 --> Config Class Initialized
+INFO - 2021-07-13 02:56:42 --> Hooks Class Initialized
+INFO - 2021-07-13 02:56:42 --> URI Class Initialized
+INFO - 2021-07-13 02:56:42 --> Router Class Initialized
+DEBUG - 2021-07-13 02:56:42 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:56:42 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:56:42 --> Output Class Initialized
+INFO - 2021-07-13 02:56:42 --> URI Class Initialized
+INFO - 2021-07-13 02:56:42 --> Security Class Initialized
+INFO - 2021-07-13 02:56:42 --> Router Class Initialized
+DEBUG - 2021-07-13 02:56:42 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:56:42 --> Input Class Initialized
+INFO - 2021-07-13 02:56:42 --> Output Class Initialized
+INFO - 2021-07-13 02:56:42 --> Language Class Initialized
+INFO - 2021-07-13 02:56:42 --> Security Class Initialized
+DEBUG - 2021-07-13 02:56:42 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:56:42 --> Input Class Initialized
+INFO - 2021-07-13 02:56:42 --> Language Class Initialized
+INFO - 2021-07-13 02:56:42 --> Loader Class Initialized
+INFO - 2021-07-13 02:56:42 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:56:42 --> Loader Class Initialized
+INFO - 2021-07-13 02:56:42 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:56:42 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:56:42 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:56:42 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:56:42 --> Email Class Initialized
+INFO - 2021-07-13 02:56:42 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:56:42 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:56:42 --> Model "User_model" initialized
+INFO - 2021-07-13 02:56:42 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:56:42 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:56:42 --> Controller Class Initialized
+INFO - 2021-07-13 02:56:42 --> Final output sent to browser
+DEBUG - 2021-07-13 02:56:42 --> Total execution time: 0.0341
+INFO - 2021-07-13 02:56:42 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:56:42 --> Email Class Initialized
+INFO - 2021-07-13 02:56:42 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:56:42 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:56:42 --> Model "User_model" initialized
+INFO - 2021-07-13 02:56:42 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:56:42 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:56:42 --> Controller Class Initialized
+INFO - 2021-07-13 02:56:42 --> Final output sent to browser
+DEBUG - 2021-07-13 02:56:42 --> Total execution time: 0.0553
+ERROR - 2021-07-13 02:57:02 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:57:02 --> Config Class Initialized
+INFO - 2021-07-13 02:57:02 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:57:02 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:57:02 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:57:02 --> URI Class Initialized
+INFO - 2021-07-13 02:57:02 --> Router Class Initialized
+INFO - 2021-07-13 02:57:02 --> Output Class Initialized
+INFO - 2021-07-13 02:57:02 --> Security Class Initialized
+DEBUG - 2021-07-13 02:57:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:57:02 --> Input Class Initialized
+INFO - 2021-07-13 02:57:02 --> Language Class Initialized
+INFO - 2021-07-13 02:57:02 --> Loader Class Initialized
+INFO - 2021-07-13 02:57:02 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:57:02 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:57:02 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:57:02 --> Email Class Initialized
+INFO - 2021-07-13 02:57:02 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:57:02 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:57:02 --> Model "User_model" initialized
+INFO - 2021-07-13 02:57:02 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:57:02 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:57:02 --> Controller Class Initialized
+INFO - 2021-07-13 02:57:02 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:57:02 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:57:02 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:57:02 --> Final output sent to browser
+DEBUG - 2021-07-13 02:57:02 --> Total execution time: 0.0480
+ERROR - 2021-07-13 02:57:02 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:57:02 --> Config Class Initialized
+INFO - 2021-07-13 02:57:02 --> Hooks Class Initialized
+ERROR - 2021-07-13 02:57:02 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 02:57:02 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:57:02 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:57:02 --> URI Class Initialized
+INFO - 2021-07-13 02:57:02 --> Config Class Initialized
+INFO - 2021-07-13 02:57:02 --> Hooks Class Initialized
+INFO - 2021-07-13 02:57:02 --> Router Class Initialized
+DEBUG - 2021-07-13 02:57:02 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:57:02 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:57:02 --> Output Class Initialized
+INFO - 2021-07-13 02:57:02 --> URI Class Initialized
+INFO - 2021-07-13 02:57:02 --> Security Class Initialized
+INFO - 2021-07-13 02:57:02 --> Router Class Initialized
+DEBUG - 2021-07-13 02:57:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:57:02 --> Input Class Initialized
+INFO - 2021-07-13 02:57:02 --> Language Class Initialized
+INFO - 2021-07-13 02:57:02 --> Output Class Initialized
+INFO - 2021-07-13 02:57:02 --> Security Class Initialized
+DEBUG - 2021-07-13 02:57:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:57:02 --> Input Class Initialized
+INFO - 2021-07-13 02:57:02 --> Loader Class Initialized
+INFO - 2021-07-13 02:57:02 --> Language Class Initialized
+INFO - 2021-07-13 02:57:02 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:57:02 --> Loader Class Initialized
+INFO - 2021-07-13 02:57:02 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:57:02 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:57:02 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:57:02 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:57:02 --> Email Class Initialized
+INFO - 2021-07-13 02:57:02 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:57:02 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:57:02 --> Model "User_model" initialized
+INFO - 2021-07-13 02:57:02 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:57:02 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:57:02 --> Controller Class Initialized
+INFO - 2021-07-13 02:57:02 --> Final output sent to browser
+DEBUG - 2021-07-13 02:57:02 --> Total execution time: 0.0284
+INFO - 2021-07-13 02:57:02 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:57:02 --> Email Class Initialized
+INFO - 2021-07-13 02:57:02 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:57:02 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:57:02 --> Model "User_model" initialized
+INFO - 2021-07-13 02:57:02 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:57:02 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:57:02 --> Controller Class Initialized
+INFO - 2021-07-13 02:57:02 --> Final output sent to browser
+DEBUG - 2021-07-13 02:57:02 --> Total execution time: 0.0541
+ERROR - 2021-07-13 02:57:44 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:57:44 --> Config Class Initialized
+INFO - 2021-07-13 02:57:44 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:57:44 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:57:44 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:57:44 --> URI Class Initialized
+INFO - 2021-07-13 02:57:44 --> Router Class Initialized
+INFO - 2021-07-13 02:57:44 --> Output Class Initialized
+INFO - 2021-07-13 02:57:44 --> Security Class Initialized
+DEBUG - 2021-07-13 02:57:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:57:44 --> Input Class Initialized
+INFO - 2021-07-13 02:57:44 --> Language Class Initialized
+INFO - 2021-07-13 02:57:44 --> Loader Class Initialized
+INFO - 2021-07-13 02:57:44 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:57:44 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:57:44 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:57:44 --> Email Class Initialized
+INFO - 2021-07-13 02:57:44 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:57:44 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:57:44 --> Model "User_model" initialized
+INFO - 2021-07-13 02:57:44 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:57:44 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:57:44 --> Controller Class Initialized
+INFO - 2021-07-13 02:57:44 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:57:44 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:57:44 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:57:44 --> Final output sent to browser
+DEBUG - 2021-07-13 02:57:44 --> Total execution time: 0.0282
+ERROR - 2021-07-13 02:57:44 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+ERROR - 2021-07-13 02:57:44 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:57:44 --> Config Class Initialized
+INFO - 2021-07-13 02:57:44 --> Hooks Class Initialized
+INFO - 2021-07-13 02:57:44 --> Config Class Initialized
+INFO - 2021-07-13 02:57:44 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:57:44 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:57:44 --> Utf8 Class Initialized
+DEBUG - 2021-07-13 02:57:44 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:57:44 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:57:44 --> URI Class Initialized
+INFO - 2021-07-13 02:57:44 --> URI Class Initialized
+INFO - 2021-07-13 02:57:44 --> Router Class Initialized
+INFO - 2021-07-13 02:57:44 --> Router Class Initialized
+INFO - 2021-07-13 02:57:44 --> Output Class Initialized
+INFO - 2021-07-13 02:57:44 --> Output Class Initialized
+INFO - 2021-07-13 02:57:44 --> Security Class Initialized
+INFO - 2021-07-13 02:57:44 --> Security Class Initialized
+DEBUG - 2021-07-13 02:57:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:57:44 --> Input Class Initialized
+INFO - 2021-07-13 02:57:44 --> Language Class Initialized
+DEBUG - 2021-07-13 02:57:44 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:57:44 --> Input Class Initialized
+INFO - 2021-07-13 02:57:44 --> Language Class Initialized
+INFO - 2021-07-13 02:57:44 --> Loader Class Initialized
+INFO - 2021-07-13 02:57:44 --> Loader Class Initialized
+INFO - 2021-07-13 02:57:44 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:57:44 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:57:44 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:57:44 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:57:44 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:57:44 --> Email Class Initialized
+INFO - 2021-07-13 02:57:44 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:57:44 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:57:44 --> Model "User_model" initialized
+INFO - 2021-07-13 02:57:44 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:57:44 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:57:44 --> Controller Class Initialized
+INFO - 2021-07-13 02:57:44 --> Final output sent to browser
+DEBUG - 2021-07-13 02:57:44 --> Total execution time: 0.0268
+INFO - 2021-07-13 02:57:44 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:57:44 --> Email Class Initialized
+INFO - 2021-07-13 02:57:44 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:57:44 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:57:44 --> Model "User_model" initialized
+INFO - 2021-07-13 02:57:44 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:57:44 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:57:44 --> Controller Class Initialized
+INFO - 2021-07-13 02:57:44 --> Final output sent to browser
+DEBUG - 2021-07-13 02:57:44 --> Total execution time: 0.0334
+ERROR - 2021-07-13 02:58:45 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:58:45 --> Config Class Initialized
+INFO - 2021-07-13 02:58:45 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:58:45 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:58:45 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:58:45 --> URI Class Initialized
+INFO - 2021-07-13 02:58:45 --> Router Class Initialized
+INFO - 2021-07-13 02:58:45 --> Output Class Initialized
+INFO - 2021-07-13 02:58:45 --> Security Class Initialized
+DEBUG - 2021-07-13 02:58:45 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:58:45 --> Input Class Initialized
+INFO - 2021-07-13 02:58:45 --> Language Class Initialized
+INFO - 2021-07-13 02:58:45 --> Loader Class Initialized
+INFO - 2021-07-13 02:58:45 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:58:45 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:58:45 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:58:45 --> Email Class Initialized
+INFO - 2021-07-13 02:58:45 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:58:45 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:58:45 --> Model "User_model" initialized
+INFO - 2021-07-13 02:58:45 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:58:45 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:58:45 --> Controller Class Initialized
+INFO - 2021-07-13 02:58:45 --> Final output sent to browser
+DEBUG - 2021-07-13 02:58:45 --> Total execution time: 0.0462
+ERROR - 2021-07-13 02:58:46 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:58:46 --> Config Class Initialized
+INFO - 2021-07-13 02:58:46 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:58:46 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:58:46 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:58:46 --> URI Class Initialized
+INFO - 2021-07-13 02:58:46 --> Router Class Initialized
+INFO - 2021-07-13 02:58:46 --> Output Class Initialized
+INFO - 2021-07-13 02:58:46 --> Security Class Initialized
+DEBUG - 2021-07-13 02:58:46 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:58:46 --> Input Class Initialized
+INFO - 2021-07-13 02:58:46 --> Language Class Initialized
+INFO - 2021-07-13 02:58:46 --> Loader Class Initialized
+INFO - 2021-07-13 02:58:46 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:58:46 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:58:46 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:58:46 --> Email Class Initialized
+INFO - 2021-07-13 02:58:46 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:58:46 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:58:46 --> Model "User_model" initialized
+INFO - 2021-07-13 02:58:46 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:58:46 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:58:46 --> Controller Class Initialized
+INFO - 2021-07-13 02:58:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/pdf_quotation.php
+INFO - 2021-07-13 02:58:47 --> Final output sent to browser
+DEBUG - 2021-07-13 02:58:47 --> Total execution time: 0.4172
+ERROR - 2021-07-13 02:58:59 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:58:59 --> Config Class Initialized
+INFO - 2021-07-13 02:58:59 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:58:59 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:58:59 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:58:59 --> URI Class Initialized
+INFO - 2021-07-13 02:58:59 --> Router Class Initialized
+INFO - 2021-07-13 02:58:59 --> Output Class Initialized
+INFO - 2021-07-13 02:58:59 --> Security Class Initialized
+DEBUG - 2021-07-13 02:58:59 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:58:59 --> Input Class Initialized
+INFO - 2021-07-13 02:58:59 --> Language Class Initialized
+INFO - 2021-07-13 02:58:59 --> Loader Class Initialized
+INFO - 2021-07-13 02:58:59 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:58:59 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:58:59 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:58:59 --> Email Class Initialized
+INFO - 2021-07-13 02:58:59 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:58:59 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:58:59 --> Model "User_model" initialized
+INFO - 2021-07-13 02:58:59 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:58:59 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:58:59 --> Controller Class Initialized
+INFO - 2021-07-13 02:58:59 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:58:59 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:58:59 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:58:59 --> Final output sent to browser
+DEBUG - 2021-07-13 02:58:59 --> Total execution time: 0.0452
+ERROR - 2021-07-13 02:59:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:59:00 --> Config Class Initialized
+INFO - 2021-07-13 02:59:00 --> Hooks Class Initialized
+ERROR - 2021-07-13 02:59:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 02:59:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:59:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:59:00 --> Config Class Initialized
+INFO - 2021-07-13 02:59:00 --> Hooks Class Initialized
+INFO - 2021-07-13 02:59:00 --> URI Class Initialized
+INFO - 2021-07-13 02:59:00 --> Router Class Initialized
+DEBUG - 2021-07-13 02:59:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:59:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:59:00 --> URI Class Initialized
+INFO - 2021-07-13 02:59:00 --> Output Class Initialized
+INFO - 2021-07-13 02:59:00 --> Router Class Initialized
+INFO - 2021-07-13 02:59:00 --> Security Class Initialized
+DEBUG - 2021-07-13 02:59:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:59:00 --> Input Class Initialized
+INFO - 2021-07-13 02:59:00 --> Output Class Initialized
+INFO - 2021-07-13 02:59:00 --> Language Class Initialized
+INFO - 2021-07-13 02:59:00 --> Security Class Initialized
+DEBUG - 2021-07-13 02:59:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:59:00 --> Input Class Initialized
+INFO - 2021-07-13 02:59:00 --> Language Class Initialized
+INFO - 2021-07-13 02:59:00 --> Loader Class Initialized
+INFO - 2021-07-13 02:59:00 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:59:00 --> Loader Class Initialized
+INFO - 2021-07-13 02:59:00 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:59:00 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:59:00 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:59:00 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:59:00 --> Email Class Initialized
+INFO - 2021-07-13 02:59:00 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:59:00 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:59:00 --> Model "User_model" initialized
+INFO - 2021-07-13 02:59:00 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:59:00 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:59:00 --> Controller Class Initialized
+INFO - 2021-07-13 02:59:00 --> Final output sent to browser
+DEBUG - 2021-07-13 02:59:00 --> Total execution time: 0.0607
+INFO - 2021-07-13 02:59:00 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:59:00 --> Email Class Initialized
+INFO - 2021-07-13 02:59:00 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:59:00 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:59:00 --> Model "User_model" initialized
+INFO - 2021-07-13 02:59:00 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:59:00 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:59:00 --> Controller Class Initialized
+INFO - 2021-07-13 02:59:00 --> Final output sent to browser
+DEBUG - 2021-07-13 02:59:00 --> Total execution time: 0.0735
+ERROR - 2021-07-13 02:59:02 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:59:02 --> Config Class Initialized
+INFO - 2021-07-13 02:59:02 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:59:02 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:59:02 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:59:02 --> URI Class Initialized
+INFO - 2021-07-13 02:59:02 --> Router Class Initialized
+INFO - 2021-07-13 02:59:02 --> Output Class Initialized
+INFO - 2021-07-13 02:59:02 --> Security Class Initialized
+DEBUG - 2021-07-13 02:59:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:59:02 --> Input Class Initialized
+INFO - 2021-07-13 02:59:02 --> Language Class Initialized
+INFO - 2021-07-13 02:59:02 --> Loader Class Initialized
+INFO - 2021-07-13 02:59:02 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:59:02 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:59:02 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:59:02 --> Email Class Initialized
+INFO - 2021-07-13 02:59:02 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:59:02 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:59:02 --> Model "User_model" initialized
+INFO - 2021-07-13 02:59:02 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:59:02 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:59:02 --> Controller Class Initialized
+INFO - 2021-07-13 02:59:02 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 02:59:02 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 02:59:02 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 02:59:02 --> Final output sent to browser
+DEBUG - 2021-07-13 02:59:02 --> Total execution time: 0.0448
+ERROR - 2021-07-13 02:59:02 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:59:02 --> Config Class Initialized
+INFO - 2021-07-13 02:59:02 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:59:02 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:59:02 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:59:02 --> URI Class Initialized
+INFO - 2021-07-13 02:59:02 --> Router Class Initialized
+ERROR - 2021-07-13 02:59:02 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 02:59:02 --> Output Class Initialized
+INFO - 2021-07-13 02:59:02 --> Security Class Initialized
+INFO - 2021-07-13 02:59:02 --> Config Class Initialized
+INFO - 2021-07-13 02:59:02 --> Hooks Class Initialized
+DEBUG - 2021-07-13 02:59:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:59:02 --> Input Class Initialized
+INFO - 2021-07-13 02:59:02 --> Language Class Initialized
+DEBUG - 2021-07-13 02:59:02 --> UTF-8 Support Enabled
+INFO - 2021-07-13 02:59:02 --> Utf8 Class Initialized
+INFO - 2021-07-13 02:59:02 --> URI Class Initialized
+INFO - 2021-07-13 02:59:02 --> Router Class Initialized
+INFO - 2021-07-13 02:59:02 --> Loader Class Initialized
+INFO - 2021-07-13 02:59:02 --> Output Class Initialized
+INFO - 2021-07-13 02:59:02 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:59:02 --> Security Class Initialized
+DEBUG - 2021-07-13 02:59:02 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 02:59:02 --> Input Class Initialized
+INFO - 2021-07-13 02:59:02 --> Language Class Initialized
+INFO - 2021-07-13 02:59:02 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:59:02 --> Loader Class Initialized
+INFO - 2021-07-13 02:59:02 --> Helper loaded: url_helper
+INFO - 2021-07-13 02:59:02 --> Database Driver Class Initialized
+INFO - 2021-07-13 02:59:02 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:59:02 --> Email Class Initialized
+INFO - 2021-07-13 02:59:02 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:59:02 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:59:02 --> Model "User_model" initialized
+INFO - 2021-07-13 02:59:02 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:59:02 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:59:02 --> Controller Class Initialized
+INFO - 2021-07-13 02:59:02 --> Final output sent to browser
+DEBUG - 2021-07-13 02:59:02 --> Total execution time: 0.0520
+INFO - 2021-07-13 02:59:02 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 02:59:02 --> Email Class Initialized
+INFO - 2021-07-13 02:59:02 --> Helper loaded: form_helper
+INFO - 2021-07-13 02:59:02 --> Form Validation Class Initialized
+INFO - 2021-07-13 02:59:02 --> Model "User_model" initialized
+INFO - 2021-07-13 02:59:03 --> Model "Products_model" initialized
+INFO - 2021-07-13 02:59:03 --> Model "Common_model" initialized
+INFO - 2021-07-13 02:59:03 --> Controller Class Initialized
+INFO - 2021-07-13 02:59:03 --> Final output sent to browser
+DEBUG - 2021-07-13 02:59:03 --> Total execution time: 0.0687
+ERROR - 2021-07-13 03:00:10 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:00:10 --> Config Class Initialized
+INFO - 2021-07-13 03:00:10 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:00:10 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:10 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:10 --> URI Class Initialized
+INFO - 2021-07-13 03:00:10 --> Router Class Initialized
+INFO - 2021-07-13 03:00:10 --> Output Class Initialized
+INFO - 2021-07-13 03:00:10 --> Security Class Initialized
+DEBUG - 2021-07-13 03:00:10 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:10 --> Input Class Initialized
+INFO - 2021-07-13 03:00:10 --> Language Class Initialized
+INFO - 2021-07-13 03:00:10 --> Loader Class Initialized
+INFO - 2021-07-13 03:00:10 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:10 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:10 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:10 --> Email Class Initialized
+INFO - 2021-07-13 03:00:10 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:10 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:10 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:10 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:10 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:10 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:10 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:00:10 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:00:10 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:00:10 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:10 --> Total execution time: 0.0305
+ERROR - 2021-07-13 03:00:10 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:00:10 --> Config Class Initialized
+INFO - 2021-07-13 03:00:10 --> Hooks Class Initialized
+ERROR - 2021-07-13 03:00:10 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:00:10 --> Config Class Initialized
+INFO - 2021-07-13 03:00:10 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:00:10 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:10 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:10 --> URI Class Initialized
+DEBUG - 2021-07-13 03:00:10 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:10 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:10 --> Router Class Initialized
+INFO - 2021-07-13 03:00:10 --> URI Class Initialized
+INFO - 2021-07-13 03:00:10 --> Output Class Initialized
+INFO - 2021-07-13 03:00:10 --> Router Class Initialized
+INFO - 2021-07-13 03:00:10 --> Security Class Initialized
+INFO - 2021-07-13 03:00:10 --> Output Class Initialized
+INFO - 2021-07-13 03:00:10 --> Security Class Initialized
+DEBUG - 2021-07-13 03:00:10 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:10 --> Input Class Initialized
+INFO - 2021-07-13 03:00:10 --> Language Class Initialized
+DEBUG - 2021-07-13 03:00:10 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:10 --> Input Class Initialized
+INFO - 2021-07-13 03:00:10 --> Language Class Initialized
+INFO - 2021-07-13 03:00:10 --> Loader Class Initialized
+INFO - 2021-07-13 03:00:10 --> Loader Class Initialized
+INFO - 2021-07-13 03:00:10 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:10 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:10 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:10 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:10 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:10 --> Email Class Initialized
+INFO - 2021-07-13 03:00:10 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:10 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:10 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:10 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:10 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:10 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:10 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:10 --> Total execution time: 0.0320
+INFO - 2021-07-13 03:00:10 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:10 --> Email Class Initialized
+INFO - 2021-07-13 03:00:10 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:10 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:10 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:10 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:10 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:10 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:10 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:10 --> Total execution time: 0.0456
+ERROR - 2021-07-13 03:00:13 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:00:13 --> Config Class Initialized
+INFO - 2021-07-13 03:00:13 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:00:13 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:13 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:13 --> URI Class Initialized
+INFO - 2021-07-13 03:00:13 --> Router Class Initialized
+INFO - 2021-07-13 03:00:13 --> Output Class Initialized
+INFO - 2021-07-13 03:00:13 --> Security Class Initialized
+DEBUG - 2021-07-13 03:00:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:13 --> Input Class Initialized
+INFO - 2021-07-13 03:00:13 --> Language Class Initialized
+INFO - 2021-07-13 03:00:13 --> Loader Class Initialized
+INFO - 2021-07-13 03:00:13 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:13 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:13 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:13 --> Email Class Initialized
+INFO - 2021-07-13 03:00:13 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:13 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:13 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:13 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:13 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:13 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:13 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/pdf_quotation.php
+INFO - 2021-07-13 03:00:13 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:13 --> Total execution time: 0.0627
+ERROR - 2021-07-13 03:00:16 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:00:16 --> Config Class Initialized
+INFO - 2021-07-13 03:00:16 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:00:16 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:16 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:16 --> URI Class Initialized
+INFO - 2021-07-13 03:00:16 --> Router Class Initialized
+INFO - 2021-07-13 03:00:16 --> Output Class Initialized
+INFO - 2021-07-13 03:00:16 --> Security Class Initialized
+DEBUG - 2021-07-13 03:00:16 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:16 --> Input Class Initialized
+INFO - 2021-07-13 03:00:16 --> Language Class Initialized
+INFO - 2021-07-13 03:00:16 --> Loader Class Initialized
+INFO - 2021-07-13 03:00:16 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:16 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:16 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:16 --> Email Class Initialized
+INFO - 2021-07-13 03:00:16 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:16 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:16 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:16 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:16 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:16 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:16 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:00:16 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:00:16 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:00:16 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:16 --> Total execution time: 0.0500
+ERROR - 2021-07-13 03:00:17 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:00:17 --> Config Class Initialized
+INFO - 2021-07-13 03:00:17 --> Hooks Class Initialized
+ERROR - 2021-07-13 03:00:17 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 03:00:17 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:17 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:17 --> URI Class Initialized
+INFO - 2021-07-13 03:00:17 --> Config Class Initialized
+INFO - 2021-07-13 03:00:17 --> Hooks Class Initialized
+INFO - 2021-07-13 03:00:17 --> Router Class Initialized
+DEBUG - 2021-07-13 03:00:17 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:00:17 --> Output Class Initialized
+INFO - 2021-07-13 03:00:17 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:00:17 --> URI Class Initialized
+INFO - 2021-07-13 03:00:17 --> Security Class Initialized
+DEBUG - 2021-07-13 03:00:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:17 --> Input Class Initialized
+INFO - 2021-07-13 03:00:17 --> Router Class Initialized
+INFO - 2021-07-13 03:00:17 --> Language Class Initialized
+INFO - 2021-07-13 03:00:17 --> Output Class Initialized
+INFO - 2021-07-13 03:00:17 --> Security Class Initialized
+INFO - 2021-07-13 03:00:17 --> Loader Class Initialized
+DEBUG - 2021-07-13 03:00:17 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:00:17 --> Input Class Initialized
+INFO - 2021-07-13 03:00:17 --> Language Class Initialized
+INFO - 2021-07-13 03:00:17 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:17 --> Loader Class Initialized
+INFO - 2021-07-13 03:00:17 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:00:17 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:17 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:00:17 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:17 --> Email Class Initialized
+INFO - 2021-07-13 03:00:17 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:17 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:17 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:17 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:17 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:17 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:17 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:17 --> Total execution time: 0.0270
+INFO - 2021-07-13 03:00:17 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:00:17 --> Email Class Initialized
+INFO - 2021-07-13 03:00:17 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:00:17 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:00:17 --> Model "User_model" initialized
+INFO - 2021-07-13 03:00:17 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:00:17 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:00:17 --> Controller Class Initialized
+INFO - 2021-07-13 03:00:17 --> Final output sent to browser
+DEBUG - 2021-07-13 03:00:17 --> Total execution time: 0.0851
+ERROR - 2021-07-13 03:11:37 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:11:37 --> Config Class Initialized
+INFO - 2021-07-13 03:11:37 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:11:37 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:11:37 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:11:37 --> URI Class Initialized
+INFO - 2021-07-13 03:11:37 --> Router Class Initialized
+INFO - 2021-07-13 03:11:37 --> Output Class Initialized
+INFO - 2021-07-13 03:11:37 --> Security Class Initialized
+DEBUG - 2021-07-13 03:11:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:11:37 --> Input Class Initialized
+INFO - 2021-07-13 03:11:37 --> Language Class Initialized
+INFO - 2021-07-13 03:11:37 --> Loader Class Initialized
+INFO - 2021-07-13 03:11:37 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:11:37 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:11:37 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:11:37 --> Email Class Initialized
+INFO - 2021-07-13 03:11:37 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:11:37 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:11:37 --> Model "User_model" initialized
+INFO - 2021-07-13 03:11:37 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:11:37 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:11:37 --> Controller Class Initialized
+INFO - 2021-07-13 03:11:37 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:11:37 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:11:37 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:11:37 --> Final output sent to browser
+DEBUG - 2021-07-13 03:11:37 --> Total execution time: 0.0497
+ERROR - 2021-07-13 03:11:37 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:11:37 --> Config Class Initialized
+INFO - 2021-07-13 03:11:37 --> Hooks Class Initialized
+ERROR - 2021-07-13 03:11:37 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 03:11:37 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:11:37 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:11:37 --> Config Class Initialized
+INFO - 2021-07-13 03:11:37 --> Hooks Class Initialized
+INFO - 2021-07-13 03:11:37 --> URI Class Initialized
+INFO - 2021-07-13 03:11:37 --> Router Class Initialized
+DEBUG - 2021-07-13 03:11:37 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:11:37 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:11:37 --> URI Class Initialized
+INFO - 2021-07-13 03:11:37 --> Output Class Initialized
+INFO - 2021-07-13 03:11:37 --> Router Class Initialized
+INFO - 2021-07-13 03:11:37 --> Security Class Initialized
+DEBUG - 2021-07-13 03:11:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:11:37 --> Input Class Initialized
+INFO - 2021-07-13 03:11:37 --> Output Class Initialized
+INFO - 2021-07-13 03:11:37 --> Language Class Initialized
+INFO - 2021-07-13 03:11:37 --> Security Class Initialized
+DEBUG - 2021-07-13 03:11:37 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:11:37 --> Input Class Initialized
+INFO - 2021-07-13 03:11:37 --> Language Class Initialized
+INFO - 2021-07-13 03:11:37 --> Loader Class Initialized
+INFO - 2021-07-13 03:11:37 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:11:37 --> Loader Class Initialized
+INFO - 2021-07-13 03:11:37 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:11:37 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:11:37 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:11:37 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:11:37 --> Email Class Initialized
+INFO - 2021-07-13 03:11:37 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:11:37 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:11:37 --> Model "User_model" initialized
+INFO - 2021-07-13 03:11:37 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:11:37 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:11:37 --> Controller Class Initialized
+INFO - 2021-07-13 03:11:37 --> Final output sent to browser
+DEBUG - 2021-07-13 03:11:37 --> Total execution time: 0.0262
+INFO - 2021-07-13 03:11:37 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:11:37 --> Email Class Initialized
+INFO - 2021-07-13 03:11:37 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:11:37 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:11:37 --> Model "User_model" initialized
+INFO - 2021-07-13 03:11:37 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:11:37 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:11:37 --> Controller Class Initialized
+INFO - 2021-07-13 03:11:37 --> Final output sent to browser
+DEBUG - 2021-07-13 03:11:37 --> Total execution time: 0.0431
+ERROR - 2021-07-13 03:11:41 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:11:41 --> Config Class Initialized
+INFO - 2021-07-13 03:11:41 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:11:41 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:11:41 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:11:41 --> URI Class Initialized
+INFO - 2021-07-13 03:11:41 --> Router Class Initialized
+INFO - 2021-07-13 03:11:41 --> Output Class Initialized
+INFO - 2021-07-13 03:11:41 --> Security Class Initialized
+DEBUG - 2021-07-13 03:11:41 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:11:41 --> Input Class Initialized
+INFO - 2021-07-13 03:11:41 --> Language Class Initialized
+ERROR - 2021-07-13 03:11:41 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:13:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:13:00 --> Config Class Initialized
+INFO - 2021-07-13 03:13:00 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:13:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:00 --> URI Class Initialized
+INFO - 2021-07-13 03:13:00 --> Router Class Initialized
+INFO - 2021-07-13 03:13:00 --> Output Class Initialized
+INFO - 2021-07-13 03:13:00 --> Security Class Initialized
+DEBUG - 2021-07-13 03:13:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:00 --> Input Class Initialized
+INFO - 2021-07-13 03:13:00 --> Language Class Initialized
+INFO - 2021-07-13 03:13:00 --> Loader Class Initialized
+INFO - 2021-07-13 03:13:00 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:13:00 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:13:00 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:13:00 --> Email Class Initialized
+INFO - 2021-07-13 03:13:00 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:13:00 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:13:00 --> Model "User_model" initialized
+INFO - 2021-07-13 03:13:00 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:13:00 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:13:00 --> Controller Class Initialized
+INFO - 2021-07-13 03:13:00 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:13:00 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:13:00 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:13:00 --> Final output sent to browser
+DEBUG - 2021-07-13 03:13:00 --> Total execution time: 0.0479
+ERROR - 2021-07-13 03:13:00 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:13:00 --> Config Class Initialized
+INFO - 2021-07-13 03:13:00 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:13:00 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:00 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:00 --> URI Class Initialized
+INFO - 2021-07-13 03:13:00 --> Router Class Initialized
+INFO - 2021-07-13 03:13:00 --> Output Class Initialized
+INFO - 2021-07-13 03:13:00 --> Security Class Initialized
+DEBUG - 2021-07-13 03:13:00 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:00 --> Input Class Initialized
+INFO - 2021-07-13 03:13:00 --> Language Class Initialized
+ERROR - 2021-07-13 03:13:00 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:13:01 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:13:01 --> Config Class Initialized
+INFO - 2021-07-13 03:13:01 --> Hooks Class Initialized
+ERROR - 2021-07-13 03:13:01 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 03:13:01 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:01 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:01 --> URI Class Initialized
+INFO - 2021-07-13 03:13:01 --> Config Class Initialized
+INFO - 2021-07-13 03:13:01 --> Hooks Class Initialized
+INFO - 2021-07-13 03:13:01 --> Router Class Initialized
+DEBUG - 2021-07-13 03:13:01 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:01 --> Output Class Initialized
+INFO - 2021-07-13 03:13:01 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:01 --> URI Class Initialized
+INFO - 2021-07-13 03:13:01 --> Security Class Initialized
+DEBUG - 2021-07-13 03:13:01 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:01 --> Input Class Initialized
+INFO - 2021-07-13 03:13:01 --> Router Class Initialized
+INFO - 2021-07-13 03:13:01 --> Language Class Initialized
+INFO - 2021-07-13 03:13:01 --> Output Class Initialized
+INFO - 2021-07-13 03:13:01 --> Security Class Initialized
+INFO - 2021-07-13 03:13:01 --> Loader Class Initialized
+DEBUG - 2021-07-13 03:13:01 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:01 --> Input Class Initialized
+INFO - 2021-07-13 03:13:01 --> Language Class Initialized
+INFO - 2021-07-13 03:13:01 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:13:01 --> Loader Class Initialized
+INFO - 2021-07-13 03:13:01 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:13:01 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:13:01 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:13:01 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:13:01 --> Email Class Initialized
+INFO - 2021-07-13 03:13:01 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:13:01 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:13:01 --> Model "User_model" initialized
+INFO - 2021-07-13 03:13:01 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:13:01 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:13:01 --> Controller Class Initialized
+INFO - 2021-07-13 03:13:01 --> Final output sent to browser
+DEBUG - 2021-07-13 03:13:01 --> Total execution time: 0.0294
+INFO - 2021-07-13 03:13:01 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:13:01 --> Email Class Initialized
+INFO - 2021-07-13 03:13:01 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:13:01 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:13:01 --> Model "User_model" initialized
+INFO - 2021-07-13 03:13:01 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:13:01 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:13:01 --> Controller Class Initialized
+INFO - 2021-07-13 03:13:01 --> Final output sent to browser
+DEBUG - 2021-07-13 03:13:01 --> Total execution time: 0.0355
+ERROR - 2021-07-13 03:13:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:13:22 --> Config Class Initialized
+INFO - 2021-07-13 03:13:22 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:22 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:22 --> URI Class Initialized
+INFO - 2021-07-13 03:13:22 --> Router Class Initialized
+INFO - 2021-07-13 03:13:22 --> Output Class Initialized
+INFO - 2021-07-13 03:13:22 --> Security Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:22 --> Input Class Initialized
+INFO - 2021-07-13 03:13:22 --> Language Class Initialized
+INFO - 2021-07-13 03:13:22 --> Loader Class Initialized
+INFO - 2021-07-13 03:13:22 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:13:22 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:13:22 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:13:22 --> Email Class Initialized
+INFO - 2021-07-13 03:13:22 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:13:22 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:13:22 --> Model "User_model" initialized
+INFO - 2021-07-13 03:13:22 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:13:22 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:13:22 --> Controller Class Initialized
+INFO - 2021-07-13 03:13:22 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:13:22 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:13:22 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:13:22 --> Final output sent to browser
+DEBUG - 2021-07-13 03:13:22 --> Total execution time: 0.0514
+ERROR - 2021-07-13 03:13:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:13:22 --> Config Class Initialized
+INFO - 2021-07-13 03:13:22 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:22 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:22 --> URI Class Initialized
+INFO - 2021-07-13 03:13:22 --> Router Class Initialized
+INFO - 2021-07-13 03:13:22 --> Output Class Initialized
+INFO - 2021-07-13 03:13:22 --> Security Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:22 --> Input Class Initialized
+INFO - 2021-07-13 03:13:22 --> Language Class Initialized
+ERROR - 2021-07-13 03:13:22 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:13:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+ERROR - 2021-07-13 03:13:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:13:22 --> Config Class Initialized
+INFO - 2021-07-13 03:13:22 --> Hooks Class Initialized
+INFO - 2021-07-13 03:13:22 --> Config Class Initialized
+INFO - 2021-07-13 03:13:22 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:22 --> Utf8 Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:13:22 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:13:22 --> URI Class Initialized
+INFO - 2021-07-13 03:13:22 --> URI Class Initialized
+INFO - 2021-07-13 03:13:22 --> Router Class Initialized
+INFO - 2021-07-13 03:13:22 --> Router Class Initialized
+INFO - 2021-07-13 03:13:22 --> Output Class Initialized
+INFO - 2021-07-13 03:13:22 --> Output Class Initialized
+INFO - 2021-07-13 03:13:22 --> Security Class Initialized
+INFO - 2021-07-13 03:13:22 --> Security Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:22 --> Input Class Initialized
+DEBUG - 2021-07-13 03:13:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:13:22 --> Input Class Initialized
+INFO - 2021-07-13 03:13:22 --> Language Class Initialized
+INFO - 2021-07-13 03:13:22 --> Language Class Initialized
+INFO - 2021-07-13 03:13:22 --> Loader Class Initialized
+INFO - 2021-07-13 03:13:22 --> Loader Class Initialized
+INFO - 2021-07-13 03:13:22 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:13:22 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:13:22 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:13:22 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:13:22 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:13:22 --> Email Class Initialized
+INFO - 2021-07-13 03:13:22 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:13:22 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:13:22 --> Model "User_model" initialized
+INFO - 2021-07-13 03:13:22 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:13:22 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:13:22 --> Controller Class Initialized
+INFO - 2021-07-13 03:13:22 --> Final output sent to browser
+DEBUG - 2021-07-13 03:13:22 --> Total execution time: 0.0325
+INFO - 2021-07-13 03:13:22 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:13:22 --> Email Class Initialized
+INFO - 2021-07-13 03:13:22 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:13:22 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:13:22 --> Model "User_model" initialized
+INFO - 2021-07-13 03:13:22 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:13:22 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:13:22 --> Controller Class Initialized
+INFO - 2021-07-13 03:13:22 --> Final output sent to browser
+DEBUG - 2021-07-13 03:13:22 --> Total execution time: 0.0427
+ERROR - 2021-07-13 03:15:21 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:21 --> Config Class Initialized
+INFO - 2021-07-13 03:15:21 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:21 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:21 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:21 --> URI Class Initialized
+INFO - 2021-07-13 03:15:21 --> Router Class Initialized
+INFO - 2021-07-13 03:15:21 --> Output Class Initialized
+INFO - 2021-07-13 03:15:21 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:21 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:21 --> Input Class Initialized
+INFO - 2021-07-13 03:15:21 --> Language Class Initialized
+INFO - 2021-07-13 03:15:21 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:21 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:21 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:21 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:21 --> Email Class Initialized
+INFO - 2021-07-13 03:15:21 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:21 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:21 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:21 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:21 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:21 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:21 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:15:21 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:15:21 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:15:21 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:21 --> Total execution time: 0.0495
+ERROR - 2021-07-13 03:15:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:22 --> Config Class Initialized
+INFO - 2021-07-13 03:15:22 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:22 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:22 --> URI Class Initialized
+INFO - 2021-07-13 03:15:22 --> Router Class Initialized
+INFO - 2021-07-13 03:15:22 --> Output Class Initialized
+INFO - 2021-07-13 03:15:22 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:22 --> Input Class Initialized
+INFO - 2021-07-13 03:15:22 --> Language Class Initialized
+ERROR - 2021-07-13 03:15:22 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:15:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:22 --> Config Class Initialized
+INFO - 2021-07-13 03:15:22 --> Hooks Class Initialized
+ERROR - 2021-07-13 03:15:22 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+DEBUG - 2021-07-13 03:15:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:22 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:22 --> Config Class Initialized
+INFO - 2021-07-13 03:15:22 --> Hooks Class Initialized
+INFO - 2021-07-13 03:15:22 --> URI Class Initialized
+INFO - 2021-07-13 03:15:22 --> Router Class Initialized
+DEBUG - 2021-07-13 03:15:22 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:22 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:22 --> URI Class Initialized
+INFO - 2021-07-13 03:15:22 --> Output Class Initialized
+INFO - 2021-07-13 03:15:22 --> Security Class Initialized
+INFO - 2021-07-13 03:15:22 --> Router Class Initialized
+DEBUG - 2021-07-13 03:15:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:22 --> Input Class Initialized
+INFO - 2021-07-13 03:15:22 --> Language Class Initialized
+INFO - 2021-07-13 03:15:22 --> Output Class Initialized
+INFO - 2021-07-13 03:15:22 --> Security Class Initialized
+INFO - 2021-07-13 03:15:22 --> Loader Class Initialized
+DEBUG - 2021-07-13 03:15:22 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:22 --> Input Class Initialized
+INFO - 2021-07-13 03:15:22 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:22 --> Language Class Initialized
+INFO - 2021-07-13 03:15:22 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:22 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:22 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:22 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:22 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:22 --> Email Class Initialized
+INFO - 2021-07-13 03:15:22 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:22 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:22 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:22 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:22 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:22 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:22 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:22 --> Total execution time: 0.0289
+INFO - 2021-07-13 03:15:22 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:22 --> Email Class Initialized
+INFO - 2021-07-13 03:15:22 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:22 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:22 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:22 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:22 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:22 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:22 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:22 --> Total execution time: 0.0374
+ERROR - 2021-07-13 03:15:23 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:23 --> Config Class Initialized
+INFO - 2021-07-13 03:15:23 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:23 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:23 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:23 --> URI Class Initialized
+INFO - 2021-07-13 03:15:23 --> Router Class Initialized
+INFO - 2021-07-13 03:15:23 --> Output Class Initialized
+INFO - 2021-07-13 03:15:23 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:23 --> Input Class Initialized
+INFO - 2021-07-13 03:15:23 --> Language Class Initialized
+INFO - 2021-07-13 03:15:23 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:23 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:23 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:23 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:23 --> Email Class Initialized
+INFO - 2021-07-13 03:15:23 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:23 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:23 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:23 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:23 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:23 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:23 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:15:23 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:15:23 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:15:23 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:23 --> Total execution time: 0.0402
+ERROR - 2021-07-13 03:15:23 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:23 --> Config Class Initialized
+INFO - 2021-07-13 03:15:23 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:23 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:23 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:23 --> URI Class Initialized
+INFO - 2021-07-13 03:15:23 --> Router Class Initialized
+INFO - 2021-07-13 03:15:23 --> Output Class Initialized
+INFO - 2021-07-13 03:15:23 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:23 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:23 --> Input Class Initialized
+INFO - 2021-07-13 03:15:23 --> Language Class Initialized
+ERROR - 2021-07-13 03:15:23 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:15:24 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:24 --> Config Class Initialized
+INFO - 2021-07-13 03:15:24 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:24 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:24 --> Utf8 Class Initialized
+ERROR - 2021-07-13 03:15:24 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:24 --> URI Class Initialized
+INFO - 2021-07-13 03:15:24 --> Config Class Initialized
+INFO - 2021-07-13 03:15:24 --> Hooks Class Initialized
+INFO - 2021-07-13 03:15:24 --> Router Class Initialized
+INFO - 2021-07-13 03:15:24 --> Output Class Initialized
+DEBUG - 2021-07-13 03:15:24 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:24 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:24 --> Security Class Initialized
+INFO - 2021-07-13 03:15:24 --> URI Class Initialized
+DEBUG - 2021-07-13 03:15:24 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:24 --> Input Class Initialized
+INFO - 2021-07-13 03:15:24 --> Router Class Initialized
+INFO - 2021-07-13 03:15:24 --> Language Class Initialized
+INFO - 2021-07-13 03:15:24 --> Output Class Initialized
+INFO - 2021-07-13 03:15:24 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:24 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:24 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:24 --> Input Class Initialized
+INFO - 2021-07-13 03:15:24 --> Language Class Initialized
+INFO - 2021-07-13 03:15:24 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:24 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:24 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:24 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:24 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:24 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:24 --> Email Class Initialized
+INFO - 2021-07-13 03:15:24 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:24 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:24 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:24 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:24 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:24 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:24 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:24 --> Total execution time: 0.0351
+INFO - 2021-07-13 03:15:24 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:24 --> Email Class Initialized
+INFO - 2021-07-13 03:15:24 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:24 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:24 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:24 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:24 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:24 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:24 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:24 --> Total execution time: 0.0401
+ERROR - 2021-07-13 03:15:47 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:47 --> Config Class Initialized
+INFO - 2021-07-13 03:15:47 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:47 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:47 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:47 --> URI Class Initialized
+INFO - 2021-07-13 03:15:47 --> Router Class Initialized
+INFO - 2021-07-13 03:15:47 --> Output Class Initialized
+INFO - 2021-07-13 03:15:47 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:47 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:47 --> Input Class Initialized
+INFO - 2021-07-13 03:15:47 --> Language Class Initialized
+INFO - 2021-07-13 03:15:47 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:47 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:47 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:47 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:47 --> Email Class Initialized
+INFO - 2021-07-13 03:15:47 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:47 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:47 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:47 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:47 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:47 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:15:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:15:47 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:15:47 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:47 --> Total execution time: 0.0301
+ERROR - 2021-07-13 03:15:47 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:47 --> Config Class Initialized
+INFO - 2021-07-13 03:15:47 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:47 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:47 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:47 --> URI Class Initialized
+INFO - 2021-07-13 03:15:47 --> Router Class Initialized
+INFO - 2021-07-13 03:15:47 --> Output Class Initialized
+INFO - 2021-07-13 03:15:47 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:47 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:47 --> Input Class Initialized
+INFO - 2021-07-13 03:15:47 --> Language Class Initialized
+ERROR - 2021-07-13 03:15:47 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:15:47 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+ERROR - 2021-07-13 03:15:47 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:15:47 --> Config Class Initialized
+INFO - 2021-07-13 03:15:47 --> Hooks Class Initialized
+INFO - 2021-07-13 03:15:47 --> Config Class Initialized
+INFO - 2021-07-13 03:15:47 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:15:47 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:47 --> Utf8 Class Initialized
+DEBUG - 2021-07-13 03:15:47 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:15:47 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:15:47 --> URI Class Initialized
+INFO - 2021-07-13 03:15:47 --> URI Class Initialized
+INFO - 2021-07-13 03:15:47 --> Router Class Initialized
+INFO - 2021-07-13 03:15:48 --> Router Class Initialized
+INFO - 2021-07-13 03:15:48 --> Output Class Initialized
+INFO - 2021-07-13 03:15:48 --> Output Class Initialized
+INFO - 2021-07-13 03:15:48 --> Security Class Initialized
+INFO - 2021-07-13 03:15:48 --> Security Class Initialized
+DEBUG - 2021-07-13 03:15:48 --> Global POST, GET and COOKIE data sanitized
+DEBUG - 2021-07-13 03:15:48 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:15:48 --> Input Class Initialized
+INFO - 2021-07-13 03:15:48 --> Input Class Initialized
+INFO - 2021-07-13 03:15:48 --> Language Class Initialized
+INFO - 2021-07-13 03:15:48 --> Language Class Initialized
+INFO - 2021-07-13 03:15:48 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:48 --> Loader Class Initialized
+INFO - 2021-07-13 03:15:48 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:48 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:15:48 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:48 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:15:48 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:48 --> Email Class Initialized
+INFO - 2021-07-13 03:15:48 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:48 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:48 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:48 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:48 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:48 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:48 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:48 --> Total execution time: 0.0469
+INFO - 2021-07-13 03:15:48 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:15:48 --> Email Class Initialized
+INFO - 2021-07-13 03:15:48 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:15:48 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:15:48 --> Model "User_model" initialized
+INFO - 2021-07-13 03:15:48 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:15:48 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:15:48 --> Controller Class Initialized
+INFO - 2021-07-13 03:15:48 --> Final output sent to browser
+DEBUG - 2021-07-13 03:15:48 --> Total execution time: 0.0614
+ERROR - 2021-07-13 03:16:07 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:16:07 --> Config Class Initialized
+INFO - 2021-07-13 03:16:07 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:16:07 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:16:07 --> URI Class Initialized
+INFO - 2021-07-13 03:16:07 --> Router Class Initialized
+INFO - 2021-07-13 03:16:07 --> Output Class Initialized
+INFO - 2021-07-13 03:16:07 --> Security Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:16:07 --> Input Class Initialized
+INFO - 2021-07-13 03:16:07 --> Language Class Initialized
+INFO - 2021-07-13 03:16:07 --> Loader Class Initialized
+INFO - 2021-07-13 03:16:07 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:16:07 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:16:07 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:16:07 --> Email Class Initialized
+INFO - 2021-07-13 03:16:07 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:16:07 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:16:07 --> Model "User_model" initialized
+INFO - 2021-07-13 03:16:07 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:16:07 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:16:07 --> Controller Class Initialized
+INFO - 2021-07-13 03:16:07 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-13 03:16:07 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/assign_customer.php
+INFO - 2021-07-13 03:16:07 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-13 03:16:07 --> Final output sent to browser
+DEBUG - 2021-07-13 03:16:07 --> Total execution time: 0.0518
+ERROR - 2021-07-13 03:16:07 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:16:07 --> Config Class Initialized
+INFO - 2021-07-13 03:16:07 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:16:07 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:16:07 --> URI Class Initialized
+INFO - 2021-07-13 03:16:07 --> Router Class Initialized
+INFO - 2021-07-13 03:16:07 --> Output Class Initialized
+INFO - 2021-07-13 03:16:07 --> Security Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:16:07 --> Input Class Initialized
+INFO - 2021-07-13 03:16:07 --> Language Class Initialized
+ERROR - 2021-07-13 03:16:07 --> 404 Page Not Found: Assets/js
+ERROR - 2021-07-13 03:16:07 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+ERROR - 2021-07-13 03:16:07 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-13 03:16:07 --> Config Class Initialized
+INFO - 2021-07-13 03:16:07 --> Hooks Class Initialized
+INFO - 2021-07-13 03:16:07 --> Config Class Initialized
+INFO - 2021-07-13 03:16:07 --> Hooks Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:16:07 --> Utf8 Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> UTF-8 Support Enabled
+INFO - 2021-07-13 03:16:07 --> URI Class Initialized
+INFO - 2021-07-13 03:16:07 --> Utf8 Class Initialized
+INFO - 2021-07-13 03:16:07 --> URI Class Initialized
+INFO - 2021-07-13 03:16:07 --> Router Class Initialized
+INFO - 2021-07-13 03:16:07 --> Router Class Initialized
+INFO - 2021-07-13 03:16:07 --> Output Class Initialized
+INFO - 2021-07-13 03:16:07 --> Output Class Initialized
+INFO - 2021-07-13 03:16:07 --> Security Class Initialized
+INFO - 2021-07-13 03:16:07 --> Security Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:16:07 --> Input Class Initialized
+INFO - 2021-07-13 03:16:07 --> Language Class Initialized
+DEBUG - 2021-07-13 03:16:07 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-13 03:16:07 --> Input Class Initialized
+INFO - 2021-07-13 03:16:07 --> Language Class Initialized
+INFO - 2021-07-13 03:16:07 --> Loader Class Initialized
+INFO - 2021-07-13 03:16:07 --> Loader Class Initialized
+INFO - 2021-07-13 03:16:07 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:16:07 --> Helper loaded: url_helper
+INFO - 2021-07-13 03:16:07 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:16:07 --> Database Driver Class Initialized
+INFO - 2021-07-13 03:16:07 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:16:07 --> Email Class Initialized
+INFO - 2021-07-13 03:16:07 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:16:07 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:16:07 --> Model "User_model" initialized
+INFO - 2021-07-13 03:16:07 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:16:07 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:16:07 --> Controller Class Initialized
+INFO - 2021-07-13 03:16:07 --> Final output sent to browser
+DEBUG - 2021-07-13 03:16:07 --> Total execution time: 0.0288
+INFO - 2021-07-13 03:16:07 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-13 03:16:07 --> Email Class Initialized
+INFO - 2021-07-13 03:16:07 --> Helper loaded: form_helper
+INFO - 2021-07-13 03:16:07 --> Form Validation Class Initialized
+INFO - 2021-07-13 03:16:07 --> Model "User_model" initialized
+INFO - 2021-07-13 03:16:07 --> Model "Products_model" initialized
+INFO - 2021-07-13 03:16:07 --> Model "Common_model" initialized
+INFO - 2021-07-13 03:16:07 --> Controller Class Initialized
+INFO - 2021-07-13 03:16:07 --> Final output sent to browser
+DEBUG - 2021-07-13 03:16:07 --> Total execution time: 0.0384
