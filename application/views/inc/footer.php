@@ -100,10 +100,19 @@
 
 <script src="<?= base_url() ?>assets/js/chart.js"></script>
 
+<script src="<?= base_url() ?>assets/js/jquery.simplePagination.js"></script>
+
 
 <script>
 
 $(document).ready(function(){
+
+  
+    setInterval(function(){
+      $(".date").html("<?= date("d-m-Y h:s:i")?>");
+    },1000);
+
+   
     $(".myModal").click(function(){
     $("#myModal").hide();
     // window.location.href="<?= base_url() ?>";
@@ -137,5 +146,6 @@ $(document).ready(function(){
     // window.location.href="<?= base_url() ?>";
   });
   
+    
 })
 </script>

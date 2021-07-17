@@ -53,6 +53,7 @@
       </div>
       <form method="post" action="<?= base_url() ?>dashboard/product/import" enctype="multipart/form-data">
         <div class="modal-body">
+          <input type="hidden" name="product_id" value="<?= $product_id ?>">
           <input type="file" name="file" class="form-control" />
         </div>
         <div class="modal-footer">

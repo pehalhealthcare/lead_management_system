@@ -266,7 +266,7 @@
                                              </div>
                                         <?php endif; ?>
                                         <div class="form-group col-sm-12 row">
-                                             <div class="col-sm-3">
+                                             <div class="col-sm-12 col-md-3">
                                                   <ul class="list-group">
                                                        <li class="list-group-item">
                                                             <input type="search" id="product-search" class="form-control" placeholder="Enter Product Name" />
@@ -279,24 +279,37 @@
                                                   </ul>
                                                   <input type="hidden" name="lead_id" value="<?= $lead_id ?>" class="lead_id">
                                              </div>
-                                             <div class="col-sm-9 productDetails">
-                                                  <caption>Product Details</caption>
-                                                  <table class="table-responsive-md table-responsive-sm table-bordered product-table d-none">
-                                                       <thead>
-                                                            <th><input type="checkbox" name="" id="all-data"></th>
-                                                            <th>Item Name</th>
-                                                            <th>Quantity</th>
-                                                            <th>Per Unit Price</th>
-                                                            <!-- <th>Selling Unit Price</th>
-                                                           <th>Selling Price</th> -->
-                                                            <th>Tax Rate</th>
-                                                            <!-- <th>Tax Amount</th> -->
-                                                            <th>Total Price</th>
-                                                       </thead>
-                                                       <tbody>
+                                             <div class="col-md-9 col-sm-12 productDetails">
+                                                  <div class="row">
+                                                       <div class="col-sm-12 col-md-4 col-lg-4">
+                                                            <caption>Product Details</caption>
+                                                       </div>
+                                                       <div class="col-sm-12 col-md-4 col-lg-4">
+                                                            &nbsp;
+                                                       </div>
+                                                       <div class="col-sm-12 col-md-4 col-lg-4 text-right">
+                                                            <div class="form-group">
+                                                                 <input type="text" name="search_product" id="product-item-search" placeholder="Enter Product Item" class="form-control" />
+                                                            </div>
+                                                       </div>
+                                                  </div>
+                                                  <div class="table-responsive">
+                                                       <table class="table table-bordered product-table d-none">
+                                                            <thead>
+                                                                 <th><input type="checkbox" name="" id="all-data"></th>
+                                                                 <th>Item Name</th>
+                                                                 <th>Quantity</th>
+                                                                 <th>Per Unit Price</th>
+                                                                 
+                                                                 <th>Tax Rate</th>
+                                                                 
+                                                                 <th>Total Price</th>
+                                                            </thead>
+                                                            <tbody id="productTable">
 
-                                                       </tbody>
-                                                  </table>
+                                                            </tbody>
+                                                       </table>
+                                                  </div>
                                              </div>
 
 
@@ -329,9 +342,9 @@
                                              <div class="col-sm-3">
                                                   <ul class="list-group">
                                                        <li class="list-group-item">
-                                                            <input type="search" id="product-search" class="form-control" placeholder="Enter Service Name" />
+                                                            <input type="search" id="service-search" class="form-control" placeholder="Enter Service Name" />
                                                        </li>
-                                                       <ul class="list-group product-list">
+                                                       <ul class="list-group service-list">
                                                             <?php foreach ($services as $service) : ?>
                                                                  <li class="list-group-item select-service" style="cursor: pointer;" data-product="<?= $service->service_id ?>"><?= $service->service_name ?></li>
                                                             <?php endforeach; ?>
@@ -340,7 +353,19 @@
                                                   <input type="hidden" name="lead_id" value="<?= $lead_id ?>" class="lead_id">
                                              </div>
                                              <div class="col-sm-9 servicedetails">
-                                                  <caption>Service Details</caption>
+                                                  <div class="row">
+                                                       <div class="col-sm-12 col-md-4 col-lg-4">
+                                                            <caption>Service Details</caption>
+                                                       </div>
+                                                       <div class="col-sm-12 col-md-4 col-lg-4">
+                                                            &nbsp;
+                                                       </div>
+                                                       <div class="col-sm-12 col-md-4 col-lg-4 text-right">
+                                                            <div class="form-group">
+                                                                 <input type="text" name="search_product" id="" placeholder="Enter Search Item" class="form-control" />
+                                                            </div>
+                                                       </div>
+                                                  </div>
                                                   <table class="table table-bordered service-table">
                                                        <thead>
                                                             <th><input type="checkbox" name="" id="all-data"></th>
@@ -400,7 +425,7 @@
                                    <?php else : ?>
                                         <a href="javascript:void(0)" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
                                    <?php endif; ?>
-                                   <a href="#" class="btn btn-success mb-2 mt-2 col-md-2 col-sm-12"> SEND MAIL</a>
+                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" class="btn btn-success mb-2 mt-2 col-md-2 col-sm-12"> SEND MAIL</a>
                               </div>
                               <h4>Terms and conditions</h4>
                               <div class="col-sm-12 terms row">
@@ -465,7 +490,7 @@
                               <div class="row">
                                    <div class="col-sm-12 col-md-12 mb-3 mt-3 text-right">
                                         <button class="btn btn-primary approve disabled mt-2 mb-2">Approve</button>
-                                        <a href="" class="btn btn-success gorder d-none mt-2 mb-2">Generate Order</a>
+                                        <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
                                         <button class="btn btn-danger disapprove disabled  mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
                                    </div>
                                    <table class="table table-bordered bg-white">
@@ -483,11 +508,16 @@
                                         foreach ($quotation as $quo) : $i++; ?>
 
                                              <?php
-                                            
+
                                              $quid = $quo["quotation_id"];
-                                             $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
-                                             
-                                             $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
+                                             $status = $orders = "";
+                                             if(count($order)>0)
+                                             {
+                                                  $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
+
+                                                  $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
+                                             }
+                                            
                                              ?>
                                              <tr>
                                                   <td><input type="checkbox" data-order="<?= $orders ?>" class="boxchecked" data-qid="<?= $quo["quotation_id"] ?>" data-link="<?= $quo["pdf"] ?>" value="<?= $quo["quotation_id"] ?>" name="select_<?= $quo["quotation_id"] ?>" /></td>
@@ -1104,6 +1134,8 @@
      }
 </style>
 <script>
+
+
      ClassicEditor
           .create(document.querySelector('#editor'))
           .catch(error => {
@@ -1461,7 +1493,7 @@
                          localStorage.setItem("tabs", "#pills-oppo");
                          $(".new-customer").removeClass("d-none");
                          $(".add-customer").trigger("reset");
-                         location.reload();
+                         // location.reload();
                          //     getcusotmer();
                     }
                })
@@ -1625,14 +1657,14 @@
                               if (v["item_name"] && status["customer_item"]) {
                                    unit_price = (unit_price) ? unit_price : v["unit_price"];
                                    //     unit_price = unit_price.replace(',', '.')
-                                   var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
-                                   html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
-                                   html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
+                                   var html = '<tr><td style="width:5%"><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td style="width:45%"><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
+                                   html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:20%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
                                    //     html += '<td><input type="text" data-id="' + v["item_id"] + '"   name="selling_unit_price[]" value="' + selling_unit_price + '"  class="selling_unit_price border-bottom form-control selling_unit_price' + v["item_id"] + '"></td>';
                                    //     html += '<td><input type="text" data-id="' + v["item_id"] + '"   name="selling_price[]" value="' + selling_price + '"  class="selling_price border-bottom form-control selling_price_' + v["item_id"] + '"></td>';
-                                   html += '<td><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
                                    //     html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control tax_amount_' + v["item_id"] + '"></td>';
-                                   html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
                                    html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
                                    html += '<input type="hidden" name="product_id" class="product_id" value="' + product_id + '"></td></tr>';
 
@@ -1695,11 +1727,11 @@
                               });
                               if (v["item_name"] && status["customer_item"]) {
                                    unit_price = (unit_price) ? unit_price : v["unit_price"];
-                                   var html = '<tr><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
-                                   html += '<td><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="squantity border-bottom form-control squantity_' + v["item_id"] + '"></td>';
-                                   html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="sunit_price[]"  class="sunit_price border-bottom form-control sunit_price_' + v["item_id"] + '"></td>';
-                                   html += '<td><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="stax_rate[]"  class="stax_rate form-control stax_rate_' + v["item_id"] + '"></td>';
-                                   html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="stotal_price[]" value="' + total_price + '"  class="stotal_price form-control stotal_price_' + v["item_id"] + '">';
+                                   var html = '<tr style="width:5%"><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
+                                   html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="squantity border-bottom form-control squantity_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="sunit_price[]"  class="sunit_price border-bottom form-control sunit_price_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="stax_rate[]"  class="stax_rate form-control stax_rate_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="stotal_price[]" value="' + total_price + '"  class="stotal_price form-control stotal_price_' + v["item_id"] + '">';
                                    html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
                                    html += '<input type="hidden" name="service_id" class="service_id" value="' + service_id + '"></td></tr>';
                                    $(".service-table tbody").append(html);
@@ -2332,6 +2364,33 @@
                });
           })
 
+          $(document).on("keyup","#product-item-search", function() {
+
+               var value = $(this).val().toLowerCase();
+               console.log(value);
+               $("#productTable tr").filter(function() {
+                    // console.log($(this).text().toLowerCase());
+                    // console.log($(this).text());
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+          })
+
+          $("#service-search").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+
+               $(".service-list li").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+          })
+
+          $("#service-item-search").on("keyup", function() {
+               var value = $(this).val().toLowerCase();
+
+               $(".service-list li").filter(function() {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               });
+          })
+
           $(document).on("submit", "#oppo-form", function(e) {
                e.preventDefault();
                var formdata = $(this).serializeArray();
@@ -2634,7 +2693,7 @@
                     } else {
                          $(".approve").removeClass("disabled");
                          $(".disapprove").removeClass("disabled");
-                         $(".gorder").attr("href", url + "?qid=" + qid);
+                         $(".gorder").attr("data-href", url + "?qid=" + qid);
                          $("#qid").val(qid);
                          $(".gorder").removeClass("d-none");
                     }
@@ -2645,6 +2704,28 @@
                     $(".disapprove").addClass("disabled");
                     $(".gorder").addClass("d-none");
                }
+          });
+
+          $(document).on("click",".genorder",function(){
+
+               var customer = $(this).data('customer');
+
+               var href = $(this).data("href");
+
+               $.ajax({
+                    method:"post",
+                    url:"<?= base_url()?>ajax/ordermail",
+                    data:{customer:customer},
+                    success:function(status)
+                    {
+                         console.log(status);
+                         if(href)
+                         {
+                              window.location.href = href;
+                         }
+                    }
+               })
+               
           });
 
           $(document).on("click", ".approve", function() {
@@ -2664,6 +2745,20 @@
                     }
                })
 
+          });
+
+          $(document).on("click","#sendmail",function(){
+               var customer = $(this).data("customer")
+
+               $.ajax({
+                    method:"post",
+                    url:"<?= base_url()?>ajax/sendmail",
+                    data:{customer:customer},
+                    success:function(status)
+                    {
+                         console.log(status);
+                    }
+               })
           });
      });
 </script>

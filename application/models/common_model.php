@@ -88,7 +88,22 @@ class Common_model extends CI_Model
      {
           $this->db->where($column);
 
-         
+          $run = $this->db->get($table);
+
+          $data = $run->result_array();
+
+          // echo $this->db->last_query();
+
+          return $data;
+
+          
+     }
+
+     public function viewwhereordata($c1=array(),$c2=array(),$table="")
+     {
+          $this->db->or_where($c2);
+          
+          $this->db->or_where($c1);
 
           $run = $this->db->get($table);
 

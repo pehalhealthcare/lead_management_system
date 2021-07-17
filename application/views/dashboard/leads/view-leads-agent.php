@@ -42,8 +42,9 @@
             <td>
               <a href="<?= base_url() ?>dashboard/leads/assign/<?= $lead["id"] ?>" title="Assign Leads" class="btn btn-primary">
                 <i class="fa fa-user"></i></a>
-              <a href="<?= base_url() ?>dashboard/edit/leads/<?= $lead["id"] ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+              
               <?php if ($this->session->category == "BTL" || $this->session->role == 1) : ?>
+                <a href="<?= base_url() ?>dashboard/edit/leads/<?= $lead["id"] ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
                 <button type="button" class="btn btn-danger delete-data" data-id="<?= $lead["id"] ?>" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
             </td>
           <?php endif; ?>

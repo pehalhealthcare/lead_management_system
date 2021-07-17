@@ -174,6 +174,8 @@ class Products extends CI_Controller
 
           $data["title"] = "Products Item Page";
 
+          $data["product_id"] = $pid;
+
           $data["products"] = $this->common_model->viewwheredata(array("product_id" => $pid, "is_active" => 1), "mk_master_product_item");
 
           $this->load->view("inc/header", $data);
@@ -342,7 +344,7 @@ class Products extends CI_Controller
                          $i++;
                          if ($i > 1) {
                               $inserData = array(
-                                   "product_id" => 1,
+                                   "product_id" => $this->input->post("product_id"),
                                    "partnumber" => $data[0],
                                    "local_partnumber" => $data[1],
                                    "item_name" => $data[2],

@@ -95,6 +95,12 @@
             <span class="text-danger"> * File size less than 2MB</span>
             <input type="hidden" name="order_id" class="order_id" />
           </div>
+          <div class="form-group">
+            <label>Upload Invoice 2</label>
+            <input type="file" name="userfile2" class="form-control" />
+            <span class="text-danger"> * File size less than 2MB</span>
+            
+          </div>
         </div>
 
         <!-- Modal footer -->
@@ -212,7 +218,12 @@
         },
         success: function(status) {
           $.each(JSON.parse(status), function(k, v) {
-            $(".doc-download").append("<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document"] + "'>" + v["document"] + "</a></p>");
+            var html = "<div>";
+            html +="<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document1"] + "'>" + v["document1"] + "</a></p>";
+            html +="<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document2"] + "'>" + v["document2"] + "</a></p>";
+            html +="</div>"
+            $(".doc-download").append(html);
+            
           });
         }
       })

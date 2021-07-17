@@ -68,6 +68,7 @@
       </div>
       <form method="post" action="<?= base_url() ?>dashboard/service/import" enctype="multipart/form-data">
         <div class="modal-body">
+          <input type="hidden" name="service_id" value="<?= $service_id?>" />
           <input type="file" name="file" class="form-control" />
         </div>
         <div class="modal-footer">

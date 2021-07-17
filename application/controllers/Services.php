@@ -102,7 +102,7 @@ class Services extends CI_Controller
                          $i++;
                          if ($i > 1) {
                               $inserData = array(
-                                   "service_id" => 1,
+                                   "service_id" => $this->input->post("service_id"),
                                    "item_name" => $data[1],
                                    "tax_rate" => $data[2],
                                    "unit_price" => $data[3]
@@ -227,6 +227,8 @@ class Services extends CI_Controller
           $data["user"] = $_SESSION;
 
           $data["title"] = "Service Item";
+
+          $data["service_id"] = $pid;
 
           $data["products"] = $this->common_model->viewwheredata(array("service_id" => $pid,"is_active"=>1),"mk_master_service_item");
 

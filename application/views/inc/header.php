@@ -12,6 +12,8 @@
       <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/css/vendor.bundle.base.css">
       <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
 
+      <link rel="stylesheet" href="<?= base_url() ?>assets/css/simplePagination.css">
+
 
       <title><?= $title ?></title>
       <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
@@ -69,6 +71,9 @@
                                           <a class="nav-link">
                                                 <i class="mdi mdi-fullscreen" id="fullscreen-button"></i>
                                           </a>
+                                    </li>
+                                    <li class="nav-item d-none d-lg-block">
+                                          <a class="nav-link date"></a>
                                     </li>
                                     <li class="nav-item dropdown">
                                           <a class="nav-link count-indicator dropdown-toggle" id="messageDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
@@ -254,7 +259,9 @@
                                           </a>
                                           <div class="collapse <?= ($this->uri->uri_string() == "dashboard/add/leads" || $this->uri->uri_string() == "dashboard/leads") ? "show" : "" ?>" id="leads">
                                                 <ul class="nav flex-column sub-menu">
+                                                      <?php if($this->session->category == "BTL" || $this->session->role == 1): ?>
                                                       <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/add/leads" ) ? "active" : "" ?>" href="<?= base_url() ?>dashboard/add/leads">Add Leads</a></li>
+                                                      <?php endif; ?>
                                                       <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/leads") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/leads"> View Leads </a></li>
                                                 </ul>
                                           </div>

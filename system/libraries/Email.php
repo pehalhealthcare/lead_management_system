@@ -69,32 +69,32 @@ class CI_Email {
 	 *
 	 * @var	string	'mail', 'sendmail' or 'smtp'
 	 */
-	public $protocol	= 'smtp';		// mail/sendmail/smtp
+	public $protocol	= 'mail';		// mail/sendmail/smtp
 
 	/**
 	 * STMP Server host
 	 *
 	 * @var	string
 	 */
-	public $smtp_host	= '';
+	public $smtp_host	= 'medikart.co';
 
-	/**
+	/**smtp.webmail.com
 	 * SMTP Username
 	 *
-	 * @var	string
+	 * @var	stringinfo@medikart.co
 	 */
-	public $smtp_user	= '';
+	public $smtp_user	= 'info@medikart.co';
 
 	/**
 	 * SMTP Password
-	 *
+	 *c41^iwD8
 	 * @var	string
 	 */
-	public $smtp_pass	= '';
+	public $smtp_pass	= 'c41^iwD8';
 
 	/**
 	 * SMTP Server port
-	 *
+	 *25
 	 * @var	int
 	 */
 	public $smtp_port	= 465;
@@ -104,7 +104,7 @@ class CI_Email {
 	 *
 	 * @var	int
 	 */
-	public $smtp_timeout	= 5;
+	public $smtp_timeout	= 5000;
 
 	/**
 	 * SMTP persistent connection
@@ -118,7 +118,7 @@ class CI_Email {
 	 *
 	 * @var	string	empty, 'tls' or 'ssl'
 	 */
-	public $smtp_crypto	= 'ssl';
+	public $smtp_crypto	= 'tls';
 
 	/**
 	 * Whether to apply word-wrapping to the message body.

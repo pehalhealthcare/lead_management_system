@@ -342,6 +342,10 @@ class Leads extends CI_Controller
 
           $data["order"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_order");
 
+          // print_r($data["order"]);
+
+          // die();
+
           // $data["users"] = $this->common_model->viewwheredata(array(""=>""),"mk_registration_table");
 
           $this->load->view("inc/header", $data);
@@ -604,7 +608,7 @@ class Leads extends CI_Controller
                          $filename = $_FILES["file"]["name"];
 
                          $orderdata = array(
-                              "document"=>$filename,
+                              "document1"=>$filename,
                               "order_id"=>$datacheck[0]["order_id"],
                               "created_by"=>$this->session->userID,
                               "created_at"=>date("Y-m-d h:i:s")
@@ -640,7 +644,7 @@ class Leads extends CI_Controller
                          // print_r($dataorder); die();
 
                          $orderdata = array(
-                              "document"=>$filename,
+                              "document1"=>$filename,
                               "order_id"=>$dataorder[0]["order_id"],
                               "created_by"=>$this->session->userID,
                               "created_at"=>date("Y-m-d h:i:s")
