@@ -36,8 +36,13 @@
                                         <?php $active = "";
                                         foreach ($customers as $customer) : ?>
                                              <?php if ($lead_customer) : ?>
+                                                  <?php if ($lead_customer[0]["customer_id"] == $customer->customer_id) : ?>
+                                                       <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                                  <?php else : ?>
+                                                       <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                                  <?php endif; ?>
 
-                                                  <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+
                                              <?php else : ?>
                                                   <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
                                              <?php endif; ?>
@@ -67,15 +72,15 @@
                                                   <div class="row">
                                                        <div class="form-group col-sm-6">
                                                             <label for="">Name <span class="text-danger">*</span></label>
-                                                            <input type="text" name="lname" id="" value="<?= $leads[0]["name"]; ?>" placeholder="" class="form-control  border">
+                                                            <input type="text" name="lname" value="<?= $leads[0]["name"]; ?>" placeholder="" class="form-control  border">
                                                        </div>
                                                        <div class="form-group col-sm-6">
                                                             <label for="">Mobile <span class="text-danger">*</span></label>
-                                                            <input type="text" name="lmobile" id="" minlength="10" maxlength="20" value="<?= $leads[0]["mobile"]; ?>" placeholder="" class="form-control  border">
+                                                            <input type="text" name="lmobile" minlength="10" maxlength="20" value="<?= $leads[0]["mobile"]; ?>" placeholder="" class="form-control  border">
                                                        </div>
                                                        <div class="form-group col-sm-6">
                                                             <label for="">Email <span class="text-danger">*</span></label>
-                                                            <input type="text" name="lemail" id="" value="<?= $leads[0]["email"]; ?>" placeholder="" class="form-control  border">
+                                                            <input type="text" name="lemail" value="<?= $leads[0]["email"]; ?>" placeholder="" class="form-control  border">
                                                        </div>
                                                   </div>
                                              <?php endif; ?>
@@ -141,8 +146,8 @@
 
                                    </div>
                                    <div class="col-sm-12 text-right">
-                                        <input type="submit" class="btn btn-success button saveProceed" value="SAVE & PROCEED">
-                                        <input type="button" class="btn btn-success addCustomerClose" value="SAVE & CLOSE">
+                                        <input type="submit" class="btn btn-success button saveProceed mt-2" value="SAVE & PROCEED">
+                                        <input type="button" class="btn btn-success addCustomerClose mt-2" value="SAVE & CLOSE">
                                    </div>
                               </form>
                          </div>
@@ -161,58 +166,59 @@
                                    <input type="hidden" name="lead_id" value="<?= $lead_id ?>">
                                    <div class="col-sm-6 form-group">
                                         <label for="">Opportunity Name</label>
-                                        <input type="text" name="opportunity_name" id="" class="form-control border-bottom">
+                                        <input type="text" name="opportunity_name" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Expected Amount</label>
-                                        <input type="text" name="exp_amount" id="" class="form-control border-bottom">
+                                        <input type="text" name="exp_amount" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Expected Date</label>
-                                        <input type="date" name="exp_date" id="" class="form-control border-bottom">
+                                        <input type="date" name="exp_date" min="<?= date("Y-m-d") ?>" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Status</label>
-                                        <select name="status" id="" class="form-control border-bottom">
+                                        <select name="status" class="form-control border-bottom">
                                              <option value="1">Active</option>
                                              <option value="2">Inactive</option>
                                         </select>
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Remarks</label>
-                                        <input type="text" name="remarks" id="" class="form-control border-bottom">
+                                        <input type="text" name="remarks" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-12 form-group">
 
-                                        <input type="submit" class="btn btn-success button" value="SAVE & PROCEED">
-                                        <input type="button" value="SAVE & CLOSE" class="btn btn-success addOpportunityClose">
+                                        <input type="submit" class="btn btn-success button mt-1" value="SAVE & PROCEED">
+                                        <input type="button" value="SAVE & CLOSE" class="btn btn-success addOpportunityClose mt-1">
                                    </div>
                               </div>
 
                          </form>
                     <?php else : ?>
-                         <table class="table table-bordered">
-                              <tr>
-                                   <th>Opportunity Name</th>
-                                   <th>Expected Amount</th>
-                                   <th>Expected Date</th>
-                                   <th>Remarks</th>
-                                   <th>Actions</th>
-                              </tr>
-                              <?php foreach ($opportunity as $oppos) : ?>
+                         <div class="table-responsive">
+                              <table class="table table-bordered">
                                    <tr>
-                                        <td><?= $oppos["opportunity_name"] ?></td>
-                                        <td><?= $oppos["expected_amount"] ?></td>
-                                        <td><?= $oppos["expected_date"] ?></td>
-                                        <td><?= $oppos["remarks"] ?></td>
-                                        <td>
-                                             <button data-name="<?= $oppos["opportunity_name"] ?>" data-amount="<?= $oppos["expected_amount"] ?>" data-date="<?= $oppos["expected_date"] ?>" data-remarks="<?= $oppos["remarks"] ?>" data-id="<?= $oppos["id"] ?>" data-status="<?= $oppos["status"] ?>" class="btn btn-info edit-oppos"><i class="fa fa-pencil"></i></button>
-                                             <a href="<?= base_url() ?>dashboard/lead/opporunity/delete/<?= $oppos["id"] ?>?lead_id=<?= $lead_id ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-                                        </td>
+                                        <th>Opportunity Name</th>
+                                        <th>Expected Amount</th>
+                                        <th>Expected Date</th>
+                                        <th>Remarks</th>
+                                        <th>Actions</th>
                                    </tr>
-                              <?php endforeach; ?>
-                         </table>
-
+                                   <?php foreach ($opportunity as $oppos) : ?>
+                                        <tr>
+                                             <td><?= $oppos["opportunity_name"] ?></td>
+                                             <td><?= $oppos["expected_amount"] ?></td>
+                                             <td><?= $oppos["expected_date"] ?></td>
+                                             <td><?= $oppos["remarks"] ?></td>
+                                             <td>
+                                                  <button data-name="<?= $oppos["opportunity_name"] ?>" data-amount="<?= $oppos["expected_amount"] ?>" data-date="<?= $oppos["expected_date"] ?>" data-remarks="<?= $oppos["remarks"] ?>" data-id="<?= $oppos["id"] ?>" data-status="<?= $oppos["status"] ?>" class="btn btn-info edit-oppos"><i class="fa fa-pencil"></i></button>
+                                                  <a href="<?= base_url() ?>dashboard/lead/opporunity/delete/<?= $oppos["id"] ?>?lead_id=<?= $lead_id ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                             </td>
+                                        </tr>
+                                   <?php endforeach; ?>
+                              </table>
+                         </div>
                     <?php endif; ?>
 
                </div>
@@ -300,9 +306,9 @@
                                                                  <th>Item Name</th>
                                                                  <th>Quantity</th>
                                                                  <th>Per Unit Price</th>
-                                                                 
+
                                                                  <th>Tax Rate</th>
-                                                                 
+
                                                                  <th>Total Price</th>
                                                             </thead>
                                                             <tbody id="productTable">
@@ -362,26 +368,28 @@
                                                        </div>
                                                        <div class="col-sm-12 col-md-4 col-lg-4 text-right">
                                                             <div class="form-group">
-                                                                 <input type="text" name="search_product" id="" placeholder="Enter Search Item" class="form-control" />
+                                                                 <input type="text" name="search_product" placeholder="Enter Search Item" class="form-control" />
                                                             </div>
                                                        </div>
                                                   </div>
-                                                  <table class="table table-bordered service-table">
-                                                       <thead>
-                                                            <th><input type="checkbox" name="" id="all-data"></th>
-                                                            <th>Item Name</th>
-                                                            <th>Quantity</th>
-                                                            <th>Per Unit Price</th>
-                                                            <!-- <th>Selling Unit Price</th>
+                                                  <div class="table-responsive">
+                                                       <table class="table table-bordered service-table">
+                                                            <thead>
+                                                                 <th><input type="checkbox" name="" id="all-data"></th>
+                                                                 <th>Item Name</th>
+                                                                 <th>Quantity</th>
+                                                                 <th>Per Unit Price</th>
+                                                                 <!-- <th>Selling Unit Price</th>
                                                            <th>Selling Price</th> -->
-                                                            <th>Tax Rate</th>
-                                                            <!-- <th>Tax Amount</th> -->
-                                                            <th>Total Price</th>
-                                                       </thead>
-                                                       <tbody>
+                                                                 <th>Tax Rate</th>
+                                                                 <!-- <th>Tax Amount</th> -->
+                                                                 <th>Total Price</th>
+                                                            </thead>
+                                                            <tbody>
 
-                                                       </tbody>
-                                                  </table>
+                                                            </tbody>
+                                                       </table>
+                                                  </div>
                                              </div>
 
 
@@ -410,7 +418,7 @@
 
 
                          <!-- terms part start -->
-                         <div class="tab-pane fade" id="pills-terms" role="tabpanel" aria-labelledby="pills-terms-tab">
+                         <div class="tab-pane fade " id="pills-terms" role="tabpanel" aria-labelledby="pills-terms-tab">
 
                               <div class="col-sm-12 text-right">
                                    <?php $customerID = "";
@@ -420,12 +428,12 @@
                                         <?php endif; ?>
                                    <?php endforeach; ?>
                                    <?php if ($customer_item) : ?>
-                                        <a href="<?= base_url() ?>dashboard/lead/generate_pdf/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
-                                        <a href="<?= base_url() ?>dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-success col-md-2 col-sm-12"> VIEW QUOTATION</a>
+                                        <a href="<?= base_url() ?>dashboard/lead/generate_pdf/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-success col-md-2 col-sm-12 mb-2"> DOWNLOAD PDF</a>
+                                        <a href="<?= base_url() ?>dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-success col-md-2 col-sm-12 mb-2"> VIEW QUOTATION</a>
                                    <?php else : ?>
                                         <a href="javascript:void(0)" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
                                    <?php endif; ?>
-                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" class="btn btn-success mb-2 mt-2 col-md-2 col-sm-12"> SEND MAIL</a>
+                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" class="btn btn-success mb-2 mt-2 col-md-2 col-sm-12 mb-2"> SEND MAIL</a>
                               </div>
                               <h4>Terms and conditions</h4>
                               <div class="col-sm-12 terms row">
@@ -433,7 +441,7 @@
                               </div>
                               <div class="col-sm-12 refer">
                                    <h4>Reference Details</h4>
-                                   <div class="col-sm-6">
+                                   <div class="col-sm-12 col-md-6">
                                         <form action="" method="post" class="refer-form">
                                              <?php
                                              $ref_1 = $ref_2 = $ref_3 = $ref_4 = "";
@@ -452,27 +460,27 @@
                                              <input type="hidden" class="rcustomer_id" name="rcustomer_id" value="" />
                                              <div class="form-group">
                                                   <label>Terms</label>
-                                                  <input type="text" name="terms" value="<?= $terms ?>" class="form-control border" placeholder="Terms" id="">
+                                                  <input type="text" name="terms" value="<?= $terms ?>" class="form-control border" placeholder="Terms">
                                              </div>
                                              <div class="form-group">
                                                   <label>GST Number</label>
-                                                  <input type="text" name="refer" value="<?= $refer ?>" class="form-control border" placeholder="Reference Number" id="">
+                                                  <input type="text" name="refer" value="<?= $refer ?>" class="form-control border" placeholder="Reference Number">
                                              </div>
                                              <div class="form-group">
                                                   <label>Reference 1</label>
-                                                  <input type="text" name="ref1" value="<?= $ref_1 ?>" class="form-control border" placeholder="Reference 1" id="">
+                                                  <input type="text" name="ref1" value="<?= $ref_1 ?>" class="form-control border" placeholder="Reference 1">
                                              </div>
                                              <div class="form-group">
                                                   <label>Reference 2</label>
-                                                  <input type="text" name="ref2" value="<?= $ref_2 ?>" class="form-control border" placeholder="Reference 2" id="">
+                                                  <input type="text" name="ref2" value="<?= $ref_2 ?>" class="form-control border" placeholder="Reference 2">
                                              </div>
                                              <div class="form-group">
                                                   <label>Reference 3</label>
-                                                  <input type="text" name="ref3" value="<?= $ref_3 ?>" class="form-control border" placeholder="Reference 3" id="">
+                                                  <input type="text" name="ref3" value="<?= $ref_3 ?>" class="form-control border" placeholder="Reference 3">
                                              </div>
                                              <div class="form-group">
                                                   <label>Special Commments</label>
-                                                  <input type="text" name="ref4" value="<?= $ref_4 ?>" class="form-control border" placeholder="Reference 4" id="">
+                                                  <input type="text" name="ref4" value="<?= $ref_4 ?>" class="form-control border" placeholder="Comments">
                                              </div>
                                              <div class="form-group">
                                                   <input type="submit" class="btn btn-success" value="Save">
@@ -489,10 +497,11 @@
                          <div class="tab-pane fade" id="pills-create-quotation" role="tabpanel" aria-labelledby="pills-create-quotation-tab">
                               <div class="row">
                                    <div class="col-sm-12 col-md-12 mb-3 mt-3 text-right">
-                                        <button class="btn btn-primary approve disabled mt-2 mb-2">Approve</button>
-                                        <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
-                                        <button class="btn btn-danger disapprove disabled  mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
+                                        <button class="btn btn-primary col-md-2 col-sm-12 approve disabled mt-2 mb-2">Approve</button>
+                                        <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
+                                        <button class="btn btn-danger disapprove disabled col-md-2 col-sm-12   mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
                                    </div>
+                                   <div class="table-responsive">
                                    <table class="table table-bordered bg-white">
                                         <tr>
                                              <th>&nbsp;</th>
@@ -511,13 +520,12 @@
 
                                              $quid = $quo["quotation_id"];
                                              $status = $orders = "";
-                                             if(count($order)>0)
-                                             {
+                                             if (count($order) > 0) {
                                                   $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
 
                                                   $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
                                              }
-                                            
+
                                              ?>
                                              <tr>
                                                   <td><input type="checkbox" data-order="<?= $orders ?>" class="boxchecked" data-qid="<?= $quo["quotation_id"] ?>" data-link="<?= $quo["pdf"] ?>" value="<?= $quo["quotation_id"] ?>" name="select_<?= $quo["quotation_id"] ?>" /></td>
@@ -530,6 +538,8 @@
                                              </tr>
                                         <?php endforeach; ?>
                                    </table>
+                                   </div>
+                                   
                               </div>
                          </div>
 
@@ -599,13 +609,11 @@
                                                             <option value="product">Product</option>
                                                        </select>
                                                   </div>
-                                                  <div class="form-group col-sm-6">
-                                                       &nbsp;
-                                                  </div>
-                                                  <div class="form-group col-sm-6">
+
+                                                  <!-- <div class="form-group col-sm-6">
                                                        <label>Assigned By</label>
 
-                                                  </div>
+                                                  </div> -->
 
                                                   <div class="form-group col-sm-6">
                                                        <label for="">End date</label>
@@ -620,129 +628,154 @@
                                                        <label for="">Reminder</label><br />
                                                        <input type="checkbox" name="reminder" value="1" class="form-control-check border-bottom"> Remind me
                                                   </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Assigned to</label>
-                                                       <input type="text" name="assigned_to" class="form-control border-bottom">
-                                                  </div>
-                                                  <div class="form-group col-sm-12">
-                                                       <label for="">Description</label>
-                                                       <textarea name="description" class="form-control border-bottom" rows="5"></textarea>
-                                                  </div>
-                                                  <div class="form-group col-sm-12">
-                                                       <input type="submit" class="btn btn-success button mt-2" value="SAVE & PROCEED">
-                                                       <input type="button" class="btn btn-success meeting-continue mt-2" value="SAVE & CONTINUE">
-                                                       <input type="button" class="btn btn-success addMeetingClose mt-2" value="SAVE & CLOSE">
-                                                  </div>
+
+                                                  <?php if ($this->session->category == 'BA') : ?>
+                                                       <input type="hidden" name="assigned_to" value="<?= $this->session->userID ?>" class="form-control border-bottom">
                                              </div>
+                                        <?php else : ?>
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Assigned to</label>
+                                                  <select class="form-control">
+                                                       <option value="">Select Agent</option>
+                                                       <?php foreach ($agents as $agent) : ?>
+                                                            <option value="<?= $agent["id"] ?>"><?= $agent["firstname"] ?></option>
+                                                       <?php endforeach; ?>
+                                                  </select>
+                                             </div>
+                                        <?php endif; ?>
+                                        <div class="form-group col-sm-12">
+                                             <label for="">Description</label>
+                                             <textarea name="description" class="form-control border-bottom" rows="5"></textarea>
                                         </div>
-                                   </form>
-
+                                        <div class="form-group col-sm-12">
+                                             <input type="submit" class="btn btn-success button mt-2" value="SAVE & PROCEED">
+                                             <input type="button" class="btn btn-success meeting-continue mt-2" value="SAVE & CONTINUE">
+                                             <input type="button" class="btn btn-success addMeetingClose mt-2" value="SAVE & CLOSE">
+                                        </div>
+                                        </div>
                               </div>
+                              </form>
 
-                              <div class="col-sm-12 log_call d-none">
+                         </div>
 
-                                   <form method="post" class="log_form" action="">
-                                        <div class="row">
-                                             <div class="col-sm-8 mx-auto row">
-                                                  <input type="hidden" id="lactivity_id" class="lactivity_id" name="lactivity_id" />
-                                                  <input type="hidden" id="lead_id" name="lead_id" value="<?= $lead_id ?>" />
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Subject</label>
-                                                       <input type="text" name="subject" class="form-control border-bottom">
-                                                  </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Status</label>
-                                                       <div class="row">
-                                                            <div class="col-sm-6">
-                                                                 <select name="direction" class="form-control border-bottom">
-                                                                      <option>Inbound</option>
-                                                                      <option>Outbound</option>
-                                                                 </select>
-                                                            </div>
-                                                            <div class="col-sm-6">
-                                                                 <select name="status" class="form-control border-bottom">
-                                                                      <option>Planned</option>
-                                                                      <option>Held</option>
-                                                                      <option>Not Held</option>
-                                                                 </select>
-                                                            </div>
+                         <div class="col-sm-12 log_call d-none">
+
+                              <form method="post" class="log_form" action="">
+                                   <div class="row">
+                                        <div class="col-sm-8 mx-auto row">
+                                             <input type="hidden" id="lactivity_id" class="lactivity_id" name="lactivity_id" />
+                                             <input type="hidden" id="lead_id" name="lead_id" value="<?= $lead_id ?>" />
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Subject</label>
+                                                  <input type="text" name="subject" class="form-control border-bottom">
+                                             </div>
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Status</label>
+                                                  <div class="row">
+                                                       <div class="col-sm-6">
+                                                            <select name="direction" class="form-control border-bottom">
+                                                                 <option>Inbound</option>
+                                                                 <option>Outbound</option>
+                                                            </select>
+                                                       </div>
+                                                       <div class="col-sm-6">
+                                                            <select name="status" class="form-control border-bottom">
+                                                                 <option>Planned</option>
+                                                                 <option>Held</option>
+                                                                 <option>Not Held</option>
+                                                            </select>
                                                        </div>
                                                   </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Communication Preferred</label>
-                                                       <select name="communication" id="" class="form-control border-bottom">
-                                                            <option value="whatsapp">Whatsapp</option>
-                                                            <option value="email">Email</option>
-                                                            <option value="call">Call</option>
-                                                       </select>
-                                                  </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Lead Possibility</label>
-                                                       <select name="lead_possibility" id="" class="form-control border-bottom">
-                                                            <option value="qualified">Qualified</option>
-                                                            <option value="disqualified">Disqualified</option>
-                                                       </select>
-                                                  </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Start date</label>
-                                                       <input type="datetime-local" name="fromdate" min="<?= date("Y-m-d") . "T" . "00:00" ?>" id="fromdate" class="form-control border-bottom fromdate">
-                                                  </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Related to</label>
-                                                       <input type="text" name="related_to" class="form-control border-bottom" id="">
-                                                  </div>
-
-
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Reminder</label><br />
-                                                       <input type="checkbox" name="reminder" value="1" class="form-control-check"> Remind me
-                                                  </div>
-                                                  <div class="form-group col-sm-6">
-                                                       <label for="">Assigned to</label>
-                                                       <input type="text" name="assigned_to" class="form-control border-bottom">
-                                                  </div>
-                                                  <div class="form-group col-sm-12">
-                                                       <label for="">Description</label>
-                                                       <textarea name="description" class="form-control border-bottom" rows="5"></textarea>
-                                                  </div>
-                                                  <div class="form-group col-sm-12">
-                                                       <input type="submit" class="btn btn-success button" value="SAVE & PROCEED">
-                                                       <input type="button" class="btn btn-success log-continue" value="SAVE & CONTINUE">
-                                                       <input type="button" class="btn btn-success addLogClose" value="SAVE & CLOSE">
-                                                  </div>
                                              </div>
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Communication Preferred</label>
+                                                  <select name="communication" class="form-control border-bottom">
+                                                       <option value="whatsapp">Whatsapp</option>
+                                                       <option value="email">Email</option>
+                                                       <option value="call">Call</option>
+                                                  </select>
+                                             </div>
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Lead Possibility</label>
+                                                  <select name="lead_possibility" class="form-control border-bottom">
+                                                       <option value="qualified">Qualified</option>
+                                                       <option value="disqualified">Disqualified</option>
+                                                  </select>
+                                             </div>
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Start date</label>
+                                                  <input type="datetime-local" name="fromdate" min="<?= date("Y-m-d") . "T" . "00:00" ?>" id="fromdate" class="form-control border-bottom fromdate">
+                                             </div>
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Related to</label>
+                                                  <input type="text" name="related_to" class="form-control border-bottom">
+                                             </div>
+
+
+                                             <div class="form-group col-sm-6">
+                                                  <label for="">Reminder</label><br />
+                                                  <input type="checkbox" name="reminder" value="1" class="form-control-check"> Remind me
+                                             </div>
+
+                                             <?php if ($this->session->category == 'BA') : ?>
+                                                  <input type="hidden" name="assigned_to" value="<?= $this->session->userID ?>" class="form-control border-bottom">
                                         </div>
-                                   </form>
+                                   <?php else : ?>
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Assigned to</label>
+                                             <select class="form-control">
+                                                  <option value="">Select Agent</option>
+                                                  <?php foreach ($agents as $agent) : ?>
+                                                       <option value="<?= $agent["id"] ?>"><?= $agent["firstname"] ?></option>
+                                                  <?php endforeach; ?>
+                                             </select>
+                                        </div>
+                                   <?php endif; ?>
 
-                              </div>
-
-                              <div class="col-sm-12 activity-details">
-                                   <div class="row">
-                                        <table class="table table-bordered activity-table">
-                                             <thead>
-                                                  <tr>
-                                                       <th>Subject</th>
-                                                       <th>Status</th>
-                                                       <!-- <th>Contact</th> -->
-                                                       <th>Due Date</th>
-                                                       <th>Assigned User</th>
-                                                       <th>Actions</th>
-                                                  </tr>
-                                             </thead>
-                                             <tbody>
-
-                                             </tbody>
-                                        </table>
+                                   <div class="form-group col-sm-12">
+                                        <label for="">Description</label>
+                                        <textarea name="description" class="form-control border-bottom" rows="5"></textarea>
                                    </div>
+                                   <div class="form-group col-sm-12">
+                                        <input type="submit" class="btn btn-success button" value="SAVE & PROCEED">
+                                        <input type="button" class="btn btn-success log-continue" value="SAVE & CONTINUE">
+                                        <input type="button" class="btn btn-success addLogClose" value="SAVE & CLOSE">
+                                   </div>
+                                   </div>
+                         </div>
+                         </form>
+
+                    </div>
+
+                    <div class="col-sm-12 activity-details">
+                         <div class="row">
+                              <div class="table-responsive">
+                              <table class="table table-bordered activity-table">
+                                   <thead>
+                                        <tr>
+                                             <th>Subject</th>
+                                             <th>Status</th>
+                                             <!-- <th>Contact</th> -->
+                                             <th>Due Date</th>
+                                             <th>Assigned User</th>
+                                             <th>Actions</th>
+                                        </tr>
+                                   </thead>
+                                   <tbody>
+
+                                   </tbody>
+                              </table>
                               </div>
                          </div>
                     </div>
                </div>
-               <div class="tab-pane fade bg-white p-3" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
-
-               </div>
           </div>
      </div>
+     <div class="tab-pane fade bg-white" id="pills-history" role="tabpanel" aria-labelledby="pills-history-tab">
+
+     </div>
+</div>
+</div>
 </div>
 <div class="modal bd-example-modal-lg" id="edit-opportunity">
      <div class="modal-dialog modal-lg">
@@ -840,24 +873,24 @@
                                    <div class="col-sm-12 row">
                                         <div class="col-sm-6">
                                              <label for="">From</label>
-                                             <input type="email" name="from_address" id="" value="<?= $this->session->email ?>" readonly class="form-control border-bottom">
+                                             <input type="email" name="from_address" value="<?= $this->session->email ?>" readonly class="form-control border-bottom">
                                         </div>
                                         <div class="col-sm-6">
                                              <label for="">To</label>
-                                             <input type="email" name="to_address" id="" class="form-control border-bottom">
+                                             <input type="email" name="to_address" class="form-control border-bottom">
                                         </div>
                                         <div class="col-sm-6">
                                              <label for="">CC</label>
-                                             <input type="text" name="cc_address" id="" class="form-control border-bottom">
+                                             <input type="text" name="cc_address" class="form-control border-bottom">
                                         </div>
                                         <div class="col-sm-6">
                                              <label for="">BCC</label>
-                                             <input type="text" name="bcc_address" id="" class="form-control border-bottom">
+                                             <input type="text" name="bcc_address" class="form-control border-bottom">
                                         </div>
                                    </div>
                                    <div class="col-sm-12">
                                         <label>Subject</label>
-                                        <input type="text" name="subject" id="" class="form-control border-bottom">
+                                        <input type="text" name="subject" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-12">
                                         <label>Body</label>
@@ -941,7 +974,7 @@
                                         &nbsp;
                                    </div>
                                    <div class="form-group col-sm-6">
-                                        <input type="text" name="parent_name" id="mparent_name" value="<?= $this->session->name ?>" class="form-control border-bottom" id="">
+                                        <input type="text" name="parent_name" id="mparent_name" value="<?= $this->session->name ?>" class="form-control border-bottom">
                                    </div>
 
                                    <div class="form-group col-sm-6">
@@ -959,7 +992,8 @@
                                    </div>
                                    <div class="form-group col-sm-6">
                                         <label for="">Assigned to</label>
-                                        <input type="text" name="assigned_to" id="massigned" class="form-control border-bottom">
+                                        <input type="text" name="assigned_name" id="massigned" class="form-control border-bottom">
+                                        <input type="hidden" name="assigned_to" id="massigned_id" class="form-control border-bottom">
                                    </div>
                                    <div class="form-group col-sm-12">
                                         <label for="">Description</label>
@@ -1045,7 +1079,23 @@
                                    </div>
                                    <div class="form-group col-sm-6">
                                         <label for="">Related to</label>
-                                        <input type="text" name="related_to" class="form-control border-bottom" id="lrelated_to">
+                                        <!-- <input type="text" name="related_to" class="form-control border-bottom" > -->
+                                        <select class="form-control border-bottom" name="related_to" id="lrelated_to">
+                                             <option value="account">Account</option>
+                                             <option value="contact">Contact</option>
+                                             <option value="task">Task</option>
+                                             <option value="opportunity">Opportunity</option>
+                                             <option value="bug">Bug</option>
+                                             <option value="case">Case</option>
+                                             <option value="lead">Lead</option>
+                                             <option value="project">Project</option>
+                                             <option value="project_task">Project Task</option>
+                                             <option value="targe">Target</option>
+                                             <option value=contract"">Contract</option>
+                                             <option value="invoice">Invoice</option>
+                                             <option value="quote">Quote</option>
+                                             <option value="product">Product</option>
+                                        </select>
                                    </div>
 
 
@@ -1055,7 +1105,8 @@
                                    </div>
                                    <div class="form-group col-sm-6">
                                         <label for="">Assigned to</label>
-                                        <input type="text" name="assigned_to" id="lassigned" class="form-control border-bottom">
+                                        <input type="text" name="assigned_name" id="lassigned" class="form-control border-bottom">
+                                        <input type="hidden" name="assigned_to" id="lassigned_id" class="form-control border-bottom">
                                    </div>
                                    <div class="form-group col-sm-12">
                                         <label for="">Description</label>
@@ -1134,8 +1185,6 @@
      }
 </style>
 <script>
-
-
      ClassicEditor
           .create(document.querySelector('#editor'))
           .catch(error => {
@@ -1659,12 +1708,12 @@
                                    //     unit_price = unit_price.replace(',', '.')
                                    var html = '<tr><td style="width:5%"><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td style="width:45%"><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
                                    html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
-                                   html += '<td style="width:20%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
                                    //     html += '<td><input type="text" data-id="' + v["item_id"] + '"   name="selling_unit_price[]" value="' + selling_unit_price + '"  class="selling_unit_price border-bottom form-control selling_unit_price' + v["item_id"] + '"></td>';
                                    //     html += '<td><input type="text" data-id="' + v["item_id"] + '"   name="selling_price[]" value="' + selling_price + '"  class="selling_price border-bottom form-control selling_price_' + v["item_id"] + '"></td>';
                                    html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
                                    //     html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control tax_amount_' + v["item_id"] + '"></td>';
-                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
                                    html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
                                    html += '<input type="hidden" name="product_id" class="product_id" value="' + product_id + '"></td></tr>';
 
@@ -1728,10 +1777,10 @@
                               if (v["item_name"] && status["customer_item"]) {
                                    unit_price = (unit_price) ? unit_price : v["unit_price"];
                                    var html = '<tr style="width:5%"><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
-                                   html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="squantity border-bottom form-control squantity_' + v["item_id"] + '"></td>';
-                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="sunit_price[]"  class="sunit_price border-bottom form-control sunit_price_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="QTY" value="' + quantity + '" class="squantity border-bottom form-control squantity_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="sunit_price[]"  class="sunit_price border-bottom form-control sunit_price_' + v["item_id"] + '"></td>';
                                    html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="stax_rate[]"  class="stax_rate form-control stax_rate_' + v["item_id"] + '"></td>';
-                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="stotal_price[]" value="' + total_price + '"  class="stotal_price form-control stotal_price_' + v["item_id"] + '">';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="stotal_price[]" value="' + total_price + '"  class="stotal_price form-control stotal_price_' + v["item_id"] + '">';
                                    html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
                                    html += '<input type="hidden" name="service_id" class="service_id" value="' + service_id + '"></td></tr>';
                                    $(".service-table tbody").append(html);
@@ -2364,7 +2413,7 @@
                });
           })
 
-          $(document).on("keyup","#product-item-search", function() {
+          $(document).on("keyup", "#product-item-search", function() {
 
                var value = $(this).val().toLowerCase();
                console.log(value);
@@ -2507,7 +2556,7 @@
                          res = JSON.parse(res);
                          console.log(res);
                          $(".activity-table tbody").html('');
-                         $.each(res, function(k, v) {
+                         $.each(res["activity"], function(k, v) {
                               var meet = "";
                               var name = "";
                               var duedate = (v["start_date_time"]) ? v["start_date_time"] : v["end_date_time"];
@@ -2521,11 +2570,19 @@
                                    meet = '<i class="fa fa-paper-plane" style="font-size:18px;"></i> ';
                                    name = "updatecomposemail";
                               }
+                              var agentname = "";
+                              $.each(res["customer"], function(cid, cus) {
+
+                                   console.log()
+                                   if (v["assigned_to"] == cus["id"]) {
+                                        agentname = cus["firstname"];
+                                   }
+                              });
                               var html = '<tr><td>' + meet + v["subject"] + '</td>';
                               html += '<td>' + v["status"] + '</td>';
                               //     html += '<td>&nbsp;</td>';
                               html += '<td>' + duedate + '</td>';
-                              html += '<td>' + v["assigned_to"] + '</td>'
+                              html += '<td>' + agentname + '</td>'
                               html += '<td><button data-id="' + v["id"] + '" data-activity="' + name + '" class="btn btn-info edit-activity"><i class="fa fa-pencil"></i></button> ';
                               //     html += ' <button class="btn btn-primary"><i class="fa fa-times"></i></button>';
                               html += ' <a href="<?= base_url() ?>dashboard/lead/activity/delete/' + v["id"] + '" class="btn btn-danger"><i class="fa fa-trash"></i></a> </td></tr>';
@@ -2557,7 +2614,10 @@
                               $(".mfromdate").val(res[0]["start_date_time"]);
                               $(".mtodate").val(res[0]["end_date_time"]);
                               $("#mlocation").val(res[0]["location"]);
-                              $("#massigned").val(res[0]["assigned_to"]);
+
+                              $("#massigned").val(res["customer"]);
+                              $("#massigned_id").val(res[0]["assigned_to"]);
+
                               $("#mdescription").val(res[0]["description"]);
                               $("#mrelated_to option").each(function(v) {
                                    if ($(this).val() == res[0]["related_to"]) {
@@ -2590,7 +2650,10 @@
                               $("#lsubject").val(res[0]["subject"]);
                               $(".lfromdate").val(res[0]["start_date_time"]);
 
-                              $("#lassigned").val(res[0]["assigned_to"]);
+                              $("#lassigned").val(res["customer"]);
+
+                              $("#lassigned_id").val(res[0]["assigned_to"]);
+
                               $("#ldescription").val(res[0]["description"]);
 
                               $("#lcommunication option").each(function(v) {
@@ -2690,6 +2753,8 @@
                     var qid = $(this).data("qid");
                     if ($(this).data("order") == "available") {
                          $(".gorder").removeClass("d-none");
+                         $(".approve").removeClass("disabled");
+                         $(".gorder").attr("data-href", url + "?qid=" + qid);
                     } else {
                          $(".approve").removeClass("disabled");
                          $(".disapprove").removeClass("disabled");
@@ -2706,26 +2771,26 @@
                }
           });
 
-          $(document).on("click",".genorder",function(){
+          $(document).on("click", ".genorder", function() {
 
                var customer = $(this).data('customer');
 
                var href = $(this).data("href");
 
                $.ajax({
-                    method:"post",
-                    url:"<?= base_url()?>ajax/ordermail",
-                    data:{customer:customer},
-                    success:function(status)
-                    {
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/ordermail",
+                    data: {
+                         customer: customer
+                    },
+                    success: function(status) {
                          console.log(status);
-                         if(href)
-                         {
+                         if (href) {
                               window.location.href = href;
                          }
                     }
                })
-               
+
           });
 
           $(document).on("click", ".approve", function() {
@@ -2747,15 +2812,16 @@
 
           });
 
-          $(document).on("click","#sendmail",function(){
+          $(document).on("click", "#sendmail", function() {
                var customer = $(this).data("customer")
 
                $.ajax({
-                    method:"post",
-                    url:"<?= base_url()?>ajax/sendmail",
-                    data:{customer:customer},
-                    success:function(status)
-                    {
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/sendmail",
+                    data: {
+                         customer: customer
+                    },
+                    success: function(status) {
                          console.log(status);
                     }
                })

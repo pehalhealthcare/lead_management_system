@@ -10,13 +10,14 @@
         </button>
       </div>
     <?php endif; ?>
-
+      
 
     <div class="table-responsive bg-white">
       <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
       <table class="table table-bordered bg-white">
         <tr>
           <th>SI NO</th>
+          <th>LEAD ID</th>
           <th>ORDER NO</th>
           <th>PAYMENT</th>
           <th>DECISION</th>
@@ -27,6 +28,7 @@
         foreach ($orders as $order) : $i++ ?>
           <tr>
             <td><?= $i; ?></td>
+            <td><?= $order->lead_id ?></td>
             <td><?= $order->order_no; ?></td>
             <td><?= $order->payment ?></td>
             <td><?= $order->decision ?></td>

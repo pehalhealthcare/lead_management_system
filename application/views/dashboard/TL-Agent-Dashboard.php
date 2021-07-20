@@ -11,169 +11,51 @@
                </div>
                <div class="row">
 
-               <?php if($this->session->category=="BTL"):?>
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-success card-img-holder text-white">
-                              <div class="card-body">
-                                  
-                                   <h4 class="font-weight-normal mb-3">Opportunity <i class="mdi mdi-diamond mdi-24px float-right"></i>
-                                   </h4>
-                                   <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
-                                        <tr>
-                                             <tH>SI.NO</th>
-                                             <th>Opportunity Name</th>
-                                             <th>Account Name</th>
-                                             <th>Amount</th>
-                                             <th>Expected Close Date</th>
-                                             <th>Actions</th>
-                                        </tr>
-                                        <?php $i=0; foreach($dashoppo as $oppo): $i++; ?>
-                                        <?php if($i<=5):?>
-                                             <tr>
-                                                  <td><?= $i ?></td>
-                                                  <td><?= $oppo->opportunity_name?></td>
-                                                  <td><?= $oppo->opportunity_name?></td>
-                                                  <td><?= $oppo->expected_amount?></td>
-                                                  <td><?= $oppo->expected_date?></td>
-                                                  <td>
-                                                       <a href="" class="btn btn-warning">
-                                                            <i class="fa fa-pencil"></i>
-                                                       </a>
-                                                       <a href="" class="btn btn-primary">
-                                                            <i class="fa fa-eye"></i>
-                                                       </a>
-                                                  </td>
-                                             </tr>
-                                        <?php endif; endforeach;?>
-                                        </table>
-                                   </div>
 
 
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-danger card-img-holder text-white">
-                              <div class="card-body">
-                                   
-                                   <h4 class="font-weight-normal mb-3">Total Leads Punch <i class="mdi mdi-chart-line mdi-24px float-right"></i>
-                                   </h4>
-                                   <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
-                                        <tr>
-                                             <tH>Name</th>
-                                             <th>Agent Name</th>
-                                             <th>Office Phone</th>
-                                             <th>Email Address</th>
-                                             <th>Date Created</th>
-                                             <th>Actions</th>
-                                        </tr>
-                                        <?php $i=0; foreach($approved_leads as $leads): $i++; ?>
-                                        <?php if($i<=5):?>
-                                             <tr>
-                                                  <td><?= $leads["name"] ?></td>
-                                                  <td>&nbsp;</td>
-                                                  <td><?= $leads["mobile"]?></td>
-                                                  <td><?= $leads["mobile"]?></td>
-                                                  <td><?= $leads["created_at"]?></td>
-                                                  <td>
-                                                       <a href="" class="btn btn-warning">
-                                                            <i class="fa fa-pencil"></i>
-                                                       </a>
-                                                       <a href="" class="btn btn-primary">
-                                                            <i class="fa fa-eye"></i>
-                                                       </a>
-                                                  </td>
-                                             </tr>
-                                        <?php endif; endforeach;?>
-                                        </table>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-info card-img-holder text-white">
-                              <div class="card-body">
-                                   
-                                   <h4 class="font-weight-normal mb-3">My Accounts(Agents) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
-                                   </h4>
-                                   <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
-                                        <tr>
-                                             <tH>Name</th>
-                                             <th>Type</th>
-                                             <th>Website</th>
-                                             <th>Phone</th>
-                                             <th>Billing Country</th>
-                                             <th>Actions</th>
-                                        </tr>
-                                        <?php $i=0; foreach($agents as $agent): $i++; ?>
-                                        <?php if($i<=5):?>
-                                             <tr>
-                                                  <td><?= $agent["firstname"] ?></td>
-                                                  <td>Agent</td>
-                                                  <td>&nbsp;</td>
-                                                  <td><?= $agent["mobile"]?></td>
-                                                  <td>IN</td>
-                                                  <td>
-                                                       <a href="" class="btn btn-warning">
-                                                            <i class="fa fa-pencil"></i>
-                                                       </a>
-                                                       <a href="" class="btn btn-primary">
-                                                            <i class="fa fa-eye"></i>
-                                                       </a>
-                                                  </td>
-                                             </tr>
-                                        <?php endif; endforeach;?>
-                                        </table>
-                                   </div>
-                              </div>
-                         </div>
-                    </div>
-
-                    <?php else: ?>
 
 
 
                     <div class="col-md-6 stretch-card grid-margin">
                          <div class="card bg-gradient-primary card-img-holder text-white">
                               <div class="card-body">
-                                   
+
                                    <h4 class="font-weight-normal mb-3">Log Calls <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
                                         <table class="table table-bordred">
-                                        <tr>
-                                             <tH>Close</th>
-                                             <th>Subject </th>
-                                             <th>Related to</th>
-                                             <th>Date & Time</th>
-                                             <th>Accept</th>
-                                             <th>Status</th>
-                                             <th>Actions</th>
-                                        </tr>
-                                        <?php $i=0; foreach($logcalls as $logs): $i++; ?>
-                                        <?php if($i<=5):?>
                                              <tr>
-                                                  <td><big>&times;</big></td>
-                                                  <td><?= $logs["subject"] ?></td>
-                                                  <td><?= $logs["related_to"]?></td>
-                                                  <td><?= $logs["start_date_time"]?></td>
-                                                  <td>Accepted</td>
-                                                  <td><?= $logs["status"]?></td>
-                                                  <td>
-                                                       <a href="" class="btn btn-warning">
-                                                            <i class="fa fa-pencil"></i>
-                                                       </a>
-                                                       <a href="" class="btn btn-primary">
-                                                            <i class="fa fa-eye"></i>
-                                                       </a>
-                                                  </td>
+                                                  <tH>Close</th>
+                                                  <th>Subject </th>
+                                                  <th>Related to</th>
+                                                  <th>Date & Time</th>
+                                                  <th>Accept</th>
+                                                  <th>Status</th>
+                                                  <th>Actions</th>
                                              </tr>
-                                        <?php endif; endforeach;?>
+                                             <?php $i = 0;
+                                             foreach ($logcalls as $logs) : $i++; ?>
+                                                  <?php if ($i <= 5 && $logs["assigned_to"] == $this->session->userID) :
+
+                                                  ?>
+                                                       <tr>
+                                                            <td><big>&times;</big></td>
+                                                            <td><?= $logs["subject"] ?></td>
+                                                            <td><?= $logs["related_to"] ?></td>
+                                                            <td><?= $logs["start_date_time"] ?></td>
+                                                            <td>Accepted</td>
+                                                            <td><?= $logs["status"] ?></td>
+                                                            <td>
+                                                                 <a href="" class="btn btn-warning">
+                                                                      <i class="fa fa-pencil"></i>
+                                                                 </a>
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $logs["lead_id"] ?>" class="btn btn-primary">
+                                                                      <i class="fa fa-eye"></i>
+                                                                 </a>
+                                                            </td>
+                                                       </tr>
+                                             <?php endif;
+                                             endforeach; ?>
                                         </table>
                                    </div>
                               </div>
@@ -183,90 +65,561 @@
                     <div class="col-md-6 stretch-card grid-margin">
                          <div class="card bg-gradient-warning card-img-holder text-white">
                               <div class="card-body">
-                                  
+
                                    <h4 class="font-weight-normal mb-3">Meetings<i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                   <table class="table table-bordred">
-                                        <tr>
-                                             <tH>Close</th>
-                                             <th>Subject </th>
-                                             <th>Related to</th>
-                                             <th>Date & Time</th>
-                                             <th>Accept</th>
-                                             
-                                             <th>Actions</th>
-                                        </tr>
-                                        <?php $i=0; foreach($meetings as $meet): $i++; ?>
-                                        <?php if($i<=5):?>
+                                        <table class="table table-bordred">
                                              <tr>
-                                                  <td><big>&times;</big></td>
-                                                  <td><?= $meet["subject"] ?></td>
-                                                  <td><?= $meet["related_to"]?></td>
-                                                  <td><?= $meet["start_date_time"]?></td>
-                                                  <td>Accepted</td>
-                                                  
-                                                  <td>
-                                                       <a href="" class="btn btn-warning">
-                                                            <i class="fa fa-pencil"></i>
-                                                       </a>
-                                                       <a href="" class="btn btn-primary">
-                                                            <i class="fa fa-eye"></i>
-                                                       </a>
-                                                  </td>
+                                                  <tH>Close</th>
+                                                  <th>Subject </th>
+                                                  <th>Related to</th>
+                                                  <th>Date & Time</th>
+                                                  <th>Accept</th>
+
+                                                  <th>Actions</th>
                                              </tr>
-                                        <?php endif; endforeach;?>
+                                             <?php $i = 0;
+                                             foreach ($meetings as $meet) : $i++; ?>
+                                                  <?php if ($i <= 5 && $meet["assigned_to"] == $this->session->userID) : ?>
+                                                       <tr>
+                                                            <td><big>&times;</big></td>
+                                                            <td><?= $meet["subject"] ?></td>
+                                                            <td><?= $meet["related_to"] ?></td>
+                                                            <td><?= $meet["start_date_time"] ?></td>
+                                                            <td>Accepted</td>
+
+                                                            <td>
+                                                                 <a href="" class="btn btn-warning">
+                                                                      <i class="fa fa-pencil"></i>
+                                                                 </a>
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $meet["lead_id"] ?>" class="btn btn-primary">
+                                                                      <i class="fa fa-eye"></i>
+                                                                 </a>
+                                                            </td>
+                                                       </tr>
+                                             <?php endif;
+                                             endforeach; ?>
                                         </table>
                                    </div>
                               </div>
                          </div>
                     </div>
-                    <?php endif; ?>
-                    <!-- <div class="col-lg-6 grid-margin stretch-card">
-                         <div class="card">
+
+                    <div class="col-md-6 stretch-card grid-margin">
+                         <div class="card bg-gradient-success card-img-holder text-white">
                               <div class="card-body">
-                                   <div class="chartjs-size-monitor">
-                                        <div class="chartjs-size-monitor-expand">
-                                             <div class=""></div>
-                                        </div>
-                                        <div class="chartjs-size-monitor-shrink">
-                                             <div class=""></div>
-                                        </div>
-                                   </div>
-                                   <h4 class="card-title">Pie chart</h4>
-                                   <canvas id="pieChart" style="height: 343px; display: block; width: 686px;" width="686" height="343" class="chartjs-render-monitor"></canvas>
+
+                                   <h4 class="font-weight-normal mb-3">Total Quotations <i class="mdi mdi-diamond mdi-24px float-right"></i>
+                                   </h4>
+                                   <div class="table-responsive bg-white">
+                                        <table class="table table-bordred">
+                                             <tr>
+                                                  <tH>QUOTATION NUMBER</th>
+                                                  <th>LEAD ID</th>
+                                                  <th>CUSTOMER</th>
+                                                  <!-- <th></th> -->
+                                                  <th>Date & Time</th>
+
+                                                  <th>Actions</th>
+                                             </tr>
+                                             <?php $i = 0;
+                                             foreach ($quotations as $quotation) : $i++; ?>
+                                                  <?php if ($i <= 5) : ?>
+                                                       <tr>
+
+                                                            <td><?= $quotation->quotation_no ?></td>
+                                                            <td><?= $quotation->lead_id ?></td>
+                                                            <td><?= $quotation->customer_id ?></td>
+                                                            <td><?= $quotation->created_at ?></td>
+
+                                                            <td>
+                                                                 <a href="javascript:void(0)" data-id="<?= $quotation->quotation_id ?>" class="btn btn-warning updatemeeting">
+                                                                      <i class="fa fa-pencil"></i>
+                                                                 </a>
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $quotation->lead_id ?>" class="btn btn-primary">
+                                                                      <i class="fa fa-eye"></i>
+                                                                 </a>
+                                                            </td>
+                                                       </tr>
+                                             <?php endif;
+                                             endforeach; ?>
+                                        </table>
+                                   </div>  
                               </div>
                          </div>
                     </div>
 
-                    <div class="col-lg-6 grid-margin stretch-card">
-                         <div class="card">
+                    <div class="col-md-6 stretch-card grid-margin">
+                         <div class="card bg-gradient-info card-img-holder text-white">
                               <div class="card-body">
-                                   <div class="chartjs-size-monitor">
-                                        <div class="chartjs-size-monitor-expand">
-                                             <div class=""></div>
-                                        </div>
-                                        <div class="chartjs-size-monitor-shrink">
-                                             <div class=""></div>
-                                        </div>
+
+                                   <h4 class="font-weight-normal mb-3">Total Orders<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
+                                   </h4>
+                                   <div class="table-responsive bg-white">
+                                        <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
+                                        <table class="table table-bordered bg-white">
+                                             <tr>
+                                                  <th>SI NO</th>
+                                                  <th>LEAD ID</th>
+                                                  <th>ORDER NO</th>
+                                                  <th>PAYMENT</th>
+                                                  <th>DECISION</th>
+                                                  <th>APPROVED</th>
+                                                  <th>ACTIONS</th>
+                                             </tr>
+                                             <?php $i = 0;
+                                             foreach ($orders as $order) : $i++ ?>
+                                                  <tr>
+                                                       <td><?= $i; ?></td>
+                                                       <td><?= $order->lead_id ?></td>
+                                                       <td><?= $order->order_no; ?></td>
+                                                       <td><?= $order->payment ?></td>
+                                                       <td><?= $order->decision ?></td>
+                                                       <td><?= $order->decision ?></td>
+                                                       <td>
+                                                            <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
+                                                                 <i class="fa fa-eye"></i>
+                                                            </a>
+                                                            <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#orderdocform" class="btn btn-primary documents">
+                                                                 <i class="fa fa-file"></i>
+                                                            </button>
+                                                            <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#downloadbox" class="btn btn-primary downloads">
+                                                                 <i class="fa fa-download"></i>
+                                                            </button>
+                                                       </td>
+                                                  </tr>
+                                             <?php endforeach; ?>
+                                        </table>
                                    </div>
-                                   <h4 class="card-title">Line chart</h4>
-                                   <canvas id="lineChart" style="height: 343px; display: block; width: 686px;" width="686" height="343" class="chartjs-render-monitor"></canvas>
+
                               </div>
                          </div>
-                    </div> -->
-
+                    </div>
                </div>
+
+
 
           </div>
 
      </div>
+
+</div>
+</div>
+
+<div class="modal bd-example-modal-lg" id="edit-opportunity">
+     <div class="modal-dialog modal-md">
+          <div class="modal-content">
+
+               <!-- Modal Header -->
+               <div class="modal-header">
+                    <h4 class="modal-title">Edit Opportunity</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <form method="POST" action="" id="edit-oppo" class="oppo-form">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                         <div class="col-sm-12">
+                              <div class="row">
+
+
+                                   <div class="col-sm-12 row">
+                                        <input type="hidden" name="lead_id" value="" />
+                                        <input type="hidden" name="opportunity_id" id="opportunity_id">
+                                        <div class="col-sm-6 form-group">
+                                             <label for="">Opportunity Name</label>
+                                             <input type="text" name="opportunity_name" id="opportunity_name" class="form-control border-bottom">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                             <label for="">Expected Amount</label>
+                                             <input type="text" name="exp_amount" id="exp_amount" class="form-control border-bottom">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                             <label for="">Expected Date</label>
+                                             <input type="date" name="exp_date" id="exp_date" class="form-control border-bottom">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                             <label for="">Status</label>
+                                             <select name="status" id="status" class="form-control border-bottom">
+                                                  <option value="1">Active</option>
+                                                  <option value="2">Inactive</option>
+                                             </select>
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                             <label for="">Remarks</label>
+                                             <input type="text" name="remarks" id="remarks" class="form-control border-bottom">
+                                        </div>
+
+                                   </div>
+
+
+
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                         <div class="col-sm-12 row">
+                              <div class="col">
+                                   <input type="submit" value="UPDATE & CLOSE" class="btn btn-success">
+                                   <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                              </div>
+                         </div>
+
+                    </div>
+               </form>
+          </div>
+     </div>
+</div>
+
+<div class="modal bd-example-modal-lg" id="updatemeeting">
+     <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+               <!-- Modal Header -->
+               <div class="modal-header">
+                    <h4 class="modal-title">UPDATE MEETING</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <form class="edit_meeting_form" method="post" enctype="multipart/form-data">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                         <div class="col-sm-12">
+                              <div class="row">
+                                   <input type="hidden" id="meactivity_id" name="mactivity_id" />
+                                   <input type="hidden" id="lead_id" name="lead_id" value="" />
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Subject</label>
+                                        <input type="text" name="subject" id="msubject" class="form-control border-bottom">
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Status</label>
+                                        <select name="status" id="mstatus" class="form-control border-bottom">
+                                             <option>Planned</option>
+                                             <option>Held</option>
+                                             <option>Not Held</option>
+                                        </select>
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Start date</label>
+                                        <input type="text" id="startDate" name="fromdate" class="form-control border-bottom mfromdate">
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Related to</label>
+                                        <select class="form-control border-bottom" id="mrelated_to" name="related_to">
+                                             <option value="account">Account</option>
+                                             <option value="contact">Contact</option>
+                                             <option value="task">Task</option>
+                                             <option value="opportunity">Opportunity</option>
+                                             <option value="bug">Bug</option>
+                                             <option value="case">Case</option>
+                                             <option value="lead">Lead</option>
+                                             <option value="project">Project</option>
+                                             <option value="project_task">Project Task</option>
+                                             <option value="targe">Target</option>
+                                             <option value=contract"">Contract</option>
+                                             <option value="invoice">Invoice</option>
+                                             <option value="quote">Quote</option>
+                                             <option value="product">Product</option>
+                                        </select>
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        &nbsp;
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <input type="text" name="parent_name" id="mparent_name" value="<?= $this->session->name ?>" class="form-control border-bottom" id="">
+                                   </div>
+
+                                   <div class="form-group col-sm-6">
+                                        <label for="">End date</label>
+                                        <input type="text" name="todate" id="endDate" class="form-control border-bottom mtodate endDate">
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Location</label>
+                                        <input type="text" name="location" id="mlocation" class="form-control border-bottom">
+                                   </div>
+
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Reminder</label><br />
+                                        <input type="checkbox" name="reminder" id="mreminder" value="1" class="form-control-check"> Remind me
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Assigned to</label>
+                                        <input type="text" name="assigned_name" id="massigned" class="form-control border-bottom">
+                                        <input type="hidden" name="assigned_to" id="massigned_id" class="form-control border-bottom">
+                                   </div>
+                                   <div class="form-group col-sm-12">
+                                        <label for="">Description</label>
+                                        <textarea name="description" id="mdescription" class="form-control border-bottom" rows="5"></textarea>
+                                   </div>
+
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                         <div class="col-sm-12 row">
+                              <div class="col">
+                                   <div class="form-group col-sm-12">
+                                        <input type="submit" class="btn btn-success" value="UPDATE & CLOSE">
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+               </form>
+          </div>
+     </div>
+</div>
+
+<div class="modal bd-example-modal-lg" id="updatelogcall">
+     <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+
+               <!-- Modal Header -->
+               <div class="modal-header">
+                    <h4 class="modal-title">UPDATE LOG CALL</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+               </div>
+               <form class="editlogform" method="post" enctype="multipart/form-data">
+                    <!-- Modal body -->
+                    <div class="modal-body">
+                         <div class="col-sm-12">
+                              <div class="row">
+                                   <input type="hidden" id="logactivity_id" class="logactivity_id" name="lactivity_id" />
+                                   <input type="hidden" id="lead_id" name="lead_id" value="" />
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Subject</label>
+                                        <input type="text" name="subject" id="lsubject" class="form-control border-bottom">
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Status</label>
+                                        <div class="row">
+                                             <div class="col-sm-6">
+                                                  <select name="direction" id="ldirection" class="form-control border-bottom">
+                                                       <option>Inbound</option>
+                                                       <option>Outbound</option>
+                                                  </select>
+                                             </div>
+                                             <div class="col-sm-6">
+                                                  <select name="status" id="lstatus" class="form-control border-bottom">
+                                                       <option>Planned</option>
+                                                       <option>Held</option>
+                                                       <option>Not Held</option>
+                                                  </select>
+                                             </div>
+                                        </div>
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Communication Preferred</label>
+                                        <select name="communication" id="lcommunication" class="form-control border-bottom">
+                                             <option value="whatsapp">Whatsapp</option>
+                                             <option value="email">Email</option>
+                                             <option value="call">Call</option>
+                                        </select>
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Lead Possibility</label>
+                                        <select name="lead_possibility" id="lead_possibility" class="form-control border-bottom">
+                                             <option value="qualified">Qualified</option>
+                                             <option value="disqualified">Disqualified</option>
+                                        </select>
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Start date</label>
+                                        <input type="text" name="fromdate" id="fromdate" class="form-control border-bottom lfromdate">
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Related to</label>
+                                        <input type="text" name="related_to" class="form-control border-bottom" id="lrelated_to">
+                                   </div>
+
+
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Reminder</label><br />
+                                        <input type="checkbox" name="reminder" id="lreminder" value="1" class="form-control-check"> Remind me
+                                   </div>
+                                   <div class="form-group col-sm-6">
+                                        <label for="">Assigned to</label>
+                                        <input type="text" name="assigned_name" id="lassigned" class="form-control border-bottom">
+                                        <input type="hidden" name="assigned_to" id="lassigned_id" class="form-control border-bottom">
+                                   </div>
+                                   <div class="form-group col-sm-12">
+                                        <label for="">Description</label>
+                                        <textarea name="description" id="ldescription" class="form-control border-bottom" rows="5"></textarea>
+                                   </div>
+
+                              </div>
+                         </div>
+                    </div>
+                    <!-- Modal footer -->
+                    <div class="modal-footer">
+                         <div class="col-sm-12 row">
+                              <div class="col">
+                                   <div class="form-group col-sm-12">
+                                        <input type="submit" class="btn btn-success" value="UPDATE & CLOSE">
+                                   </div>
+                              </div>
+                         </div>
+
+                    </div>
+               </form>
+          </div>
+     </div>
 </div>
 
 <script>
-     localStorage.clear();
-     localStorage.setItem("p1", <?= count($quotation); ?>)
-     localStorage.setItem("p2", <?= count($approved_leads); ?>)
-     localStorage.setItem("p3", <?= count($disapproved_leads) ?>)
-     localStorage.setItem("p4", <?= count($complete_leads) ?>)
+     $(document).ready(function() {
+          $(document).on("click", ".edit-oppo", function() {
+               $("#edit-opportunity").modal("show");
+
+               var name = $(this).data("name");
+               var amount = $(this).data("amount");
+               var remarks = $(this).data("remarks");
+               var odate = $(this).data("date");
+               var status = $(this).data("status");
+               var id = $(this).data("id");
+               $("#opportunity_name").val(name);
+               $("#exp_amount").val(amount);
+               $("#remarks").val(remarks);
+               $("#exp_date").val(odate);
+               $("#opportunity_id").val(id)
+               $("#staus").val(status);
+          });
+
+          $(document).on("click", ".updatemeeting", function() {
+               $("#updatemeeting").modal("show");
+
+               var activity_id = $(this).data("id");
+
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/getmeeting",
+                    data: {
+                         activity_id: activity_id
+                    },
+                    success: function(res) {
+                         res = JSON.parse(res);
+                         $("#meactivity_id").val(res[0]["id"]);
+                         $("#msubject").val(res[0]["subject"]);
+                         $(".mfromdate").val(res[0]["start_date_time"]);
+                         $(".mtodate").val(res[0]["end_date_time"]);
+                         $("#mlocation").val(res[0]["location"]);
+                         $("#massigned").val(res["customer"]);
+                         $("#massigned_id").val(res[0]["assigned_to"]);
+                         $("#mdescription").val(res[0]["description"]);
+                         $("#mrelated_to option").each(function(v) {
+                              if ($(this).val() == res[0]["related_to"]) {
+                                   $(this).attr("selected", true);
+                              }
+                              // val(res[0][""])
+                         });
+                         $("#mstatus option").each(function(v) {
+                              if ($(this).val() == res[0]["status"]) {
+                                   $(this).attr("selected", true);
+                              }
+                         });
+                         if ($("#mreminder").val() == res[0]["reminder"]) {
+                              $("#mreminder").prop("checked", true);
+                         }
+                         $("#" + activity).modal("show");
+                    }
+               })
+          });
+
+          $(document).on("click", ".updatelogcall", function() {
+               $("#updatelogcall").modal("show");
+
+               var activity_id = $(this).data("id");
+
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/getlogcall",
+                    data: {
+                         activity_id: activity_id
+                    },
+                    success: function(res) {
+                         res = JSON.parse(res);
+                         $("#logactivity_id").val(res[0]["id"]);
+                         $("#lsubject").val(res[0]["subject"]);
+                         $(".lfromdate").val(res[0]["start_date_time"]);
+
+                         $("#lassigned").val(res["customer"]);
+                         $("#lassigned_id").val(res[0]["assigned_to"]);
+
+                         $("#ldescription").val(res[0]["description"]);
+
+                         $("#lcommunication option").each(function(v) {
+                              if ($(this).val() == res[0]["communication_preferred"]) {
+                                   $(this).attr("selected", true);
+                              }
+                         });
+
+                         $("#lead_possibility option").each(function(v) {
+                              if ($(this).val() == res[0]["lead_possibility"]) {
+                                   $(this).attr("selected", true);
+                              }
+                         });
+
+                         $("#ldirection option").each(function(v) {
+                              if ($(this).val() == res[0]["direction"]) {
+                                   $(this).attr("selected", true);
+                              }
+                              // val(res[0][""])
+                         });
+
+
+
+                         $("#lrelated_to option").each(function(v) {
+                              if ($(this).val() == res[0]["related_to"]) {
+                                   $(this).attr("selected", true);
+                              }
+                              // val(res[0][""])
+                         });
+                         $("#lstatus option").each(function(v) {
+                              if ($(this).val() == res[0]["status"]) {
+                                   $(this).attr("selected", true);
+                              }
+                         });
+
+                         if ($("#lreminder").val() == res[0]["reminder"]) {
+                              $("#lreminder").prop("checked", true);
+                         }
+                         $("#" + activity).modal("show");
+                    }
+               })
+          });
+
+          $(document).on("submit", ".editlogform", function(e) {
+               e.preventDefault();
+               var formdata = $(this).serializeArray();
+               // console.log(formdata);
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/updatelogcall",
+                    data: formdata,
+                    success: function(res) {
+                         $(".updatelogcall").modal("hide");
+                         location.reload();
+                    }
+               })
+          });
+
+          $(document).on("submit", ".edit_meeting_form", function(e) {
+               e.preventDefault();
+               var formdata = $(this).serializeArray();
+               // console.log(formdata);
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/updatemeeting",
+                    data: formdata,
+                    success: function(res) {
+                         $(".updatemeeting").modal("hide");
+                         location.reload();
+                    }
+               })
+          });
+
+
+     })
 </script>

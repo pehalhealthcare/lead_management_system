@@ -12,7 +12,7 @@
       <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/css/vendor.bundle.base.css">
       <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
 
-      <link rel="stylesheet" href="<?= base_url() ?>assets/css/simplePagination.css">
+   
 
 
       <title><?= $title ?></title>

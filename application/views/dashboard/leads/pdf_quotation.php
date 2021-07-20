@@ -199,12 +199,20 @@ th
             <td class="text-small">Item Total Tax Amount</td>
             <td class="text-small">Item Price (With Tax)</td>
           </tr>
-          <?php $i=0; $item_name=""; $taxtotal=0; $totalamount=0; foreach($customer_item as $pdfdata): $i++; ?>
+          <?php $i=0; $taxtotal=0; $totalamount=0; foreach($customer_item as $pdfdata): $item_name="";  $i++; ?>
 
           <?php foreach($product_item as $product): 
           
-          if($product->item_id==$pdfdata["item_id"]):
+          if($product->item_id==$pdfdata["item_id"] && $pdfdata["item_type"]=="product"):
             $item_name = $product->item_name;
+          endif;
+          
+          endforeach;?>
+
+        <?php foreach($service_item as $service): 
+          
+          if($service->item_id==$pdfdata["item_id"] && $pdfdata["item_type"]=="service"):
+            $item_name = $service->item_name;
           endif;
           
           endforeach;?>

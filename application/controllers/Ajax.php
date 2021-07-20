@@ -738,7 +738,9 @@ class Ajax extends CI_Controller
 
      public function getActivity()
      {
-          $data = $this->common_model->viewwheredata(array("lead_id" => $this->input->post("lead_id"), "is_active" => 1), "mk_activity");
+          $data["activity"] = $this->common_model->viewwheredata(array("lead_id" => $this->input->post("lead_id"), "is_active" => 1), "mk_activity");
+
+          $data["customer"] = $this->common_model->viewwheredata(array("category"=>"BA"),"mk_registration_table");
 
           echo json_encode($data);
      }
@@ -748,12 +750,24 @@ class Ajax extends CI_Controller
      {
           $data = $this->common_model->viewwheredata(array("id" => $this->input->post("activity_id")), "mk_activity");
 
+          $customer = $this->common_model->viewwheredata(array("id"=>$data[0]["assigned_to"] ),"mk_registration_table");
+
+          // echo $this->db->last_query();
+
+          $data["customer"] = $customer[0]["firstname"];
+
           echo json_encode($data);
      }
 
      public function getLogCall()
      {
           $data = $this->common_model->viewwheredata(array("id" => $this->input->post("activity_id")), "mk_activity");
+
+          $customer = $this->common_model->viewwheredata(array("id"=>$data[0]["assigned_to"] ),"mk_registration_table");
+
+          // echo $this->db->last_query();
+
+          $data["customer"] = $customer[0]["firstname"];
 
           echo json_encode($data);
      }
@@ -876,7 +890,11 @@ class Ajax extends CI_Controller
 
           // print_r($datacheck); die();
 
-          $customer = "";
+          $quotation = $this->common_model->viewwheredata(array("lead_id" => $lead_id, "quotation_id" => $this->input->post("qid")), "mk_quotation");
+
+          $customer = $this->common_model->viewwheredata(array("customer_id" => $quotation[0]["customer_id"]), "mk_customer");
+
+          // print_r($customer);
 
           if ($datacheck) {
                $data["modified_by"] = $this->session->userID;
@@ -898,13 +916,13 @@ class Ajax extends CI_Controller
 
                     $this->common_model->updatedata("mk_lead",$leadupdate,$leadwhere);
 
-                    if ($this->email_template_1($this->input->post("email"))) {
-                         $sms = $this->sms_template_1($customer, $this->input->post("mobile"));
-                         echo $sms;
-                         echo json_encode(array("message" => "Data and mail sent successfully"));
-                    } else {
-                         echo json_encode(array("message" => "Mail not sent"));
-                    }
+                    // if ($this->email_template_1($customer[0]["email"])) {
+                    //      $sms = $this->sms_template_1($customer[0]["mobile"], $this->input->post("mobile"));
+                    //      echo $sms;
+                    //      echo json_encode(array("message" => "Data and mail sent successfully"));
+                    // } else {
+                    //      echo json_encode(array("message" => "Mail not sent"));
+                    // }
                     // return redirect("/dashboard/leads/assign/".$lead_id);
                }
           } else {
@@ -922,16 +940,16 @@ class Ajax extends CI_Controller
 
                     $this->common_model->updatedata("mk_lead",$leadupdate,$leadwhere);
 
-                    if($this->email_template_1($this->input->post("email")))
-                    {
-                         $sms = $this->sms_template_1($customer, $this->input->post("mobile"));
-                         echo $sms;
-                         echo json_encode(array("message" => "Data and mail sent successfully"));
-                    }
-                    else
-                    {
-                         echo json_encode(array("message" => "Mail not sent"));
-                    }
+                    // if($this->email_template_1($customer[0]["email"]))
+                    // {
+                    //      $sms = $this->sms_template_1($customer[0]["mobile"], $this->input->post("mobile"));
+                    //      echo $sms;
+                    //      echo json_encode(array("message" => "Data and mail sent successfully"));
+                    // }
+                    // else
+                    // {
+                    //      echo json_encode(array("message" => "Mail not sent"));
+                    // }
                     // $this->session->set_flashdata('message_name', 'Order Data Added');
                     // return redirect("/dashboard/leads/assign/".$lead_id);
                }
@@ -1071,7 +1089,7 @@ class Ajax extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <support@pehalhealthcare.com>' . "\r\n";
+          $headers .= 'From: <manoj@medikart.co.in>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {
@@ -1097,21 +1115,26 @@ class Ajax extends CI_Controller
                <meta charset="UTF-8">
                <meta http-equiv="X-UA-Compatible" content="IE=edge">
                <meta name="viewport" content="width=device-width, initial-scale=1.0">
-               <title>Query Reply</title>
+               <title>cofirmation Email</title>
           </head>
           
           <body>
-               <h5></h5>Dear Customer
+               <h5>Dear Customer</h5>
                <p>
-                    Thank you for contacting Medikart Healthcare for enquiring the product.
+                    We would like to thank you for your order and giving us an opportunity to serve you.
                </p>
                <p>
-                    As per our call record, your query has been resolved and solution has been provided by our representative.
+                    As per our record, your order would be dispatched soon and the intimation of the same would be sent to you, either by call or Email.
                </p>
                <p>
-                    In case of further details, resolution of your queries, you may write us at info@medikart.co.in or call
-                    At +919811957360 Or WhatsApp Chat on the same No. - We would reply and resolve your queries within 48 hours.
-          
+                    Our team is working on the reconciliation of Payments, against this order, you will soon hear from us.
+               </p>
+               <p>
+                    In case of further details, resolution of your queries, You may write us at ravi@medikart.co.in Or Call at +91-7290033617 Or
+                     WhatsApp Chat on the same No.- we would reply and resolve your queries at the earliest
+               </p>
+               <p>
+                    For Escalation: Email at varun.vaidya@medikart.co.in
                </p>
                <p>
                     Regards
@@ -1119,9 +1142,6 @@ class Ajax extends CI_Controller
                <p>
                     MediKart
                </p>
-          
-          
-          
           </body>
           
           </html>
@@ -1132,7 +1152,7 @@ class Ajax extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <support@pehalhealthcare.com>' . "\r\n";
+          $headers .= 'From: <manoj@medikart.co.in>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {
@@ -1192,7 +1212,7 @@ class Ajax extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <support@pehalhealthcare.com>' . "\r\n";
+          $headers .= 'From: <manoj@medikart.co.in>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {
@@ -1204,9 +1224,9 @@ class Ajax extends CI_Controller
 
      public function sms_template_1($customer = "", $mobile = "", $order = "")
      {
-          $order = "%20for%20your%20order";
+          // $order = "Dear {#var#} Thanks for contacting Medikart, and enquiry for Medical Devices/ Service . Our representative has spoken to you ,hope the query resolved and got the appropriate reply. If not ,you can email at info@medikart.co.in";
 
-          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20%7B" . $customer . "%20%7D%20Thanks%20for%20your%20%20for%20%20%" . $order . "%7D%20Your%20order%20has%20been%20punched%20in%20our%20%20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to%20%20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20%2C%20%20Please%20email%20at%20.%20customercare%40medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
+          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20".$customer."%20Thanks%20for%20your%20order%20for%20".$order."%20Your%20order%20has%20been%20punched%20in%20our%20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to%20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20,%20Please%20email%20at%20.%20customercare@medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
 
           // echo $url;
 
@@ -1232,7 +1252,7 @@ class Ajax extends CI_Controller
      public function sms_template_2($customer = "", $order = "", $mobile = "")
      {
 
-          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20%7B" . $customer . "%20%7D%20Thanks%20for%20your%20%20for%20%20%" . $order . "%7D%20Your%20order%20has%20been%20punched%20in%20our%20%20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to%20%20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20%2C%20%20Please%20email%20at%20.%20customercare%40medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
+          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20".$customer."%20Thanks%20for%20contacting%20Medikart,%20and%20enquiry%20for%20Medical%20Devices/%20Service%20.%20Our%20representative%20has%20spoken%20to%20you%20,hope%20the%20query%20resolved%20and%20got%20the%20appropriate%20reply.%20If%20not%20,you%20can%20email%20at%20info@medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
 
           // echo $url;
 

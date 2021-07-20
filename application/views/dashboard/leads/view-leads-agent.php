@@ -24,8 +24,8 @@
           <th>LEAD SOURCE</th>
           <th>ASSIGNEE</th>
           <th>LEAD IMAGE</th>
-          <!-- <th>STATUS</th>
-    <th>REASONS</th> -->
+          <th>STATUS</th>
+        <!-- <th>REASONS</th> -->
           <th>ACTIONS</th>
         </tr>
         <?php $i = 0;
@@ -37,8 +37,8 @@
             <td><?php echo $this->user_model->username($lead["assigned_to"]); //
                 ?></td>
             <td><img src="<?= base_url(); ?>uploads/lead_image/<?= ($lead["lead_image"]) ? $lead["lead_image"] : "no-image.jpg" ?>" style="width:50px" /></td>
-            <!-- <td><?= $lead->status ?></td>
-      <td><?= $lead->reasons ?></td> -->
+           <td><?= $lead["journey"] ?></td>
+     <!--   <td><?= $lead->reasons ?></td> -->
             <td>
               <a href="<?= base_url() ?>dashboard/leads/assign/<?= $lead["id"] ?>" title="Assign Leads" class="btn btn-primary">
                 <i class="fa fa-user"></i></a>

@@ -332,7 +332,8 @@
 
 
         </table>
-        <?php if($this->session->category!="OA"):?>
+      
+        
         <form method="post" action="<?= base_url()?>dashboard/order/submit" enctype="multipart/form-data">
           <div class="col-sm-12">
             <div class="row">
@@ -363,9 +364,10 @@
                   <input type="text" name="decision" class="form-control" />
                   <input type="hidden" name="lead_id" value="<?= $lead[0]["id"]?>">
                   <input type="hidden" name="qid" value="<?= $qid ?>">
-                  <input type="hidden" name="agent" value="<?= $lead[0]["assigned_to"]?>">
-                  <input type="hidden" name="teamleader" value="<?= $lead[0]["assigned_by"]?>">
-                  
+                  <?php if($order): ?>
+                  <input type="hidden" name="agent" value="<?= $order[0]["agent_id"]?>">
+                  <input type="hidden" name="teamleader" value="<?= $order[0]["created_by"]?>">
+                  <?php endif;?>
                 </div>
               </div>
               <div class="col-sm-12 col-md-4">
@@ -376,7 +378,7 @@
             </div>
           </div>
         </form>
-        <?php endif; ?>
+       
       </div>
     </div>
   </div>

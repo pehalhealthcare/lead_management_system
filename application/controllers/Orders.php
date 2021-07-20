@@ -40,6 +40,19 @@ class Orders extends CI_Controller
                $data["title"] = "Dashboard | View orders";
 
                $data["orders"] = $this->common_model->viewdata("mk_order","multiple");
+
+               $data["orders_assign"] = $this->common_model->viewdata("mk_order_assign","multiple");
+
+               $data["agents"] = $this->common_model->viewdata("mk_registration_table","multiple");
+
+               $data["cus_items"] = $this->common_model->viewdata("mk_customer_item","multiple");
+
+               $data["cus_items"] = $this->common_model->viewdata("mk_customer_item","multiple");
+
+               $data["service_items"] = $this->common_model->viewdata("mk_master_service_item","multiple");
+
+               $data["product_items"] = $this->common_model->viewdata("mk_master_product_item","multiple");
+               
                $this->load->view("inc/header", $data);
                $this->load->view("dashboard/order/view-order", $data);
                $this->load->view("inc/footer", $data);
@@ -78,12 +91,14 @@ class Orders extends CI_Controller
               );
               $cond = array(
                    "order_id"=>$this->input->post("order_id"),
-                    "agent_id"=>$this->input->post("agent_id"));
+                   "lead_id"=>$this->input->post("lead_id")
+               );
 
               $datacheck = $this->common_model->viewwheredata($cond,"mk_order_assign");
               if($datacheck)
               {
-                    $this->session->set_flashdata("message","Data already exists");
+                   $this->common_model->updatedata("mk_order_assign",$insertdata,$cond);
+                    $this->session->set_flashdata("message","Data updated successfully");
                     return redirect("/dashboard/operation/order");
               }
               else
@@ -97,7 +112,7 @@ class Orders extends CI_Controller
                          "created_at"=>date("Y-m-d h:i:s")
                     );
 
-                    $this->Common_model->adddata("mk_lead_history",$historydata);
+                    $this->common_model->adddata("mk_lead_history",$historydata);
 
                     $this->session->set_flashdata("message","Data Saved Successfully");
                     return redirect("/dashboard/operation/order");

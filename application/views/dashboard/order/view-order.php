@@ -14,23 +14,70 @@
 
     <div class="table-responsive bg-white">
       <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
+      <div class="table-responsive">
       <table class="table table-bordered bg-white">
         <tr>
           <th>SI NO</th>
+          <th>LEAD ID</th>
+          <th>AGENT NAME</th>
+          <th>ITEM NAME</th>
           <th>ORDER NO</th>
           <th>PAYMENT</th>
           <th>DECISION</th>
           <th>APPROVED</th>
+          <th>STATUS</th>
           <th>ACTIONS</th>
         </tr>
         <?php $i = 0;
-        foreach ($orders as $order) : $i++ ?>
-          <tr class="<?= ($order->payment=="yes") ? "alert alert-success" : "alert alert-danger" ?>">
+        foreach ($orders as $order) : $i++;
+          $agent_name=$agent=$s_item_name=$p_item_name=$product_item_id=$service_item_id =$assign_date="";
+          
+          foreach ($orders_assign as $order_assign) :
+            if ($order_assign->order_id == $order->order_id) :
+              $agent = $order_assign->agent_id;
+              $assign_date = $order_assign->created_at;
+            endif;
+          endforeach;
+
+          foreach ($agents as $agent_list) :
+            if ($agent == $agent_list->id) :
+              $agent_name = $agent_list->firstname;
+            endif;
+          endforeach;
+
+          foreach($cus_items as $cus_item):
+            if($cus_item->lead_id == $order->lead_id && $cus_item->item_type=="product"):
+                $product_item_id = $cus_item->item_id;
+            endif;
+            if($cus_item->lead_id == $order->lead_id && $cus_item->item_type=="service"):
+              $service_item_id = $cus_item->item_id;
+          endif;
+          endforeach;
+
+          foreach($service_items as $service_item):
+            if($service_item_id == $service_item->item_id):
+              $s_item_name = $service_item->item_name;
+            endif;
+          endforeach;
+
+          foreach($product_items as $product_item):
+            if($product_item_id == $product_item->item_id):
+              $p_item_name = $product_item->item_name;
+            endif;
+          endforeach;
+        ?>
+
+
+          <tr class="<?= ($order->payment == "yes") ? "alert alert-success" : "alert alert-danger" ?>">
             <td><?= $i; ?></td>
+            <td><?= $order->lead_id ?></td>
+            <td class="text-capitalize"><?= $agent_name?></td>
+            <td><?= ($s_item_name) ? $s_item_name : $p_item_name ?></td>
             <td><?= $order->order_no; ?></td>
             <td><?= $order->payment ?></td>
             <td><?= $order->decision ?></td>
-            <td><?= $order->decision ?></td>
+            <td><?= $order->approved ?></td>
+            <td><?= $assign_date?></td>
             <td>
               <a href="<?= base_url() ?>dashboard/operation/order/assign/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
                 <i class="fa fa-user"></i></a>
@@ -47,6 +94,7 @@
           </tr>
         <?php endforeach; ?>
       </table>
+      </div>
     </div>
 
   </div>
@@ -99,7 +147,7 @@
             <label>Upload Invoice 2</label>
             <input type="file" name="userfile2" class="form-control" />
             <span class="text-danger"> * File size less than 2MB</span>
-            
+
           </div>
         </div>
 
@@ -219,11 +267,11 @@
         success: function(status) {
           $.each(JSON.parse(status), function(k, v) {
             var html = "<div>";
-            html +="<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document1"] + "'>" + v["document1"] + "</a></p>";
-            html +="<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document2"] + "'>" + v["document2"] + "</a></p>";
-            html +="</div>"
+            html += "<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document1"] + "'>" + v["document1"] + "</a></p>";
+            html += "<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document2"] + "'>" + v["document2"] + "</a></p>";
+            html += "</div>"
             $(".doc-download").append(html);
-            
+
           });
         }
       })

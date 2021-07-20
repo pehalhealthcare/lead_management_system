@@ -1,0 +1,17 @@
+VaVmMH#&@385
+
+
+ upCase() {
+    this.name = "SUHas";
+    // "suhAS"
+    var splidata = this.name.split('');
+    for (let i = 0; i < splidata.length; i++) {
+      if (splidata[i] == splidata[i].toUpperCase()){
+        splidata[i] = splidata[i].toLowerCase();
+      } else {
+        splidata[i] = splidata[i].toUpperCase();
+      }
+    }
+    console.log("0000000000000001111111", splidata);
+    console.log("000000000000000", splidata.join(""));
+  }

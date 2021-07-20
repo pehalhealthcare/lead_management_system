@@ -109,11 +109,11 @@
                     </div>
                     <div class="form-group bordered">
                          <label for="">Email</label>
-                         <input type="text" name="email" id="" class="form-control" placeholder="Enter Your Email">
+                         <input type="email" name="email" id="" class="form-control" placeholder="Enter Your Email">
                     </div>
                     <div class="form-group ">
                          <label for="">Mobile</label>
-                         <input type="text" name="mobile" id="" placeholder="Enter Your Mobile" class="form-control">
+                         <input type="mobile" name="mobile" id="" minlength="10" placeholder="Enter Your Mobile" class="form-control">
                     </div>
 
 
