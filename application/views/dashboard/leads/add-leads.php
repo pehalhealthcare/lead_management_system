@@ -113,7 +113,7 @@
                     </div>
                     <div class="form-group ">
                          <label for="">Mobile</label>
-                         <input type="mobile" name="mobile" id="" minlength="10" placeholder="Enter Your Mobile" class="form-control">
+                         <input type="number" name="mobile" id="" minlength="10" placeholder="Enter Your Mobile" class="form-control">
                     </div>
 
 

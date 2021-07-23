@@ -34,21 +34,52 @@
                                    </li>
                                    <ul class="list-group  customer-list">
                                         <?php $active = "";
+                                        $customer_name = "";
+                                        $customer_email = "";
+                                        $customer_mobile = "";
+                                        $customer_address1 = "";
+                                        $customer_address2 = "";
+                                        $customer_address3 = "";
+                                        $customer_city = "";
+                                        $customer_state = "";
+                                        $customer_zip = "";
+                                        $customer_country = "";
+                                        $customer_alt_mobile = "";
                                         foreach ($customers as $customer) : ?>
                                              <?php if ($lead_customer) : ?>
-                                                  <?php if ($lead_customer[0]["customer_id"] == $customer->customer_id) : ?>
+                                                  <?php if ($lead_customer[0]["customer_id"] == $customer->customer_id) :
+                                                       $customer_name = $customer->name;
+                                                       $customer_email = $customer->email;
+                                                       $customer_mobile = $customer->mobile;
+                                                       $customer_alt_mobile = $customer->alternate_mobile;
+                                                  ?>
                                                        <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
-                                                  <?php else : ?>
-                                                       <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
+                                                  <?php elseif($lead_customer[0]["customer_id"] != $customer->customer_id): ?>
+                                                       <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
                                                   <?php endif; ?>
-
-
                                              <?php else : ?>
                                                   <li class="list-group-item customers" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
                                              <?php endif; ?>
 
 
                                         <?php endforeach; ?>
+                                        <?php foreach ($cust_address as $cus_address) :
+
+                                             if ($lead_customer) :
+                                                  if ($lead_customer[0]["customer_id"] == $cus_address->customer_id) :
+                                                       $customer_address1 = $cus_address->address_1;
+                                                       $customer_address2 = $cus_address->address_2;
+                                                       $customer_address3 = $cus_address->address_3;
+                                                       $customer_city = $cus_address->city;
+                                                       $customer_state = $cus_address->state;
+                                                       $customer_zip = $cus_address->zip;
+                                                       $customer_country = $cus_address->country;
+                                                  endif;
+                                             endif;
+
+                                        endforeach; ?>
+
+
                                    </ul>
                               </ul>
                          </div>
@@ -61,7 +92,9 @@
                                         <input type="hidden" name="customer_id" id="customer_id">
 
                                         <div class="form-group col-sm-12">
+                                             <?php
 
+                                             ?>
                                              <?php if ($leads[0]["lead_image"]) : ?>
                                                   <div class="col-sm-12 text-right">
                                                        <label>Lead Image</label><br>
@@ -72,15 +105,15 @@
                                                   <div class="row">
                                                        <div class="form-group col-sm-6">
                                                             <label for="">Name <span class="text-danger">*</span></label>
-                                                            <input type="text" name="lname" value="<?= $leads[0]["name"]; ?>" placeholder="" class="form-control  border">
+                                                            <input type="text" name="lname" value="<?= ($customer_name) ? $customer_name : $leads[0]["name"] ?>" placeholder="" class="form-control  border">
                                                        </div>
                                                        <div class="form-group col-sm-6">
                                                             <label for="">Mobile <span class="text-danger">*</span></label>
-                                                            <input type="text" name="lmobile" minlength="10" maxlength="20" value="<?= $leads[0]["mobile"]; ?>" placeholder="" class="form-control  border">
+                                                            <input type="text" name="lmobile" minlength="10" maxlength="20" value="<?= ($customer_mobile) ? $customer_mobile : $leads[0]["mobile"] ?>" placeholder="" class="form-control  border">
                                                        </div>
                                                        <div class="form-group col-sm-6">
                                                             <label for="">Email <span class="text-danger">*</span></label>
-                                                            <input type="text" name="lemail" value="<?= $leads[0]["email"]; ?>" placeholder="" class="form-control  border">
+                                                            <input type="text" name="lemail" value="<?= ($customer_email) ? $customer_email : $leads[0]["email"] ?>" placeholder="" class="form-control  border">
                                                        </div>
                                                   </div>
                                              <?php endif; ?>
@@ -98,51 +131,63 @@
                                         </div>
 
                                         <div class="form-group col-sm-6">
-                                             <label for="">Customer Address 1 <span class="text-danger">*</span></label>
-                                             <input type="text" name="address_1" id="address_1" placeholder="for example door no" class="form-control  border">
-                                        </div>
-                                        <div class="form-group col-sm-6">
                                              <label for="">Customer Full Name <span class="text-danger">*</span></label>
-                                             <input type="text" name="customer-name" required id="customer-name" value="<?= $leads[0]["name"]; ?>" placeholder="Enter Customer Name" class="form-control  border">
+                                             <input type="text" name="customer-name" required id="customer-name" value="<?= $customer_name ?>" placeholder="Enter Customer Name" class="form-control  border">
                                         </div>
-                                        <div class="form-group col-sm-6">
-                                             <label for="">Customer Address 2</label>
-                                             <input type="text" name="address_2" id="address_2" placeholder="for example street/block" class="form-control  border">
-                                        </div>
+
                                         <div class="form-group col-sm-6">
                                              <label for="">Customer Mobile <span class="text-danger">*</span></label>
-                                             <input type="text" name="mobile" required id="mobile" minlength="10" value="<?= $leads[0]["mobile"]; ?>" placeholder="Enter Mobile" class="form-control  border">
+                                             <input type="number" name="mobile" required id="mobile" minlength="10" value="<?= $customer_mobile ?>" placeholder="Enter Mobile" class="form-control  border">
                                              <span class="mobile-error text-danger"></span>
                                         </div>
-                                        <div class="form-group col-sm-6">
-                                             <label for="">Customer Delivery Address</label>
-                                             <input type="text" name="address_3" id="address_3" class="form-control  border">
-                                        </div>
+
                                         <div class="form-group col-sm-6">
                                              <label for="">Customer Email <span class="text-danger">*</span></label>
-                                             <input type="email" name="email" required id="email" value="<?= $leads[0]["email"]; ?>" placeholder="Enter Email" class="form-control  border">
+                                             <input type="email" name="email" required id="email" value="<?= $customer_email ?>" placeholder="Enter Email" class="form-control  border">
                                              <span class="email-error text-danger"></span>
                                         </div>
-                                        <div class="form-group col-sm-6">
-                                             <label for="">Customer State </label>
-                                             <input type="text" name="state" id="state" class="form-control  border">
-                                        </div>
+
                                         <div class="form-group col-sm-6">
                                              <label for="">Customer Alternate Mobile</label>
-                                             <input type="text" name="alternate_mobile" id="alternate_mobile" class="form-control  border">
+                                             <input type="text" name="alternate_mobile" value="<?= $customer_alt_mobile ?>" id="alternate_mobile" class="form-control  border">
                                         </div>
-                                        <div class="form-group col-sm-6">
-                                             <label for="">Customer City </label>
-                                             <input type="text" name="city" id="city" class="form-control  border">
-                                        </div>
-                                        <div class="form-group col-sm-6">
-                                             <label for="">Customer Zip Code <span class="text-danger">*</span></label>
-                                             <input type="number" name="zip" id="zipcode" class="form-control  border">
-                                        </div>
+
                                         <div class="form-group col-sm-6">
                                              <label for="">&nbsp;</label>
 
                                         </div>
+
+
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Customer Address 1 <span class="text-danger">*</span></label>
+                                             <input type="text" name="address_1" id="address_1" value="<?= $customer_address1 ?>" placeholder="for example door no" class="form-control  border">
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Customer Address 2</label>
+                                             <input type="text" name="address_2" id="address_2" value="<?= $customer_address2 ?>" placeholder="for example street/block" class="form-control  border">
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Customer Delivery Address</label>
+                                             <input type="text" name="address_3" id="address_3" value="<?= $customer_address3 ?>" class="form-control  border">
+                                        </div>
+
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Customer State </label>
+                                             <input type="text" name="state" id="state" value="<?= $customer_state ?>" class="form-control  border">
+                                        </div>
+
+
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Customer City </label>
+                                             <input type="text" name="city" id="city" value="<?= $customer_city ?>" class="form-control  border">
+                                        </div>
+                                        <div class="form-group col-sm-6">
+                                             <label for="">Customer Zip Code <span class="text-danger">*</span></label>
+                                             <input type="number" name="zip" id="zipcode" minlength="6" value="<?= $customer_zip ?>" class="form-control  border">
+                                        </div>
+
 
                                    </div>
                                    <div class="col-sm-12 text-right">
@@ -174,7 +219,7 @@
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Expected Date</label>
-                                        <input type="date" name="exp_date" min="<?= date("Y-m-d") ?>" class="form-control border-bottom">
+                                        <input type="datetime-local" name="exp_date" min="<?= date("Y-m-d") . "T" . "00:00" ?>" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Status</label>
@@ -295,7 +340,7 @@
                                                        </div>
                                                        <div class="col-sm-12 col-md-4 col-lg-4 text-right">
                                                             <div class="form-group">
-                                                                 <input type="text" name="search_product" id="product-item-search" placeholder="Enter Product Item" class="form-control" />
+                                                                 <input type="text" name="search_product" id="product-item-search" placeholder="Enter Product Item" class="form-control product-item-search" />
                                                             </div>
                                                        </div>
                                                   </div>
@@ -311,7 +356,7 @@
 
                                                                  <th>Total Price</th>
                                                             </thead>
-                                                            <tbody id="productTable">
+                                                            <tbody id="myTable">
 
                                                             </tbody>
                                                        </table>
@@ -368,7 +413,7 @@
                                                        </div>
                                                        <div class="col-sm-12 col-md-4 col-lg-4 text-right">
                                                             <div class="form-group">
-                                                                 <input type="text" name="search_product" placeholder="Enter Search Item" class="form-control" />
+                                                                 <input type="text" name="search_service" placeholder="Enter Search Item" class="form-control service-item-search" />
                                                             </div>
                                                        </div>
                                                   </div>
@@ -433,7 +478,7 @@
                                    <?php else : ?>
                                         <a href="javascript:void(0)" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
                                    <?php endif; ?>
-                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" class="btn btn-success mb-2 mt-2 col-md-2 col-sm-12 mb-2"> SEND MAIL</a>
+                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" data-lead-id="<?= $lead_id?>" class="btn btn-success mb-2 col-md-2 col-sm-12 mb-2"> SEND MAIL</a>
                               </div>
                               <h4>Terms and conditions</h4>
                               <div class="col-sm-12 terms row">
@@ -497,49 +542,55 @@
                          <div class="tab-pane fade" id="pills-create-quotation" role="tabpanel" aria-labelledby="pills-create-quotation-tab">
                               <div class="row">
                                    <div class="col-sm-12 col-md-12 mb-3 mt-3 text-right">
-                                        <button class="btn btn-primary col-md-2 col-sm-12 approve disabled mt-2 mb-2">Approve</button>
+                                        <button class="btn btn-primary col-md-2 col-sm-12 d-none approve mt-2 mb-2">Approve</button>
                                         <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
-                                        <button class="btn btn-danger disapprove disabled col-md-2 col-sm-12   mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
+                                        <button class="btn btn-danger d-none disapprove col-md-2 col-sm-12   mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
                                    </div>
                                    <div class="table-responsive">
-                                   <table class="table table-bordered bg-white">
-                                        <tr>
-                                             <th>&nbsp;</th>
-                                             <th>SI NO</th>
-                                             <th>QUOTATION NUMBER</th>
-                                             <th>ITEM TOTAL</th>
-                                             <th>COMMENTS</th>
-                                             <th>STATUS</th>
-                                             <th>ACTIONS</th>
-                                        </tr>
-                                        <?php $i = 0;
-                                        $quid = "";
-                                        foreach ($quotation as $quo) : $i++; ?>
-
-                                             <?php
-
-                                             $quid = $quo["quotation_id"];
-                                             $status = $orders = "";
-                                             if (count($order) > 0) {
-                                                  $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
-
-                                                  $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
-                                             }
-
-                                             ?>
+                                        <table class="table table-bordered bg-white">
                                              <tr>
-                                                  <td><input type="checkbox" data-order="<?= $orders ?>" class="boxchecked" data-qid="<?= $quo["quotation_id"] ?>" data-link="<?= $quo["pdf"] ?>" value="<?= $quo["quotation_id"] ?>" name="select_<?= $quo["quotation_id"] ?>" /></td>
-                                                  <td><?= $i ?></td>
-                                                  <td><?= $quo["quotation_no"] ?></td>
-                                                  <td><?= $quo["item_total"] ?></td>
-                                                  <td><?= $quo["comments"] ?></td>
-                                                  <td><?= $status ?></td>
-                                                  <td><a href="<?= base_url() ?>/dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
+                                                  <th>&nbsp;</th>
+                                                  <th>SI NO</th>
+                                                  <th>QUOTATION NUMBER</th>
+                                                  <th>ITEM TOTAL</th>
+                                                  <th>Approved</th>
+                                                  <th>Payment</th>
+                                                  <th>STATUS</th>
+                                                  <th>ACTIONS</th>
                                              </tr>
-                                        <?php endforeach; ?>
-                                   </table>
+                                             <?php $i = 0;
+                                             $quid = "";
+                                             foreach ($quotation as $quo) : $i++; ?>
+
+                                                  <?php
+
+                                                  $quid = $quo["quotation_id"];
+                                                  $status = $orders = "";
+                                                  if (count($order) > 0) {
+                                                       $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
+
+                                                       $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
+
+                                                       $approved = $order[0]["approved"] ? $order[0]["approved"] : "";
+
+                                                       $payment = $order[0]["payment"] ? $order[0]["payment"]  : "";
+                                                  }
+
+                                                  ?>
+                                                  <tr>
+                                                       <td><input type="checkbox" data-order="<?= $orders ?>" class="boxchecked" data-qid="<?= $quo["quotation_id"] ?>" data-link="<?= $quo["pdf"] ?>" value="<?= $quo["quotation_id"] ?>" name="select_<?= $quo["quotation_id"] ?>" /></td>
+                                                       <td><?= $i ?></td>
+                                                       <td><?= $quo["quotation_no"] ?></td>
+                                                       <td><?= $quo["item_total"] ?></td>
+                                                       <td><?= $approved ?></td>
+                                                       <td><?= $payment ?></td>
+                                                       <td><?= $status ?></td>
+                                                       <td><a href="<?= base_url() ?>/dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
+                                                  </tr>
+                                             <?php endforeach; ?>
+                                        </table>
                                    </div>
-                                   
+
                               </div>
                          </div>
 
@@ -635,7 +686,7 @@
                                         <?php else : ?>
                                              <div class="form-group col-sm-6">
                                                   <label for="">Assigned to</label>
-                                                  <select class="form-control">
+                                                  <select class="form-control" name="assigned_to">
                                                        <option value="">Select Agent</option>
                                                        <?php foreach ($agents as $agent) : ?>
                                                             <option value="<?= $agent["id"] ?>"><?= $agent["firstname"] ?></option>
@@ -723,7 +774,7 @@
                                    <?php else : ?>
                                         <div class="form-group col-sm-6">
                                              <label for="">Assigned to</label>
-                                             <select class="form-control">
+                                             <select class="form-control" name="assigned_to">
                                                   <option value="">Select Agent</option>
                                                   <?php foreach ($agents as $agent) : ?>
                                                        <option value="<?= $agent["id"] ?>"><?= $agent["firstname"] ?></option>
@@ -750,21 +801,21 @@
                     <div class="col-sm-12 activity-details">
                          <div class="row">
                               <div class="table-responsive">
-                              <table class="table table-bordered activity-table">
-                                   <thead>
-                                        <tr>
-                                             <th>Subject</th>
-                                             <th>Status</th>
-                                             <!-- <th>Contact</th> -->
-                                             <th>Due Date</th>
-                                             <th>Assigned User</th>
-                                             <th>Actions</th>
-                                        </tr>
-                                   </thead>
-                                   <tbody>
+                                   <table class="table table-bordered activity-table">
+                                        <thead>
+                                             <tr>
+                                                  <th>Subject</th>
+                                                  <th>Status</th>
+                                                  <!-- <th>Contact</th> -->
+                                                  <th>Due Date</th>
+                                                  <th>Assigned User</th>
+                                                  <th>Actions</th>
+                                             </tr>
+                                        </thead>
+                                        <tbody>
 
-                                   </tbody>
-                              </table>
+                                        </tbody>
+                                   </table>
                               </div>
                          </div>
                     </div>
@@ -1168,6 +1219,7 @@
                          <input type="hidden" name="agent" value="<?= $leads[0]["assigned_to"] ?>">
                          <input type="hidden" name="teamleader" value="<?= $leads[0]["assigned_by"] ?>">
                          <input type="hidden" name="qid" id="qid" value="<?= $quid ?>">
+                         <input type="hidden" name="approved" id="oapproved" value="yes">
                          <input type="text" require name="decision" class="form-control" />
                     </div>
                     <div class="modal-footer">
@@ -1203,6 +1255,8 @@
      }
 
      $(document).ready(function() {
+
+          var $rows = $('#myTable tr');
 
 
           // elem = document.getElementById("dateInput")
@@ -1372,7 +1426,7 @@
 
 
 
-          $(".customers").click(function() {
+          $(document).on("click",".customers",function() {
                var id = $(this).data("customer");
                $(".customers").removeClass("active");
                $(this).addClass("active");
@@ -1542,7 +1596,7 @@
                          localStorage.setItem("tabs", "#pills-oppo");
                          $(".new-customer").removeClass("d-none");
                          $(".add-customer").trigger("reset");
-                         // location.reload();
+                         location.reload();
                          //     getcusotmer();
                     }
                })
@@ -1663,6 +1717,7 @@
                var product_id = $(this).data("product");
                $(".select-product").removeClass("active");
                $(this).addClass("active");
+               $(".product-item-search").attr("data-product-id",product_id);
                $.ajax({
                     url: "<?= base_url() ?>ajax/getProductItem",
                     method: "post",
@@ -1734,7 +1789,11 @@
           $(".select-service").on("click", function(e) {
                e.preventDefault();
                var service_id = $(this).data("product");
+
                $(".select-service").removeClass("active");
+
+               $(".service-item-search").attr("data-service-id",service_id);
+
                $(this).addClass("active");
                $.ajax({
                     url: "<?= base_url() ?>ajax/getServiceItem",
@@ -2400,9 +2459,25 @@
           $("#customer-search").on("keyup", function() {
                var value = $(this).val().toLowerCase();
 
-               $(".customer-list li").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-               });
+               $.ajax({
+                    method:"post",
+                    url:"<?= base_url()?>ajax/getcustomerinfo",
+                    data:{
+                         value:value
+                    },
+                    success:function(status){
+                         var status = JSON.parse(status);
+                         console.log("customer",);
+                         $.each(status["customer"],function(k,v){
+                              $(".customer-list").html("<li data-customer='"+v["customer_id"]+"' style='cursor:pointer' class='list-group-item customers'>"+v["name"]+"</li>")
+                         })
+                        
+                    }
+               })
+
+               // $(".customer-list li").filter(function() {
+               //      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               // });
           })
 
           $("#product-search").on("keyup", function() {
@@ -2415,28 +2490,147 @@
 
           $(document).on("keyup", "#product-item-search", function() {
 
-               var value = $(this).val().toLowerCase();
-               console.log(value);
-               $("#productTable tr").filter(function() {
-                    // console.log($(this).text().toLowerCase());
-                    // console.log($(this).text());
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               var product_name = $(this).val().toLowerCase();
+
+               var product_id = $(this).data("product-id");
+
+               $.ajax({
+                    url: "<?= base_url() ?>ajax/getProductItem",
+                    method: "post",
+                    data: {
+                         product_name: product_name,
+                         lead_id: $(".lead_id").val(),
+                         product_id:product_id
+                    },
+                    success: function(status) {
+                         $(".product-table tbody").html('');
+
+                         // return false;
+                         var status = JSON.parse(status);
+                         $.each(status["item_new"], function(k, v) {
+
+                              var checked = "";
+                              var tax_amount = "";
+
+                              var total_price = "";
+                              var quantity = "";
+                              var unit_price = "";
+                              var selling_unit_price = "";
+                              var selling_price = "";
+                              $.each(status["customer_item"], function(k1, v1) {
+                                   // return false;
+                                   if (status["customer_item"] && v["item_name"] && v["item_id"] == v1["item_id"]) {
+                                        checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";
+                                        total_price = (v1["total_price"]) ? v1["total_price"] : "";
+                                        tax_amount = (v1["tax_amount"]) ? v1["tax_amount"] : "";
+
+                                        quantity = (v1["quantity"]) ? v1["quantity"] : "";
+                                        unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
+
+                                        //     unit_price = unit_price.toFixed(2);
+                                        selling_unit_price = (v1["selling_unit_price"]) ? v1["selling_unit_price"] : "";
+                                        selling_price = (v1["selling_price"]) ? v1["selling_price"] : "";
+                                   }
+
+
+
+                              });
+                              if (v["item_name"] && status["customer_item"]) {
+                                   unit_price = (unit_price) ? unit_price : v["unit_price"];
+                                   //     unit_price = unit_price.replace(',', '.')
+                                   var html = '<tr><td style="width:5%"><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td style="width:45%"><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
+                                   html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="Enter Your Quantity" value="' + quantity + '" class="quantity border-bottom form-control quantity_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="unit_price[]"  class="unit_price border-bottom form-control unit_price_' + v["item_id"] + '"></td>';
+                                   //     html += '<td><input type="text" data-id="' + v["item_id"] + '"   name="selling_unit_price[]" value="' + selling_unit_price + '"  class="selling_unit_price border-bottom form-control selling_unit_price' + v["item_id"] + '"></td>';
+                                   //     html += '<td><input type="text" data-id="' + v["item_id"] + '"   name="selling_price[]" value="' + selling_price + '"  class="selling_price border-bottom form-control selling_price_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="tax_rate[]"  class="tax_rate form-control tax_rate_' + v["item_id"] + '"></td>';
+                                   //     html += '<td><input readonly type="text" data-id="' + v["item_id"] + '"  name="tax_amount[]" value="' + tax_amount + '" class="tax_amount form-control tax_amount_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="total_price[]" value="' + total_price + '"  class="total_price form-control total_price_' + v["item_id"] + '">';
+                                   html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
+                                   html += '<input type="hidden" name="product_id" class="product_id" value="' + product_id + '"></td></tr>';
+
+                                   $(".product-table tbody").append(html);
+                                   $(".product-table").removeClass("d-none");
+                              }
+
+                         });
+
+                    }
                });
           })
+
+
 
           $("#service-search").on("keyup", function() {
                var value = $(this).val().toLowerCase();
 
+
+
                $(".service-list li").filter(function() {
                     $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
                });
           })
 
-          $("#service-item-search").on("keyup", function() {
-               var value = $(this).val().toLowerCase();
+          $(document).on("keyup",".service-item-search",function() {
 
-               $(".service-list li").filter(function() {
-                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+               var service_name = $(this).val().toLowerCase();
+
+               var  service_id = $(this).data("service-id");
+
+               $.ajax({
+                    url: "<?= base_url() ?>ajax/getServiceItem",
+                    method: "post",
+                    data: {
+                         service_id: service_id,
+                         service_name:service_name,
+                         lead_id: $(".lead_id").val()
+                    },
+                    success: function(status) {
+                         $(".service-table tbody").html('');
+
+                         // return false;
+                         var status = JSON.parse(status);
+                         $.each(status["item_new"], function(k, v) {
+
+                              var checked = "";
+                              var tax_amount = "";
+
+                              var total_price = "";
+                              var quantity = "";
+                              var unit_price = "";
+                              var selling_unit_price = "";
+                              var selling_price = "";
+                              $.each(status["customer_item"], function(k1, v1) {
+                                   // return false;
+                                   if (status["customer_item"] && v["item_name"] && v["item_id"] == v1["item_id"]) {
+                                        checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";
+                                        total_price = (v1["total_price"]) ? v1["total_price"] : "";
+                                        tax_amount = (v1["tax_amount"]) ? v1["tax_amount"] : "";
+                                        service_id = (v1["service_id"]) ? v1["service_id"] : "";
+                                        quantity = (v1["quantity"]) ? v1["quantity"] : "";
+                                        unit_price = (v1["unit_price"]) ? v1["unit_price"] : "";
+                                        selling_unit_price = (v1["selling_unit_price"]) ? v1["selling_unit_price"] : "";
+                                        selling_price = (v1["selling_price"]) ? v1["selling_price"] : "";
+                                   }
+
+
+
+                              });
+                              if (v["item_name"] && status["customer_item"]) {
+                                   unit_price = (unit_price) ? unit_price : v["unit_price"];
+                                   var html = '<tr style="width:5%"><td><input type="checkbox" ' + checked + ' data-id="' + v["item_id"] + '" class="add" value="' + v["item_id"] + '" /></td><td><input readonly data-id="' + v["item_id"] + '" type="text" value="' + v["item_name"] + '" name="customeritem[]" class="item_name form-control item_name_' + v["item_id"] + '""></td>';
+                                   html += '<td style="width:10%"><input type="text" name="quantity[]" data-id="' + v["item_id"] + '" placeholder="QTY" value="' + quantity + '" class="squantity border-bottom form-control squantity_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  value="' + unit_price + '" name="sunit_price[]"  class="sunit_price border-bottom form-control sunit_price_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:10%"><input readonly type="text" data-id="' + v["item_id"] + '" value="' + v["tax_rate"] + '" name="stax_rate[]"  class="stax_rate form-control stax_rate_' + v["item_id"] + '"></td>';
+                                   html += '<td style="width:15%"><input readonly type="text" data-id="' + v["item_id"] + '"  name="stotal_price[]" value="' + total_price + '"  class="stotal_price form-control stotal_price_' + v["item_id"] + '">';
+                                   html += '<input type="hidden" name="item_id[]" class="item_id_' + v["item_id"] + '" value="' + v["item_id"] + '"/>';
+                                   html += '<input type="hidden" name="service_id" class="service_id" value="' + service_id + '"></td></tr>';
+                                   $(".service-table tbody").append(html);
+                              }
+
+                         });
+
+                    }
                });
           })
 
@@ -2753,6 +2947,8 @@
                     var qid = $(this).data("qid");
                     if ($(this).data("order") == "available") {
                          $(".gorder").removeClass("d-none");
+                         $(".approve").removeClass("d-none");
+                         $(".disapprove").removeClass("d-none");
                          $(".approve").removeClass("disabled");
                          $(".gorder").attr("data-href", url + "?qid=" + qid);
                     } else {
@@ -2764,9 +2960,9 @@
                     }
 
                } else {
-                    $(".approve").addClass("disabled");
+                    $(".approve").addClass("d-none");
                     $(".gorder").addClass("d-none");
-                    $(".disapprove").addClass("disabled");
+                    $(".disapprove").addClass("d-none");
                     $(".gorder").addClass("d-none");
                }
           });
@@ -2795,18 +2991,37 @@
 
           $(document).on("click", ".approve", function() {
                $(".gorder").removeClass("d-none");
-          });
-
-          $(document).on("submit", ".disapproveform", function(e) {
-               e.preventDefault();
-               var formdata = $(this).serializeArray();
-
+               var formdata = $(".disapproveform").serializeArray();
+               console.log("approve",formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/ordersubmit",
                     data: formdata,
                     success: function(status) {
-                         console.log(status);
+                        
+                         location.reload();
+                    }
+               })
+          });
+
+          $(document).on("click",".disapprove",function(){
+               $("#oapproved").val("no");
+          });
+
+          $(document).on("submit", ".disapproveform", function(e) {
+               e.preventDefault();
+               var formdata = $(this).serializeArray();
+               formdata["approved"]="no";
+               console.log("disapprove",formdata);
+               $.ajax({
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/ordersubmit",
+                    data: formdata,
+                    success: function(status) {
+                        
+                         $("#disapproveModal").modal("hide");
+                         location.reload();
+                         // console.log(status);
                     }
                })
 
@@ -2814,12 +3029,14 @@
 
           $(document).on("click", "#sendmail", function() {
                var customer = $(this).data("customer")
+               var lead_id = $(this).data("lead-id");
 
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/sendmail",
                     data: {
-                         customer: customer
+                         customer: customer,
+                         lead_id:lead_id
                     },
                     success: function(status) {
                          console.log(status);

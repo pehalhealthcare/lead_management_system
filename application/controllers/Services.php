@@ -71,7 +71,7 @@ class Services extends CI_Controller
                         return redirect("/dashboard/services");
                    }
               } else {
-                    print_r($insertdata); die();
+                    // print_r($insertdata); die();
                    $this->session->set_flashdata('message', 'Data Not Inserted Successfully');
                    return redirect("/dashboard/services");
                    return redirect("/services");
@@ -108,7 +108,7 @@ class Services extends CI_Controller
                                    "unit_price" => $data[3]
                               );
                               // print_r($inserData);
-                              if ($this->common_model->viewwheredata(array("item_name" => $data[1]), "mk_master_service_item")) {
+                              if ($this->common_model->viewwheredata(array("item_name" => $data[1],"service_id",$this->input->post("service_id")), "mk_master_service_item")) {
                                    $message = "Data already existed";
                               }
                               else

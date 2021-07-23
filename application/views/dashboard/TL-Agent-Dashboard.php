@@ -113,7 +113,7 @@
                                    <h4 class="font-weight-normal mb-3">Total Quotations <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm table-bordred">
                                              <tr>
                                                   <tH>QUOTATION NUMBER</th>
                                                   <th>LEAD ID</th>
@@ -158,7 +158,7 @@
                                    </h4>
                                    <div class="table-responsive bg-white">
                                         <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
-                                        <table class="table table-bordered bg-white">
+                                        <table class="table-sm table-bordered bg-white">
                                              <tr>
                                                   <th>SI NO</th>
                                                   <th>LEAD ID</th>

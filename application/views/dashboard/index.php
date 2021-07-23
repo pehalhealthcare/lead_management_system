@@ -18,7 +18,7 @@
                                    <h4 class="font-weight-normal mb-3">Total Leads Punch <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm table-bordred">
                                              <tr>
                                                   <tH>Name</th>
                                                   <th>Agent Name</th>
@@ -37,10 +37,10 @@
                                                             <td><?= $leads["mobile"] ?></td>
                                                             <td><?= $leads["created_at"] ?></td>
                                                             <td>
-                                                                 <a href="<?= base_url() ?>dashboard/edit/leads/<?= $leads["id"] ?>" class="btn btn-warning">
+                                                                 <a href="<?= base_url() ?>dashboard/edit/leads/<?= $leads["id"] ?>" class="btn btn-warning  btn-sm  mt-2">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $leads["id"] ?>" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $leads["id"] ?>" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -61,7 +61,7 @@
                                    <h4 class="font-weight-normal mb-3">Opportunity <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm  table-bordred">
                                              <tr>
                                                   <tH>SI.NO</th>
                                                   <th>Opportunity Name</th>
@@ -80,10 +80,10 @@
                                                             <td><?= $oppo->expected_amount ?></td>
                                                             <td><?= $oppo->expected_date ?></td>
                                                             <td>
-                                                                 <a href="javascript:void(0)" class="btn btn-warning edit-oppo" data-name="<?= $oppo->opportunity_name ?>" data-amount="<?= $oppo->expected_amount ?>" data-date="<?= $oppo->expected_date ?>" data-remarks="<?= $oppo->remarks ?>" data-id="<?= $oppo->id ?>" data-status="<?= $oppo->status ?>">
+                                                                 <a href="javascript:void(0)" class="btn btn-warning edit-oppo  btn-sm  mt-2" data-name="<?= $oppo->opportunity_name ?>" data-amount="<?= $oppo->expected_amount ?>" data-date="<?= $oppo->expected_date ?>" data-remarks="<?= $oppo->remarks ?>" data-id="<?= $oppo->id ?>" data-status="<?= $oppo->status ?>">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $oppo->lead_id ?>" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $oppo->lead_id ?>" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -106,7 +106,7 @@
                                    <h4 class="font-weight-normal mb-3">My Accounts(Agents) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm  table-bordred">
                                              <tr>
                                                   <tH>Name</th>
                                                   <th>Type</th>
@@ -125,10 +125,10 @@
                                                             <td><?= $agent["mobile"] ?></td>
                                                             <td>IN</td>
                                                             <td>
-                                                                 <a href="<?= base_url() ?>dashboard/edit/user/<?= $agent["id"] ?>" class="btn btn-warning">
+                                                                 <a href="<?= base_url() ?>dashboard/edit/user/<?= $agent["id"] ?>" class="btn btn-warning  btn-sm  mt-2">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/user" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/user" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -148,7 +148,7 @@
                                    <h4 class="font-weight-normal mb-3">My Accounts(Team Leader) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm  table-bordred">
                                              <tr>
                                                   <tH>Name</th>
                                                   <th>Type</th>
@@ -167,10 +167,10 @@
                                                             <td><?= $teamLead["mobile"] ?></td>
                                                             <td>IN</td>
                                                             <td>
-                                                                 <a href="<?= base_url() ?>dashboard/edit/user/<?= $teamLead["id"] ?>" class="btn btn-warning">
+                                                                 <a href="<?= base_url() ?>dashboard/edit/user/<?= $teamLead["id"] ?>" class="btn btn-warning  btn-sm  mt-2">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/user" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/user" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -192,7 +192,7 @@
                                    <h4 class="font-weight-normal mb-3">Log Calls <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm  table-bordred">
                                              <tr>
                                                   <tH>Close</th>
                                                   <th>Subject </th>
@@ -213,10 +213,10 @@
                                                             <td>Accepted</td>
                                                             <td><?= $logs["status"] ?></td>
                                                             <td>
-                                                                 <a href="javascript:void(0)" data-id="<?= $logs["id"] ?>" class="btn btn-warning updatelogcall">
+                                                                 <a href="javascript:void(0)" data-id="<?= $logs["id"] ?>" class="btn btn-warning updatelogcall  btn-sm  mt-2">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $logs["lead_id"] ?>" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $logs["lead_id"] ?>" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -236,7 +236,7 @@
                                    <h4 class="font-weight-normal mb-3">Meetings<i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm  table-bordred">
                                              <tr>
                                                   <tH>Close</th>
                                                   <th>Subject </th>
@@ -257,10 +257,10 @@
                                                             <td>Accepted</td>
 
                                                             <td>
-                                                                 <a href="javascript:void(0)" data-id="<?= $meet["id"] ?>" class="btn btn-warning updatemeeting">
+                                                                 <a href="javascript:void(0)" data-id="<?= $meet["id"] ?>" class="btn btn-warning updatemeeting  btn-sm  mt-2">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $meet["lead_id"] ?>" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $meet["lead_id"] ?>" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -280,7 +280,7 @@
                                    <h4 class="font-weight-normal mb-3">Total Quotations <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive bg-white">
-                                        <table class="table table-bordred">
+                                        <table class="table-sm  table-bordred">
                                              <tr>
                                                   <tH>QUOTATION NUMBER</th>
                                                   <th>LEAD ID</th>
@@ -301,10 +301,10 @@
                                                             <td><?= $quotation->created_at ?></td>
 
                                                             <td>
-                                                                 <a href="javascript:void(0)" data-id="<?= $quotation->quotation_id ?>" class="btn btn-warning updatemeeting">
+                                                                 <a href="javascript:void(0)" data-id="<?= $quotation->quotation_id ?>" class="btn btn-warning btn-sm  mt-2 updatemeeting">
                                                                       <i class="fa fa-pencil"></i>
                                                                  </a>
-                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $quotation->lead_id ?>" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>/dashboard/leads/assign/<?= $quotation->lead_id ?>" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                             </td>
@@ -326,7 +326,7 @@
                                    <h4 class="font-weight-normal mb-3">Total Orders<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                    </h4>
                                    <div class="table-responsive">
-                                             <table class="table table-bordered bg-white">
+                                             <table class="table-sm  table-bordered bg-white">
                                                   <tr>
                                                        <th>SI NO</th>
                                                        <th>LEAD ID</th>
@@ -391,9 +391,9 @@
                                                             <td><?= $order->approved ?></td>
                                                             <td><?= $assign_date ?></td>
                                                             <td>
-                                                                 <a href="<?= base_url() ?>dashboard/operation/order/assign/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>dashboard/operation/order/assign/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary btn-sm  mt-2">
                                                                       <i class="fa fa-user"></i></a>
-                                                                 <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
+                                                                 <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary  btn-sm  mt-2">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
                                                                  

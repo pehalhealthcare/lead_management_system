@@ -142,17 +142,17 @@ th
             <th>Mobile </th>
             <th><?= $customer[0]["mobile"]?></th>
             <th>Ref 4</th>
-            <th colspan="7"><?= $refer4; ?></th>
+            <th colspan="7">&nbsp;</th>
           </tr>
           <tr>
             <th>From</th>
             <th class="particulars_background">&nbsp;</th>
-            <th colspan="8" class="border-bottom border-right" >&nbsp;</th>
+            <th colspan="8" class="border-bottom border-right" >Special Comments</th>
           </tr>
           <tr>
             <th>M/s</th>
             <th>Medikart Healthcare Systems Pvt Ltd</th>
-            <th colspan="8" class="border-bottom border-right" >&nbsp;</th>
+            <th colspan="8" class="border-bottom border-right" ><?= $refer4; ?></th>
           </tr>
           <tr>
             <th>Address 1</th>
@@ -162,7 +162,7 @@ th
           <tr>
             <th>Address 2</th>
             <th>Jasola District Centre</th>
-            <th colspan="8" class="border-bottom border-right"  >Special Comments</th>
+            <th colspan="8" class="border-bottom border-right"  >&nbsp;</th>
           </tr>
           <tr>
             <th>Address 3</th>

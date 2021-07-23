@@ -23,15 +23,15 @@
                               </div>
                               <div class="form-group col-sm-6">
                                    <label for="">Email</label>
-                                   <input type="text" name="email" id="" class="form-control">
+                                   <input type="email" name="email" id="" class="form-control">
                               </div>
                               <div class="form-group col-sm-6">
                                    <label for="">Mobile</label>
-                                   <input type="text" name="mobile" id="" class="form-control">
+                                   <input type="number" minlength="10" name="mobile" id="" class="form-control">
                               </div>
                               <div class="form-group col-sm-6">
                                    <label for="">Alternate Mobile</label>
-                                   <input type="text" name="alternate_mobile" id="" class="form-control">
+                                   <input type="number" minlength="10" name="alternate_mobile" id="" class="form-control">
                               </div>
                               <div class="form-group col-sm-6 ">
                                    <label for="">Address 1</label>

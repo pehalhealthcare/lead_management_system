@@ -1,0 +1,29 @@
+ERROR - 2021-07-21 10:01:53 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-21 10:01:53 --> Config Class Initialized
+INFO - 2021-07-21 10:01:53 --> Hooks Class Initialized
+DEBUG - 2021-07-21 10:01:53 --> UTF-8 Support Enabled
+INFO - 2021-07-21 10:01:53 --> Utf8 Class Initialized
+INFO - 2021-07-21 10:01:53 --> URI Class Initialized
+DEBUG - 2021-07-21 10:01:53 --> No URI present. Default controller set.
+INFO - 2021-07-21 10:01:53 --> Router Class Initialized
+INFO - 2021-07-21 10:01:53 --> Output Class Initialized
+INFO - 2021-07-21 10:01:53 --> Security Class Initialized
+DEBUG - 2021-07-21 10:01:53 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-21 10:01:53 --> Input Class Initialized
+INFO - 2021-07-21 10:01:53 --> Language Class Initialized
+INFO - 2021-07-21 10:01:53 --> Loader Class Initialized
+INFO - 2021-07-21 10:01:53 --> Helper loaded: url_helper
+INFO - 2021-07-21 10:01:53 --> Database Driver Class Initialized
+INFO - 2021-07-21 10:01:53 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-21 10:01:53 --> Email Class Initialized
+INFO - 2021-07-21 10:01:53 --> Helper loaded: form_helper
+INFO - 2021-07-21 10:01:53 --> Form Validation Class Initialized
+INFO - 2021-07-21 10:01:53 --> Model "User_model" initialized
+INFO - 2021-07-21 10:01:53 --> Model "Products_model" initialized
+INFO - 2021-07-21 10:01:53 --> Model "Common_model" initialized
+INFO - 2021-07-21 10:01:53 --> Controller Class Initialized
+INFO - 2021-07-21 10:01:53 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/login-header.php
+INFO - 2021-07-21 10:01:53 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\user/login.php
+INFO - 2021-07-21 10:01:53 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-21 10:01:53 --> Final output sent to browser
+DEBUG - 2021-07-21 10:01:53 --> Total execution time: 0.0628

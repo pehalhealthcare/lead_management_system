@@ -353,7 +353,7 @@ class Products extends CI_Controller
                                    "unit_price" => $data[5]
                               );
                               // print_r($inserData);
-                              if ($this->common_model->viewwheredata(array("partnumber" => $data[0]), "mk_master_product_item")) {
+                              if ($this->common_model->viewwheredata(array("partnumber" => $data[0],"product_id"=>$this->input->post("product_id")), "mk_master_product_item")) {
                                    $message = "Data already existed";
                               }
                               else

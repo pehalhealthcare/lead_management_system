@@ -76,7 +76,7 @@ class Ajax extends CI_Controller
                                    );
 
                                    $leadwhere = array(
-                                        "lead_id" => $this->input->post("lead_id"),
+                                        "id" => $this->input->post("lead_id"),
                                    );
           
                                    $leadupdate = array(
@@ -89,6 +89,7 @@ class Ajax extends CI_Controller
 
                                    if ($this->email_template_1($this->input->post("email"))) {
                                         $sms = $this->sms_template_1($customer, $this->input->post("mobile"));
+                                        echo $customer."-".$this->input->post("mobile");
                                         echo $sms;
                                         echo json_encode(array("message" => "Data and mail sent successfully"));
                                    } else {
@@ -135,6 +136,7 @@ class Ajax extends CI_Controller
                                    if ($this->email_template_1($this->input->post("email"))) {
 
                                         $sms = $this->sms_template_1($customer, $this->input->post("mobile"));
+                                        echo $customer."-".$this->input->post("mobile");
                                         echo $sms;
                                         echo json_encode(array("message" => "Data and mail sent successfully"));
                                    } else {
@@ -150,6 +152,7 @@ class Ajax extends CI_Controller
                                    if ($this->email_template_1($this->input->post("email"))) {
 
                                         $sms = $this->sms_template_1($customer, $this->input->post("mobile"));
+                                        echo $customer."-".$this->input->post("mobile");
                                         echo $sms;
                                         echo json_encode(array("message" => "Data and mail sent successfully"));
                                    } else {
@@ -193,27 +196,61 @@ class Ajax extends CI_Controller
 
      public function getProductItem()
      {
-          $product_id = $this->input->post("product_id");
+          if($this->input->post("product_id") && $this->input->post("lead_id"))
+          {
+               $product_id = $this->input->post("product_id");
 
-          $cond = array("product_id" => $product_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
+               $cond = array("product_id" => $product_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
+     
+               $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+     
+               $data["item_new"] = $this->common_model->viewwheredata(array("product_id" => $product_id, "is_active" => 1), "mk_master_product_item");
+     
+          }
 
-          $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+          if($this->input->post("product_name") && $this->input->post("product_id") && $this->input->post("lead_id"))
+          {
+               $product_id = $this->input->post("product_id");
 
-          $data["item_new"] = $this->common_model->viewwheredata(array("product_id" => $product_id, "is_active" => 1), "mk_master_product_item");
+               $product_name = $this->input->post("product_name");
 
+               $cond = array("product_id" => $product_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
+     
+               $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+     
+               $data["item_new"] = $this->common_model->viewwherelikedata(array("item_name" => $product_name, "is_active" => 1), "mk_master_product_item");
+
+          }
+          
 
           echo json_encode($data);
      }
 
      public function getServiceItem()
      {
-          $service_id = $this->input->post("service_id");
+          if($this->input->post("service_id") && $this->input->post("lead_id"))
+          {
+               $service_id = $this->input->post("service_id");
 
-          $cond = array("service_id" => $service_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
+               $cond = array("service_id" => $service_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
+     
+               $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+     
+               $data["item_new"] = $this->common_model->viewwheredata(array("service_id" => $service_id, "is_active" => 1), "mk_master_service_item");
+          }
+          if($this->input->post("service_id") && $this->input->post("lead_id") && $this->input->post("service_name"))
+          {
+               $service_id = $this->input->post("service_id");
 
-          $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+               $service_name = $this->input->post("service_name");
 
-          $data["item_new"] = $this->common_model->viewwheredata(array("service_id" => $service_id, "is_active" => 1), "mk_master_service_item");
+               $cond = array("service_id" => $service_id, "is_active" => 1, "lead_id" => $this->input->post("lead_id"));
+     
+               $data["customer_item"] = $this->common_model->viewwheredata($cond, "mk_customer_item");
+     
+               $data["item_new"] = $this->common_model->viewwherelikedata(array("item_name" => $service_name, "is_active" => 1), "mk_master_service_item");
+          }
+         
 
           echo json_encode($data);
      }
@@ -241,6 +278,17 @@ class Ajax extends CI_Controller
           $data["customer"] = $this->common_model->viewwheredata(array("customer_id" => $id), "mk_customer");
 
           $data["address"] = $this->common_model->viewwheredata(array("customer_id" => $id), "mk_customer_address");
+
+          echo json_encode($data);
+     }
+
+     public function getcustomerinfo()
+     {
+          $value = $this->input->post("value");
+
+          $data["customer"] = $this->common_model->viewwhereordata(array("name" => $value,"mobile"=>$value,"email"=>$value),array(), "mk_customer");
+
+          // $data["address"] = $this->common_model->viewwheredata(array("customer_id" => $id), "mk_customer_address");
 
           echo json_encode($data);
      }
@@ -883,12 +931,12 @@ class Ajax extends CI_Controller
                "decision" => $this->input->post("decision"),
                "payment" => "no",
                "status" => 0,
-               "approved" => "no",
+               "approved" => $this->input->post("approved"),
           );
           $lead_id = $this->input->post("lead_id");
           $datacheck = $this->common_model->viewwheredata(array("lead_id" => $lead_id, "quotation_id" => $this->input->post("qid")), "mk_order");
 
-          // print_r($datacheck); die();
+          // print_r($data); die();
 
           $quotation = $this->common_model->viewwheredata(array("lead_id" => $lead_id, "quotation_id" => $this->input->post("qid")), "mk_quotation");
 
@@ -907,7 +955,7 @@ class Ajax extends CI_Controller
                     $this->session->set_flashdata('message_name', 'Order Data Updated');
 
                     $leadwhere = array(
-                         "lead_id" => $this->input->post("lead_id"),
+                         "id" => $this->input->post("lead_id"),
                     );
 
                     $leadupdate = array(
@@ -916,13 +964,14 @@ class Ajax extends CI_Controller
 
                     $this->common_model->updatedata("mk_lead",$leadupdate,$leadwhere);
 
-                    // if ($this->email_template_1($customer[0]["email"])) {
-                    //      $sms = $this->sms_template_1($customer[0]["mobile"], $this->input->post("mobile"));
-                    //      echo $sms;
-                    //      echo json_encode(array("message" => "Data and mail sent successfully"));
-                    // } else {
-                    //      echo json_encode(array("message" => "Mail not sent"));
-                    // }
+                    if ($this->email_template_1($customer[0]["email"])) {
+                         echo $customer[0]["mobile"];
+                         $sms = $this->sms_template_1($customer[0]["name"], $customer[0]["mobile"]);
+                         echo $sms;
+                         echo json_encode(array("message" => "Data and mail sent successfully"));
+                    } else {
+                         echo json_encode(array("message" => "Mail not sent"));
+                    }
                     // return redirect("/dashboard/leads/assign/".$lead_id);
                }
           } else {
@@ -931,7 +980,7 @@ class Ajax extends CI_Controller
                if ($this->common_model->adddata("mk_order", $data)) {
 
                     $leadwhere = array(
-                         "lead_id" => $this->input->post("lead_id"),
+                         "id" => $this->input->post("lead_id"),
                     );
 
                     $leadupdate = array(
@@ -940,17 +989,18 @@ class Ajax extends CI_Controller
 
                     $this->common_model->updatedata("mk_lead",$leadupdate,$leadwhere);
 
-                    // if($this->email_template_1($customer[0]["email"]))
-                    // {
-                    //      $sms = $this->sms_template_1($customer[0]["mobile"], $this->input->post("mobile"));
-                    //      echo $sms;
-                    //      echo json_encode(array("message" => "Data and mail sent successfully"));
-                    // }
-                    // else
-                    // {
-                    //      echo json_encode(array("message" => "Mail not sent"));
-                    // }
-                    // $this->session->set_flashdata('message_name', 'Order Data Added');
+                    if($this->email_template_1($customer[0]["email"]))
+                    {
+                         echo $customer[0]["mobile"];
+                         $sms = $this->sms_template_1($customer[0]["name"], $customer[0]["mobile"]);
+                         echo $sms;
+                         echo json_encode(array("message" => "Data and mail sent successfully"));
+                    }
+                    else
+                    {
+                         echo json_encode(array("message" => "Mail not sent"));
+                    }
+                    $this->session->set_flashdata('message_name', 'Order Data Added');
                     // return redirect("/dashboard/leads/assign/".$lead_id);
                }
           }
@@ -1030,9 +1080,10 @@ class Ajax extends CI_Controller
 
      
 
-     public function email_template_1($customer_email = "")
+     public function email_template_1($customer_email = "",$attachement="")
      {
-
+          
+         
           // $message = $this->load->view("dashboard/email_templates/order_email");
 
           // $this->email->from('ravi@medikart.co.in', 'Your Name');
@@ -1077,6 +1128,7 @@ class Ajax extends CI_Controller
                <p>
                     MediKart
                </p>
+              
 
 
           </body>
@@ -1101,11 +1153,21 @@ class Ajax extends CI_Controller
           // die();
      }
 
-     public function email_template_2($customer_email = "")
+     public function email_template_2($customer_email = "",$attachement)
      {
 
           $to = $customer_email;
           $subject = "Query Mail";
+
+          $link = "";
+          if($attachement)
+          {
+               $link = "
+               <p>
+               Here we have attach your quotation link. click this link to view your quotation
+               <a href='$attachement'>Quotation</a>
+               </p>";
+          }
 
           $message = '
           <!DOCTYPE html>
@@ -1133,6 +1195,7 @@ class Ajax extends CI_Controller
                     In case of further details, resolution of your queries, You may write us at ravi@medikart.co.in Or Call at +91-7290033617 Or
                      WhatsApp Chat on the same No.- we would reply and resolve your queries at the earliest
                </p>
+               '.$link.'
                <p>
                     For Escalation: Email at varun.vaidya@medikart.co.in
                </p>
@@ -1226,7 +1289,8 @@ class Ajax extends CI_Controller
      {
           // $order = "Dear {#var#} Thanks for contacting Medikart, and enquiry for Medical Devices/ Service . Our representative has spoken to you ,hope the query resolved and got the appropriate reply. If not ,you can email at info@medikart.co.in";
 
-          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20".$customer."%20Thanks%20for%20your%20order%20for%20".$order."%20Your%20order%20has%20been%20punched%20in%20our%20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to%20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20,%20Please%20email%20at%20.%20customercare@medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
+          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20".$customer."%20Thanks%20for%20contacting%20Medikart,%20and%20enquiry%20for%20Medical%20Devices/%20Service%20.%20Our%20representative%20has%20spoken%20to%20you%20,hope%20the%20query%20resolved%20and%20got%20the%20appropriate%20reply.%20If%20not%20,you%20can%20email%20at%20info@medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
+          
 
           // echo $url;
 
@@ -1252,7 +1316,7 @@ class Ajax extends CI_Controller
      public function sms_template_2($customer = "", $order = "", $mobile = "")
      {
 
-          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20".$customer."%20Thanks%20for%20contacting%20Medikart,%20and%20enquiry%20for%20Medical%20Devices/%20Service%20.%20Our%20representative%20has%20spoken%20to%20you%20,hope%20the%20query%20resolved%20and%20got%20the%20appropriate%20reply.%20If%20not%20,you%20can%20email%20at%20info@medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
+          $url = "http://nimbusit.info/api/pushsms.php?user=103058&key=010GT0u30GpTkSUgnlro&%20sender=MDKART&mobile=" . $mobile . "&%20text=Dear%20".$customer."%20Thanks%20for%20your%20order%20for%20".$order."%20Your%20order%20has%20been%20punched%20in%20our%20system%20The%20status%20of%20dispatch%20will%20be%20intimated%20to%20you%20soon%20If%20you%20dont%20receive%20any%20intimation%20,%20Please%20email%20at%20.%20customercare@medikart.co.in%20&%20entityid=1501651890000015375&templateid=1507162262983788026";
 
           // echo $url;
 
@@ -1279,12 +1343,16 @@ class Ajax extends CI_Controller
      {
           $cust_id = $this->input->post("customer");
 
+          $lead_id = $this->input->post("lead_id");
+
          $customer = $this->common_model->viewwheredata(array("customer_id"=>$cust_id),"mk_customer");
 
           // print_r($customer);
-         if($this->email_template_2($customer[0]["email"]))
+          $attachement = base_url()."dashboard/quotation/".$lead_id."/".$cust_id;
+          
+         if($this->email_template_2($customer[0]["email"],$attachement))
          {
-              echo "Mail sent successfully";
+              echo $customer[0]["email"]." Mail sent successfully";
          }
          else
          {
@@ -1296,6 +1364,10 @@ class Ajax extends CI_Controller
      public function ordermail()
      {
           $cust_id = $this->input->post("customer");
+
+          $lead_id = $this->input->post("lead_id");
+
+          
 
          $customer = $this->common_model->viewwheredata(array("customer_id"=>$cust_id),"mk_customer");
 

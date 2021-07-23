@@ -1,0 +1,141 @@
+ERROR - 2021-07-22 13:14:13 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-22 13:14:13 --> Config Class Initialized
+INFO - 2021-07-22 13:14:13 --> Hooks Class Initialized
+DEBUG - 2021-07-22 13:14:13 --> UTF-8 Support Enabled
+INFO - 2021-07-22 13:14:13 --> Utf8 Class Initialized
+INFO - 2021-07-22 13:14:13 --> URI Class Initialized
+DEBUG - 2021-07-22 13:14:13 --> No URI present. Default controller set.
+INFO - 2021-07-22 13:14:13 --> Router Class Initialized
+INFO - 2021-07-22 13:14:13 --> Output Class Initialized
+INFO - 2021-07-22 13:14:13 --> Security Class Initialized
+DEBUG - 2021-07-22 13:14:13 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-22 13:14:13 --> Input Class Initialized
+INFO - 2021-07-22 13:14:13 --> Language Class Initialized
+INFO - 2021-07-22 13:14:13 --> Loader Class Initialized
+INFO - 2021-07-22 13:14:13 --> Helper loaded: url_helper
+INFO - 2021-07-22 13:14:13 --> Database Driver Class Initialized
+INFO - 2021-07-22 13:14:13 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-22 13:14:13 --> Email Class Initialized
+INFO - 2021-07-22 13:14:13 --> Helper loaded: form_helper
+INFO - 2021-07-22 13:14:13 --> Form Validation Class Initialized
+INFO - 2021-07-22 13:14:13 --> Model "User_model" initialized
+INFO - 2021-07-22 13:14:13 --> Model "Products_model" initialized
+INFO - 2021-07-22 13:14:13 --> Model "Common_model" initialized
+INFO - 2021-07-22 13:14:13 --> Controller Class Initialized
+INFO - 2021-07-22 13:14:13 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/login-header.php
+INFO - 2021-07-22 13:14:13 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\user/login.php
+INFO - 2021-07-22 13:14:13 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-22 13:14:13 --> Final output sent to browser
+DEBUG - 2021-07-22 13:14:13 --> Total execution time: 0.0956
+ERROR - 2021-07-22 13:14:38 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-22 13:14:38 --> Config Class Initialized
+INFO - 2021-07-22 13:14:38 --> Hooks Class Initialized
+DEBUG - 2021-07-22 13:14:38 --> UTF-8 Support Enabled
+INFO - 2021-07-22 13:14:38 --> Utf8 Class Initialized
+INFO - 2021-07-22 13:14:38 --> URI Class Initialized
+DEBUG - 2021-07-22 13:14:38 --> No URI present. Default controller set.
+INFO - 2021-07-22 13:14:38 --> Router Class Initialized
+INFO - 2021-07-22 13:14:38 --> Output Class Initialized
+INFO - 2021-07-22 13:14:38 --> Security Class Initialized
+DEBUG - 2021-07-22 13:14:38 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-22 13:14:38 --> Input Class Initialized
+INFO - 2021-07-22 13:14:38 --> Language Class Initialized
+INFO - 2021-07-22 13:14:38 --> Loader Class Initialized
+INFO - 2021-07-22 13:14:38 --> Helper loaded: url_helper
+INFO - 2021-07-22 13:14:38 --> Database Driver Class Initialized
+INFO - 2021-07-22 13:14:38 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-22 13:14:38 --> Email Class Initialized
+INFO - 2021-07-22 13:14:38 --> Helper loaded: form_helper
+INFO - 2021-07-22 13:14:38 --> Form Validation Class Initialized
+INFO - 2021-07-22 13:14:38 --> Model "User_model" initialized
+INFO - 2021-07-22 13:14:38 --> Model "Products_model" initialized
+INFO - 2021-07-22 13:14:38 --> Model "Common_model" initialized
+INFO - 2021-07-22 13:14:38 --> Controller Class Initialized
+INFO - 2021-07-22 13:14:38 --> Language file loaded: language/english/form_validation_lang.php
+ERROR - 2021-07-22 13:14:38 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-22 13:14:38 --> Config Class Initialized
+INFO - 2021-07-22 13:14:38 --> Hooks Class Initialized
+DEBUG - 2021-07-22 13:14:38 --> UTF-8 Support Enabled
+INFO - 2021-07-22 13:14:38 --> Utf8 Class Initialized
+INFO - 2021-07-22 13:14:38 --> URI Class Initialized
+INFO - 2021-07-22 13:14:38 --> Router Class Initialized
+INFO - 2021-07-22 13:14:38 --> Output Class Initialized
+INFO - 2021-07-22 13:14:38 --> Security Class Initialized
+DEBUG - 2021-07-22 13:14:38 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-22 13:14:38 --> Input Class Initialized
+INFO - 2021-07-22 13:14:38 --> Language Class Initialized
+INFO - 2021-07-22 13:14:38 --> Loader Class Initialized
+INFO - 2021-07-22 13:14:38 --> Helper loaded: url_helper
+INFO - 2021-07-22 13:14:38 --> Database Driver Class Initialized
+INFO - 2021-07-22 13:14:38 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-22 13:14:38 --> Email Class Initialized
+INFO - 2021-07-22 13:14:38 --> Helper loaded: form_helper
+INFO - 2021-07-22 13:14:38 --> Form Validation Class Initialized
+INFO - 2021-07-22 13:14:38 --> Model "User_model" initialized
+INFO - 2021-07-22 13:14:38 --> Model "Products_model" initialized
+INFO - 2021-07-22 13:14:38 --> Model "Common_model" initialized
+INFO - 2021-07-22 13:14:38 --> Controller Class Initialized
+INFO - 2021-07-22 13:14:39 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+INFO - 2021-07-22 13:14:39 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/index.php
+INFO - 2021-07-22 13:14:39 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-22 13:14:39 --> Final output sent to browser
+DEBUG - 2021-07-22 13:14:39 --> Total execution time: 0.6127
+ERROR - 2021-07-22 13:14:45 --> $config['composer_autoload'] is set to TRUE but D:\XAMPP\htdocs\lead_management\application\vendor/autoload.php was not found.
+INFO - 2021-07-22 13:14:45 --> Config Class Initialized
+INFO - 2021-07-22 13:14:45 --> Hooks Class Initialized
+DEBUG - 2021-07-22 13:14:45 --> UTF-8 Support Enabled
+INFO - 2021-07-22 13:14:45 --> Utf8 Class Initialized
+INFO - 2021-07-22 13:14:45 --> URI Class Initialized
+INFO - 2021-07-22 13:14:45 --> Router Class Initialized
+INFO - 2021-07-22 13:14:45 --> Output Class Initialized
+INFO - 2021-07-22 13:14:45 --> Security Class Initialized
+DEBUG - 2021-07-22 13:14:45 --> Global POST, GET and COOKIE data sanitized
+INFO - 2021-07-22 13:14:45 --> Input Class Initialized
+INFO - 2021-07-22 13:14:45 --> Language Class Initialized
+INFO - 2021-07-22 13:14:45 --> Loader Class Initialized
+INFO - 2021-07-22 13:14:45 --> Helper loaded: url_helper
+INFO - 2021-07-22 13:14:45 --> Database Driver Class Initialized
+INFO - 2021-07-22 13:14:45 --> Session: Class initialized using 'files' driver.
+INFO - 2021-07-22 13:14:45 --> Email Class Initialized
+INFO - 2021-07-22 13:14:45 --> Helper loaded: form_helper
+INFO - 2021-07-22 13:14:45 --> Form Validation Class Initialized
+INFO - 2021-07-22 13:14:45 --> Model "User_model" initialized
+INFO - 2021-07-22 13:14:45 --> Model "Products_model" initialized
+INFO - 2021-07-22 13:14:45 --> Model "Common_model" initialized
+INFO - 2021-07-22 13:14:45 --> Controller Class Initialized
+INFO - 2021-07-22 13:14:45 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/header.php
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+ERROR - 2021-07-22 13:14:45 --> Severity: Notice --> Undefined property: stdClass::$reasons D:\XAMPP\htdocs\lead_management\application\views\dashboard\leads\view-leads.php 41
+INFO - 2021-07-22 13:14:45 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\dashboard/leads/view-leads.php
+INFO - 2021-07-22 13:14:45 --> File loaded: D:\XAMPP\htdocs\lead_management\application\views\inc/footer.php
+INFO - 2021-07-22 13:14:45 --> Final output sent to browser
+DEBUG - 2021-07-22 13:14:45 --> Total execution time: 0.0469

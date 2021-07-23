@@ -4220,9 +4220,25 @@ pre code {
     border-top: 2px solid #ebedf2;
 }
 
+.table-sm th {
+    font-weight: bold;
+    font-size: smaller;
+}
+
+.table-sm td {
+    font-weight: 100 !important;
+}
+
 .table-sm th,
 .table-sm td {
     padding: 0.3rem;
+    color: #000 !important;
+}
+
+.table-sm tr {
+    padding: 0.5rem;
+    border: 1px solid #ebedf2;
+    border-right: transparent;
 }
 
 .table-bordered {
