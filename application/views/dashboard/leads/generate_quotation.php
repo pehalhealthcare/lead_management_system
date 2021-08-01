@@ -343,9 +343,9 @@
         </table>
 
 
-        <?php if($this->session->userID):?>
-
-        <form method="post" action="<?= base_url() ?>dashboard/order/submit" enctype="multipart/form-data">
+        <?php  if($this->session->userID && $orders[0]["payment"]=="no"):?>
+       
+        <form method="post" action="<?= base_url() ?>dashboard/order/submit?email=send" enctype="multipart/form-data">
           <div class="col-sm-12">
             <div class="row">
               <div class="col-sm-12 col-md-4">

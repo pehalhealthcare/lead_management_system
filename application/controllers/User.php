@@ -68,6 +68,7 @@ class User extends CI_Controller {
           $data["title"] = "User Register";
           $email = $this->input->post("email");
 
+          $category = $this->input->post("admin-category") ? $this->input->post("admin-category") : $this->input->post("group-category");
           $insertdata = array(
                "firstname" => $this->input->post("first_name"),
                "lastname" => $this->input->post("last_name"),
@@ -75,12 +76,13 @@ class User extends CI_Controller {
                "email" =>    $this->input->post("email"),
                "password" => hash("sha256",$this->input->post("password")),
                "role" => $this->input->post("role"),
-               "category" => $this->input->post("category"),
+               "category" => $category,
                // "department" => $this->input->post("department"),
                "parent_id" => $this->session->userID
           );
           
 
+          
 
          $this->form_validation->set_rules('email', 'Email', 'required');
          $this->form_validation->set_rules('password', 'Password', 'required');
@@ -94,6 +96,8 @@ class User extends CI_Controller {
                 }
                 else
                 {
+                  
+
                     if($this->user_model->usercheck($email) == true)
                     {
                          $data["error"] = "User Already Registered";
@@ -160,7 +164,7 @@ class User extends CI_Controller {
                 else
                 {
                     
-                   
+                    //  print_r($insertdata); die();
                          $cond = array("id"=>$id);
                          if($this->common_model->updatedata("mk_registration_table",$insertdata,$cond))
                          {

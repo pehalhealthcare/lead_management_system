@@ -25,6 +25,7 @@
                                         <td><?= ($user->role == 1) ? "Admin" : "Group" ?></td>
                                         <td>
                                              <?= ($user->category == "BTL") ? "Business Team Leader" : "" ?>
+                                             <?= ($user->category == "OTL") ? "Operation Team Leader" : "" ?>
                                              <?= ($user->category == "BA") ? "Business Agent" : "" ?>
                                              <?= ($user->category == "OA") ? "Operation Agent" : "" ?>
                                         </td>

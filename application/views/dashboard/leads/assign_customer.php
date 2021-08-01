@@ -54,7 +54,7 @@
                                                        $customer_alt_mobile = $customer->alternate_mobile;
                                                   ?>
                                                        <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
-                                                  <?php elseif($lead_customer[0]["customer_id"] != $customer->customer_id): ?>
+                                                  <?php elseif ($lead_customer[0]["customer_id"] != $customer->customer_id) : ?>
                                                        <li class="list-group-item customers <?= ($lead_customer[0]["customer_id"] == $customer->customer_id) ? "active" : "" ?>" data-customer="<?= $customer->customer_id ?>" style="cursor: pointer;"><?= $customer->name ?></li>
                                                   <?php endif; ?>
                                              <?php else : ?>
@@ -219,7 +219,11 @@
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Expected Date</label>
-                                        <input type="datetime-local" name="exp_date" min="<?= date("Y-m-d") . "T" . "00:00" ?>" class="form-control border-bottom">
+                                        <input type="date" name="exp_date" min="<?= date("Y-m-d") ?>" class="form-control border-bottom">
+                                   </div>
+                                   <div class="col-sm-6 form-group">
+                                        <label for="">Expected Time</label>
+                                        <input type="time" name="exp_time" class="form-control border-bottom">
                                    </div>
                                    <div class="col-sm-6 form-group">
                                         <label for="">Status</label>
@@ -478,7 +482,7 @@
                                    <?php else : ?>
                                         <a href="javascript:void(0)" class="btn btn-success col-md-2 col-sm-12"> DOWNLOAD PDF</a>
                                    <?php endif; ?>
-                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" data-lead-id="<?= $lead_id?>" class="btn btn-success mb-2 col-md-2 col-sm-12 mb-2"> SEND MAIL</a>
+                                   <a href="#" data-customer="<?= $customerID ?>" id="sendmail" data-lead-id="<?= $lead_id ?>" class="btn btn-success mb-2 col-md-2 col-sm-12 mb-2"> SEND MAIL</a>
                               </div>
                               <h4>Terms and conditions</h4>
                               <div class="col-sm-12 terms row">
@@ -542,9 +546,14 @@
                          <div class="tab-pane fade" id="pills-create-quotation" role="tabpanel" aria-labelledby="pills-create-quotation-tab">
                               <div class="row">
                                    <div class="col-sm-12 col-md-12 mb-3 mt-3 text-right">
-                                        <button class="btn btn-primary col-md-2 col-sm-12 d-none approve mt-2 mb-2">Approve</button>
-                                        <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
-                                        <button class="btn btn-danger d-none disapprove col-md-2 col-sm-12   mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
+                                        <?php if($order): ?>
+                                             <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
+                                        <?php else : ?>
+                                             <button class="btn btn-primary col-md-2 col-sm-12 d-none approve mt-2 mb-2">Approve</button>
+                                             <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
+                                             <button class="btn btn-danger d-none disapprove col-md-2 col-sm-12   mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
+                                        <?php endif; ?>
+
                                    </div>
                                    <div class="table-responsive">
                                         <table class="table table-bordered bg-white">
@@ -567,7 +576,7 @@
                                                   $quid = $quo["quotation_id"];
                                                   $status = $orders = "";
                                                   if (count($order) > 0) {
-                                                       $status =  ($order[0]["quotation_id"] == $quid) ? "Order form Generated" : "Open";
+                                                       $status =  ($order[0]["quotation_id"] == $quid && $order[0]["approved"] == "yes") ? "Order form approved" : "Order form disapproved";
 
                                                        $orders = ($order[0]["quotation_id"] == $quid) ? "available" : "none";
 
@@ -585,7 +594,7 @@
                                                        <td><?= $approved ?></td>
                                                        <td><?= $payment ?></td>
                                                        <td><?= $status ?></td>
-                                                       <td><a href="<?= base_url() ?>/dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
+                                                       <td><a href="<?= base_url() ?>dashboard/lead/view_quotation/<?= $lead_id ?>/<?= $customerID ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a></td>
                                                   </tr>
                                              <?php endforeach; ?>
                                         </table>
@@ -857,7 +866,11 @@
                                         </div>
                                         <div class="col-sm-6 form-group">
                                              <label for="">Expected Date</label>
-                                             <input type="date" name="exp_date" id="exp_date" class="form-control border-bottom">
+                                             <input type="date" name="exp_date" id="exp_date" min="<?= date("Y-m-d") ?>" class="form-control border-bottom">
+                                        </div>
+                                        <div class="col-sm-6 form-group">
+                                             <label for="">Expected Time</label>
+                                             <input type="time" name="exp_time" class="form-control border-bottom">
                                         </div>
                                         <div class="col-sm-6 form-group">
                                              <label for="">Status</label>
@@ -1426,7 +1439,7 @@
 
 
 
-          $(document).on("click",".customers",function() {
+          $(document).on("click", ".customers", function() {
                var id = $(this).data("customer");
                $(".customers").removeClass("active");
                $(this).addClass("active");
@@ -1717,7 +1730,7 @@
                var product_id = $(this).data("product");
                $(".select-product").removeClass("active");
                $(this).addClass("active");
-               $(".product-item-search").attr("data-product-id",product_id);
+               $(".product-item-search").attr("data-product-id", product_id);
                $.ajax({
                     url: "<?= base_url() ?>ajax/getProductItem",
                     method: "post",
@@ -1792,7 +1805,7 @@
 
                $(".select-service").removeClass("active");
 
-               $(".service-item-search").attr("data-service-id",service_id);
+               $(".service-item-search").attr("data-service-id", service_id);
 
                $(this).addClass("active");
                $.ajax({
@@ -2460,18 +2473,18 @@
                var value = $(this).val().toLowerCase();
 
                $.ajax({
-                    method:"post",
-                    url:"<?= base_url()?>ajax/getcustomerinfo",
-                    data:{
-                         value:value
+                    method: "post",
+                    url: "<?= base_url() ?>ajax/getcustomerinfo",
+                    data: {
+                         value: value
                     },
-                    success:function(status){
+                    success: function(status) {
                          var status = JSON.parse(status);
-                         console.log("customer",);
-                         $.each(status["customer"],function(k,v){
-                              $(".customer-list").html("<li data-customer='"+v["customer_id"]+"' style='cursor:pointer' class='list-group-item customers'>"+v["name"]+"</li>")
+                         console.log("customer", );
+                         $.each(status["customer"], function(k, v) {
+                              $(".customer-list").html("<li data-customer='" + v["customer_id"] + "' style='cursor:pointer' class='list-group-item customers'>" + v["name"] + "</li>")
                          })
-                        
+
                     }
                })
 
@@ -2500,7 +2513,7 @@
                     data: {
                          product_name: product_name,
                          lead_id: $(".lead_id").val(),
-                         product_id:product_id
+                         product_id: product_id
                     },
                     success: function(status) {
                          $(".product-table tbody").html('');
@@ -2571,18 +2584,18 @@
                });
           })
 
-          $(document).on("keyup",".service-item-search",function() {
+          $(document).on("keyup", ".service-item-search", function() {
 
                var service_name = $(this).val().toLowerCase();
 
-               var  service_id = $(this).data("service-id");
+               var service_id = $(this).data("service-id");
 
                $.ajax({
                     url: "<?= base_url() ?>ajax/getServiceItem",
                     method: "post",
                     data: {
                          service_id: service_id,
-                         service_name:service_name,
+                         service_name: service_name,
                          lead_id: $(".lead_id").val()
                     },
                     success: function(status) {
@@ -2947,10 +2960,11 @@
                     var qid = $(this).data("qid");
                     if ($(this).data("order") == "available") {
                          $(".gorder").removeClass("d-none");
-                         $(".approve").removeClass("d-none");
-                         $(".disapprove").removeClass("d-none");
-                         $(".approve").removeClass("disabled");
+                         // $(".approve").removeClass("d-none");
+                         // $(".disapprove").removeClass("d-none");
+                         // $(".approve").removeClass("disabled");
                          $(".gorder").attr("data-href", url + "?qid=" + qid);
+                         
                     } else {
                          $(".approve").removeClass("disabled");
                          $(".disapprove").removeClass("disabled");
@@ -2991,34 +3005,34 @@
 
           $(document).on("click", ".approve", function() {
                $(".gorder").removeClass("d-none");
+               $(".gorder").removeClass("d-none");
                var formdata = $(".disapproveform").serializeArray();
-               console.log("approve",formdata);
+               console.log("approve", formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/ordersubmit",
                     data: formdata,
                     success: function(status) {
-                        
-                         location.reload();
+                         // location.reload();
                     }
                })
           });
 
-          $(document).on("click",".disapprove",function(){
+          $(document).on("click", ".disapprove", function() {
                $("#oapproved").val("no");
           });
 
           $(document).on("submit", ".disapproveform", function(e) {
                e.preventDefault();
                var formdata = $(this).serializeArray();
-               formdata["approved"]="no";
-               console.log("disapprove",formdata);
+               formdata["approved"] = "no";
+               console.log("disapprove", formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/ordersubmit",
                     data: formdata,
                     success: function(status) {
-                        
+
                          $("#disapproveModal").modal("hide");
                          location.reload();
                          // console.log(status);
@@ -3033,10 +3047,10 @@
 
                $.ajax({
                     method: "post",
-                    url: "<?= base_url() ?>ajax/sendmail",
+                    url: "<?= base_url() ?>ajax/sendmail?email='send'",
                     data: {
                          customer: customer,
-                         lead_id:lead_id
+                         lead_id: lead_id
                     },
                     success: function(status) {
                          console.log(status);

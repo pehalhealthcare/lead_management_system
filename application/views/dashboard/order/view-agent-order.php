@@ -10,7 +10,7 @@
         </button>
       </div>
     <?php endif; ?>
-      
+
 
     <div class="table-responsive bg-white">
       <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
@@ -43,6 +43,9 @@
               <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#downloadbox" class="btn btn-primary downloads">
                 <i class="fa fa-download"></i>
               </button>
+              <?php if ($order->payment == "no") : ?>
+                <button class="btn btn-danger select-admin" data-order-id="<?= $order->order_id ?>" data-lead-id="<?= $order->lead_id ?>" data-qid="<?= $order->lead_id ?>"  ><i class="fa fa-exclamation-triangle" aria-hidden="true"></i></button>
+              <?php endif; ?>
             </td>
           </tr>
         <?php endforeach; ?>
@@ -100,7 +103,7 @@
             <label>Upload Invoice 2</label>
             <input type="file" name="userfile2" class="form-control" />
             <span class="text-danger"> * File size less than 2MB</span>
-            
+
           </div>
         </div>
 
@@ -141,6 +144,48 @@
 </div>
 </div>
 
+<div class="modal" id="selectAdmin">
+  <div class="modal-dialog"> 
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Admin Selection</h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+      <form action="" method="post" id="admin-order">
+      <!-- Modal body -->
+      <div class="modal-body">
+        <div class="form-group">
+          <select class="form-control text-capitalize" name="admin">
+            <option value="">Select Admin</option>
+            <?php foreach ($admins as $admin) : ?>
+              <option value="<?= $admin["id"]?>"><?= $admin["firstname"]?></option>
+            <?php endforeach; ?>
+          </select>
+          <input type="hidden" id="order_id" name="order_id"/>
+          <input type="hidden" id="agent_id" name="agent_id" value="<?= $this->session->userID; ?>" />
+          <input type="hidden" id="lead_id" name="lead_id"/>
+          <input type="hidden" id="qid" name="qid"/>
+        </div>
+        <div class="form-group">
+          <label>Reason</label>
+          <input type="text" class="form-control" name="reason"/>
+        </div>
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-info">Submit</button>
+      </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+
 <div class="modal" id="messageModalBox">
   <div class="modal-dialog">
     <div class="modal-content">
@@ -168,6 +213,34 @@
 <script>
   $(document).ready(function() {
 
+    $(document).on("click",".select-admin",function(){
+      var order_id = $(this).data("order-id");
+      var qid = $(this).data("qid");
+      var lead_id = $(this).data("lead-id");
+
+      $("#order_id").val(order_id);
+      $("#lead_id").val(lead_id);
+      $("#qid").val(qid);
+
+      $("#selectAdmin").modal("show");
+
+    });
+
+    $(document).on("submit","#admin-order",function(e){
+        e.preventDefault();
+        var formdata = $("#admin-order").serializeArray();
+
+        $.ajax({
+          method:"post",
+          url:"<?= base_url()?>ajax/adminorderintimate",
+          data:formdata,
+          success:function(Status)
+          {
+            alert("Data added successfully");
+            location.reload();
+          }
+        })
+    }); 
 
     $(document).on("click", ".delete-data", function() {
       var id = $(this).data("id");
@@ -218,9 +291,9 @@
         success: function(status) {
           $.each(JSON.parse(status), function(k, v) {
             var html = "<div>";
-            html +="<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document1"] + "'>" + v["document1"] + "</a></p>";
-            html +="<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document2"] + "'>" + v["document2"] + "</a></p>";
-            html +="</div>"
+            html += "<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document1"] + "'>" + v["document1"] + "</a></p>";
+            html += "<p class='alert alert-info'><a download href='<?= base_url() ?>uploads/order_docs/" + v["document2"] + "'>" + v["document2"] + "</a></p>";
+            html += "</div>"
             $(".doc-download").append(html);
           });
         }

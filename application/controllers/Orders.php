@@ -29,6 +29,8 @@ class Orders extends CI_Controller
 
                $data["title"] = "Dashboard | Agent orders";
 
+               $data["admins"] = $this->common_model->viewwheredata(array("role"=>1),"mk_registration_table");
+
                $this->load->view("inc/header", $data);
                $this->load->view("dashboard/order/view-agent-order", $data);
                $this->load->view("inc/footer", $data);

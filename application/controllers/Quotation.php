@@ -33,6 +33,8 @@ class Quotation extends CI_Controller
 
           $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id, "lead_id" => $lead_id, "is_active" => 1), "mk_customer_item");
 
+          
+
           $total_price = 0;
           foreach ($data["customer_item"] as $customer_item) {
                $total_price = $total_price + $customer_item["total_price"];
@@ -58,8 +60,8 @@ class Quotation extends CI_Controller
                     echo "Data Updated";
                }
           } else {
-               $insertdata["created_by"] = $this->session->userID;
-               $insertdata["created_at"] = date("Y-m-d h:i:s");
+               $insertdata["created_by"] = date("Y-m-d h:i:s");
+               $insertdata["created_at"] = $this->session->userID;
                if ($this->common_model->adddata("mk_quotation", $insertdata)) {
                     echo "Data Inserted";
                }
@@ -112,11 +114,13 @@ class Quotation extends CI_Controller
           $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id" => $customer_id, "lead_id" => $lead_id, "is_active" => 1), "mk_customer_item");
 
           $total_price = 0;
+
           foreach ($data["customer_item"] as $customer_item) {
                $total_price = $total_price + $customer_item["total_price"];
           }
           //     echo $total_price;
           $pdf = base_url() . "dashboard/lead/generate_quotation/" . $lead_id . "/" . $customer_id;
+
           $insertdata = array(
                "quotation_no" => time(),
                "lead_id" => $lead_id,
@@ -189,13 +193,17 @@ class Quotation extends CI_Controller
 
                          if ($this->common_model->updatedata("mk_order", $insertdata, $array)) {
                               // $customer[0]["mobile"]
-                              if ($this->email_template_2($customer[0]["email"], $quotation[0]["pdf"])) {
-                                   // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
-                                   // echo $sms;
-                                   // echo json_encode(array("message" => "Data and mail sent successfully"));
-                              } else {
-                                   // echo json_encode(array("message" => "Mail not sent"));
+                              if($this->input->get("email"))
+                              {
+                                   if ($this->email_template_2($customer[0]["email"], $quotation[0]["pdf"])) {
+                                        // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
+                                        // echo $sms;
+                                        // echo json_encode(array("message" => "Data and mail sent successfully"));
+                                   } else {
+                                        // echo json_encode(array("message" => "Mail not sent"));
+                                   }
                               }
+                              
                               $this->session->set_flashdata('message_name', 'Order Data Updated');
                               // return redirect("/dashboard/leads/assign/".$lead_id);
                          }
@@ -205,13 +213,17 @@ class Quotation extends CI_Controller
                          $insertdata["created_at"] = date("Y-m-d h:i:s");
 
                          if ($this->common_model->adddata("mk_order", $insertdata)) {
-                              if ($this->email_template_2($customer[0]["email"],$data["quotation"][0]["pdf"])) {
-                                   // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
-                                   // echo $sms;
-                                   // echo json_encode(array("message" => "Data and mail sent successfully"));
-                              } else {
-                                   // echo json_encode(array("message" => "Mail not sent"));
+                              if($this->input->get("email"))
+                              {
+                                   if ($this->email_template_2($customer[0]["email"],$data["quotation"][0]["pdf"])) {
+                                        // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
+                                        // echo $sms;
+                                        // echo json_encode(array("message" => "Data and mail sent successfully"));
+                                   } else {
+                                        // echo json_encode(array("message" => "Mail not sent"));
+                                   }
                               }
+                              
                          }
                     }
                }
@@ -268,9 +280,7 @@ class Quotation extends CI_Controller
                "quotation_id" => $data["qid"],
                "lead_id" => $lead_id,
                "order_no" => "ORD_" . time(),
-               "payment" => "no",
                "status" => 1,
-               "approved" => "no",
           );
 
 
@@ -296,13 +306,17 @@ class Quotation extends CI_Controller
 
                     if ($this->common_model->updatedata("mk_order", $insertdata, $array)) {
                          $customer[0]["mobile"];
-                         if ($this->email_template_2($customer[0]["email"], $quotation[0]["pdf"])) {
-                              // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
-                              // echo $sms;
-                              // echo json_encode(array("message" => "Data and mail sent successfully"));
-                         } else {
-                              // echo json_encode(array("message" => "Mail not sent"));
+                         if($this->input->get("email"))
+                         {
+                              if ($this->email_template_2($customer[0]["email"], $quotation[0]["pdf"])) {
+                                   // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
+                                   // echo $sms;
+                                   // echo json_encode(array("message" => "Data and mail sent successfully"));
+                              } else {
+                                   // echo json_encode(array("message" => "Mail not sent"));
+                              }
                          }
+                         
                          $this->session->set_flashdata('message_name', 'Order Data Updated');
                          // return redirect("/dashboard/leads/assign/".$lead_id);
                     }
@@ -312,16 +326,25 @@ class Quotation extends CI_Controller
                     $insertdata["created_at"] = date("Y-m-d h:i:s");
 
                     if ($this->common_model->adddata("mk_order", $insertdata)) {
-                         if ($this->email_template_2($customer[0]["email"], $data["quotation"][0]["pdf"])) {
-                              // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
-                              // echo $sms;
-                              // echo json_encode(array("message" => "Data and mail sent successfully"));
-                         } else {
-                              // echo json_encode(array("message" => "Mail not sent"));
+                         if($this->input->get("email"))
+                         {
+                              if ($this->email_template_2($customer[0]["email"], $data["quotation"][0]["pdf"])) {
+                                   // $sms = $this->sms_template_2($customer[0]["mobile"], $this->input->post("mobile"));
+                                   // echo $sms;
+                                   // echo json_encode(array("message" => "Data and mail sent successfully"));
+                              } else {
+                                   // echo json_encode(array("message" => "Mail not sent"));
+                              }
+
                          }
+                        
                     }
                }
           }
+
+          $data["orders"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id),"mk_order");
+
+          // print_r($data["orders"]); die();
 
 
           $this->load->view('dashboard/leads/generate_quotation', $data);
@@ -383,7 +406,7 @@ class Quotation extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <manoj@medikart.co.in>' . "\r\n";
+          $headers .= 'From: <'. $this->session->email.'>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {

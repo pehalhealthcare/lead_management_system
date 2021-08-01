@@ -409,6 +409,8 @@ class Leads extends CI_Controller
 
           $data["lead_customer"] = $this->common_model->viewwheredataorderby(array("lead_id" => $lead_id), "mk_lead_customer", "id", "desc");
 
+          // print_r($data["lead_customer"]); die();
+
           $data["activity"] = $this->common_model->viewdata("mk_activity_master", "multiple");
 
           // print_r($data["activity"]); die();
@@ -423,7 +425,7 @@ class Leads extends CI_Controller
 
           $data["cust_address"] = $this->common_model->vieworderby("mk_customer_address", "multiple", "address_id", "desc");
 
-          // print_r($data["cust_address"]); echo $this->db->last_query(); die();
+          // echo "<pre>"; print_r($data["cust_address"]); die();
 
           $data["products"] = $this->common_model->viewdata("mk_master_product", "multiple");
 
@@ -513,6 +515,15 @@ class Leads extends CI_Controller
 
      public function ordersubmit()
      {
+
+          if($this->input->post("payment")=="yes")
+          {
+               $approved = "yes";
+          }
+          else
+          {
+               $approved = "no";
+          }
           $data = array(
                "quotation_id" => $this->input->post("qid"),
                "lead_id" => $this->input->post("lead_id"),
@@ -521,8 +532,10 @@ class Leads extends CI_Controller
                "decision" => $this->input->post("decision"),
                "payment" => $this->input->post("payment"),
                "status" => 1,
-               "approved" => $this->input->post("approved"),
+               "approved" => $approved,
           );
+
+
 
           $lead_id = $this->input->post("lead_id");
 
@@ -628,7 +641,7 @@ class Leads extends CI_Controller
      {
 
           $to = $customer_email;
-          $subject = "Query Mail";
+          $subject = "Order Confirmation Mail";
 
           $message = '
           <!DOCTYPE html>
@@ -665,7 +678,7 @@ class Leads extends CI_Controller
                <p>
                     MediKart
                </p>
-               <iframe src="' . $attachment . '" width="100%" height="100%"></iframe>
+              
           </body>
           
           </html>
@@ -676,7 +689,7 @@ class Leads extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <manoj@medikart.co.in>' . "\r\n";
+          $headers .= 'From: <'. $this->session->email.'>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {

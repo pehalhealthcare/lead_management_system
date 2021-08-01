@@ -57,7 +57,7 @@
 
                          <div class="form-group col-sm-12 col-md-6 admin-cat d-none">
                               <label for="">Category</label>
-                              <Select class="role form-control" name="category">
+                              <Select class="role form-control" name="admin-category">
                                    <option value="">Select Category</option>
                                    <option value="CA">Category A</option>
                                    <option value="CB">Category B</option>
@@ -68,7 +68,7 @@
 
                          <div class="form-group col-sm-12 group-cat col-md-6 d-none">
                               <label for="">Category</label>
-                              <Select class="role form-control" name="category">
+                              <Select class="role form-control" name="group-category">
                                    <option value="">Select Category</option>
                                    <option value="BTL">Business Team Leader</option>
                                    <option value="BA">Business Agent</option>

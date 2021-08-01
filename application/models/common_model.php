@@ -88,6 +88,8 @@ class Common_model extends CI_Model
      {
           $this->db->where($column);
 
+          $this->db->order_by('created_by', 'DESC');
+
           $run = $this->db->get($table);
 
           $data = $run->result_array();
