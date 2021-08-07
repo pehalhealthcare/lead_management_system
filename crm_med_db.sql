@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jul 17, 2021 at 12:06 PM
+-- Generation Time: Aug 07, 2021 at 07:12 AM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -61,15 +61,15 @@ CREATE TABLE `mk_activity` (
 --
 
 INSERT INTO `mk_activity` (`id`, `lead_id`, `assigned_to`, `activity_master_id`, `subject`, `direction`, `status`, `communication_preferred`, `lead_possibility`, `related_to`, `related_to_other`, `start_date_time`, `end_date_time`, `reminder`, `description`, `location`, `from_add`, `to_add`, `cc`, `bcc`, `body`, `is_active`, `created_by`, `created_at`, `modified_by`, `modified_at`) VALUES
-(1, 1, 'Karthik', 1, 'Schedule Meeting', NULL, 'Planned', NULL, NULL, 'contact', NULL, '13-05-2021', '05/15/2021', '1', 'Schedule Meeting is Updated', 'Chennai', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-13 21:40:13', NULL, NULL),
-(2, 1, 'mayank', 2, 'Testing', 'Outbound', 'Held', 'email', 'qualified', 'Abishek', NULL, '15-05-2021', NULL, '1', 'testing', NULL, NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-12 21:27:16', NULL, NULL),
-(3, 1, NULL, 3, 'Testing', NULL, NULL, NULL, NULL, 'abishek', NULL, NULL, NULL, NULL, NULL, NULL, 'veloukarthik@gmail.com', 'onlineguruweb@gmail.com', '', '', '<p>Testing</p>', 1, 1, '2021-05-12 21:28:32', NULL, NULL),
-(4, 5, 'tested', 1, 'tested', NULL, 'Planned', NULL, NULL, 'account', NULL, '01-06-2021', '06/01/2021', '1', 'tested', 'tested', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-31 20:27:34', NULL, NULL),
-(5, 1, 'tested', 1, 'tested', NULL, 'Planned', NULL, NULL, 'account', NULL, '01-06-2021', '06/02/2021', '1', 'tested', 'tested', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-31 20:29:37', NULL, NULL),
-(6, 2, 'tested', 1, 'tested', NULL, 'Planned', NULL, NULL, 'account', NULL, '05-06-2021', '06/05/2021', '1', 'getea', 'tested', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-04 21:50:22', NULL, NULL),
-(7, 2, 'awerawe', 1, 'aewrawea', NULL, 'Planned', NULL, NULL, 'account', NULL, '11-06-2021', '06/16/2021', '1', 'aewr', 'aewr', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-11 03:19:44', NULL, NULL),
-(8, 2, 'awerawe', 1, 'aewrawea', NULL, 'Planned', NULL, NULL, 'account', NULL, '11-06-2021', '06/16/2021', '1', 'aewr', 'aewr', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-11 03:19:47', NULL, NULL),
-(9, 33, 'awertawe', 1, 'tested', NULL, 'Held', NULL, NULL, 'contact', NULL, '2021-07-07T06:37', '2021-07-09T06:37', NULL, 'aateaw', 'awerawe', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-07-06 21:37:55', NULL, NULL);
+(1, 0, '3', 1, 'Schedule', 'Inbound', 'Planned', 'whatsapp', 'qualified', 'contact', NULL, '13-05-2021', '05/15/2021', '1', 'Schedule Meeting is Updated', 'Chennai', NULL, NULL, NULL, NULL, NULL, 1, 2, '2021-07-18 02:56:44', NULL, NULL),
+(2, 0, '6', 2, 'Meetings', 'Outbound', 'Held', 'email', 'qualified', 'account', NULL, '15-05-2021', '', '1', 'testing', '', NULL, NULL, NULL, NULL, NULL, 1, 2, '2021-07-18 02:57:00', NULL, NULL),
+(3, 1, '3', 3, 'Testing', NULL, NULL, NULL, NULL, 'abishek', NULL, NULL, NULL, NULL, NULL, NULL, 'veloukarthik@gmail.com', 'onlineguruweb@gmail.com', '', '', '<p>Testing</p>', 1, 1, '2021-05-12 21:28:32', NULL, NULL),
+(4, 5, '6', 1, 'tested', NULL, 'Planned', NULL, NULL, 'account', NULL, '01-06-2021', '06/01/2021', '1', 'tested', 'tested', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-31 20:27:34', NULL, NULL),
+(5, 1, '3', 2, 'tested', NULL, 'Planned', NULL, NULL, 'account', NULL, '01-06-2021', '06/02/2021', '1', 'tested', 'tested', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-05-31 20:29:37', NULL, NULL),
+(6, 2, '6', 1, 'tested', NULL, 'Planned', NULL, NULL, 'account', NULL, '05-06-2021', '06/05/2021', '1', 'getea', 'tested', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-04 21:50:22', NULL, NULL),
+(7, 2, '3', 1, 'aewrawea', NULL, 'Planned', NULL, NULL, 'account', NULL, '11-06-2021', '06/16/2021', '1', 'aewr', 'aewr', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-11 03:19:44', NULL, NULL),
+(8, 2, '6', 1, 'aewrawea', NULL, 'Planned', NULL, NULL, 'account', NULL, '11-06-2021', '06/16/2021', '1', 'aewr', 'aewr', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-06-11 03:19:47', NULL, NULL),
+(9, 33, '3', 1, 'tested', NULL, 'Held', NULL, NULL, 'contact', NULL, '2021-07-07T06:37', '2021-07-09T06:37', NULL, 'aateaw', 'awerawe', NULL, NULL, NULL, NULL, NULL, 1, 1, '2021-07-06 21:37:55', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,7 @@ CREATE TABLE `mk_customer` (
 INSERT INTO `mk_customer` (`customer_id`, `prefix`, `name`, `email`, `mobile`, `alternate_mobile`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
 (1, 'Mr', 'Karthik Velou Rithik', 'veloukarthik@gmail.com', '9791287056', '9344751727', 1, '2021-06-12 18:30:00', 1, NULL, 0),
 (2, 'Mr', 'Rithik', 'rithik@gmail.com', '9344751727', '9791287056', 1, '2021-06-09 18:30:00', 1, NULL, 0),
-(3, 'Mr', 'Mayank', 'mayank@gmail.com', '1234567890', '9876543210', 1, '2021-06-09 18:30:00', 1, NULL, 0),
+(3, 'Mr', 'Mayank', 'mayank@gmail.com', '1234567890', '9876543210', 1, '2021-07-16 18:30:00', 1, NULL, 0),
 (5, 'Mr', 'Velou', 'velou@gmail.com', '9894792083', '9894792083', 1, '2021-06-14 18:30:00', 1, NULL, 0),
 (6, 'Mr', 'sheetal', 'sheetal@pehal.com', '989456221232', '9884546623', 1, '2021-07-16 18:30:00', 3, NULL, 0),
 (7, 'Mr', 'Abishek', 'abishek@gmail.com', '9876543210', '9876543210', 1, '2021-06-14 18:30:00', 1, NULL, 0),
@@ -190,10 +190,13 @@ INSERT INTO `mk_customer` (`customer_id`, `prefix`, `name`, `email`, `mobile`, `
 (10, NULL, '133', '133@gmail.com', '123456', NULL, 1, NULL, NULL, NULL, NULL),
 (11, NULL, 'tested velou', 'testedvelou@gmail.com', '123456789012345699545', NULL, 1, NULL, NULL, NULL, NULL),
 (12, NULL, 'awerawe', 'awerawerawe', 'awerawerawe', NULL, 1, NULL, NULL, NULL, NULL),
-(13, 'Mr', 'awerawe', 'awerawerawe@gmail.com', 'awerawerawe', '', 1, '2021-07-10 18:30:00', 1, NULL, NULL),
+(13, 'Mr', 'awerawe', 'awerawerawe@gmail.com', 'awerawerawe', '', 1, '2021-07-17 18:30:00', 1, NULL, NULL),
 (14, 'Mr', 'rithik karthik', 'rithikkarthik@gmail.com', '1234567890', '', 1, '2021-06-24 18:30:00', 1, NULL, NULL),
 (15, NULL, 'aawer', 'aewraw', 'awerawe', NULL, 1, NULL, NULL, NULL, NULL),
-(16, NULL, 'aweraw', 'aweraw', 'awerawe', NULL, 1, NULL, NULL, NULL, NULL);
+(16, NULL, 'aweraw', 'aweraw', 'awerawe', NULL, 1, NULL, NULL, NULL, NULL),
+(17, NULL, 'karthik', '12322@gmail.com', '1234567890', NULL, 1, NULL, NULL, NULL, NULL),
+(19, NULL, 'karthik', '987456522@gmail.com', '1234567890', NULL, 1, NULL, NULL, NULL, NULL),
+(22, NULL, 'Sankari', 'sankari@gmail.com', '8870392950', NULL, 1, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -226,14 +229,14 @@ CREATE TABLE `mk_customer_address` (
 INSERT INTO `mk_customer_address` (`address_id`, `customer_id`, `address_1`, `address_2`, `address_3`, `city`, `state`, `zip`, `country`, `is_primary`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
 (1, 1, 'Pondicherry', 'Pondicherry ffff', 'Pondicherry', 'Pondicherry', 'Pondicherry', '605001', NULL, 1, 0, '2021-06-12 20:39:29', 1, NULL, 0),
 (2, 2, 'Puduvai', 'Puducherry', 'Puducherry', 'Pondicherry', 'Pondicherry', '605010', NULL, 1, 0, '2021-06-10 01:59:56', 1, NULL, 0),
-(3, 3, 'Delhi', 'Delhi', 'India', 'Indira Nagar', 'New Delhi', '50001', NULL, 1, 0, '2021-06-10 01:44:46', 1, NULL, 0),
+(3, 3, 'Delhi', 'Delhi', 'India', 'Indira Nagar', 'New Delhi', '50001', NULL, 1, 0, '2021-07-17 06:57:06', 1, NULL, 0),
 (4, 4, '', '', '', '', '', '', NULL, 1, 0, '2021-04-23 22:32:02', 1, NULL, 0),
 (5, 5, 'Pondy', 'Pondicherry', 'Pondicherry', 'Pondicherry', 'Pondicherry', '605001', NULL, 1, 0, '2021-06-15 06:46:20', 1, NULL, 0),
 (6, 6, 'England', 'London', 'Hamster', 'London', 'Bukkinghom Palace', '123456978', NULL, 1, 0, '2021-07-16 22:47:39', 3, NULL, 0),
 (7, 7, 'Delhi', 'Delhi', 'Delhi', 'Delhi', 'Delhi', '1200255', NULL, 1, 0, '2021-06-15 02:01:58', 1, NULL, 0),
 (8, 8, '', '', '', '', '', '', NULL, 1, 0, '2021-06-09 20:07:21', 1, NULL, 0),
 (9, 9, '123', '', 'tested', 'tested', 'tested', '123664', NULL, 1, 0, '2021-07-02 06:33:27', 1, NULL, 0),
-(10, 13, '123', '', 'tested', 'tested', 'tested', '133664', NULL, 1, 0, '2021-07-10 20:32:57', 1, NULL, 0),
+(10, 13, '123', '', 'tested', 'tested', 'tested', '133664', NULL, 1, 0, '2021-07-18 02:40:36', 1, NULL, 0),
 (11, 14, '', '', '', '', '', '', NULL, 1, 0, '2021-06-25 05:18:25', 1, NULL, 0);
 
 -- --------------------------------------------------------
@@ -287,7 +290,10 @@ INSERT INTO `mk_customer_item` (`customer_item_id`, `customer_id`, `lead_id`, `p
 (7, 13, 32, NULL, 1, 'service', NULL, 1, '10', '200', '200', '178.57', '1785.71', '2000', '12', '21.43', '214.29', 'TESTED', 'TESTED', 'TESTED', 'TESTED', 'TESTED', 'TESTED', 1, '2021-07-10 20:33:12', 1, '2021-07-11 12:03:12', NULL),
 (8, 13, 32, NULL, 1, 'service', NULL, 4, '10', '100', '100', '86.21', '862.07', '1000', '16', '13.79', '137.93', 'TESTED', 'TESTED', 'TESTED', 'TESTED', 'TESTED', 'TESTED', 1, '2021-07-10 20:33:14', 1, '2021-07-11 12:03:14', NULL),
 (9, 6, 1, 1, NULL, 'product', NULL, 1, '5', '760340.00', '760340.00', '678875.00', '3394375.00', '3801700', '12', '81465.00', '407325.00', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-07-16 22:48:29', 3, '2021-07-17 02:17:57', NULL),
-(10, 6, 1, NULL, 1, 'service', NULL, 1, '10', '200', '200', '178.57', '1785.71', '2000', '12', '21.43', '214.29', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-07-16 22:48:10', 3, '2021-07-17 02:18:10', NULL);
+(10, 6, 1, NULL, 1, 'service', NULL, 1, '10', '200', '200', '178.57', '1785.71', '2000', '12', '21.43', '214.29', NULL, NULL, NULL, NULL, NULL, NULL, 1, '2021-07-16 22:48:10', 3, '2021-07-17 02:18:10', NULL),
+(11, 3, 33, 1, NULL, 'product', NULL, 1, '1', '760340.00', '760340.00', '678875.00', '678875.00', '760340', '12', '81465.00', '81465.00', '123456', 'Terms', 'Reference 1', 'Reference 2', 'Reference 3', 'Special Comments', 1, '2021-07-18 22:49:09', 1, '2021-07-19 02:19:09', NULL),
+(12, 3, 33, NULL, 1, 'service', NULL, 4, '10', '100', '100', '86.21', '862.07', '1000', '16', '13.79', '137.93', '123456', 'Terms', 'Reference 1', 'Reference 2', 'Reference 3', 'Special Comments', 1, '2021-07-18 22:49:24', 1, '2021-07-19 02:19:23', NULL),
+(13, 3, 33, 1, NULL, 'product', NULL, 1, '1', '760340.00', '760340.00', '678875.00', '678875.00', '760340', '12', '81465.00', '81465.00', '123456', 'Terms', 'Reference 1', 'Reference 2', 'Reference 3', 'Special Comments', 1, '2021-07-18 22:49:09', 1, '2021-07-19 02:19:09', NULL);
 
 -- --------------------------------------------------------
 
@@ -335,7 +341,8 @@ INSERT INTO `mk_customer_term` (`customer_term_id`, `term_id`, `customer_id`, `p
 (21, 1, 9, NULL, 1, '2021-07-11 01:58:49', 1, NULL, NULL),
 (22, 2, 9, NULL, 1, '2021-07-11 01:58:49', 1, NULL, NULL),
 (23, 3, 9, NULL, 1, '2021-07-11 01:58:50', 1, NULL, NULL),
-(24, 3, 6, NULL, 1, '2021-07-16 22:48:45', 3, NULL, NULL);
+(24, 3, 6, NULL, 1, '2021-07-16 22:48:45', 3, NULL, NULL),
+(25, 3, 3, NULL, 1, '2021-07-18 22:50:19', 1, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -447,7 +454,29 @@ INSERT INTO `mk_lead` (`id`, `category`, `sub_category`, `lead_source`, `assigne
 (30, '2', NULL, 'Cold Call', 3, 0, NULL, 'awerawe', 'awerawerawe', 'awerawerawe', 1, NULL, 'New', '2021-06-12 18:30:00', 1, 0, NULL),
 (31, '1', NULL, 'whatsapp', 3, 0, 'New_Project1.png', 'rithik karthik', 'rithikkarthik@gmail.com', '1234567890', 1, NULL, 'New', '2021-06-15 18:30:00', 1, 0, NULL),
 (32, '1', NULL, 'whatsapp', 3, 1, NULL, 'aawer', 'aewraw', 'awerawe', 1, NULL, 'New', '2021-07-01 18:30:00', 1, 0, NULL),
-(33, '2', '', 'whatsapp', 3, 1, 'New_Project2.png', 'aweraw', 'aweraw', 'awerawe', 1, NULL, 'New', '2021-07-06 18:30:00', 1, 0, NULL);
+(33, '2', '', 'whatsapp', 3, 1, 'New_Project2.png', 'aweraw', 'aweraw', 'awerawe', 1, NULL, 'New', '2021-07-06 18:30:00', 1, 0, NULL),
+(34, '2', NULL, 'india_mart', 3, 1, NULL, 'tested', 'tested@gmail.com', '9791287056', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(35, '2', NULL, 'india_mart', 3, 1, NULL, 'tested', 'tested@gmail.com', '9791287056', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(36, '2', NULL, 'india_mart', 3, 1, NULL, 'tested', 'tested@gmail.com', '9791287056', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(37, '1', NULL, 'india_mart', 3, 1, '20210511_131441.jpg', 'karthik', '12322@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(38, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '12322@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(39, '1', NULL, 'india_mart', 3, 1, '20210511_1314411.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(40, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(41, '1', NULL, 'india_mart', 3, 1, '20210511_1314412.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(42, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(43, '1', NULL, 'india_mart', 3, 1, '20210511_1314413.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(44, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(45, '1', NULL, 'india_mart', 3, 1, '20210511_1314414.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(46, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(47, '1', NULL, 'india_mart', 3, 1, '20210511_1314415.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(48, '1', NULL, 'india_mart', 3, 1, '20210511_1314416.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(49, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(50, '1', NULL, 'india_mart', 3, 1, '20210511_1314417.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(51, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(52, '1', NULL, 'india_mart', 3, 1, '20210511_1314418.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(53, '1', NULL, 'india_mart', 3, 1, NULL, 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(54, '1', NULL, 'india_mart', 3, 1, '20210511_1314419.jpg', 'karthik', '987456522@gmail.com', '1234567890', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL),
+(55, '1', NULL, 'india_mart', 6, 1, 'bg.jpg', 'Sankari', 'sankari@gmail.com', '8870392950', 1, NULL, 'New', '2021-07-22 18:30:00', 1, 0, NULL);
 
 -- --------------------------------------------------------
 
@@ -495,7 +524,11 @@ CREATE TABLE `mk_lead_customer` (
 --
 
 INSERT INTO `mk_lead_customer` (`id`, `lead_id`, `customer_id`, `po_id`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, 1, 6, 0, NULL, 0, '2021-07-16 18:30:00', 3);
+(1, 1, 6, 0, NULL, 0, '2021-07-16 18:30:00', 3),
+(2, 33, 3, 0, NULL, 0, '2021-07-16 18:30:00', 1),
+(3, 32, 13, 0, NULL, 0, '2021-07-17 18:30:00', 1),
+(4, 54, 19, 0, '2021-07-23 06:45:46', 1, NULL, 0),
+(5, 55, 22, 0, '2021-07-22 21:58:53', 1, NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -1045,7 +1078,20 @@ INSERT INTO `mk_lead_history` (`id`, `actions`, `lead_id`, `created_by`, `create
 (527, 'Product item updated for lead', 1, 3, '2021-07-16 22:48:10'),
 (528, 'Product item updated for lead', 1, 3, '2021-07-16 22:48:29'),
 (529, 'customer terms updated for lead', 1, 3, '2021-07-16 22:48:44'),
-(530, 'Customer terms added for lead', 1, 3, '2021-07-16 22:48:45');
+(530, 'Customer terms added for lead', 1, 3, '2021-07-16 22:48:45'),
+(531, 'customer details updated for lead', 33, 1, '2021-07-17 06:57:06'),
+(532, 'Log call is updated for lead', 0, 2, '2021-07-18 02:56:44'),
+(533, 'schedule meeting is updated for lead', 0, 2, '2021-07-18 02:57:00'),
+(534, 'opportunity updated for lead', 0, 2, '2021-07-18 02:58:28'),
+(535, 'opportunity updated for lead', 0, 2, '2021-07-18 02:58:35'),
+(536, 'customer details updated for lead', 32, 1, '2021-07-18 02:40:36'),
+(537, 'order details updated', 33, 1, '2021-07-18 20:53:06'),
+(538, 'order details updated', 33, 1, '2021-07-18 20:57:08'),
+(539, 'order details updated', 33, 1, '2021-07-18 20:58:45'),
+(540, 'Product item added for lead', 33, 1, '2021-07-18 22:49:09'),
+(541, 'Product item added for lead', 33, 1, '2021-07-18 22:49:23'),
+(542, 'Product item updated for lead', 33, 1, '2021-07-18 22:49:24'),
+(543, 'Customer terms added for lead', 33, 1, '2021-07-18 22:50:19');
 
 -- --------------------------------------------------------
 
@@ -1428,6 +1474,29 @@ INSERT INTO `mk_master_term` (`term_id`, `term_name`, `is_active`, `created_at`,
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `mk_notifications`
+--
+
+CREATE TABLE `mk_notifications` (
+  `id` int(11) NOT NULL,
+  `action_id` varchar(250) DEFAULT NULL,
+  `action` varchar(250) DEFAULT NULL,
+  `action_by` int(11) DEFAULT NULL,
+  `action_to` int(11) DEFAULT NULL,
+  `is_read` int(11) DEFAULT 0,
+  `created_at` timestamp NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `mk_notifications`
+--
+
+INSERT INTO `mk_notifications` (`id`, `action_id`, `action`, `action_by`, `action_to`, `is_read`, `created_at`) VALUES
+(1, '12313213', 'Test the notifications', 1, 1, 0, '2021-08-01 14:23:06');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `mk_opportunity`
 --
 
@@ -1454,7 +1523,7 @@ INSERT INTO `mk_opportunity` (`id`, `opportunity_name`, `expected_amount`, `expe
 (1, 'Testing Opportunity', '300', '2022-05-02', 1, '1', 'good', 0, 1, '2021-05-14 06:27:52', NULL, NULL),
 (2, 'Testing Opportunity', '300', '2022-05-02', 0, '1', 'good', 0, 1, '2021-05-14 06:25:37', NULL, NULL),
 (3, 'Testing the opportunity', '3000', '2021-05-15', 1, '1', 'good', 0, 2, '2021-05-14 21:52:48', NULL, NULL),
-(4, 'Opportunity', '3000', '2021-05-25', 3, '1', 'good', 1, 1, '2021-05-24 20:12:11', NULL, NULL),
+(4, 'Opportunity', '4000', '2021-05-25', 0, '1', 'bad', 1, 2, '2021-07-18 02:58:35', NULL, NULL),
 (5, 'tested', '3000', '2021-06-01', 1, '1', '123', 0, 1, '2021-05-31 20:20:31', NULL, NULL),
 (6, 'tested', 'tested', '2021-06-01', 5, '1', 'tested', 1, 1, '2021-05-31 20:21:11', NULL, NULL),
 (7, 'tested', '3000', '2021-06-04', 1, '1', 'tested', 0, 1, '2021-06-04 05:46:27', NULL, NULL),
@@ -1497,11 +1566,7 @@ CREATE TABLE `mk_order` (
 --
 
 INSERT INTO `mk_order` (`order_id`, `lead_id`, `quotation_id`, `order_no`, `payment`, `assign_to_tl`, `assign_to_agent`, `decision`, `status`, `approved`, `is_active`, `created_by`, `created_at`, `modified_at`, `modified_by`) VALUES
-(1, 31, 1, 'ORD_1624441620', 'no', '0', '4', 'awerawer', 1, 'no', 1, 1, '2021-06-23 06:12:22', 2021, '0000-00-00 00:00:00'),
-(2, 30, 2, 'ORD_1624884949', 'yes', '0', '3', 'successs', 1, 'yes', 1, 1, '2021-06-23 07:01:30', 2021, '0000-00-00 00:00:00'),
-(3, 33, 3, 'ORD_1626004718', 'yes', '1', '3', 'tested', 1, 'yes', 1, 1, '2021-07-10 20:28:38', NULL, NULL),
-(4, 32, 4, 'ORD_1626005147', 'yes', '1', '3', 'POLICY', 1, 'yes', 1, 1, '2021-07-10 20:35:31', 2021, '0000-00-00 00:00:00'),
-(5, 1, 5, 'ORD_1626488475', 'yes', '0', '3', 'yes', 1, 'yes', 1, 3, '2021-07-16 22:50:04', 2021, '0000-00-00 00:00:00');
+(1, 33, 1, 'ORD_1626659469', 'no', '1', '7', 'okay', 1, 'no', 1, 1, '2021-07-18 20:50:59', 2021, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -1528,9 +1593,7 @@ CREATE TABLE `mk_order_assign` (
 --
 
 INSERT INTO `mk_order_assign` (`id`, `order_id`, `agent_id`, `lead_id`, `quotation_id`, `status`, `is_active`, `created_by`, `created_at`, `modified_by`, `modified_at`) VALUES
-(1, 1, 4, 31, 1, 'yes', 1, 1, '2021-06-28 03:46:16', NULL, NULL),
-(2, 2, 4, 30, 2, 'yes', 1, 1, '2021-06-28 03:50:07', NULL, NULL),
-(3, 2, 7, 29, 2, 'yes', 1, 1, '2021-06-28 03:50:07', NULL, NULL);
+(1, 1, 7, 33, 1, 'yes', 1, 1, '2021-07-18 20:58:57', NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -1553,11 +1616,8 @@ CREATE TABLE `mk_order_docs` (
 --
 
 INSERT INTO `mk_order_docs` (`id`, `order_id`, `document1`, `document2`, `is_active`, `created_by`, `created_at`) VALUES
-(1, 2, 'editor related.txt', NULL, 1, 7, 2021),
-(2, 2, '12345.jpg', NULL, 1, 7, 2021),
-(3, 2, 'profile.png', NULL, 1, 7, 2021),
-(4, 4, 'Policy.pdf', NULL, 1, 1, 2021),
-(5, 5, '10144092029406001.pdf', NULL, 1, 3, 2021);
+(1, 1, 'kumar.txt', NULL, 1, 7, 2021),
+(2, 1, 'Onboarding Checklist.docx', NULL, 1, 7, 2021);
 
 -- --------------------------------------------------------
 
@@ -1605,10 +1665,10 @@ CREATE TABLE `mk_quotation` (
   `comments` varchar(250) DEFAULT NULL,
   `status` int(11) DEFAULT NULL,
   `is_active` int(11) NOT NULL DEFAULT 1,
-  `created_at` int(11) DEFAULT NULL,
-  `created_by` timestamp NULL DEFAULT NULL,
-  `modified_at` int(11) DEFAULT NULL,
-  `modified_by` timestamp NULL DEFAULT NULL
+  `created_at` timestamp NULL DEFAULT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
@@ -1616,11 +1676,7 @@ CREATE TABLE `mk_quotation` (
 --
 
 INSERT INTO `mk_quotation` (`quotation_id`, `quotation_no`, `lead_id`, `customer_id`, `pdf`, `item_total`, `comments`, `status`, `is_active`, `created_at`, `created_by`, `modified_at`, `modified_by`) VALUES
-(1, '1624625649', 31, 14, 'http://localhost/lead_management/dashboard/lead/generate_quotation/31/14', '3250', NULL, NULL, 1, 2021, '0000-00-00 00:00:00', 2021, '0000-00-00 00:00:00'),
-(2, '1624884870', 30, 13, 'http://localhost/lead_management/dashboard/lead/generate_quotation/30/13', '1000', NULL, NULL, 1, 2021, '0000-00-00 00:00:00', 2021, '0000-00-00 00:00:00'),
-(3, '1625981653', 33, 9, 'http://localhost/lead_management/dashboard/lead/generate_quotation/33/9', '2000', NULL, NULL, 1, 2021, '0000-00-00 00:00:00', 2021, '0000-00-00 00:00:00'),
-(4, '1626005065', 32, 13, 'http://localhost/lead_management/dashboard/lead/generate_quotation/32/13', '3000', NULL, NULL, 1, 2021, '0000-00-00 00:00:00', 2021, '0000-00-00 00:00:00'),
-(5, '1626488364', 1, 6, 'http://localhost/lead_management/dashboard/lead/generate_quotation/1/6', '3803700', NULL, NULL, 1, 2021, '0000-00-00 00:00:00', 2021, '0000-00-00 00:00:00');
+(1, '1626661642', 33, 3, 'http://localhost/lead_management/dashboard/lead/generate_quotation/33/3', '761340', NULL, NULL, 1, '2021-07-20 00:46:15', 1, '0000-00-00 00:00:00', 0);
 
 -- --------------------------------------------------------
 
@@ -1641,6 +1697,7 @@ CREATE TABLE `mk_registration_table` (
   `role` varchar(100) NOT NULL,
   `category` varchar(50) NOT NULL,
   `status` int(11) NOT NULL DEFAULT 1,
+  `is_active` int(11) NOT NULL DEFAULT 1,
   `created_at` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -1648,15 +1705,15 @@ CREATE TABLE `mk_registration_table` (
 -- Dumping data for table `mk_registration_table`
 --
 
-INSERT INTO `mk_registration_table` (`id`, `parent_id`, `firstname`, `lastname`, `department`, `email`, `mobile`, `password`, `profile`, `role`, `category`, `status`, `created_at`) VALUES
-(1, 0, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '1', 'CB', 1, '2021-06-10 00:21:04'),
-(2, 1, 'arumugam', 'velou', 'IT', 'karthikvelou@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BTL', 0, '2021-06-10 00:17:11'),
-(3, 1, 'velou', 'karthik', 'CSC', 'karthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-06-10 00:17:09'),
-(4, 1, 'rithik', 'karthik', 'IT', 'rithikkarthik@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OA', 0, '2021-06-29 07:17:52'),
-(5, 1, 'arun', 'kumar', 'IT', 'arunkumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OTL', 0, '2021-06-28 13:32:22'),
-(6, 1, 'kumar', 'arun', 'IT', 'kumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, '2021-06-29 07:17:49'),
-(7, 1, 'saravanan', 'kuppusamy', 'IT', 'saravanan@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OA', 0, '2021-06-28 13:32:17'),
-(8, 1, 'manoj', 'kumar', 'IT', 'manoj@medikart.co.in ', '123456789', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BTL', 1, '2021-06-10 00:22:00');
+INSERT INTO `mk_registration_table` (`id`, `parent_id`, `firstname`, `lastname`, `department`, `email`, `mobile`, `password`, `profile`, `role`, `category`, `status`, `is_active`, `created_at`) VALUES
+(1, 0, 'karthik', 'velou', 'Admin', 'veloukarthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '0000', '1', 'CB', 1, 1, '2021-06-10 00:21:04'),
+(2, 1, 'arumugam', 'velou', 'IT', 'karthikvelou@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BTL', 0, 1, '2021-06-10 00:17:11'),
+(3, 1, 'velou', 'karthik', 'CSC', 'karthik@gmail.com', '9791287056', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, 1, '2021-06-10 00:17:09'),
+(4, 1, 'rithik', 'karthik', 'IT', 'rithikkarthik@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OA', 0, 1, '2021-06-29 07:17:52'),
+(5, 1, 'arun', 'kumar', 'IT', 'arunkumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OTL', 0, 1, '2021-06-28 13:32:22'),
+(6, 1, 'kumar', 'arun', 'IT', 'kumar@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BA', 0, 1, '2021-06-29 07:17:49'),
+(7, 1, 'saravanan', 'kuppusamy', 'IT', 'saravanan@gmail.com', '1234567890', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'OA', 0, 1, '2021-06-28 13:32:17'),
+(8, 1, 'manoj', 'kumar', 'IT', 'manoj@medikart.co.in ', '123456789', '8d969eef6ecad3c29a3a629280e686cf0c3f5d5a86aff3ca12020c923adc6c92', '', '2', 'BTL', 1, 1, '2021-06-10 00:22:00');
 
 -- --------------------------------------------------------
 
@@ -1867,6 +1924,12 @@ ALTER TABLE `mk_master_term`
   ADD PRIMARY KEY (`term_id`);
 
 --
+-- Indexes for table `mk_notifications`
+--
+ALTER TABLE `mk_notifications`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mk_opportunity`
 --
 ALTER TABLE `mk_opportunity`
@@ -1964,7 +2027,7 @@ ALTER TABLE `mk_categories`
 -- AUTO_INCREMENT for table `mk_customer`
 --
 ALTER TABLE `mk_customer`
-  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `customer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `mk_customer_address`
@@ -1976,13 +2039,13 @@ ALTER TABLE `mk_customer_address`
 -- AUTO_INCREMENT for table `mk_customer_item`
 --
 ALTER TABLE `mk_customer_item`
-  MODIFY `customer_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `customer_item_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `mk_customer_term`
 --
 ALTER TABLE `mk_customer_term`
-  MODIFY `customer_term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `customer_term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
 -- AUTO_INCREMENT for table `mk_employee`
@@ -2000,7 +2063,7 @@ ALTER TABLE `mk_group_login_table`
 -- AUTO_INCREMENT for table `mk_lead`
 --
 ALTER TABLE `mk_lead`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `mk_lead_assign`
@@ -2012,13 +2075,13 @@ ALTER TABLE `mk_lead_assign`
 -- AUTO_INCREMENT for table `mk_lead_customer`
 --
 ALTER TABLE `mk_lead_customer`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `mk_lead_history`
 --
 ALTER TABLE `mk_lead_history`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=531;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=544;
 
 --
 -- AUTO_INCREMENT for table `mk_lead_quotation`
@@ -2057,6 +2120,12 @@ ALTER TABLE `mk_master_term`
   MODIFY `term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
+-- AUTO_INCREMENT for table `mk_notifications`
+--
+ALTER TABLE `mk_notifications`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `mk_opportunity`
 --
 ALTER TABLE `mk_opportunity`
@@ -2066,19 +2135,19 @@ ALTER TABLE `mk_opportunity`
 -- AUTO_INCREMENT for table `mk_order`
 --
 ALTER TABLE `mk_order`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mk_order_assign`
 --
 ALTER TABLE `mk_order_assign`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mk_order_docs`
 --
 ALTER TABLE `mk_order_docs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `mk_purchase_order`
@@ -2090,7 +2159,7 @@ ALTER TABLE `mk_purchase_order`
 -- AUTO_INCREMENT for table `mk_quotation`
 --
 ALTER TABLE `mk_quotation`
-  MODIFY `quotation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `quotation_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT for table `mk_registration_table`
