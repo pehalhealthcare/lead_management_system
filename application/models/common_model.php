@@ -88,7 +88,7 @@ class Common_model extends CI_Model
      {
           $this->db->where($column);
 
-          $this->db->order_by('created_by', 'DESC');
+          $this->db->order_by('created_at', 'DESC');
 
           $run = $this->db->get($table);
 

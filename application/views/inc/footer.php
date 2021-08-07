@@ -1,7 +1,6 @@
-
-
 </div>
 </body>
+
 </html>
 
 <div class="modal" id="myModal">
@@ -16,7 +15,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        
+
       </div>
 
       <!-- Modal footer -->
@@ -40,8 +39,9 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        <?php $lead_id=""; if($lead_id) $lead_id=$lead_id; ?>
-        <input type="hidden" id="close_lead_id" value="<?= ($lead_id) ? $lead_id : ""?>" />
+        <?php $lead_id = "";
+        if ($lead_id) $lead_id = $lead_id; ?>
+        <input type="hidden" id="close_lead_id" value="<?= ($lead_id) ? $lead_id : "" ?>" />
         <select class="form-control border lead-reasons">
           <option value="">Select Reasons</option>
           <option value="Already Purchased">Already Purchased</option>
@@ -92,7 +92,7 @@
 <!-- inject:js -->
 <script src="<?= base_url() ?>assets/js/off-canvas.js"></script>
 <script src="<?= base_url() ?>assets/js/hoverable-collapse.js"></script>
-<script src="<?= base_url()?>assets/js/misc.js"></script>
+<script src="<?= base_url() ?>assets/js/misc.js"></script>
 <!-- endinject -->
 <!-- Custom js for this page -->
 <script src="<?= base_url() ?>assets/js/dashboard.js"></script>
@@ -104,48 +104,88 @@
 
 
 <script>
+  $(document).ready(function() {
 
-$(document).ready(function(){
 
-  
-    setInterval(function(){
-      $(".date").html("<?= date("d-m-Y h:s:i")?>");
-    },1000);
+    setInterval(function() {
+      $(".date").html("<?= date("d-m-Y h:s:i") ?>");
+    }, 1000);
 
-   
-    $(".myModal").click(function(){
-    $("#myModal").hide();
-    // window.location.href="<?= base_url() ?>";
-  });
-  $("#close").click(function(){
-    $("#myModal").hide();
-    // window.location.href="<?= base_url() ?>";
-  });
 
-  $(".closeBox").click(function(){
-    var data = {
-      lead_id:$("#close_lead_id").val(),
-      reason:$(".lead-reasons").find(":selected").val()
-    };
-    $.ajax({
-      method:"post",
-      url:"<?= base_url()?>ajax/leadclose",
-      data:data,
-      success:function(status)
-      {
-        
-      }
+    $(".myModal").click(function() {
+      $("#myModal").hide();
+      // window.location.href="<?= base_url() ?>";
+    });
+    $("#close").click(function() {
+      $("#myModal").hide();
+      // window.location.href="<?= base_url() ?>";
+    });
+
+    $(".closeBox").click(function() {
+      var data = {
+        lead_id: $("#close_lead_id").val(),
+        reason: $(".lead-reasons").find(":selected").val()
+      };
+      $.ajax({
+        method: "post",
+        url: "<?= base_url() ?>ajax/leadclose",
+        data: data,
+        success: function(status) {
+
+        }
+      })
+      window.location.href = "<?= base_url() ?>dashboard/leads"
+      // location.reload();
+    });
+
+
+    $("#closeBox").click(function() {
+      $("#closeBoxConfirm").hide();
+      // window.location.href="<?= base_url() ?>";
+    });
+
+    setInterval(function() {
+      notifications()
+    }, 10000);
+
+    notifications();
+
+    function notifications() {
+
+      var user_id = "<?= $this->session->userID ?>";
+      $(".notifications").html('');
+      $.ajax({
+        method: "post",
+        url: "<?= base_url() ?>ajax/usernotifications",
+        data: {
+          user_id: user_id
+        },
+        success: function(status) {
+          var result = JSON.parse(status);
+          $.each(result, function(k, v) {
+            $(".notifications").append('<div title="'+v["action"]+'" class="col-sm-12 text-gray border-bottom ellipsis mb-0">' + v["action"] + '  </div>');
+          });
+
+        }
+
+      })
+
+    }
+
+    $(document).on("click", ".noti-count", function() {
+      var read = 1;
+      $.ajax({
+        method: "post",
+        url: "<?= base_url() ?>ajax/readnotifications",
+        data: {
+          read: read
+        },
+        success: function(status) {
+          notifications();
+        }
+      })
     })
-    window.location.href = "<?= base_url() ?>dashboard/leads"
-    // location.reload();
-  });
 
 
-  $("#closeBox").click(function(){
-    $("#closeBoxConfirm").hide();
-    // window.location.href="<?= base_url() ?>";
-  });
-  
-    
-})
+  })
 </script>

@@ -135,10 +135,12 @@ class Orders extends CI_Controller
 
           // print_r($data["quotation"]); die();
 
+          return redirect($data["quotation"][0]["pdf"]);
+
           
-          $this->load->view("inc/header", $data);
-          $this->load->view("dashboard/order/view-order-details", $data);
-          $this->load->view("inc/footer", $data);
+          // $this->load->view("inc/header", $data);
+          // $this->load->view("dashboard/order/view-order-details", $data);
+          // $this->load->view("inc/footer", $data);
 
      }
 

@@ -353,8 +353,8 @@
                   <label>Payment</label>
                   <select name="payment" class="form-control payment">
                     <option value="">Select Status</option>
-                    <option value="yes">Yes</option>
-                    <option selected value="no">No</option>
+                    <option <?= ($orders[0]["payment"]=="yes") ? "selected" : "" ?> value="yes">Yes</option>
+                    <option <?= ($orders[0]["payment"]=="no") ? "selected" : "" ?> value="no">No</option>
                   </select>
                 </div>
 

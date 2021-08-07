@@ -12,16 +12,15 @@
       <link rel="stylesheet" href="<?= base_url() ?>assets/vendors/css/vendor.bundle.base.css">
       <link rel="stylesheet" href="<?= base_url() ?>assets/css/style.css">
 
-   
+
 
 
       <title><?= $title ?></title>
       <script src="<?= base_url() ?>assets/js/jquery.min.js"></script>
-      
-      <!-- <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script> -->
-      
-      <script src="<?= base_url() ?>assets/js/ckeditor.js"></script>
 
+      <!-- <script src="<?= base_url() ?>assets/js/bootstrap.min.js"></script> -->
+
+      <script src="<?= base_url() ?>assets/js/ckeditor.js"></script>
 
 
 </head>
@@ -63,7 +62,7 @@
                                                 <a class="dropdown-item" href="#">
                                                       <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log </a>
                                                 <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="<?= base_url()?>logout">
+                                                <a class="dropdown-item" href="<?= base_url() ?>logout">
                                                       <i class="mdi mdi-logout mr-2 text-primary"></i> Signout </a>
                                           </div>
                                     </li>
@@ -131,12 +130,14 @@
                                                             </div>
                                                       </div>
                                                       <div class="preview-item-content d-flex align-items-start flex-column justify-content-center">
-                                                            <h6 class="preview-subject font-weight-normal mb-1">Event today</h6>
-                                                            <p class="text-gray ellipsis mb-0"> Just a reminder that you have an event today </p>
+                                                            <h6 class="preview-subject font-weight-normal mb-1">New</h6>
+                                                      </div>
+                                                      <div class="col-sm-12 noti-count notifications">
+
                                                       </div>
                                                 </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item preview-item">
+                                                <!-- <div class="dropdown-divider"></div> -->
+                                                <!-- <a class="dropdown-item preview-item">
                                                       <div class="preview-thumbnail">
                                                             <div class="preview-icon bg-warning">
                                                                   <i class="mdi mdi-settings"></i>
@@ -146,9 +147,9 @@
                                                             <h6 class="preview-subject font-weight-normal mb-1">Settings</h6>
                                                             <p class="text-gray ellipsis mb-0"> Update dashboard </p>
                                                       </div>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item preview-item">
+                                                </a> -->
+                                                <!-- <div class="dropdown-divider"></div> -->
+                                                <!-- <a class="dropdown-item preview-item">
                                                       <div class="preview-thumbnail">
                                                             <div class="preview-icon bg-info">
                                                                   <i class="mdi mdi-link-variant"></i>
@@ -158,9 +159,9 @@
                                                             <h6 class="preview-subject font-weight-normal mb-1">Launch Admin</h6>
                                                             <p class="text-gray ellipsis mb-0"> New admin wow! </p>
                                                       </div>
-                                                </a>
-                                                <div class="dropdown-divider"></div>
-                                                <h6 class="p-3 mb-0 text-center">See all notifications</h6>
+                                                </a> -->
+                                                <!-- <div class="dropdown-divider"></div> -->
+                                                <!-- <h6 class="p-3 mb-0 text-center">See all notifications</h6> -->
                                           </div>
                                     </li>
                                     <li class="nav-item nav-logout d-none d-lg-block">
@@ -230,7 +231,7 @@
                                                 <ul class="nav flex-column sub-menu">
                                                       <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/create/products") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/create/products">Add Products</a></li>
                                                       <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/products") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/products">View Products</a></li>
-                                                      <li class="nav-item"> <a class="nav-link <?= ( $this->uri->uri_string() == "dashboard/create/products/item") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/create/products/item">Add Products Item</a></li>
+                                                      <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/create/products/item") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/create/products/item">Add Products Item</a></li>
                                                 </ul>
                                           </div>
                                     </li>
@@ -259,8 +260,8 @@
                                           </a>
                                           <div class="collapse <?= ($this->uri->uri_string() == "dashboard/add/leads" || $this->uri->uri_string() == "dashboard/leads") ? "show" : "" ?>" id="leads">
                                                 <ul class="nav flex-column sub-menu">
-                                                      <?php if($this->session->category == "BTL" || $this->session->role == 1): ?>
-                                                      <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/add/leads" ) ? "active" : "" ?>" href="<?= base_url() ?>dashboard/add/leads">Add Leads</a></li>
+                                                      <?php if ($this->session->category == "BTL" || $this->session->role == 1) : ?>
+                                                            <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/add/leads") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/add/leads">Add Leads</a></li>
                                                       <?php endif; ?>
                                                       <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/leads") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/leads"> View Leads </a></li>
                                                 </ul>
@@ -283,6 +284,30 @@
                               <?php endif; ?>
                               <!--  -->
 
+                              <li class="nav-item <?= ($this->uri->uri_string() == "dashboard/customize_report" || $this->uri->uri_string() == "dashboard/customize_report_fields" || $this->uri->uri_string() == "dashboard/report/leads" || $this->uri->uri_string() == "dashboard/report/quotation"|| $this->uri->uri_string() == "dashboard/report/product"|| $this->uri->uri_string() == "dashboard/report/service" ) ? "active" : "" ?>">
+                                    <a class="nav-link" data-toggle="collapse" href="#reports" aria-expanded="false" aria-controls="reports">
+                                          <span class="menu-title">Reports</span>
+                                          <i class="menu-arrow"></i>
+                                          <i class="mdi mdi-medical-bag menu-icon"></i>
+                                    </a>
+                                    <div class="collapse <?= ($this->uri->uri_string() == "dashboard/customize_report" || $this->uri->uri_string() == "dashboard/customize_report_fields" || $this->uri->uri_string() == "dashboard/report/leads" || $this->uri->uri_string() == "dashboard/report/quotation"|| $this->uri->uri_string() == "dashboard/report/product"|| $this->uri->uri_string() == "dashboard/report/service" ) ? "show" : "" ?>" id="reports">
+                                          <ul class="nav flex-column sub-menu">
+
+                                                <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/customize_report") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/customize_report">Customize Report</a></li>
+
+                                                <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/customize_report_fields") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/customize_report_fields"> Customize Report Fields </a></li>
+
+                                                <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/report/leads") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/report/leads"> Leads Report </a></li>
+
+                                                <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/report/product") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/report/product"> Product Report </a></li>
+
+                                                <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/report/service") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/report/service"> Service Report </a></li>
+
+                                                <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/report/quotation") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/report/quotation"> Quotation Report </a></li>
+                                          </ul>
+                                    </div>
+                              </li>
+
 
 
                               <?php if ($this->session->role == 1) : ?>
@@ -301,21 +326,21 @@
                                           </div>
                                     </li>
 
-                                    <li class="nav-item <?= ($this->uri->uri_string()=="dashboard/add/user" || $this->uri->uri_string() == "dashboard/user") ? "active" : "" ?>">
+                                    <li class="nav-item <?= ($this->uri->uri_string() == "dashboard/add/user" || $this->uri->uri_string() == "dashboard/user") ? "active" : "" ?>">
                                           <a class="nav-link" data-toggle="collapse" href="#user" aria-expanded="false" aria-controls="user">
                                                 <span class="menu-title">User</span>
                                                 <i class="menu-arrow"></i>
                                                 <i class="mdi mdi-medical-bag menu-icon"></i>
                                           </a>
-                                          <div class="collapse <?= ($this->uri->uri_string()=="dashboard/add/user" || $this->uri->uri_string() == "dashboard/user") ? "show" : "" ?>" id="user">
+                                          <div class="collapse <?= ($this->uri->uri_string() == "dashboard/add/user" || $this->uri->uri_string() == "dashboard/user") ? "show" : "" ?>" id="user">
                                                 <ul class="nav flex-column sub-menu">
-                                                      <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string()=="dashboard/add/user") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/add/user">Add User</a></li>
-                                                      <li class="nav-item"> <a class="nav-link <?= ( $this->uri->uri_string() == "dashboard/user") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/user"> View User</a></li>
+                                                      <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/add/user") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/add/user">Add User</a></li>
+                                                      <li class="nav-item"> <a class="nav-link <?= ($this->uri->uri_string() == "dashboard/user") ? "active" : "" ?>" href="<?= base_url() ?>dashboard/user"> View User</a></li>
                                                 </ul>
                                           </div>
                                     </li>
                               <?php endif; ?>
-                              <li class="nav-item <?= ($this->uri->uri_string()=="logout") ? "active" : "" ?>">
+                              <li class="nav-item <?= ($this->uri->uri_string() == "logout") ? "active" : "" ?>">
                                     <a class="nav-link" href="<?= base_url() ?>logout">
                                           <span class="menu-title">Logout</span>
                                           <i class="mdi mdi-lock menu-icon"></i>

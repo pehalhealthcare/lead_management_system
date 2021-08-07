@@ -81,10 +81,10 @@
             <td>
               <a href="<?= base_url() ?>dashboard/operation/order/assign/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
                 <i class="fa fa-user"></i></a>
-              <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
+              <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="" class="btn btn-primary">
                 <i class="fa fa-eye"></i>
               </a>
-              <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#orderdocform" title="Assign Leads" class="btn btn-primary documents">
+              <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#orderdocform" title="" class="btn btn-primary documents">
                 <i class="fa fa-file"></i>
               </button>
               <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#downloadbox" class="btn btn-primary downloads">

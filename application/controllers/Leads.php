@@ -105,6 +105,17 @@ class Leads extends CI_Controller
                                                        "created_at" => date("Y-m-d h:i:s")
                                                   );
 
+                                                  $insertnote = array(
+                                                       "action_to" => $this->input->post("assigned_to"),
+                                                       "action_by" => $this->session->userID,
+                                                       "action_id" => time(),
+                                                       "action" => "New Lead assigned to you",
+                                                       "is_read" => 0
+
+                                                  );
+
+                                                  $this->common_model->adddata("mk_notifications", $insertnote);
+
                                                   $this->common_model->adddata("mk_lead_customer", $leadcustomer);
                                                   $this->session->set_flashdata('message_name', 'Lead and Customer Data Inserted');
                                                   return redirect("dashboard/leads");
@@ -117,7 +128,6 @@ class Leads extends CI_Controller
 
                                                   $customerlead = $this->common_model->viewwheredata(array("lead_id" => $lead_id[0]->id, "customer_id" => $customer_id[0]->customer_id), "mk_lead_customer");
                                                   if ($customerlead) {
-
                                                   } else {
                                                        $leadcustomer = array(
                                                             "lead_id" => $lead_id[0]->id,
@@ -128,6 +138,17 @@ class Leads extends CI_Controller
 
                                                        $this->common_model->adddata("mk_lead_customer", $leadcustomer);
                                                   }
+
+                                                  $insertnote = array(
+                                                       "action_to" => $this->input->post("assigned_to"),
+                                                       "action_by" => $this->session->userID,
+                                                       "action_id" => time(),
+                                                       "action" => "New Lead assigned to you",
+                                                       "is_read" => 0
+
+                                                  );
+
+                                                  $this->common_model->adddata("mk_notifications", $insertnote);
 
                                                   $this->session->set_flashdata('message_name', 'Lead and Customer Data Inserted');
                                                   return redirect("dashboard/leads");
@@ -165,6 +186,18 @@ class Leads extends CI_Controller
 
                                         $this->common_model->adddata("mk_lead_customer", $leadcustomer);
                                    }
+
+                                   $insertnote = array(
+                                        "action_to" => $this->input->post("assigned_to"),
+                                        "action_by" => $this->session->userID,
+                                        "action_id" => time(),
+                                        "action" => "New Lead assigned to you",
+                                        "is_read" => 0
+
+                                   );
+
+                                   $this->common_model->adddata("mk_notifications", $insertnote);
+
                                    $this->session->set_flashdata('message_name', 'Customer Data Not Inserted');
                                    return redirect("dashboard/leads");
                               } else {
@@ -184,6 +217,18 @@ class Leads extends CI_Controller
 
                                              $this->common_model->adddata("mk_lead_customer", $leadcustomer);
                                         }
+
+                                        $insertnote = array(
+                                             "action_to" => $this->input->post("assigned_to"),
+                                             "action_by" => $this->session->userID,
+                                             "action_id" => time(),
+                                             "action" => "New Lead assigned to you",
+                                             "is_read" => 0
+
+                                        );
+
+                                        $this->common_model->adddata("mk_notifications", $insertnote);
+
                                         $this->session->set_flashdata('message_name', 'Lead and Customer Data Inserted');
                                         return redirect("dashboard/leads");
                                    }
@@ -516,12 +561,9 @@ class Leads extends CI_Controller
      public function ordersubmit()
      {
 
-          if($this->input->post("payment")=="yes")
-          {
+          if ($this->input->post("payment") == "yes") {
                $approved = "yes";
-          }
-          else
-          {
+          } else {
                $approved = "no";
           }
           $data = array(
@@ -580,10 +622,6 @@ class Leads extends CI_Controller
                     $this->common_model->adddata("mk_order_docs", $orderdata);
                }
 
-               // print_r($orderdata); die();
-
-
-
                if ($this->common_model->updatedata("mk_order", $data, $array)) {
                     // $customer[0]["mobile"]
                     if ($this->email_template_2($customer[0]["email"])) {
@@ -594,6 +632,22 @@ class Leads extends CI_Controller
                     } else {
                          echo json_encode(array("message" => "Mail not sent"));
                     }
+
+                    if ($this->session->category == "CB" || $this->session->category == "CA" || $this->session->category == "CC") {
+                         $adminlog =  $this->common_model->viewwheredata(array("admin" => $this->session->userID), "mk_admin_log");
+
+                         $insertnote = array(
+                              "action_to" => $adminlog[0]["agent_id"],
+                              "action_by" => $this->session->userID,
+                              "action_id" => time(),
+                              "action" => "Admin approve the orders",
+                              "is_read" => 0
+
+                         );
+
+                         $this->common_model->adddata("mk_notifications", $insertnote);
+                    }
+
                     $this->session->set_flashdata('message_name', 'Order Data Updated');
                     return redirect("dashboard/leads/assign/" . $lead_id);
                }
@@ -630,6 +684,21 @@ class Leads extends CI_Controller
                          $this->common_model->adddata("mk_order_docs", $orderdata);
                     }
 
+                    if ($this->session->category == "CB" || $this->session->category == "CA" || $this->session->category == "CC") {
+                         $adminlog =  $this->common_model->viewwheredata(array("admin" => $this->session->userID), "mk_admin_log");
+
+                         $insertnote = array(
+                              "action_to" => $adminlog[0]["agent_id"],
+                              "action_by" => $this->session->userID,
+                              "action_id" => time(),
+                              "action" => "Admin approve the orders",
+                              "is_read" => 0
+
+                         );
+
+                         $this->common_model->adddata("mk_notifications", $insertnote);
+                    }
+
                     $this->session->set_flashdata('message_name', 'Order Data Added');
                     return redirect("dashboard/leads/assign/" . $lead_id);
                     // return "<script>window.parent.location.href = window.location.origin+'/dashboard/operation/order'; </script>";
@@ -638,7 +707,7 @@ class Leads extends CI_Controller
      }
 
      public function email_template_2($customer_email = "", $attachment = "")
-     {
+     {  
 
           $to = $customer_email;
           $subject = "Order Confirmation Mail";
@@ -689,7 +758,7 @@ class Leads extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <'. $this->session->email.'>' . "\r\n";
+          $headers .= 'From: <' . $this->session->email . '>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {

@@ -111,6 +111,13 @@ $route["dashboard/operation/order/verification/(:any)"]     = "orders/order_veri
 $route["dashboard/operation/payment/verification"]          = "orders/lead/payment_verification/";
 $route["dashboard/operation/customer/verification"]         = "orders/lead/customer_verification/";
 
+$route["dashboard/customize_report"]                        = "reports/customize_report";
+$route["dashboard/customize_report_fields"]                 = "reports/customize_report_field";
+$route["dashboard/report/service"]                          = "reports/service_report";
+$route["dashboard/report/leads"]                            = "reports/lead_report";
+$route["dashboard/report/product"]                         = "reports/product_report";
+$route["dashboard/report/quotation"]                        = "reports/quotation_report";
+
 
 
 

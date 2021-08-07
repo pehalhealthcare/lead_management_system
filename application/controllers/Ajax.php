@@ -1504,7 +1504,8 @@ class Ajax extends CI_Controller
                "qid"=>$this->input->post("qid"),
                "agent_id"=>$this->input->post("agent_id"),
                "lead_id"=>$this->input->post("lead_id"),
-               "reason"=>$this->input->post("reason")
+               "reason"=>$this->input->post("reason"),
+               "admin"=>$this->input->post("admin")
           );
           $cond = array("lead_id"=>$this->input->post("lead_id"),"agent_id"=>$this->input->post("agent_id"));
           $datacheck = $this->common_model->viewwheredata($cond,"mk_admin_log");
@@ -1512,6 +1513,17 @@ class Ajax extends CI_Controller
           {
                $insertdata["modified_by"] = $this->input->post("agent_id");
                $insertdata["modified_at"] = date("Y-m-d h:i:s");
+
+               $insertnote = array(
+                    "action_to"=>$this->input->post("admin"),
+                    "action_by"=>$this->session->userID,
+                    "action_id"=>time(),
+                    "action"=>"Agent assign disapprove details of order to admin",
+                    "is_read"=>0
+
+               );
+
+               $this->common_model->adddata("mk_notifications",$insertnote);
 
                if($this->common_model->updatedata("mk_admin_log",$insertdata,$cond))
                {
@@ -1523,6 +1535,17 @@ class Ajax extends CI_Controller
                $insertdata["created_by"] = $this->input->post("agent_id");
                $insertdata["created_at"] = date("Y-m-d h:i:s");
 
+               $insertnote = array(
+                    "action_to"=>$this->input->post("admin"),
+                    "action_by"=>$this->session->userID,
+                    "action_id"=>time(),
+                    "action"=>"Agent assign disapprove details of order to admin ",
+                    "is_read"=>0
+
+               );
+
+               $this->common_model->adddata("mk_notifications",$insertnote);
+
                if($this->common_model->adddata("mk_admin_log",$insertdata))
                {
                     echo "Data Inserted Successfully";
@@ -1530,5 +1553,42 @@ class Ajax extends CI_Controller
           }
      }
 
+     public function usernotifications()
+     {
+          $userID = $this->input->post("user_id");
+
+          $data = $this->common_model->viewwheredata(array("action_to"=>$userID,"is_read"=>0),"mk_notifications");
+
+          echo json_encode($data);
+     }
+
+     public function readnotifications()
+     {
+          $userID = $this->session->userID;
+
+          $cond = array(
+               "action_to"=>$userID,
+               "is_read"=>0
+          );
+
+          $insertdata = array(
+               "is_read"=>$this->input->post("read")
+          );
+
+          $data = $this->common_model->updatedata("mk_notifications",$insertdata,$cond);
+
+          // echo $this->db->last_query();
+
+          if($data)
+          {
+               $success = "Notifications read successfully";
+          }
+          else
+          {
+               $success = "Notifications already read";
+          }
+
+          echo json_encode($success);
+     }
     
 }
