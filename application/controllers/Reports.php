@@ -17,6 +17,7 @@ class Reports extends CI_Controller
      {
           $data["title"] = "Dashboard | Customize Report";
           $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/reports/custom-reports");
           $this->load->view("inc/footer");
      }
 
@@ -24,6 +25,7 @@ class Reports extends CI_Controller
      {
           $data["title"] = "Dashboard | Customize Report Fields";
           $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/reports/custom-report-fields");
           $this->load->view("inc/footer");
      }
 
@@ -31,6 +33,7 @@ class Reports extends CI_Controller
      {
           $data["title"] = "Dashboard | Product Report";
           $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/reports/product-report");
           $this->load->view("inc/footer");
      }
 
@@ -38,6 +41,7 @@ class Reports extends CI_Controller
      {
           $data["title"] = "Dashboard | Service Report";
           $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/reports/service-report");
           $this->load->view("inc/footer");
      }
 
@@ -45,6 +49,7 @@ class Reports extends CI_Controller
      {
           $data["title"] = "Dashboard | Lead Report";
           $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/reports/leads-report");
           $this->load->view("inc/footer");
      }
 
@@ -52,6 +57,7 @@ class Reports extends CI_Controller
      {
           $data["title"] = "Dashboard | Quotation Report";
           $this->load->view("inc/header",$data);
+          $this->load->view("dashboard/reports/quotation-report");
           $this->load->view("inc/footer");
      }
 }

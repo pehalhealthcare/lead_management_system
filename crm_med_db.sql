@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 07, 2021 at 07:12 AM
+-- Generation Time: Aug 07, 2021 at 12:21 PM
 -- Server version: 10.4.14-MariaDB
 -- PHP Version: 7.4.11
 
@@ -343,6 +343,41 @@ INSERT INTO `mk_customer_term` (`customer_term_id`, `term_id`, `customer_id`, `p
 (23, 3, 9, NULL, 1, '2021-07-11 01:58:50', 1, NULL, NULL),
 (24, 3, 6, NULL, 1, '2021-07-16 22:48:45', 3, NULL, NULL),
 (25, 3, 3, NULL, 1, '2021-07-18 22:50:19', 1, NULL, NULL);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_customize_report`
+--
+
+CREATE TABLE `mk_customize_report` (
+  `id` int(11) NOT NULL,
+  `report_name` varchar(250) NOT NULL,
+  `sql_query` text NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `mk_customize_report_fields`
+--
+
+CREATE TABLE `mk_customize_report_fields` (
+  `id` int(11) NOT NULL,
+  `report_id` int(11) NOT NULL,
+  `column_name` varchar(255) NOT NULL,
+  `db_column` varchar(255) NOT NULL,
+  `data_type` varchar(255) NOT NULL DEFAULT '1',
+  `is_active` int(11) NOT NULL,
+  `created_by` int(11) DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `modified_by` int(11) DEFAULT NULL,
+  `modified_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -1852,6 +1887,18 @@ ALTER TABLE `mk_customer_term`
   ADD PRIMARY KEY (`customer_term_id`);
 
 --
+-- Indexes for table `mk_customize_report`
+--
+ALTER TABLE `mk_customize_report`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `mk_customize_report_fields`
+--
+ALTER TABLE `mk_customize_report_fields`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `mk_employee`
 --
 ALTER TABLE `mk_employee`
@@ -2046,6 +2093,18 @@ ALTER TABLE `mk_customer_item`
 --
 ALTER TABLE `mk_customer_term`
   MODIFY `customer_term_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+
+--
+-- AUTO_INCREMENT for table `mk_customize_report`
+--
+ALTER TABLE `mk_customize_report`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+
+--
+-- AUTO_INCREMENT for table `mk_customize_report_fields`
+--
+ALTER TABLE `mk_customize_report_fields`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `mk_employee`

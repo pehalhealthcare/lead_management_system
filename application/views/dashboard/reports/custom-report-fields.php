@@ -10,5 +10,18 @@
                     </button>
                </div>
           <?php endif; ?>
+          <div class="bg-white">
+              <div class="table-responsive">
+                   <table class="table table-bordered">
+                        <tr>
+                             <th>SI</th>
+                             <th>Report Name</th>
+                             <th>Query</th>
+                             <th>Actions</th>
+                        </tr>
+                        
+                   </table>
+              </div>
+          </div>
      </div>
 </div>
