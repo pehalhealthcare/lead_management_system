@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 if($_SERVER["SERVER_NAME"]=="localhost")
 {
-     $config['base_url'] = 'http://localhost/lead_management';
+     $config['base_url'] = 'http://localhost/lms';
 }
 else
 {

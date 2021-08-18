@@ -1,5 +1,5 @@
-<div class="main-panel">
-  <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+  <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
     <div class="col-sm-12 bg-white ">
       <div class="col-sm-12 text-right pt-2">
         <button class="btn btn-success mb-2" data-toggle="modal" data-target="#importModal">IMPORT ITEM</button>

@@ -83,24 +83,17 @@
 
 
 
-<script src="<?= base_url() ?>assets/vendors/js/vendor.bundle.base.js"></script>
-<!-- endinject -->
-<!-- Plugin js for this page -->
-<script src="<?= base_url() ?>assets/vendors/chart.js/Chart.min.js"></script>
-<!-- End plugin js for this page -->
 
-<!-- inject:js -->
-<script src="<?= base_url() ?>assets/js/off-canvas.js"></script>
-<script src="<?= base_url() ?>assets/js/hoverable-collapse.js"></script>
-<script src="<?= base_url() ?>assets/js/misc.js"></script>
-<!-- endinject -->
-<!-- Custom js for this page -->
-<script src="<?= base_url() ?>assets/js/dashboard.js"></script>
-<script src="<?= base_url() ?>assets/js/todolist.js"></script>
+<script src="<?= base_url() ?>assets/js/ckeditor.js"></script>
 
-<script src="<?= base_url() ?>assets/js/chart.js"></script>
 
-<script src="<?= base_url() ?>assets/js/jquery.simplePagination.js"></script>
+<script src="<?= base_url() ?>assets/js/app.js"></script>
+
+<script src="https://cdn.jsdelivr.net/gh/bbbootstrap/libraries@main/jquery.table2excel.min.js"></script>
+
+
+
+
 
 
 <script>
@@ -163,7 +156,15 @@
         success: function(status) {
           var result = JSON.parse(status);
           $.each(result, function(k, v) {
-            $(".notifications").append('<div title="'+v["action"]+'" class="col-sm-12 text-gray border-bottom ellipsis mb-0">' + v["action"] + '  </div>');
+            if(v)
+            {
+              $(".notifications").append('<h6 title="'+v["action"]+'" class="col-sm-12 text-gray ellipsis mb-0">' + v["action"] + '  </h6><p class="text-gray mb-0 text-center"> <small>18 Minutes ago</small></p><div class="dropdown-divider"></div>');
+            }
+            else
+            {
+              return false;
+            }
+            
           });
 
         }

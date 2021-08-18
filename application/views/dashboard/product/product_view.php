@@ -1,5 +1,5 @@
-<div class="main-panel">
-     <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+     <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
           <div class="col-sm-12 bg-white">
                <?php if ($this->session->flashdata("message")) : ?>
                     <div class="alert alert-success alert-dismissible fade show" role="alert">

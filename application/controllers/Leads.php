@@ -305,7 +305,13 @@ class Leads extends CI_Controller
           if ($this->session->category == "OA" || $this->session->category == "BA") {
                $data["leads"] = $this->common_model->viewwheredata(array("assigned_to" => $this->session->userID), "mk_lead");
                $this->load->view("dashboard/leads/view-leads-agent", $data);
-          } else {
+          }
+          else if($this->session->category == "BTL")
+          {
+               $data["leads"] = $this->common_model->viewwheredata(array("assigned_by" => $this->session->userID), "mk_lead");
+               $this->load->view("dashboard/leads/view-leads-agent", $data);
+          }
+          else {
                $data["leads"] = $this->common_model->vieworderby("mk_lead", "multiple", "id", "desc");
                $this->load->view("dashboard/leads/view-leads", $data);
           }
@@ -460,7 +466,23 @@ class Leads extends CI_Controller
 
           // print_r($data["activity"]); die();
 
-          $data["leads"] = $this->common_model->viewwheredata(array("id" => $lead_id), "mk_lead");
+          // print_r($this->session); die();
+
+          if($this->session->category=="BA")
+          {
+               
+               $data["leads"] = $this->common_model->viewwheredata(array("id" => $lead_id,"assigned_to"=>$this->session->userID), "mk_lead");
+          }
+          if($this->session->category=="BTL")
+          {
+              
+               $data["leads"] = $this->common_model->viewwheredata(array("id" => $lead_id,"assigned_by"=>$this->session->userID), "mk_lead");
+          }
+          if($this->session->role==1)
+          {
+              
+               $data["leads"] = $this->common_model->viewwheredata(array("id" => $lead_id), "mk_lead");
+          }
 
           $data["customer_item"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_customer_item");
 
@@ -480,19 +502,26 @@ class Leads extends CI_Controller
 
           $data["order"] = $this->common_model->viewwheredata(array("lead_id" => $lead_id), "mk_order");
 
+          // echo $this->db->last_query();
+          // print_r($data["order"]); die();
+
           $data["agents"] = $this->common_model->viewwheredata(array("category" => "BA"), "mk_registration_table");
 
-          // print_r($data["order"]);
+          
 
-          // die();
+          
+          if($data["leads"])
+          {
+               $this->load->view("inc/header", $data);
+               $this->load->view("dashboard/leads/assign_customer", $data);
+               $this->load->view("inc/footer");
+          }
+          else
+          {
+               $this->session->set_flashdata('message_name', 'You aren"t authorize to view the lead details');
+               return redirect("/dashboard/leads");
+          }
 
-          // $data["users"] = $this->common_model->viewwheredata(array(""=>""),"mk_registration_table");
-
-          $this->load->view("inc/header", $data);
-          $this->load->view("dashboard/leads/assign_customer", $data);
-          $this->load->view("inc/footer");
-          // return redirect("dashboard/leads/assign_customer", $lead_id);
-          // echo "Echo id".$lead_id;
      }
 
      public function opportunity_delete($id = "")
@@ -816,7 +845,7 @@ class Leads extends CI_Controller
           curl_setopt($ch, CURLOPT_NOBODY, 0);
           curl_setopt($ch, CURLOPT_TIMEOUT, 30);
           $res = curl_exec($ch);
-          curl_close($ch);
+            curl_close($ch);  
 
           echo $res;
      }

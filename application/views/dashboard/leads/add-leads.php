@@ -1,5 +1,5 @@
-<div class="main-panel">
-     <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+     <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
           <?php echo validation_errors(); ?>
           <?php echo form_open_multipart(base_url().'dashboard/add/leads'); ?>
           <div class="card bg-white">

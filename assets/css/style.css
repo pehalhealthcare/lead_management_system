@@ -18738,7 +18738,7 @@ dl li {
     .sidebar-icon-only .sidebar .sidebar-actions {
         display: none;
     }
-    .sidebar-icon-only .main-panel {
+    .sidebar-icon-only .control-sidebar fixed white {
         width: calc(100% - 70px);
     }
 }
@@ -18792,7 +18792,7 @@ dl li {
     min-height: 100vh;
 }
 
-.main-panel {
+.control-sidebar fixed white {
     -webkit-transition: width 0.25s ease, margin 0.25s ease;
     transition: width 0.25s ease, margin 0.25s ease;
     width: calc(100% - 260px);
@@ -18807,7 +18807,7 @@ dl li {
 }
 
 @media (max-width: 991px) {
-    .main-panel {
+    .control-sidebar fixed white {
         margin-left: 0;
         width: 100%;
     }

@@ -1,5 +1,5 @@
-<div class="main-panel">
-     <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+     <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
 
           <ul class="nav nav-pills mb-3 bg-white" id="pills-tab" role="tablist">
                <li class="nav-item">
@@ -513,7 +513,7 @@
                                              </div>
                                              <div class="form-group">
                                                   <label>GST Number</label>
-                                                  <input type="text" name="refer" value="<?= $refer ?>" class="form-control border" placeholder="Reference Number">
+                                                  <input type="text" name="refer" value="<?= $refer ?>" class="form-control border" placeholder="GST Number">
                                              </div>
                                              <div class="form-group">
                                                   <label>Reference 1</label>
@@ -546,11 +546,11 @@
                          <div class="tab-pane fade" id="pills-create-quotation" role="tabpanel" aria-labelledby="pills-create-quotation-tab">
                               <div class="row">
                                    <div class="col-sm-12 col-md-12 mb-3 mt-3 text-right">
-                                        <?php if($order): ?>
-                                             <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
+                                        <?php if ($order && $order[0]["approved"] == "yes") : ?>
+                                             <a href="javascript:void(0)" data-approved="yes" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
                                         <?php else : ?>
                                              <button class="btn btn-primary col-md-2 col-sm-12 d-none approve mt-2 mb-2">Approve</button>
-                                             <a href="javascript:void(0)" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
+                                             <a href="javascript:void(0)" data-approved="no" data-customer="<?= $customerID ?>" class="btn col-md-2 col-sm-12 btn-success gorder genorder d-none mt-2 mb-2">Generate Order</a>
                                              <button class="btn btn-danger d-none disapprove col-md-2 col-sm-12   mt-2 mb-2" data-toggle="modal" data-target="#disapproveModal">Disapprove</button>
                                         <?php endif; ?>
 
@@ -1636,7 +1636,7 @@
                          var total_tax = 0;
                          $.each(status["customer_item"], function(k, v) {
 
-                              console.log("customer_item", v);
+                              
 
                               var checked = "";
                               var tax_amount = "";
@@ -1651,7 +1651,7 @@
                               var item_name = "";
 
                               $.each(status["product_item"], function(k1, v1) {
-                                   // console.log("product_item",v1);
+                                   
                                    if (status["product_item"] && v["item_id"] == v1["item_id"] && v["product_id"] != null && v["item_type"] == "product") {
                                         item_name = (v1["item_name"]);
                                         checked = (v["item_id"] == v1["item_id"]) ? "checked" : "";
@@ -1663,7 +1663,7 @@
                               });
 
                               $.each(status["service_item"], function(k3, s1) {
-                                   // console.log("service_item",s1);
+                                  
                                    if (status["service_item"] && v["item_id"] == s1["item_id"] && v["service_id"] != null && v["item_type"] == "service") {
                                         item_name = (s1["item_name"]);
                                         checked = (v["item_id"] == s1["item_id"]) ? "checked" : "";
@@ -1689,7 +1689,7 @@
                               selling_price = (v["selling_price"]) ? v["selling_price"] : "";
 
                               if (v["product_id"] == product_id || v["service_id"] == product_id && v["item_id"] == item_id) {
-                                   console.log("test", v["product_id"]);
+                                  
                                    var item_type_ = (v["product_id"] || v["prduct_id"] != null) ? "product" : "service";
                                    var item_type = (v["product_id"] || v["prduct_id"] != null) ? "product" : "service";
 
@@ -1875,8 +1875,7 @@
 
                var tax_rate = $(".sunit_price_" + id).val() * ($(".stax_rate_" + id).val() / 100);
 
-               //     console.log("testing",$(this).val());
-               //     return false;
+              
 
                total_tax = tax_rate.toFixed();
 
@@ -1952,7 +1951,7 @@
                     url: "<?= base_url() ?>ajax/singleproductsubmit",
                     data: formdata,
                     success: function(status) {
-                         //     console.log(status);
+                         
                     }
                })
           });
@@ -1966,7 +1965,7 @@
 
                var id = $(this).data("id");
 
-               console.log($(this).val());
+              
 
                if (($(this).val() == "") || parseFloat($("." + item_type + "runit_price_" + id).val()) >= parseFloat($(this).val())) {
 
@@ -2041,7 +2040,7 @@
                     })
 
                } else {
-                    console.log("selling price" + $(this).val() + "unit_price" + $(".runit_price_" + id).val())
+                    
                     $(this).attr("disable", true).attr("readonly", true);
                     //     alert("Selling price is greater than unit price")
                }
@@ -2060,9 +2059,7 @@
 
                var tax_rate = $(".unit_price_" + id).val() * ($(".tax_rate_" + id).val() / 100);
 
-               //     console.log("testing",$(this).val());
-               //     return false;
-
+            
                total_tax = tax_rate.toFixed();
 
 
@@ -2137,7 +2134,7 @@
                     url: "<?= base_url() ?>ajax/singleproductsubmit",
                     data: formdata,
                     success: function(status) {
-                         //     console.log(status);
+                        
                     }
                })
           });
@@ -2211,7 +2208,7 @@
                     total_tax = total_tax + parseFloat($(this).val());
                });
 
-               console.log(total_amount);
+              
 
                var alltotal = '<hr /><div class="col-sm-12 col-md-4 total-price-amount">Total Amount ' + total_amount + '</div>';
                alltotal += '<div class="col-sm-12 col-md-4 total-tax-amount">Total Tax Amount ' + total_tax + '</div>';
@@ -2257,8 +2254,6 @@
 
                     total = total + parseFloat($(this).val());
 
-                    console.log(total);
-
                     if (total) {
                          $(".total-price-amount").html('Total Amount ' + total + '');
                     }
@@ -2284,14 +2279,12 @@
                };
 
 
-               //     console.log(formdata); return false;
-
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/singleproductsubmit",
                     data: formdata,
                     success: function(status) {
-                         //     console.log(status);
+                       
                     }
                })
 
@@ -2307,7 +2300,7 @@
 
                var item_type = $(this).data("item-type");
 
-               //     console.log(item_type);
+               
 
                formdata = {
                     item_id: $("." + item_type + "item_id_" + id).val(),
@@ -2324,7 +2317,6 @@
                     is_active: "0"
                };
 
-               //     console.log("remove",formdata); return false;
 
                $.ajax({
                     method: "post",
@@ -2339,21 +2331,17 @@
 
           $(document).on("change", "#all-data", function() {
                var formdata = $(".assign-product").serializeArray();
-               // console.log(formdata);
-               // return false;
+              
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/submitProductItem",
                     data: formdata,
                     success: function(status) {
-                         console.log(status);
                     }
                })
           });
 
           $(document).on("change", ".add", function() {
-
-               console.log($(this).prop("checked"));
 
                var id = $(this).data("id");
 
@@ -2387,14 +2375,12 @@
                     };
                }
 
-               // console.log(formdata); return false;
-
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/singleproductsubmit",
                     data: formdata,
                     success: function(status) {
-                         console.log(status);
+     
                     }
                })
           });
@@ -2480,7 +2466,6 @@
                     },
                     success: function(status) {
                          var status = JSON.parse(status);
-                         console.log("customer", );
                          $.each(status["customer"], function(k, v) {
                               $(".customer-list").html("<li data-customer='" + v["customer_id"] + "' style='cursor:pointer' class='list-group-item customers'>" + v["name"] + "</li>")
                          })
@@ -2715,7 +2700,6 @@
                     url: "<?= base_url() ?>ajax/logCall",
                     data: formdata,
                     success: function(res) {
-                         // console.log(res); return false;
                          $(".log_call").addClass("d-none");
                          $(".log_form").trigger("reset");
                          localStorage.setItem("tabs", "#pills-profile");
@@ -2730,14 +2714,11 @@
 
                var formdata = ($(this).serializeArray());
 
-               // console.log(formdata); return false;
-
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/composeMail",
                     data: formdata,
                     success: function(res) {
-                         //     console.log(res); return false;
                          $(".compose_form").trigger("reset");
                          $("#composemail").modal("hide");
                          $(".log_call").addClass("d-none");
@@ -2761,7 +2742,6 @@
                     },
                     success: function(res) {
                          res = JSON.parse(res);
-                         console.log(res);
                          $(".activity-table tbody").html('');
                          $.each(res["activity"], function(k, v) {
                               var meet = "";
@@ -2780,7 +2760,6 @@
                               var agentname = "";
                               $.each(res["customer"], function(cid, cus) {
 
-                                   console.log()
                                    if (v["assigned_to"] == cus["id"]) {
                                         agentname = cus["firstname"];
                                    }
@@ -2910,7 +2889,6 @@
           $(document).on("submit", ".edit_meeting_form", function(e) {
                e.preventDefault();
                var formdata = $(this).serializeArray();
-               // console.log(formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/updatemeeting",
@@ -2925,7 +2903,6 @@
           $(document).on("submit", ".editlogform", function(e) {
                e.preventDefault();
                var formdata = $(this).serializeArray();
-               // console.log(formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/updatelogcall",
@@ -2959,15 +2936,20 @@
                     var url = $(this).data("link");
                     var qid = $(this).data("qid");
                     if ($(this).data("order") == "available") {
-                         $(".gorder").removeClass("d-none");
-                         // $(".approve").removeClass("d-none");
-                         // $(".disapprove").removeClass("d-none");
+                         if ($(".gorder").data("approved") == "yes") {
+                              $(".gorder").removeClass("d-none");
+                         } else {
+                              $(".approve").removeClass("d-none");
+                              $(".disapprove").removeClass("d-none");
+                         }
+
+
                          // $(".approve").removeClass("disabled");
                          $(".gorder").attr("data-href", url + "?qid=" + qid);
-                         
+
                     } else {
-                         $(".approve").removeClass("disabled");
-                         $(".disapprove").removeClass("disabled");
+                         $(".approve").removeClass("d-none");
+                         $(".disapprove").removeClass("d-none");
                          $(".gorder").attr("data-href", url + "?qid=" + qid);
                          $("#qid").val(qid);
                          $(".gorder").removeClass("d-none");
@@ -2994,7 +2976,6 @@
                          customer: customer
                     },
                     success: function(status) {
-                         console.log(status);
                          if (href) {
                               window.location.href = href;
                          }
@@ -3007,7 +2988,6 @@
                $(".gorder").removeClass("d-none");
                $(".gorder").removeClass("d-none");
                var formdata = $(".disapproveform").serializeArray();
-               console.log("approve", formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/ordersubmit",
@@ -3026,7 +3006,6 @@
                e.preventDefault();
                var formdata = $(this).serializeArray();
                formdata["approved"] = "no";
-               console.log("disapprove", formdata);
                $.ajax({
                     method: "post",
                     url: "<?= base_url() ?>ajax/ordersubmit",
@@ -3035,7 +3014,6 @@
 
                          $("#disapproveModal").modal("hide");
                          location.reload();
-                         // console.log(status);
                     }
                })
 
@@ -3053,7 +3031,6 @@
                          lead_id: lead_id
                     },
                     success: function(status) {
-                         console.log(status);
                     }
                })
           });

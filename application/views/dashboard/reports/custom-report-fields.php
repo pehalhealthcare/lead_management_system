@@ -1,5 +1,5 @@
-<div class="main-panel">
-     <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+     <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
           <?php if ($this->session->flashdata('message')) :
           ?>
 
@@ -11,17 +11,17 @@
                </div>
           <?php endif; ?>
           <div class="bg-white">
-              <div class="table-responsive">
-                   <table class="table table-bordered">
-                        <tr>
-                             <th>SI</th>
-                             <th>Report Name</th>
-                             <th>Query</th>
-                             <th>Actions</th>
-                        </tr>
-                        
-                   </table>
-              </div>
+               <div class="table-responsive">
+                    <table class="table table-bordered">
+                         <tr>
+                              <th>SI</th>
+                              <th>Report Name</th>
+                              <th>Query</th>
+                              <th>Actions</th>
+                         </tr>
+
+                    </table>
+               </div>
           </div>
      </div>
 </div>

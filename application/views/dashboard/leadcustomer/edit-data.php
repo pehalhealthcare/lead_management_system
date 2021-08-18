@@ -1,5 +1,5 @@
-<div class="main-panel">
-     <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+     <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
           <div class="card bg-white">
                <div class="card-header">
                     <h4>Edit Lead Customer</h4>

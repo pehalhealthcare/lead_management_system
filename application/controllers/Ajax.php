@@ -152,9 +152,6 @@ class Ajax extends CI_Controller
                                         } else {
                                              echo json_encode(array("message" => "Mail not sent"));
                                         }
-
-                                        
-
                                    }
                               } else {
                                    // echo "Data Not Updated";
@@ -194,9 +191,6 @@ class Ajax extends CI_Controller
                                         } else {
                                              echo json_encode(array("message" => "Mail not sent"));
                                         }
-
-                                        
-
                                    }
                               } else {
                                    // echo "Data Not Updated";
@@ -894,7 +888,6 @@ class Ajax extends CI_Controller
           // $data[""] = $this->common_model->viewwheredata(array("id" => $lead_id), "mk_lead");
 
           echo json_encode($data);
-          
      }
 
      public function getleadsorder()
@@ -906,7 +899,6 @@ class Ajax extends CI_Controller
           $data["agents"] = $this->common_model->viewwhereordata(array("category" => "BA"), array("category" => "OA"), "mk_registration_table");
 
           echo json_encode($data);
-          
      }
 
      public function getAgentLead()
@@ -927,11 +919,11 @@ class Ajax extends CI_Controller
 
           $data["teams"] = $this->common_model->viewwheredata(array("id" => $team_id), "mk_registration_table");
 
-          $data["agents"] = $this->common_model->viewwheredata(array("parent_id"=>$team_id), "mk_registration_table");
+          $data["agents"] = $this->common_model->viewwheredata(array("parent_id" => $team_id), "mk_registration_table");
 
           echo json_encode($data);
      }
-     
+
 
      public function getOrderLead()
      {
@@ -941,7 +933,7 @@ class Ajax extends CI_Controller
 
           $data["leads"] = $this->common_model->viewwheredata(array("assigned_to" => $agent_id), "mk_lead");
 
-          $data["orders"] = $this->common_model->viewdata("mk_order","multiple");
+          $data["orders"] = $this->common_model->viewdata("mk_order", "multiple");
 
           echo json_encode($data);
      }
@@ -1121,7 +1113,6 @@ class Ajax extends CI_Controller
                          echo json_encode(array("message" => "Mail not sent"));
                     }
                     $this->session->set_flashdata('message_name', 'Order Data Added');
-                    
                }
           }
      }
@@ -1261,7 +1252,7 @@ class Ajax extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <'. $this->session->email.'>' . "\r\n";
+          $headers .= 'From: <' . $this->session->email . '>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {
@@ -1334,7 +1325,7 @@ class Ajax extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <'. $this->session->email.'>' . "\r\n";
+          $headers .= 'From: <' . $this->session->email . '>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {
@@ -1394,7 +1385,7 @@ class Ajax extends CI_Controller
           $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
 
           // More headers
-          $headers .= 'From: <'. $this->session->email.'>' . "\r\n";
+          $headers .= 'From: <' . $this->session->email . '>' . "\r\n";
           // $headers .= 'Cc: myboss@example.com' . "\r\n";
 
           if (mail($to, $subject, $message, $headers)) {
@@ -1499,55 +1490,50 @@ class Ajax extends CI_Controller
      public function adminOrderIntimate()
      {
           $insertdata = array(
-               "lead_id"=>$this->input->post("lead_id"),
-               "order_id"=>$this->input->post("order_id"),
-               "qid"=>$this->input->post("qid"),
-               "agent_id"=>$this->input->post("agent_id"),
-               "lead_id"=>$this->input->post("lead_id"),
-               "reason"=>$this->input->post("reason"),
-               "admin"=>$this->input->post("admin")
+               "lead_id" => $this->input->post("lead_id"),
+               "order_id" => $this->input->post("order_id"),
+               "qid" => $this->input->post("qid"),
+               "agent_id" => $this->input->post("agent_id"),
+               "lead_id" => $this->input->post("lead_id"),
+               "reason" => $this->input->post("reason"),
+               "admin" => $this->input->post("admin")
           );
-          $cond = array("lead_id"=>$this->input->post("lead_id"),"agent_id"=>$this->input->post("agent_id"));
-          $datacheck = $this->common_model->viewwheredata($cond,"mk_admin_log");
-          if($datacheck)
-          {
+          $cond = array("lead_id" => $this->input->post("lead_id"), "agent_id" => $this->input->post("agent_id"));
+          $datacheck = $this->common_model->viewwheredata($cond, "mk_admin_log");
+          if ($datacheck) {
                $insertdata["modified_by"] = $this->input->post("agent_id");
                $insertdata["modified_at"] = date("Y-m-d h:i:s");
 
                $insertnote = array(
-                    "action_to"=>$this->input->post("admin"),
-                    "action_by"=>$this->session->userID,
-                    "action_id"=>time(),
-                    "action"=>"Agent assign disapprove details of order to admin",
-                    "is_read"=>0
+                    "action_to" => $this->input->post("admin"),
+                    "action_by" => $this->session->userID,
+                    "action_id" => time(),
+                    "action" => "Agent assign disapprove details of order to admin",
+                    "is_read" => 0
 
                );
 
-               $this->common_model->adddata("mk_notifications",$insertnote);
+               $this->common_model->adddata("mk_notifications", $insertnote);
 
-               if($this->common_model->updatedata("mk_admin_log",$insertdata,$cond))
-               {
+               if ($this->common_model->updatedata("mk_admin_log", $insertdata, $cond)) {
                     echo "Data Updated Successfully";
                }
-          }
-          else
-          {
+          } else {
                $insertdata["created_by"] = $this->input->post("agent_id");
                $insertdata["created_at"] = date("Y-m-d h:i:s");
 
                $insertnote = array(
-                    "action_to"=>$this->input->post("admin"),
-                    "action_by"=>$this->session->userID,
-                    "action_id"=>time(),
-                    "action"=>"Agent assign disapprove details of order to admin ",
-                    "is_read"=>0
+                    "action_to" => $this->input->post("admin"),
+                    "action_by" => $this->session->userID,
+                    "action_id" => time(),
+                    "action" => "Agent assign disapprove details of order to admin ",
+                    "is_read" => 0
 
                );
 
-               $this->common_model->adddata("mk_notifications",$insertnote);
+               $this->common_model->adddata("mk_notifications", $insertnote);
 
-               if($this->common_model->adddata("mk_admin_log",$insertdata))
-               {
+               if ($this->common_model->adddata("mk_admin_log", $insertdata)) {
                     echo "Data Inserted Successfully";
                }
           }
@@ -1557,7 +1543,7 @@ class Ajax extends CI_Controller
      {
           $userID = $this->input->post("user_id");
 
-          $data = $this->common_model->viewwheredata(array("action_to"=>$userID,"is_read"=>0),"mk_notifications");
+          $data = $this->common_model->viewwheredata(array("action_to" => $userID, "is_read" => 0), "mk_notifications");
 
           echo json_encode($data);
      }
@@ -1567,28 +1553,106 @@ class Ajax extends CI_Controller
           $userID = $this->session->userID;
 
           $cond = array(
-               "action_to"=>$userID,
-               "is_read"=>0
+               "action_to" => $userID,
+               "is_read" => 0
           );
 
           $insertdata = array(
-               "is_read"=>$this->input->post("read")
+               "is_read" => $this->input->post("read")
           );
 
-          $data = $this->common_model->updatedata("mk_notifications",$insertdata,$cond);
+          $data = $this->common_model->updatedata("mk_notifications", $insertdata, $cond);
 
           // echo $this->db->last_query();
 
-          if($data)
-          {
+          if ($data) {
                $success = "Notifications read successfully";
-          }
-          else
-          {
+          } else {
                $success = "Notifications already read";
           }
 
           echo json_encode($success);
      }
-    
+
+     public function quotationfilter()
+     {
+          $status = $this->input->post("status");
+
+          $query = "SELECT * FROM mk_quotation WHERE is_active=$status";
+
+          $data["quotation"] = $this->db->query($query)->result_array();
+
+          $data["customer"] = $this->common_model->viewdata("mk_customer","multiple");
+
+          $data["orders"] = $this->common_model->viewdata("mk_order","multiple");
+
+          echo json_encode($data);
+     }
+
+     public function leadFilter()
+     {
+          $status = $this->input->post("status");
+
+          $assigned_by = $this->input->post("assigned_by");
+
+          $assigned_to = $this->input->post("assigned_to");
+
+          $from_date = $this->input->post("fromdate");
+
+          $to_date = $this->input->post("todate");
+
+          $query = "SELECT * FROM mk_lead WHERE is_active=1 AND  journey='$status' AND assigned_by='$assigned_by' AND assigned_to='$assigned_to'";
+
+          // echo $query;
+
+          $data["leads"] = $this->db->query($query)->result_array();
+
+          $data["opportunity"] = $this->common_model->viewdata("mk_opportunity","multiple");
+
+          $data["users"] = $this->common_model->viewdata("mk_registration_table","multiple");
+
+          $data["customer"] = $this->common_model->viewdata("mk_customer","multiple");
+
+          $data["lead_customer"] = $this->common_model->viewdata("mk_lead_customer","multiple");
+
+          echo json_encode($data);
+     }
+
+     public function productfilter()
+     {
+          $status = $this->input->post("status");
+
+          $customer_id = $this->input->post("customer");
+
+          $item_id = $this->input->post("item");
+
+          $data["customers"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id),"mk_customer");
+
+          $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id,"item_id"=>$item_id),"mk_customer_item");
+
+          $data["products"] = $this->common_model->viewdata("mk_master_product","multiple");
+
+          $data["items"] = $this->common_model->viewwheredata(array("item_id"=>$item_id),"mk_master_product_item");
+
+          echo json_encode($data);
+     }
+
+     public function servicefilter()
+     {
+          $status = $this->input->post("status");
+
+          $customer_id = $this->input->post("customer");
+
+          $item_id = $this->input->post("item");
+
+          $data["customers"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id),"mk_customer");
+
+          $data["customer_item"] = $this->common_model->viewwheredata(array("customer_id"=>$customer_id),"mk_customer_item");
+
+          $data["service"] = $this->common_model->viewdata("mk_master_services","multiple");
+
+          $data["items"] = $this->common_model->viewwheredata(array("item_id"=>$item_id),"mk_master_service_item");
+
+          echo json_encode($data);
+     }
 }

@@ -1,5 +1,5 @@
-<div class="main-panel">
-     <div class="content-wrapper mt-5">
+<div class="main-panel page has-sidebar-left height-full">
+     <div class="content-wrapper container-fluid relative animatedParent animateOnce p-lg-5">
           <div class="table-responsive bg-white">
                <p class="alert alert-success">Note: For page responsive do horizontal scroll</p>
                <table class="table table-bordered bg-white">
