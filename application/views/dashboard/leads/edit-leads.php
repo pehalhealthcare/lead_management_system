@@ -229,7 +229,7 @@
                          <!-- Modal footer -->
                          <div class="modal-footer">
                               <input type="submit" value="SAVE & CLOSE" class="btn btn-success">
-                              <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">Close</button>
                          </div>
                     </form>
                </div>

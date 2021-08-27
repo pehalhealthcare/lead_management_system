@@ -26,8 +26,8 @@
               <td><?= $product["unit_price"] ?></td>
               <td><?= $product["tax_rate"] ?></td>
               <td>
-                <a href="<?= base_url() ?>dashboard/services/item/edit/<?= $product["item_id"] ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" data-target="#confirm-modal" data-id="<?= $product["item_id"] ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
+                <a href="<?= base_url() ?>dashboard/services/item/edit/<?= $product["item_id"] ?>" class="btn btn-info mt-2"><i class="fa fa-pencil"></i></a>
+                <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" data-target="#confirm-modal" data-id="<?= $product["item_id"] ?>" class="btn btn-danger delete mt-2"><i class="fa fa-trash"></i></button>
               </td>
             </tr>
           <?php endforeach; ?>
@@ -50,8 +50,8 @@
         <p>Are you sure want to delete this data ?</p>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-success confirmed">Yes</button>
-        <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-success confirmed mt-2">Yes</button>
+        <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
       </div>
     </div>
   </div>
@@ -72,8 +72,8 @@
           <input type="file" name="file" class="form-control" />
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-success confirmed">SAVE & CLOSE</button>
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="submit" class="btn btn-success confirmed mt-2">SAVE & CLOSE</button>
+          <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
         </div>
       </form>
     </div>

@@ -4,27 +4,82 @@
           <div class="col-sm-12 bg-white p-3">
                <div class="page-header">
                     <h3 class="page-title">
-                         <span class="page-title-icon bg-gradient-primary text-white mr-2">
+                         <span class="page-title-icon bg-gradient-primary  mr-2">
                               <i class="mdi mdi-home"></i>
                          </span> Dashboard
                     </h3>
                </div>
                <div class="row">
-               
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-danger card-img-holder text-white">
+
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card">
+                              <div class="card-body">
+                                   <div class="d-flex align-items-center">
+                                        <div class="mr-3">
+                                            
+                                             <?php
+
+                                             $complete = count($complete);
+                                             $new = count($new);
+                                             $inprocess = count($inprocess);
+                                             ?>
+
+
+                                             <span class="easy-pie-chart" data-percent="<?= $complete ?>" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#7dc855&quot;}">
+                                                  <span class="percent"><?= $complete ?></span>
+                                                  <canvas height="110" width="110"></canvas></span>
+                                        </div>
+                                        <div>
+                                             <h6> Your Progress <br>
+                                                  <small>Where you stand in project</small>
+                                             </h6>
+                                             <ul class="list-group list-group-flush">
+                                                  <li class="list-group-item">
+                                                       <i class="icon icon-schedule text-yellow"></i>New Leads
+                                                       <div class="float-right">
+                                                            <span class="badge badge-warning"><?= $new ?></span>
+                                                       </div>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                       <i class="icon icon-schedule text-primary"></i>Leads In Process
+                                                       <div class="float-right">
+                                                            <span class="badge badge-primary"><?= $inprocess ?></span>
+                                                       </div>
+                                                  </li>
+                                                  <li class="list-group-item">
+                                                       <i class="icon icon-check-circle text-success"></i>Completed Leads
+                                                       <div class="float-right">
+                                                            <span class="badge badge-success"><?= $complete ?></span>
+                                                       </div>
+                                                  </li>
+                                             </ul>
+                                        </div>
+                                   </div>
+                              </div>
+
+                         </div>
+                    </div>
+
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-danger card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">Total Leads Punch <i class="mdi mdi-chart-line mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($approved_leads) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive bg-white">
-                                        <table class="table-sm table-bordred">
+                                        <table class="table table-bordred">
                                              <tr>
                                                   <tH>Name</th>
                                                   <th>Agent Name</th>
                                                   <th>Office Phone</th>
                                                   <th>Email Address</th>
                                                   <th>Date Created</th>
+                                                  <th>Jounney</th>
                                                   <th>Actions</th>
                                              </tr>
                                              <?php $i = 0;
@@ -43,6 +98,7 @@
                                                             <td><?= $leads["mobile"] ?></td>
                                                             <td><?= $leads["email"] ?></td>
                                                             <td><?= $leads["created_at"] ?></td>
+                                                            <td><?= $leads["journey"] ?></td>
                                                             <td>
                                                                  <a href="<?= base_url() ?>dashboard/edit/leads/<?= $leads["id"] ?>" class="btn btn-warning  btn-sm  mt-2">
                                                                       <i class="fa fa-pencil"></i>
@@ -61,14 +117,19 @@
                     </div>
 
 
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-success card-img-holder text-white">
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-success card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">Opportunity <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($dashoppo) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive bg-white">
-                                        <table class="table-sm  table-bordred">
+                                        <table class="table  table-bordred">
                                              <tr>
                                                   <tH>SI.NO</th>
                                                   <th>Opportunity Name</th>
@@ -106,12 +167,17 @@
                     </div>
 
 
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-info card-img-holder text-white">
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-info card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">My Accounts(Agents) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($agents) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive bg-white">
                                         <table class="table  table-bordred">
                                              <tr>
@@ -148,13 +214,18 @@
                          </div>
                     </div>
                     <?php if ($this->session->category == "CA" || $this->session->category == "CB") : ?>
-                         <div class="col-md-6 stretch-card grid-margin">
-                         
-                              <div class="card bg-gradient-info card-img-holder text-white">
+                         <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+
+                              <div class="card bg-gradient-info card-img-holder ">
                                    <div class="card-body">
 
                                         <h4 class="font-weight-normal mb-3">My Accounts(Team Leader) <i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                         </h4>
+                                        <div class="mr-auto mt-sm-3 text-left m-5">
+                                             <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                                  <span class="percent s-24"><?= count($teamleader) ?></span>
+                                                  <canvas height="110" width="110"></canvas></span>
+                                        </div>
                                         <div class="table-responsive bg-white">
                                              <table class="table  table-bordred">
                                                   <tr>
@@ -194,14 +265,19 @@
 
 
 
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-primary card-img-holder text-white">
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-primary card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">Log Calls <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($logcalls) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive bg-white">
-                                        <table class="table-sm  table-bordred">
+                                        <table class="table  table-bordred">
                                              <tr>
                                                   <tH>Close</th>
                                                   <th>Subject </th>
@@ -238,14 +314,19 @@
                          </div>
                     </div>
 
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-warning card-img-holder text-white">
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-warning card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">Meetings<i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($meetings) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive bg-white">
-                                        <table class="table-sm  table-bordred">
+                                        <table class="table  table-bordred">
                                              <tr>
                                                   <tH>Close</th>
                                                   <th>Subject </th>
@@ -282,12 +363,17 @@
                          </div>
                     </div>
 
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-success card-img-holder text-white">
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-success card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">Total Quotations <i class="mdi mdi-diamond mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($quotations) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive bg-white">
                                         <table class="table  table-bordred">
                                              <tr>
@@ -310,7 +396,7 @@
                                                             <td><?= $quotation->created_at ?></td>
 
                                                             <td>
-                                                                
+
                                                                  <a href="<?= base_url() ?>dashboard/lead/view_quotation/<?= $quotation->lead_id ?>/<?= $quotation->customer_id ?>" class="btn btn-primary  btn-sm  mt-2 ">
                                                                       <i class="fa fa-eye"></i>
                                                                  </a>
@@ -326,14 +412,19 @@
 
                     </div>
 
-                    <div class="col-md-6 stretch-card grid-margin">
-                         <div class="card bg-gradient-info card-img-holder text-white">
+                    <div class="col-md-12 col-sm-12 mt-3 stretch-card grid-margin">
+                         <div class="card bg-gradient-info card-img-holder ">
                               <div class="card-body">
 
                                    <h4 class="font-weight-normal mb-3">Total Orders<i class="mdi mdi-bookmark-outline mdi-24px float-right"></i>
                                    </h4>
+                                   <div class="mr-auto mt-sm-3 text-left m-5">
+                                        <span class="easy-pie-chart " data-percent="100" data-options="{&quot;lineWidth&quot;: 10, &quot;barColor&quot;: &quot;#03a9f4&quot;,&quot;trackColor&quot;:&quot;#f6f8fb&quot;}">
+                                             <span class="percent s-24"><?= count($orders) ?></span>
+                                             <canvas height="110" width="110"></canvas></span>
+                                   </div>
                                    <div class="table-responsive">
-                                        <table class="table-sm  table-bordered bg-white">
+                                        <table class="table  table-bordered bg-white">
                                              <tr>
                                                   <th>SI NO</th>
                                                   <th>LEAD ID</th>
@@ -482,7 +573,7 @@
                          <div class="col-sm-12 row">
                               <div class="col">
                                    <input type="submit" value="UPDATE & CLOSE" class="btn btn-success">
-                                   <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                                   <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
                               </div>
                          </div>
 
@@ -547,7 +638,7 @@
                     <div class="col-sm-12 row">
                          <div class="col">
 
-                              <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
                          </div>
                     </div>
 
@@ -1091,7 +1182,7 @@
                <div class="modal-footer">
                     <div class="col-sm-12 row">
                          <div class="col">
-                              <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
                          </div>
                     </div>
 
@@ -1174,7 +1265,7 @@
                <div class="modal-footer">
                     <div class="col-sm-12 row">
                          <div class="col">
-                              <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
                          </div>
                     </div>
 
@@ -1253,7 +1344,7 @@
                <div class="modal-footer">
                     <div class="col-sm-12 row">
                          <div class="col">
-                              <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                              <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
                          </div>
                     </div>
 

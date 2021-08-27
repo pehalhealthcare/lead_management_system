@@ -34,13 +34,13 @@
             <td><?= $order->decision ?></td>
             <td><?= $order->decision ?></td>
             <td>
-              <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary">
+              <a href="<?= base_url() ?>dashboard/operation/order/view/<?= $order->order_id ?>" title="Assign Leads" class="btn btn-primary mt-2">
                 <i class="fa fa-eye"></i>
               </a>
-              <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#orderdocform" class="btn btn-primary documents">
+              <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#orderdocform" class="btn btn-primary documents mt-2">
                 <i class="fa fa-file"></i>
               </button>
-              <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#downloadbox" class="btn btn-primary downloads">
+              <button data-order-id="<?= $order->order_id ?>" data-toggle="modal" data-target="#downloadbox" class="btn btn-primary downloads mt-2">
                 <i class="fa fa-download"></i>
               </button>
               <?php if ($order->payment == "no") : ?>
@@ -71,9 +71,9 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-info confirm-delete">YES</button>
+          <button type="button" class="btn btn-info mt-2 confirm-delete">YES</button>
 
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
         </div>
 
       </div>
@@ -109,7 +109,7 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="submit" class="btn btn-info">UPLOAD</button>
+          <button type="submit" class="btn btn-info mt-2">UPLOAD</button>
         </div>
       </form>
 
@@ -135,7 +135,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-info" data-dismiss="modal">close</button>
+        <button type="button" class="btn btn-info mt-2" data-dismiss="modal">close</button>
       </div>
       </form>
 
@@ -177,7 +177,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="submit" class="btn btn-info">Submit</button>
+        <button type="submit" class="btn btn-info mt-2">Submit</button>
       </div>
       </form>
 
@@ -203,7 +203,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" onclick="window.location.reload()" data-dismiss="modal" class="btn btn-info">Close</button>
+        <button type="button" onclick="window.location.reload()" data-dismiss="modal" class="btn btn-info mt-2">Close</button>
       </div>
 
     </div>

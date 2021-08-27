@@ -46,9 +46,9 @@
           <td><?= $leadcustomer->alternate_mobile ?></td>
           <td><?= ($leadcustomer->is_active == 1) ? "Active" : "Inactive" ?></td>
           <td>
-            <a href="<?= base_url() ?>dashboard/leadcustomer/edit/<?= $leadcustomer->customer_id ?>" class="btn btn-info">
+            <a href="<?= base_url() ?>dashboard/leadcustomer/edit/<?= $leadcustomer->customer_id ?>" class="btn btn-info mt-2">
               <i class="fa fa-pencil"></i></a>
-            <button type="button" class="btn btn-danger delete-data" data-id="<?= $leadcustomer->customer_id ?>" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
+            <button type="button" class="btn btn-danger delete-data mt-2" data-id="<?= $leadcustomer->customer_id ?>" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
           </td>
         </tr>
       <?php endforeach; ?>
@@ -73,9 +73,9 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-info confirm-delete">YES</button>
+          <button type="button" class="btn btn-info mt-2 confirm-delete">YES</button>
 
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
         </div>
 
       </div>

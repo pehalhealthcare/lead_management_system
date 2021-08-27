@@ -23,9 +23,9 @@
                          <td><?= $i; ?></td>
                          <td class="text-capitalize"><?= $term->term_name ?></td>
                          <td>
-                              <a href="<?= base_url() ?>dashboard/terms/edit/<?= $term->term_id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
+                              <a href="<?= base_url() ?>dashboard/terms/edit/<?= $term->term_id ?>" class="btn btn-info mt-2"><i class="fa fa-pencil"></i></a>
                               <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" 
-                              data-target="#confirm-modal" data-id="<?= $term->term_id ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
+                              data-target="#confirm-modal" data-id="<?= $term->term_id ?>" class="btn btn-danger delete mt-2"><i class="fa fa-trash"></i></button>
                          </td>
                     </tr>
                <?php endforeach; ?>
@@ -47,8 +47,8 @@
                     <p>Are you sure want to delete this data ?</p>
                </div>
                <div class="modal-footer">
-                    <button type="button" class="btn btn-success confirmed">Yes</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-success confirmed mt-2">Yes</button>
+                    <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
                </div>
           </div>
      </div>

@@ -44,7 +44,15 @@ class Dashboard extends CI_Controller
                $data["quotations"] = $this->common_model->viewdata("mk_quotation", "multiple");
                
                $data["approved_leads"] = $this->common_model->viewwheredata(array("is_active" => 1), "mk_lead");
+
+               $data["complete"] = $this->common_model->viewwheredata(array("is_active" => 1,"journey"=>"Complete","assigned_to"=>$this->session->userID), "mk_lead");
+
+               $data["new"] = $this->common_model->viewwheredata(array("is_active" => 1,"journey"=>"New","assigned_to"=>$this->session->userID), "mk_lead");
+
+               $data["inprocess"] = $this->common_model->viewwheredata(array("is_active" => 1,"journey"=>"In Process","assigned_to"=>$this->session->userID), "mk_lead");
+
                $data["logcalls"] = $this->common_model->viewwheredata(array("activity_master_id" => 1), "mk_activity");
+
                $data["meetings"] = $this->common_model->viewwheredata(array("activity_master_id" => 2), "mk_activity");
                
                $data["agents"] = $this->common_model->viewwhereordata(array("category" => "BA"), array("category" => "OA"), "mk_registration_table");
@@ -58,7 +66,15 @@ class Dashboard extends CI_Controller
 
                // echo "<pre>";print_r($data["opportunity"]); die();
                $data["dashoppo"] = $this->common_model->viewdata("mk_opportunity", "multiple");
+
+               $data["complete"] = $this->common_model->viewwheredata(array("is_active" => 1,"journey"=>"Complete"), "mk_lead");
+
+               $data["new"] = $this->common_model->viewwheredata(array("is_active" => 1,"journey"=>"New"), "mk_lead");
+
+               $data["inprocess"] = $this->common_model->viewwheredata(array("is_active" => 1,"journey"=>"In Process"), "mk_lead");
+
                $data["approved_leads"] = $this->common_model->viewwheredata(array("is_active" => 1), "mk_lead");
+               
                $data["logcalls"] = $this->common_model->viewwheredata(array("activity_master_id" => 1), "mk_activity");
                $data["meetings"] = $this->common_model->viewwheredata(array("activity_master_id" => 2), "mk_activity");
                $data["agents"] = $this->common_model->viewwhereordata(array("category" => "BA"), array("category" => "OA"), "mk_registration_table");

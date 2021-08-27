@@ -25,9 +25,9 @@
                                    <td class="text-capitalize"><?= $product->product_name ?></td>
                                    <td><img style="width:100px;" src="<?= base_url() ?>uploads/<?= ($product->product_image) ? $product->product_image : "no-image.jpg" ?>" /></td>
                                    <td>
-                                        <a href="<?= base_url() ?>dashboard/products/item/<?= $product->product_id ?>" class="btn btn-primary"><i class="fa fa-eye"></i></a>
-                                        <a href="<?= base_url() ?>dashboard/products/edit/<?= $product->product_id ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                                        <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" data-target="#confirm-modal" data-id="<?= $product->product_id ?>" class="btn btn-danger delete"><i class="fa fa-trash"></i></button>
+                                        <a href="<?= base_url() ?>dashboard/products/item/<?= $product->product_id ?>" class="btn btn-primary mt-2"><i class="fa fa-eye"></i></a>
+                                        <a href="<?= base_url() ?>dashboard/products/edit/<?= $product->product_id ?>" class="btn btn-info mt-2"><i class="fa fa-pencil"></i></a>
+                                        <button data-toggle="modal" data-target="#confirm-modal" data-toggle="modal" data-target="#confirm-modal" data-id="<?= $product->product_id ?>" class="btn btn-danger delete mt-2"><i class="fa fa-trash"></i></button>
                                    </td>
                               </tr>
                          <?php endforeach; ?>
@@ -50,8 +50,8 @@
                     <p>Are you sure want to delete this data ?</p>
                </div>
                <div class="modal-footer">
-                    <button type="button" class="btn btn-success confirmed">Yes</button>
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+                    <button type="button" class="btn btn-success confirmed mt-2">Yes</button>
+                    <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
                </div>
           </div>
      </div>

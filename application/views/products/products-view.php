@@ -23,8 +23,8 @@
                     <p class="m-0">E-mail :  <?= $product->email ?></p>
                </div>
                <div class="card-footer">
-                    <a href="products/edit/<?= $product->id ?>" class="btn btn-primary">EDIT</a>
-                    <a href="products/delete/<?= $product->id ?>" class="btn btn-danger">DELETE</a>
+                    <a href="products/edit/<?= $product->id ?>" class="btn btn-primary mt-2">EDIT</a>
+                    <a href="products/delete/<?= $product->id ?>" class="btn btn-danger mt-2">DELETE</a>
                </div>
           </div>
      </div>

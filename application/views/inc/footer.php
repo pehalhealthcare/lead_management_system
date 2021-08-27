@@ -20,7 +20,7 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
       </div>
 
     </div>
@@ -74,7 +74,7 @@
       <!-- Modal footer -->
       <div class="modal-footer">
         <button type="button" class="btn btn-success closeBox" id="close" data-dismiss="modal">Yes</button>
-        <button type="button" class="btn btn-danger" id="closeBox" data-dismiss="modal">No</button>
+        <button type="button" class="btn btn-danger mt-2" id="closeBox" data-dismiss="modal">No</button>
       </div>
 
     </div>
@@ -100,10 +100,15 @@
   $(document).ready(function() {
 
 
-    setInterval(function() {
-      $(".date").html("<?= date("d-m-Y h:s:i") ?>");
-    }, 1000);
+    setInterval(myTimer, 1000);
 
+    myTimer()
+
+    function myTimer() {
+      const d = new Date();
+      var datetime  = d.getDate() + "-" + d.getMonth() + "-" + d.getYear() + " " + d.toLocaleTimeString();
+      $(".date").html(datetime) ;
+    }
 
     $(".myModal").click(function() {
       $("#myModal").hide();
@@ -156,15 +161,12 @@
         success: function(status) {
           var result = JSON.parse(status);
           $.each(result, function(k, v) {
-            if(v)
-            {
-              $(".notifications").append('<h6 title="'+v["action"]+'" class="col-sm-12 text-gray ellipsis mb-0">' + v["action"] + '  </h6><p class="text-gray mb-0 text-center"> <small>18 Minutes ago</small></p><div class="dropdown-divider"></div>');
-            }
-            else
-            {
+            if (v) {
+              $(".notifications").append('<li title="' + v["action"] + '" class="col-sm-12 text-gray ellipsis mb-0"><a href="#"><i class="icon icon-data_usage text-success"></i>' + v["action"] + '  </a></li>');
+            } else {
               return false;
             }
-            
+
           });
 
         }

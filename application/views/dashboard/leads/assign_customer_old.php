@@ -203,8 +203,8 @@
                                        <td><?= $oppos["expected_date"] ?></td>
                                        <td><?= $oppos["remarks"] ?></td>
                                        <td>
-                                            <button data-name="<?= $oppos["opportunity_name"] ?>" data-amount="<?= $oppos["expected_amount"] ?>" data-date="<?= $oppos["expected_date"] ?>" data-remarks="<?= $oppos["remarks"] ?>" data-id="<?= $oppos["id"] ?>" data-status="<?= $oppos["status"] ?>" class="btn btn-info edit-oppos"><i class="fa fa-pencil"></i></button>
-                                            <a href="<?= base_url() ?>dashboard/lead/opporunity/delete/<?= $oppos["id"] ?>?lead_id=<?= $lead_id ?>" class="btn btn-danger"><i class="fa fa-trash"></i></a>
+                                            <button data-name="<?= $oppos["opportunity_name"] ?>" data-amount="<?= $oppos["expected_amount"] ?>" data-date="<?= $oppos["expected_date"] ?>" data-remarks="<?= $oppos["remarks"] ?>" data-id="<?= $oppos["id"] ?>" data-status="<?= $oppos["status"] ?>" class="btn btn-info mt-2 edit-oppos"><i class="fa fa-pencil"></i></button>
+                                            <a href="<?= base_url() ?>dashboard/lead/opporunity/delete/<?= $oppos["id"] ?>?lead_id=<?= $lead_id ?>" class="btn btn-danger mt-2"><i class="fa fa-trash"></i></a>
                                        </td>
                                   </tr>
                              <?php endforeach; ?>
@@ -715,7 +715,7 @@
                              <div class="col-sm-12 row">
                                   <div class="col">
                                        <input type="submit" value="UPDATE & CLOSE" class="btn btn-success">
-                                       <button type="button" class="btn btn-danger" id="close" data-dismiss="modal">Close</button>
+                                       <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal">Close</button>
                                   </div>
                              </div>
 
@@ -786,12 +786,12 @@
                         <div class="modal-footer">
                              <div class="col-sm-12 row">
                                   <div class="col">
-                                       <label for="attachement" class="btn btn-info attachement mt-2"><i class="fa fa-paperclip"></i></label>
+                                       <label for="attachement" class="btn btn-info mt-2 attachement mt-2"><i class="fa fa-paperclip"></i></label>
                                        <input type="file" class="d-none" name="attachement" id="attachement">
-                                       <label for="docs" class="btn btn-info docs mt-2"><i class="fa fa-file"></i></label>
+                                       <label for="docs" class="btn btn-info mt-2 docs mt-2"><i class="fa fa-file"></i></label>
                                        <input type="file" class="d-none" name="docs" id="docs">
                                        <button type="button" class="btn btn-primary save_draft"><i class="fa fa-floppy-o"></i></button>
-                                       <button type="button" class="btn btn-danger" id="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
+                                       <button type="button" class="btn btn-danger mt-2" id="close" data-dismiss="modal"><i class="fa fa-times"></i></button>
                                        <button type="submit" class="btn btn-success"><i class="fa fa-paper-plane"></i></button>
                                   </div>
                              </div>
@@ -2255,9 +2255,9 @@
                                   //     html += '<td>&nbsp;</td>';
                                   html += '<td>' + duedate + '</td>';
                                   html += '<td>' + v["assigned_to"] + '</td>'
-                                  html += '<td><button data-id="' + v["id"] + '" data-activity="' + name + '" class="btn btn-info edit-activity"><i class="fa fa-pencil"></i></button> ';
-                                  //     html += ' <button class="btn btn-primary"><i class="fa fa-times"></i></button>';
-                                  html += ' <a href="<?= base_url() ?>dashboard/lead/activity/delete/' + v["id"] + '" class="btn btn-danger"><i class="fa fa-trash"></i></a> </td></tr>';
+                                  html += '<td><button data-id="' + v["id"] + '" data-activity="' + name + '" class="btn btn-info mt-2 edit-activity"><i class="fa fa-pencil"></i></button> ';
+                                  //     html += ' <button class="btn btn-primary mt-2"><i class="fa fa-times"></i></button>';
+                                  html += ' <a href="<?= base_url() ?>dashboard/lead/activity/delete/' + v["id"] + '" class="btn btn-danger mt-2"><i class="fa fa-trash"></i></a> </td></tr>';
                                   if (v["activity_master_id"] != 3) {
                                        $(".activity-table tbody").append(html);
                                   }

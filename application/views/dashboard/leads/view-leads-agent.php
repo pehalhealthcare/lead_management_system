@@ -40,12 +40,12 @@
            <td><?= $lead["journey"] ?></td>
      <!--   <td><?= $lead->reasons ?></td> -->
             <td>
-              <a href="<?= base_url() ?>dashboard/leads/assign/<?= $lead["id"] ?>" title="Assign Leads" class="btn btn-primary">
+              <a href="<?= base_url() ?>dashboard/leads/assign/<?= $lead["id"] ?>" title="Assign Leads" class="btn btn-primary mt-2">
                 <i class="fa fa-user"></i></a>
               
               <?php if ($this->session->category == "BTL" || $this->session->role == 1) : ?>
-                <a href="<?= base_url() ?>dashboard/edit/leads/<?= $lead["id"] ?>" class="btn btn-info"><i class="fa fa-pencil"></i></a>
-                <button type="button" class="btn btn-danger delete-data" data-id="<?= $lead["id"] ?>" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
+                <a href="<?= base_url() ?>dashboard/edit/leads/<?= $lead["id"] ?>" class="btn btn-info mt-2"><i class="fa fa-pencil"></i></a>
+                <button type="button" class="btn btn-danger delete-data mt-2" data-id="<?= $lead["id"] ?>" data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
             </td>
           <?php endif; ?>
           </tr>
@@ -71,9 +71,9 @@
 
         <!-- Modal footer -->
         <div class="modal-footer">
-          <button type="button" class="btn btn-info confirm-delete">YES</button>
+          <button type="button" class="btn btn-info mt-2 confirm-delete">YES</button>
 
-          <button type="button" class="btn btn-danger" data-dismiss="modal">No</button>
+          <button type="button" class="btn btn-danger mt-2" data-dismiss="modal">No</button>
         </div>
 
       </div>

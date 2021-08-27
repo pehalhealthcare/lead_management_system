@@ -38,8 +38,8 @@
       <td><?= $category->category ?></td>
       <td><?= ($category->is_active==1) ? "ACTIVE" : "INACTIVE" ?></td>
       <td>
-      <a href="javascript:void(0)" data-category="<?= $category->category ?>" data-status="<?= $category->is_active ?>" data-id="<?= $category->id ?>" class="btn btn-info editCategory"><i class="fa fa-pencil"></i></a>
-      <button type="button" class="btn btn-danger delete-data" data-id="<?= $category->id ?>"
+      <a href="javascript:void(0)" data-category="<?= $category->category ?>" data-status="<?= $category->is_active ?>" data-id="<?= $category->id ?>" class="btn btn-info mt-2 editCategory"><i class="fa fa-pencil"></i></a>
+      <button type="button" class="btn btn-danger delete-data mt-2" data-id="<?= $category->id ?>"
       data-toggle="modal" data-target="#confirm-modal"><i class="fa fa-trash"></i></button>
       </td>
       
@@ -84,9 +84,9 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="Submit"  class="btn btn-info">Update & Close</button>
+        <button type="Submit"  class="btn btn-info mt-2">Update & Close</button>
 
-        <button type="button"  class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="button"  class="btn btn-danger mt-2" data-dismiss="modal">Cancel</button>
       </div>
       </form>
 
@@ -128,9 +128,9 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="Submit"  class="btn btn-info">Save & Close</button>
+        <button type="Submit"  class="btn btn-info mt-2">Save & Close</button>
 
-        <button type="button"  class="btn btn-danger" data-dismiss="modal">Cancel</button>
+        <button type="button"  class="btn btn-danger mt-2" data-dismiss="modal">Cancel</button>
       </div>
       </form>
     </div>
@@ -154,9 +154,9 @@
 
       <!-- Modal footer -->
       <div class="modal-footer">
-        <button type="button"  class="btn btn-info confirm-delete">YES</button>
+        <button type="button"  class="btn btn-info mt-2 confirm-delete">YES</button>
 
-        <button type="button"  class="btn btn-danger" data-dismiss="modal">No</button>
+        <button type="button"  class="btn btn-danger mt-2" data-dismiss="modal">No</button>
       </div>
 
     </div>

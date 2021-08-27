@@ -32,4 +32,4 @@
 </select>
 </div>
 
-<input type="submit" value="UPDATE PRODUCT" class="btn btn-primary" />
+<input type="submit" value="UPDATE PRODUCT" class="btn btn-primary mt-2" />
